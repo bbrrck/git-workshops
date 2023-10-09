@@ -126,6 +126,11 @@ After deletion, the branch is removed from history and cannot be restored.
 ## {background-image="./src/git-basics/img/git-conflict-vs-code-gui.png" background-size="contain"}
 
 
+## Summary
+
+{{< include ./src/git-basics/diagrams/section-4-example.qmd >}}
+
+
 ## Exercises (2) {.exercise #exercise-2-branches}
 
 ::: {.fontsize-090}

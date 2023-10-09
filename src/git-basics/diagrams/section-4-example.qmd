@@ -1,0 +1,33 @@
+```{mermaid}
+%%| fig-width: 10
+%%{
+    init: { 
+        'logLevel': 'debug', 
+        'theme': 'base', 
+        'gitGraph': {
+            'showCommitLabel': true, 
+            'showBranches': true, 
+            'mainBranchName': 'main',
+            'rotateCommitLabel': true
+        } 
+    } 
+}%%
+gitGraph
+    commit id: "Print 'Hello'"
+    commit id: "Add functions"
+    branch slovak
+    commit id: "'Ahoj'"
+    checkout main
+    branch french
+    commit id: "'Bonjour'"
+    checkout main
+    commit id: "Add comment"
+    merge slovak
+    merge french
+    branch remote-main
+    commit id: "lowercase"
+    checkout main
+    commit id: "'Hello!'"
+    checkout main
+    merge remote-main
+```
