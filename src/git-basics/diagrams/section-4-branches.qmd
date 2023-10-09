@@ -1,0 +1,34 @@
+```{mermaid}
+%%| fig-width: 10
+%%{
+    init: { 
+        'logLevel': 'debug', 
+        'theme': 'base', 
+        'themeVariables': {
+
+        },
+        'gitGraph': {
+            'showCommitLabel': false, 
+            'showBranches': false, 
+            'mainBranchName': 'main'
+        } 
+    } 
+}%%
+    gitGraph
+        checkout main
+        commit
+        commit
+        branch bugfix
+        branch feature
+        checkout bugfix
+        commit
+        commit
+        checkout feature
+        commit
+        commit
+        commit
+        commit
+        checkout main
+        merge bugfix
+        merge feature
+```

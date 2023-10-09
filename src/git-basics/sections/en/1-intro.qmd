@@ -1,0 +1,38 @@
+# Intro {#intro}
+
+## About me
+::: {.columns}
+::: {.column width="72%"}
+- [Tibor Stanko](https://tiborstanko.sk/), 32 years
+- since 2020 Data Engineer in Zurich Insurance, Bratislava 🇸🇰
+- before that, 6 years in academia in 🇫🇷 (PhD, postdoc)
+- I enjoy automating boring tasks using Python 🐍
+- not a Git guru, but I've been using Git for over 7 years
+- my hobbies: 👨‍👩‍👧‍👦🚲⛰️🎸🎹🍺
+:::
+::: {.column width="28%"}
+![](/assets/img/tibors.jpg){.rounded-corners}
+:::
+:::
+
+
+## Contents of this workshop
+
+::: {.columns}
+::: {.column width="40%"}
+1. [Intro](#intro)
+1. [Git &amp; Github](#git-github)
+1. [Basic Git Concepts](#basics) 
+1. [Git Branches](#branches)
+1. [Git Remotes](#remotes)
+1. [Advanced Git](#advanced-git)
+1. [Useful Resources](#links)
+:::
+::: {.column width="60%" .nobullets}
+- &nbsp;  
+- &nbsp;  
+- --- [Exercises (1)](#exercise-1-basics)
+- --- [Exercises (2)](#exercise-2-branches)
+- --- [Exercises (3)](#exercise-3-remotes)  
+:::
+:::

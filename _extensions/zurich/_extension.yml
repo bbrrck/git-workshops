@@ -1,0 +1,23 @@
+title: "Zurich Themed Document"
+author: Jakub Kovac
+quarto-required: ">=1.2.0"
+contributes:
+  format: 
+    html:
+      theme:
+        zurich_light.scss
+      embed-resources: true
+      df-print: paged
+      code-fold: true
+      code-tools: true
+    revealjs:
+      theme: zurich_light_presentation.scss
+      logo: zurich_light.svg
+      footer: "Internal use only"
+      self-contained: true
+      df-print: kable
+      title-slide-attributes:
+          data-background-color: "#2167AE"
+          data-background-image: "zurich_dark.svg"
+          data-background-position: "94% 94%"
+          data-background-size: "25%"

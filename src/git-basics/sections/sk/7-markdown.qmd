@@ -1,0 +1,129 @@
+# Markdown rýchlokurz
+
+## Čo je to Markdown?
+- **Markdown** je jednoduchý značkovací jazyk (ako HTML alebo TeX) ktorý sa používa na tvorbu rôznych typov obsahu: dokumenty, články, slidy, webstránky, ...
+- Markdown je *de facto* štandard pre dokumentovanie Git projektov
+- Väčšina Github projektov má `README.md` ktorý Github automaticky vyrenderuje
+- Príklady dobre napísaných `README` súborov: [matiassingers/awesome-readme](https://github.com/matiassingers/awesome-readme)
+
+::: {.myinfo}
+Aj tieto slidy boli vytvorené s použitím Markdownu! (pomocou systému [Quarto](https://quarto.org/))
+:::
+
+
+## 
+
+::: {.columns}
+
+::: {.column width="50%"}
+
+<pre class="markdown-source">
+# Markdown is Awesome
+
+Markdown is very simple and versatile.
+
+This is a Markdown paragraph. 
+This is still the same paragraph.
+
+## Formmatting options
+
+Bulleted list:
+
+- *italic*
+- **bold**
+- ***bold and italic***
+- ~~strikethrough~~
+- [link](https://www.markdownguide.org/)
+- `code`
+
+Numbered list:
+
+1. first item
+2. second item
+3. last item
+</pre>
+
+:::
+
+::: {.column width="50%" .markdown-preview}
+
+### Markdown is Awesome {.unnumbered .unlisted}
+
+Markdown is very simple and versatile.
+
+This is a Markdown paragraph. 
+This is still the same paragraph.
+
+#### Formatting options
+
+Bulleted list:
+
+- *italic*
+- **bold**
+- ***bold and italic***
+- ~~strikethrough~~
+- [link](https://www.markdownguide.org/)
+- `code`
+
+Numbered list:
+
+1. first item
+2. second item
+3. last item
+:::
+
+:::
+
+
+## 
+
+::: {.columns}
+
+::: {.column width="50%"}
+
+<pre class="markdown-source">
+
+### Code blocks
+
+```python
+def main():
+    print("hello!")
+
+if __name__ == "__main__":
+    main()
+```
+
+### Images
+
+![Queen Elizabeth II]({{< var images.queen-elizabeth-ii >}}) 
+
+### Blockquotes
+
+> It’s worth remembering that it is often the small steps, not the giant leaps, that bring about the most lasting change.
+
+</pre>
+
+:::
+
+::: {.column width="50%" .markdown-preview}
+##### Code blocks
+
+```python
+def main():
+    print("hello!")
+
+if __name__ == "__main__":
+    main()
+```
+
+##### Images
+
+![]({{< var images.queen-elizabeth-ii >}}) 
+
+##### Blockquotes
+
+> It’s worth remembering that it is often the small steps, not the giant leaps, that bring about the most lasting change.
+
+:::
+
+:::

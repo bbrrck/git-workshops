@@ -1,0 +1,151 @@
+# Vetvy *(branches)*
+
+{{< include ./src/git-basics/diagrams/section-4-branches.qmd >}}
+
+## Čo je to vetva *(branch)* ?
+
+- Vetvy slúžia na vybočenie z hlavnej línie a pokračovanie v práci bez zásahu do nej
+- Vetvenie je silnou stránkou Gitu --- prepínanie medzi vetvami je rýchle, čo umožňuje časté vytváranie nových vetiev
+- Doteraz sme pracovali na vetve `main`, ktorú automaticky vytvoril `git init`
+
+- Zoznam vetiev si môžeme pozrieť cez príkaz `git branch`:
+```sh
+>> git branch
+* main
+```
+
+::: {.fontsize-080 .before-1em}
+V Gite je prednastavená hlavná vetva `master`. Tento názov sa v posledných rokoch [stal kontroverzným](https://sfconservancy.org/news/2020/jun/23/gitbranchname/) a postupne sa [prestáva používať](https://github.blog/changelog/2020-10-01-the-default-branch-for-newly-created-repositories-is-now-main/). Preto sme pri [nastavovaní Gitu](#/krok-2-nastavenie-gitu) zmenili `init.defaultBranch` na `main`.
+:::
+
+
+## Na čo sú dobré vetvy?
+
+- Vetvy umožňujú efektívne pracovať paralelne na viacerých častiach projektu
+- Príkladom je situácia keď vytvárame novú funkcionalitu (vetva A), a vyskytne sa bug ktorý musí byť hneď opravený (vetva B)
+- Vďaka Gitu môže práca na týchto dvoch vetvách prebiehať nezávisle
+
+::: {.todo}
+rewrite/improve second bullet
+:::
+
+## Vytvorenie vetvy *(branch)*
+
+- Na vytvorenie novej vetvy s názvom `french` zavoláme
+```sh
+git branch french
+```
+
+- Ak sa chceme prepnúť na novú vetvu:
+```sh
+git checkout french
+```
+
+- Tieto dve operácie sa veľmi často robia spolu, preto existuje skratka:
+```sh
+git checkout -b slovak # vytvor vetvu 'slovak' a prepni sa na ňu
+```
+
+
+## Zlučovanie vetiev *(merge)*
+
+- Ak chceme pridať zmeny spravené na vetve `slovak` do hlavnej vetvy `main`, prepneme sa najprv na hlavnú vetvu:
+```sh
+git checkout main
+```
+- Na zlučovanie vetiev použijeme príkaz `git merge`:
+```sh
+git merge slovak
+```
+
+
+## Zlučovanie vetiev *(merge)*
+#### Auto-merge
+- Ak je to možné, Git automaticky zlúči zmeny z oboch vetiev. V takom prípade uvidíme nasledovný výstup:
+```js
+>> git merge slovak
+Auto-merging hello.py
+Merge made by the 'ort' strategy.
+ hello.py | 12 +++++++++++-
+ 1 file changed, 11 insertions(+), 1 deletion(-)
+ ```
+
+
+## Zlučovanie vetiev *(merge)*
+#### Fast-forward
+- V prípade že zlučovaná vetva je priamym potomkom cieľovej vetvy, Git urobí tzv. *fast-forward*:
+```js
+>> git merge comment
+Updating 3a5d22e..9ad633c
+Fast-forward
+ hello.py | 1 +
+ 1 file changed, 1 insertion(+)
+ ```
+
+
+## Zlučovanie vetiev *(merge)*
+#### Riešenie konfliktov
+- Ak automatické zlúčenie zlyhá, Git nám vo výstupe nahlási *merge conflict*. V takomto prípade musia byť zmeny z oboch vetiev zlúčené manuálne.
+```js
+>> git merge french
+Auto-merging hello.py
+CONFLICT (content): Merge conflict in hello.py
+Automatic merge failed; fix conflicts and then commit the result.
+```
+- Po manuálnom zlúčení je potrebné pridať zmenené súbory do novej verzie:
+```sh
+git add hello.py
+git commit -m "Merged branch 'french'"
+```
+
+## Vymazanie vetvy *(delete)*
+- Ak po zlúčení vetvu už nepotrebujeme, môžeme ju vymazať cez `git branch --delete`, skrátene `git branch -d`.
+```sh
+git branch -d comment
+```
+
+::: {.warning .fade-in}  
+Po vymazaní je vetva odstránená z histórie a nie je možné ju obnoviť.
+:::
+
+## Príklad `git log` histórie
+
+{{< include ./src/git-basics/diagrams/git-log-example.qmd >}}
+
+```changelog
+*   3a5d22e (HEAD -> main) Merge branch 'french'
+|\
+| * 21c7ab7 (french) Add french functionality
+* |   1364948 Merge branch 'slovak'
+|\ \
+| * | c3159a6 (slovak) Add slovak functionality
+| |/
+* / 67e86d0 Fix missing exclamation mark
+|/
+* de1543b Add hello.py
+```
+
+
+## {background-image="./git-basics/img/git-conflict-vs-code-gui.png" background-size="contain"}
+
+
+## Úlohy (2) {.exercise #exercise-2-branches}
+
+::: {.fontsize-090}
+1. Vo svojom lokálnom repozitári sa prepni na novú vetvu `animals`
+2. Vytvor v repozitári nový súbor `zoo.txt` s nasledovným obsahom:
+
+::: {.fontsize-070}
+```changelog
+panda
+slon
+lev
+zirafa
+```
+:::
+3. Ulož novú verziu ktorá bude obsahovať `zoo.txt`
+4. Zlúč zmeny spravené na vetve `animals` do vetvy `main` a vymaž vetvu `animals`
+5. Na novej vetve `tiger` zmeň riadok `lev` na `tiger` a ulož novú verziu
+6. Prepni sa na vetvu `main`, oprav riadok `zirafa` na `žirafa` a ulož novú verziu
+7. Zlúč zmeny z vetvy `tiger` s vetvou `main`
+:::

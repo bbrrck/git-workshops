@@ -1,0 +1,21 @@
+```{mermaid}
+%%| fig-width: 10
+%%{
+    init: { 
+        'logLevel': 'debug', 
+        'theme': 'base', 
+        'gitGraph': {
+            'showCommitLabel': true, 
+            'showBranches': false, 
+            'mainBranchName': 'main',
+            'rotateCommitLabel': true
+        } 
+    } 
+}%%
+    gitGraph
+        checkout main
+        commit id:"version 1"
+        commit id:"version 2"
+        commit id:"version 3"
+        commit id:"version 4"
+```

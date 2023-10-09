@@ -1,0 +1,38 @@
+# Úvod {#intro}
+
+## O mne 
+::: {.columns}
+::: {.column width="72%"}
+- [Tibor Stanko](https://tiborstanko.sk/), 32 rokov
+- od 2020 dátový inžinier v Zurich Insurance, Bratislava 🇸🇰
+- predtým 6 rokov v akademickej sfére vo 🇫🇷 (PhD, postdoc)
+- rád automatizujem nudné úlohy s pomocou Pythonu 🐍
+- nie som Git guru, no Git používam denne už viac ako 7 rokov
+- moje voľnočasové aktivity: 👨‍👩‍👧‍👦🚲⛰️🎸🎹🍺
+:::
+::: {.column width="28%"}
+![](/assets/img/tibors.jpg){.rounded-corners}
+:::
+:::
+
+
+## Obsah tohto workshopu
+
+::: {.columns}
+::: {.column width="40%"}
+1. [Úvod](#intro)
+1. [Git a Github](#git-github)
+1. [Základy Gitu](#basics) 
+1. [Vetvy *(branches)*](#branches)
+1. [Vzdialené repozitáre *(remotes)*](#remotes)
+1. [Pokročilý Git](#advanced-git)
+1. [Užitočné zdroje](#links)
+:::
+::: {.column width="60%" .nobullets}
+- &nbsp;  
+- &nbsp;  
+- --- [Úlohy (1)](#exercise-1-basics)
+- --- [Úlohy (2)](#exercise-2-branches)
+- --- [Úlohy (3)](#exercise-3-remotes)  
+:::
+:::

@@ -1,0 +1,95 @@
+# Pokročilý Git
+
+## `.gitignore`
+- špecifikuje ktoré súbory má Git ignorovať
+- [.gitignore generátor](https://www.toptal.com/developers/gitignore)
+
+## `git <command> --help`
+
+```zsh
+# vypíš pomoc (dokumentáciu) ku danému príkazu -- napr. git commit
+git commit --help 
+# alebo 
+git commit -h
+```
+
+
+## `git diff`
+```zsh
+# zobraz zmeny medzi dvoma verziami
+git diff
+git diff zoo.txt
+git diff 235a0d8 5d94512 zoo.txt
+git diff HEAD~1 HEAD zoo.txt
+```
+
+
+## `git cat-file -p`
+```zsh
+# zobraz obsah Git objektu (commit, tree, blob)
+git cat-file -p 235a0d8
+```
+
+
+## `git restore`
+```zsh
+# pridaj súbor do prípravnej zóny (staging area)
+git add zoo.txt
+# odstráň súbor z prípravnej zóny (unstage)
+git restore --staged zoo.txt
+```
+
+
+## `git add --interactive`
+```zsh
+# interaktívne pridaj zmeny
+git add --interactive 
+# alebo
+git add -i
+```
+
+## `git log`
+```zsh
+# prispôb výstup z git logu 
+git log --all --oneline --graph --decorate
+# alebo
+git config --global alias.nicelog "log --all --graph --decorate --oneline"
+git nicelog
+```
+
+
+## `git stash`
+```zsh
+# dočasne odstráň zmeny vo working directory
+git stash
+# obnov odstránené zmeny
+git stash pop
+```
+
+
+## `git blame`
+```zsh
+# zisti kto spravil poslednú zmenu v každom riadku
+git blame
+```
+
+## `git revert`
+```zsh
+# odstráň zmeny vykonané v poslednom commite
+git revert HEAD
+```
+
+::: {.myinfo}
+Príkaz `git revert` vytvorí novú verziu, a nemení históriu repozitára. 
+:::
+
+## `git reset`
+
+```zsh
+# vráť repozitár do stavu po commite s commit_id
+git reset --hard <commit_id>
+```
+
+::: {.warning}
+Príkaz `git reset` mení históriu repozitára a môže spôsobiť stratu súborov.
+::: 

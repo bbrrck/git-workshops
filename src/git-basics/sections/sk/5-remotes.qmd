@@ -1,0 +1,236 @@
+# Vzdialené repozitáre *(remotes)*
+
+
+## Čo je to vzdialený repozitár *(remote)?*
+- Doteraz sme pracovali s **lokálnym** Git repozitárom ktorý je uložený na našom počítači
+
+- **Vzdialený repozitár** *(remote)* je uložený na Internete --- presnejšie, na webovom serveri  
+*napr. github.com, firemný server, univerzitný server, ...*
+
+::: {.fragment}
+- Existujú dva typy *remote* repozitárov:
+    a. **verejný** *(public)* repozitár je zdieľaný so všetkými používateľmi s prístupom na server
+    b. **súkromný** *(private)* repozitár je zdieľaný iba s vybranými používateľmi
+:::
+
+
+## Na čo slúžia vzdialené repozitáre?
+1. **Zálohovanie** kódu
+2. **Zdieľanie** kódu
+3. **Synchronizácia** kódu v tíme
+
+
+<!-- SHUTTER: CREATE REPO -->
+
+<!-- ## Vytvorenie repozitára na Githube --- [github.com/new](https://github.com/new)  {auto-animate=true}
+::: {data-id=create-repo .shutter style="background-image: url('./git-basics/img/gh-new-repo/gh-new-full.png')"}
+:::
+
+## Vytvorenie repozitára na Githube --- [github.com/new](https://github.com/new)  {auto-animate=true}
+::: {data-id=create-repo .shutter style="background-image: url('./git-basics/img/gh-new-repo/gh-new-full.png'); margin-top: -500px;"}
+:::
+::: {data-id=arrow .arrow-pointer .fragment .absolute left=1050 bottom=475}
+←
+:::
+
+
+## Vytvorenie repozitára na Githube --- [github.com/new](https://github.com/new)  {auto-animate=true}
+::: {data-id=create-repo .shutter style="background-image: url('./git-basics/img/gh-new-repo/gh-new-full.png'); margin-top: -500px;"}
+:::
+::: {data-id=arrow .arrow-pointer .absolute left=725 bottom=210}
+←
+:::
+
+
+## Vytvorenie repozitára na Githube --- [github.com/new](https://github.com/new)  {auto-animate=true}
+::: {data-id=create-repo .shutter style="background-image: url('./git-basics/img/gh-new-repo/gh-new-full.png'); margin-top: -500px;"}
+:::
+::: {data-id=arrow .arrow-pointer .absolute left=325 bottom=-70}
+←
+:::
+
+
+## Vytvorenie repozitára na Githube --- [github.com/new](https://github.com/new)  {auto-animate=true transition="fade" transition-speed="fast"}
+::: {data-id=create-repo .shutter style="background-image: url('./git-basics/img/gh-new-repo/gh-new-full.png'); margin-top: -1550px;"}
+:::
+::: {data-id=arrow .arrow-pointer .absolute left=450 bottom=-130}
+←
+::: -->
+
+## Vytvorenie repozitára na Githube --- [github.com/new](https://github.com/new)
+::: {.screenshot}
+![](./git-basics/img/gh-new-repo/gh-new-full.png)
+:::
+
+
+## Vytvorenie repozitára na Githube --- [github.com/new](https://github.com/new)
+::: {.screenshot}
+![](./git-basics/img/gh-new-repo/gh-new-top.png)
+:::
+
+
+## Vytvorenie repozitára na Githube --- [github.com/new](https://github.com/new)
+::: {.screenshot}
+![](./git-basics/img/gh-new-repo/gh-new-bottom.png)
+:::
+
+<!-- SHUTTER: EMPTY REPO -->
+
+<!-- ## {auto-animate=true transition="fade" transition-speed="fast"}
+::: {data-id=shNewEmptyRepo .shutter style="margin-top: 0px; background-image: url('./git-basics/img/gh-new-repo/gh-new-empty-repo.png')"}
+:::
+
+
+## {auto-animate=true}
+::: {data-id=shNewEmptyRepo .shutter style="margin-top: -400px; background-image: url('./git-basics/img/gh-new-repo/gh-new-empty-repo.png')"}
+:::
+
+::: {.fragment .absolute left=65 bottom=172 style="width: 800px; height: 160px; border: 10px solid red; border-radius: 5px;"}
+::: -->
+
+
+## Vytvorenie repozitára na Githube --- [github.com/new](https://github.com/new)
+::: {.screenshot}
+![](./git-basics/img/gh-new-repo/gh-new-empty-repo.png)
+:::
+
+
+## Vytvorenie repozitára na Githube --- [github.com/new](https://github.com/new)
+::: {.screenshot}
+![](./git-basics/img/gh-new-repo/gh-new-empty-repo-circled.png)
+:::
+
+
+
+## Nastavenie *remote* v lokálnom repozitári 
+
+- Na nastavenie vzdialeného repozitára použijeme príkaz `git remote add <name> <url>`:
+```zsh
+git remote add origin https://github.com/bbrrck/zoo.git
+```
+- `name` bude Git používať ako meno vzdialeného repozitára na adrese `url`. Meno môže byť ľubovoľné; bežne sa stretneme s menom `origin`.
+- Lokálny repozitár môže mať priradený aj viac ako jeden *remote*.
+
+
+## Poslanie lokálnej kópie na *remote*
+- Príkaz `git push <remote> <branch>` "pretlačí" lokálne zmeny z vetvy `branch` do vzdialeného repozitára `remote`:
+```zsh
+git push origin main
+```
+- Pri prvom zavolaní `git push` je potrebné pridať argument `-u`:
+```zsh
+git push -u origin main
+```
+- `-u` alebo `--set-upstream` nastaví predvolenú *remote* vetvu (`origin/main`) pre aktuálnu lokálnu vetvu (`main`) 
+
+- ak *remote* vetva `origin/main` neexistuje, `git push` ju automaticky vytvorí
+
+## Príklad výstupu z `git push`
+```zsh
+git push -u origin main
+```
+
+- Výstup:
+```zsh
+Enumerating objects: 3, done.
+Counting objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 241 bytes | 120.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
+To https://github.com/bbrrck/test-repo-01.git
+ * [new branch]      main -> main
+branch 'main' set up to track 'origin/main'.
+```
+
+
+## Odbočka: prihlásenie do Githubu
+
+- Aby mohol Git posielať dáta na Github, je potrebná autentifikácia
+- Najjednoduchší spôsob na správu prihlasovacích udajov: [Git Credential Manager](https://github.com/GitCredentialManager/git-credential-manager)  
+(je súčasťou [Git for Windows](https://gitforwindows.org/))
+- Konfigurácia sa začne automaticky po prvom spustení `git push`
+
+::: {.columns}
+::: {.column width=30%}
+![](./git-basics/img/gh-win-auth/credential-helper-selector-v2.png){.gh-win-auth}
+:::
+::: {.column width=25%}
+![](./git-basics/img/gh-win-auth/auth-signin.png){.gh-win-auth}
+:::
+::: {.column width=20%}
+![](./git-basics/img/gh-win-auth/auth-confirm.png){.gh-win-auth}
+:::
+::: {.column width=25%}
+![](./git-basics/img/gh-win-auth/auth-success.png){.gh-win-auth style="height:200px"}
+:::
+:::
+
+
+## Zoznam vetiev
+- `git branch -a` vypíše zoznam všetkých vetiev, lokálnych aj vzdialených
+- `-a` je skratka pre `--all`
+```zsh
+git branch -a
+```
+- Výstup --- `*` označuje aktuálnu vetvu:
+```js
+* main
+  tiger
+  remotes/origin/main
+```
+
+
+## Konflikt: *remote* zmeny neexistujú lokálne
+```zsh
+To https://github.com/bbrrck/zoo.git
+ ! [rejected]        main -> main (fetch first)
+error: failed to push some refs to 'https://github.com/bbrrck/zoo.git'
+hint: Updates were rejected because the remote contains work that you do
+hint: not have locally. This is usually caused by another repository pushing
+hint: to the same ref. You may want to first integrate the remote changes
+hint: (e.g., 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+```
+
+
+## Stiahnutie *remote* zmien do lokálnej vetvy
+- Pomocou príkazu `git fetch` stiahneme zoznam zmien z *remote* vetvy:
+```zsh
+git fetch
+```
+- Zmeny ktoré nie sú súčasťou lokálnej vetvy zlúčime pomocou `git merge`:
+```zsh
+git merge # bez argumentov
+```
+- Vo väčšine prípadov môžeme jednoducho zavolať príkaz `git pull`, ktorý je kombináciou `git fetch` a `git merge`:
+```zsh
+git pull
+```
+
+
+## Klonovanie existujúceho *remote* repozitára
+
+- Existujúci vzdialený repozitár môžeme naklonovať pomocou `git clone`:
+```zsh
+git clone <remote_url> <local_folder>
+```
+- Tento príkaz vytvorí kópiu repozitára z `remote_url` v adresári `local_folder`
+- Príklad:
+```zsh
+git clone https://github.com/bbrrck/zoo.git myzoo
+# alebo
+git clone https://github.com/bbrrck/zoo.git # naklonuje sa do adresára `zoo`
+```
+
+
+## Úlohy (3) {.exercise #exercise-3-remotes}
+
+::: {.fontsize-090 }
+1. Vytvor si na [Azure DevOps](https://dev.azure.com/tiborstanko/git-workshop-2023-04-19/_settings/repositories) repo s názvom `zoo-meno-priezvisko`, napr. `zoo-tibor-stanko`
+1. Pridaj tento *remote* do svojho lokálneho repa
+1. Nahraj lokálnu vetvu `main` na *remote*
+1. Na Githube pridaj do súboru `zoo.txt` za meno každého zvieraťa jeho emoji: 🐼🐘🐯🦒
+1. Zosynchronizuj lokálne repo s Githubom
+1. Na Githube pridaj do súboru `zoo.txt` nový riadok `krokodíl 🐊` a ulož novú verziu
+1. V lokálnom repe pridaj do súboru `zoo.txt` nový riadok `gorila 🦍` a ulož novú verziu
+1. Zosynchronizuj lokálne repo s Githubom a vyrieš vzniknutý *merge conflict*
+:::

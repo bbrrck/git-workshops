@@ -1,0 +1,12 @@
+# Quarto artifacts
+**/*_files
+**/.ipynb
+**/.quarto/
+**/_site/
+
+# WSL VS Code
+*:Zone.Identifier
+
+/.quarto/
+
+_output/

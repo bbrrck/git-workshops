@@ -1,0 +1,15 @@
+---
+title: "Git Basics"
+author: "Tibor Stanko"
+date: "2023.10.10"
+---
+
+{{< include ./src/git-basics/sections/sk/1-intro.qmd >}}
+{{< include ./src/git-basics/sections/sk/2-git-github.qmd >}}
+{{< include ./src/git-basics/sections/sk/3-basics.qmd >}}
+{{< include ./src/git-basics/sections/sk/4-branches.qmd >}}
+{{< include ./src/git-basics/sections/sk/5-remotes.qmd >}}
+{{< include ./src/git-basics/sections/sk/6-advanced-git.qmd >}}
+{{< include ./src/git-basics/sections/sk/7-markdown.qmd >}}
+{{< include ./src/git-basics/sections/sk/8-links.qmd >}}
+{{< include ./src/git-basics/sections/sk/9-thanks.qmd >}}

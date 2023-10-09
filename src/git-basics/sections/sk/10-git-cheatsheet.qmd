@@ -1,0 +1,13 @@
+# Git cheatsheet
+
+- `git --version`
+- `git init`
+- `git status`
+- `git add <files>`
+- `git commit -m "<commit message>"`
+- `git branch`
+- `git branch <branch name>`
+- `git checkout <branch name>`
+- `git merge`
+- `git log`
+- `git log --oneline --graph --all --decorate`

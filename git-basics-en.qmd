@@ -1,0 +1,10 @@
+---
+title: "Git Basics"
+author: "Tibor Stanko"
+date: "2023.10.10"
+format:
+  revealjs: 
+    output-file: git-basics-en-slides.html
+---
+
+{{< include ./src/git-basics/sections/en/1-intro.qmd >}}

@@ -1,0 +1,154 @@
+/*-- scss:defaults --*/
+/* list copied from https://quarto.org/docs/presentations/revealjs/themes.html#sass-variables */
+/* then adjusted with some colors from https://gheazure.zurichna.com/Zverse/Zmarkdown/blob/release/inst/extdata/colors_zurich_light.scss */
+$font-family-sans-serif: “Source Sans Pro”, Helvetica, sans-serif;
+$font-family-monospace: monospace;
+$presentation-font-size-root: 35px;
+/* decreased from 40px*/
+$presentation-font-smaller: 0.8;
+/* increased from 0.7*/
+$presentation-line-height: 1.3;
+$body-bg: #EEF0F1;
+/* adjusted */
+$body-color: #23366F;
+/* adjusted */
+$text-muted: lighten($body-color, 50%);
+$link-color: #2167AE;
+/* adjusted */
+$link-color-hover: lighten($link-color, 15%);
+$selection-bg: lighten($link-color, 25%);
+$selection-color: $body-bg;
+$border-color: lighten($body-color, 30%);
+$border-width: 1px;
+$border-radius: 3px;
+$presentation-heading-font: $font-family-sans-serif;
+$presentation-heading-color: #2167AE;
+/* adjusted */
+$presentation-heading-line-height: 1.2;
+$presentation-heading-letter-spacing: normal;
+$presentation-heading-text-transform: none;
+$presentation-heading-text-shadow: none;
+$presentation-h1-text-shadow: none;
+$presentation-heading-font-weight: 600;
+$presentation-h1-font-size: 2.5em;
+$presentation-h2-font-size: 1.6em;
+$presentation-h3-font-size: 1.3em;
+$presentation-h4-font-size: 1em;
+$presentation-block-margin: 12px;
+$presentation-slide-text-align: left;
+$presentation-title-slide-text-align: center;
+
+/* code blocks */
+/*$code-block-bg: #dcdcdc;
+/* adjusted */
+$code-block-border-color: lighten($body-color, 60%);
+$code-block-font-size: 0.55em;
+
+/* inline code */
+$code-color: #333;
+/* adjusted */
+$code-bg: #dcdcdc;
+/* adjusted */
+
+$tabset-border-color: $code-block-border-color;
+$light-bg-text-color: #23366F;
+/* adjusted */
+$light-bg-link-color: #2167AE;
+/* adjusted */
+$light-bg-code-color: #333;
+/* adjusted */
+
+$primary: #2167AE;
+$secondary: #6c757d;
+
+/*-- scss:rules --*/
+/* here we can put custom classes and rules*/
+
+/* title slide text alignment */
+#title-slide {
+    text-align: left;
+    top: 40% !important;
+}
+
+.inverse {
+    background-color: $primary !important;
+    text-align: center;
+}
+
+
+/* title slide title text */
+h1.title {
+    font-size: 80px;
+}
+
+/* added class to center text */
+.centered {
+    text-align: center;
+}
+
+/* modified footer to align to the left */
+div.footer.footer-default {
+    text-align: left;
+    left: 60px;
+}
+
+/* this title and other slides adjustments are not working properly */
+/* they roughly work in html presenting mode but the pdf export is messed up */
+/* adjustments for title slide */
+//.slide-background:first-child {
+/* background color */
+//background-color: #2167AE;
+/* logo image */
+//background-image: url(zurich_theme/zurich_dark.svg);
+//background-repeat: no-repeat;
+/* logo placement and size */
+//background-position: 15% 15%;
+//background-size: 30%;
+//}
+
+/* reset settings for slides other than title slide */
+/*.slide-background > .present {
+  background-color: $body-bg;
+  background-image: url(zurich_theme/zurich_light.svg);
+  background-repeat: no-repeat;
+  background-position: 98% 98%;
+  background-size: 17%;
+}*/
+
+.blockquote {
+    border-left: .25rem solid #2167AE;
+}
+
+code span.fu {
+    color: #2167AE;
+}
+
+code span.sc,
+code span.im,
+code span.op {
+    color: rgb(167 40 165);
+    /*#ebc605;*/
+}
+
+
+
+code span.st {
+    color: rgb(80 161 79);
+}
+
+code span.at {
+    color: #262422;
+}
+
+code span.cn,
+code span.va {
+    color: #DE935F;
+}
+
+code span.co {
+    color: #a1a1a1;
+}
+
+pre>code.sourceCode>span {
+    color: #262422;
+}
