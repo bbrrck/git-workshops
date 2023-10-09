@@ -1,13 +1,13 @@
-# Markdown rýchlokurz
+# Markdown Crash Course
 
-## Čo je to Markdown?
-- **Markdown** je jednoduchý značkovací jazyk (ako HTML alebo TeX) ktorý sa používa na tvorbu rôznych typov obsahu: dokumenty, články, slidy, webstránky, ...
-- Markdown je *de facto* štandard pre dokumentovanie Git projektov
-- Väčšina Github projektov má `README.md` ktorý Github automaticky vyrenderuje
-- Príklady dobre napísaných `README` súborov: [matiassingers/awesome-readme](https://github.com/matiassingers/awesome-readme)
+## What is Markdown?
+- **Markdown** is a lightweight markup language (like HTML or TeX) used to create various types of content: documents, articles, slides, web pages, ...
+- Markdown is the *de facto* standard for documenting Git projects
+- Most Github projects have a `README.md` file that Github automatically renders
+- Examples of well-written `README` files: [matiassingers/awesome-readme](https://github.com/matiassingers/awesome-readme)
 
 ::: {.myinfo}
-Aj tieto slidy boli vytvorené s použitím Markdownu! (pomocou systému [Quarto](https://quarto.org/))
+Even these slides were created using Markdown! (with the help of the [Quarto](https://quarto.org/) system)
 :::
 
 
@@ -25,7 +25,7 @@ Markdown is very simple and versatile.
 This is a Markdown paragraph. 
 This is still the same paragraph.
 
-## Formmatting options
+## Formatting options
 
 Bulleted list:
 

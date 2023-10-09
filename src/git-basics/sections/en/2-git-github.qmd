@@ -1,43 +1,38 @@
-# Git a Github {#git-github}
+# Git &amp; Github {#git-github}
 
-## Čo je to Git?
+## What is Git?
 
-- **systém riadenia verzií**
-- angl. *version control system* (VCS) alebo *source control management* (SCM)
-- zaznamenáva históriu vývoja projektu
-- užitočný pre tímy aj pre jednotlivcov
-- nie je len o kóde, dovoľuje ukladať ľubovoľné súbory (aj netextové)
-
-
-## Prečo potrebujeme systémy riadenia verzií?
-![](./git-basics/img/how-not-to-name-files.png)
-
-## Prečo potrebujeme systémy riadenia verzií?
-![](./git-basics/img/how-not-to-name-files-crossed.png)
-
-## Čo umožňuje Git?
-
-<!-- ::: {.incremental} -->
-- **ukladať** verzie
-- **prepínať** medzi verziami
-- **obnoviť** predošlú verziu
-- **porovnávať** verzie
-- vytvárať **vetvy**
-- **zlučovať** vetvy
-- **zálohovať** súbory
-<!-- - riešiť konflikty medzi vetvami -->
-<!-- ::: -->
+- **version control system** (VCS) or **source control management** (SCM)
+- in Slovak: *systém riadenia verzií*
+- keeps track of project development history
+- useful for teams and for individuals
+- not only about code, enables saving arbitrary files (including non-text)
 
 
+## Why do we need version control systems
+![](./src/git-basics/img/how-not-to-name-files.png)
 
-## Čo je to Github?
-- *"sociálna sieť pre programátorov"*
-- **Git** = systém riadenia verzií
-- **Github** = cloudový portál na ukladanie repozitárov
-- používa Git, no nie je jeho súčasťou
-<!-- - portál na ukladanie vzdialených Git repozitárov -->
-- obsahuje funkcionalitu ktorá nie je v Gite
+## Why do we need version control systems
+![](./src/git-basics/img/how-not-to-name-files-crossed.png)
+
+## What can you do with Git?
+
+- **save** versions
+- **switch** between versions
+- **restore** a previous version
+- **compare** versions
+- create **branches**
+- **merge** branches
+- **back up** files
+
+
+## What is Github?
+- *"social network for programmers"*
+- **Git** = version control system
+- **Github** = portal for maintaining repositories
+- uses Git, but is not a *part* of Git
+- has functionality beyond Git
     - *Issues*, *Pull requests*, *Actions*, ...
-- podobné služby: [Gitlab](https://about.gitlab.com/), [Bitbucket](https://bitbucket.org/), [Azure DevOps](https://dev.azure.com/), a iné
+- similar services: [Gitlab](https://about.gitlab.com/), [Bitbucket](https://bitbucket.org/), [Azure DevOps](https://dev.azure.com/), etc.
 
-## {background-image="./git-basics/img/github-screenshot.png" background-size="contain"}
+## {background-image="./src/git-basics/img/github-screenshot.png" background-size="contain"}

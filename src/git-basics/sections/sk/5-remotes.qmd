@@ -23,11 +23,11 @@
 <!-- SHUTTER: CREATE REPO -->
 
 <!-- ## Vytvorenie repozitára na Githube --- [github.com/new](https://github.com/new)  {auto-animate=true}
-::: {data-id=create-repo .shutter style="background-image: url('./git-basics/img/gh-new-repo/gh-new-full.png')"}
+::: {data-id=create-repo .shutter style="background-image: url('./src/git-basics/img/gh-new-repo/gh-new-full.png')"}
 :::
 
 ## Vytvorenie repozitára na Githube --- [github.com/new](https://github.com/new)  {auto-animate=true}
-::: {data-id=create-repo .shutter style="background-image: url('./git-basics/img/gh-new-repo/gh-new-full.png'); margin-top: -500px;"}
+::: {data-id=create-repo .shutter style="background-image: url('./src/git-basics/img/gh-new-repo/gh-new-full.png'); margin-top: -500px;"}
 :::
 ::: {data-id=arrow .arrow-pointer .fragment .absolute left=1050 bottom=475}
 ←
@@ -35,7 +35,7 @@
 
 
 ## Vytvorenie repozitára na Githube --- [github.com/new](https://github.com/new)  {auto-animate=true}
-::: {data-id=create-repo .shutter style="background-image: url('./git-basics/img/gh-new-repo/gh-new-full.png'); margin-top: -500px;"}
+::: {data-id=create-repo .shutter style="background-image: url('./src/git-basics/img/gh-new-repo/gh-new-full.png'); margin-top: -500px;"}
 :::
 ::: {data-id=arrow .arrow-pointer .absolute left=725 bottom=210}
 ←
@@ -43,7 +43,7 @@
 
 
 ## Vytvorenie repozitára na Githube --- [github.com/new](https://github.com/new)  {auto-animate=true}
-::: {data-id=create-repo .shutter style="background-image: url('./git-basics/img/gh-new-repo/gh-new-full.png'); margin-top: -500px;"}
+::: {data-id=create-repo .shutter style="background-image: url('./src/git-basics/img/gh-new-repo/gh-new-full.png'); margin-top: -500px;"}
 :::
 ::: {data-id=arrow .arrow-pointer .absolute left=325 bottom=-70}
 ←
@@ -51,7 +51,7 @@
 
 
 ## Vytvorenie repozitára na Githube --- [github.com/new](https://github.com/new)  {auto-animate=true transition="fade" transition-speed="fast"}
-::: {data-id=create-repo .shutter style="background-image: url('./git-basics/img/gh-new-repo/gh-new-full.png'); margin-top: -1550px;"}
+::: {data-id=create-repo .shutter style="background-image: url('./src/git-basics/img/gh-new-repo/gh-new-full.png'); margin-top: -1550px;"}
 :::
 ::: {data-id=arrow .arrow-pointer .absolute left=450 bottom=-130}
 ←
@@ -59,30 +59,30 @@
 
 ## Vytvorenie repozitára na Githube --- [github.com/new](https://github.com/new)
 ::: {.screenshot}
-![](./git-basics/img/gh-new-repo/gh-new-full.png)
+![](./src/git-basics/img/gh-new-repo/gh-new-full.png)
 :::
 
 
 ## Vytvorenie repozitára na Githube --- [github.com/new](https://github.com/new)
 ::: {.screenshot}
-![](./git-basics/img/gh-new-repo/gh-new-top.png)
+![](./src/git-basics/img/gh-new-repo/gh-new-top.png)
 :::
 
 
 ## Vytvorenie repozitára na Githube --- [github.com/new](https://github.com/new)
 ::: {.screenshot}
-![](./git-basics/img/gh-new-repo/gh-new-bottom.png)
+![](./src/git-basics/img/gh-new-repo/gh-new-bottom.png)
 :::
 
 <!-- SHUTTER: EMPTY REPO -->
 
 <!-- ## {auto-animate=true transition="fade" transition-speed="fast"}
-::: {data-id=shNewEmptyRepo .shutter style="margin-top: 0px; background-image: url('./git-basics/img/gh-new-repo/gh-new-empty-repo.png')"}
+::: {data-id=shNewEmptyRepo .shutter style="margin-top: 0px; background-image: url('./src/git-basics/img/gh-new-repo/gh-new-empty-repo.png')"}
 :::
 
 
 ## {auto-animate=true}
-::: {data-id=shNewEmptyRepo .shutter style="margin-top: -400px; background-image: url('./git-basics/img/gh-new-repo/gh-new-empty-repo.png')"}
+::: {data-id=shNewEmptyRepo .shutter style="margin-top: -400px; background-image: url('./src/git-basics/img/gh-new-repo/gh-new-empty-repo.png')"}
 :::
 
 ::: {.fragment .absolute left=65 bottom=172 style="width: 800px; height: 160px; border: 10px solid red; border-radius: 5px;"}
@@ -91,13 +91,13 @@
 
 ## Vytvorenie repozitára na Githube --- [github.com/new](https://github.com/new)
 ::: {.screenshot}
-![](./git-basics/img/gh-new-repo/gh-new-empty-repo.png)
+![](./src/git-basics/img/gh-new-repo/gh-new-empty-repo.png)
 :::
 
 
 ## Vytvorenie repozitára na Githube --- [github.com/new](https://github.com/new)
 ::: {.screenshot}
-![](./git-basics/img/gh-new-repo/gh-new-empty-repo-circled.png)
+![](./src/git-basics/img/gh-new-repo/gh-new-empty-repo-circled.png)
 :::
 
 
@@ -151,16 +151,16 @@ branch 'main' set up to track 'origin/main'.
 
 ::: {.columns}
 ::: {.column width=30%}
-![](./git-basics/img/gh-win-auth/credential-helper-selector-v2.png){.gh-win-auth}
+![](./src/git-basics/img/gh-win-auth/credential-helper-selector-v2.png){.gh-win-auth}
 :::
 ::: {.column width=25%}
-![](./git-basics/img/gh-win-auth/auth-signin.png){.gh-win-auth}
+![](./src/git-basics/img/gh-win-auth/auth-signin.png){.gh-win-auth}
 :::
 ::: {.column width=20%}
-![](./git-basics/img/gh-win-auth/auth-confirm.png){.gh-win-auth}
+![](./src/git-basics/img/gh-win-auth/auth-confirm.png){.gh-win-auth}
 :::
 ::: {.column width=25%}
-![](./git-basics/img/gh-win-auth/auth-success.png){.gh-win-auth style="height:200px"}
+![](./src/git-basics/img/gh-win-auth/auth-success.png){.gh-win-auth style="height:200px"}
 :::
 :::
 

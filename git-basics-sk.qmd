@@ -13,3 +13,4 @@ date: "2023.10.10"
 {{< include ./src/git-basics/sections/sk/7-markdown.qmd >}}
 {{< include ./src/git-basics/sections/sk/8-links.qmd >}}
 {{< include ./src/git-basics/sections/sk/9-thanks.qmd >}}
+{{< include ./src/git-basics/sections/git-cheatsheet.qmd >}}

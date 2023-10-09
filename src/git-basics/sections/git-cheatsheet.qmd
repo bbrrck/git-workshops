@@ -1,0 +1,43 @@
+## Git Cheatsheet
+
+::: {.columns}
+
+::: {.column width="50%" .git-cheatsheet}
+
+```zsh
+# Setup
+git config --global user.name "[first last]"
+git config --global user.email "[valid-email]"
+git init
+git clone [url]
+# Stage & Snapshot
+git status
+git add [file]
+git reset [file]
+git diff
+git diff --staged
+git commit -m "[descriptive message]"
+```
+
+:::
+
+::: {.column width="50%" .git-cheatsheet}
+
+```zsh
+# Branch & Merge
+git branch
+git branch [branch-name]
+git checkout
+git merge [branch]
+git log
+# Share & Update
+git remote add [alias] [url]
+git fetch [alias]
+git merge [alias]/[branch]
+git push [alias]/[branch]
+git pull
+```
+
+:::
+
+:::

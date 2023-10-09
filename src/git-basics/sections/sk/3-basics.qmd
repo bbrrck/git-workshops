@@ -127,7 +127,7 @@ git config --global core.editor notepad
 Neflákajte písanie *commit messages*! 
 
 ::: {.center .width-060}
-![](./git-basics/img/git_commit_2x.png)
+![](./src/git-basics/img/git_commit_2x.png)
 :::
 
 :::footer

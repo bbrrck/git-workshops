@@ -126,7 +126,7 @@ Po vymazaní je vetva odstránená z histórie a nie je možné ju obnoviť.
 ```
 
 
-## {background-image="./git-basics/img/git-conflict-vs-code-gui.png" background-size="contain"}
+## {background-image="./src/git-basics/img/git-conflict-vs-code-gui.png" background-size="contain"}
 
 
 ## Úlohy (2) {.exercise #exercise-2-branches}

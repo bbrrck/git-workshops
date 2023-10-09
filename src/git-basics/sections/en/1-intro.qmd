@@ -22,9 +22,9 @@
 ::: {.column width="40%"}
 1. [Intro](#intro)
 1. [Git &amp; Github](#git-github)
-1. [Basic Git Concepts](#basics) 
-1. [Git Branches](#branches)
-1. [Git Remotes](#remotes)
+1. [Basic Concepts](#basics) 
+1. [Branches](#branches)
+1. [Remotes](#remotes)
 1. [Advanced Git](#advanced-git)
 1. [Useful Resources](#links)
 :::

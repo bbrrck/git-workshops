@@ -10,10 +10,10 @@
 
 
 ## Prečo potrebujeme systémy riadenia verzií?
-![](./git-basics/img/how-not-to-name-files.png)
+![](./src/git-basics/img/how-not-to-name-files.png)
 
 ## Prečo potrebujeme systémy riadenia verzií?
-![](./git-basics/img/how-not-to-name-files-crossed.png)
+![](./src/git-basics/img/how-not-to-name-files-crossed.png)
 
 ## Čo umožňuje Git?
 
@@ -40,4 +40,4 @@
     - *Issues*, *Pull requests*, *Actions*, ...
 - podobné služby: [Gitlab](https://about.gitlab.com/), [Bitbucket](https://bitbucket.org/), [Azure DevOps](https://dev.azure.com/), a iné
 
-## {background-image="./git-basics/img/github-screenshot.png" background-size="contain"}
+## {background-image="./src/git-basics/img/github-screenshot.png" background-size="contain"}

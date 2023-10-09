@@ -4,3 +4,11 @@ contact:
 
 images:
   queen-elizabeth-ii: https://upload.wikimedia.org/wikipedia/commons/1/11/Queen_Elizabeth_II_official_portrait_for_1959_tour_%28retouched%29_%28cropped%29_%283-to-4_aspect_ratio%29.jpg
+
+remoteserver:
+  # name: Azure DevOps
+  # url: https://dev.azure.com/tiborstanko/git-workshop-2023-04-19/_settings/repositories
+  # repo-name: "`zoo-firstname-lastname`, e.g. `zoo-tibor-stanko`"
+  name: Gogs
+  url: https://try.gogs.io/
+  repo-name: "`zoo`"

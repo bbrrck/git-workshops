@@ -1,19 +1,25 @@
-# Základy Gitu {#basics}
+# Basic Git Concepts {#basics}
 
 {{< include ./src/git-basics/diagrams/section-3-basics.qmd >}}
 
-## Krok 0: Pracujeme s terminálom
+## Step 0: Working with the terminal
 
-- Aby sme pochopili ako Git funguje, budeme na začiatku spúšťať Git cez **terminál** 
-- Neskôr si ukážeme aj použitie Gitu priamo v IDE (napr. vo VS Code)
-- Vo **Windowse** odporúčam [Windows Terminal](https://apps.microsoft.com/store/detail/windows-terminal/9N0DX20HK701?hl=en-us&gl=us) s [PowerShell](https://docs.microsoft.com/en-us/powershell/) (built-in) alebo [Nushell](https://www.nushell.sh/)
+- In order to understand how Git works, we will start by using Git through the **terminal**
+- Later on, we will also show how to use Git directly in an IDE (e.g. VS Code)
+- On **Windows**, I recommend using [Windows Terminal](
+https://apps.microsoft.com/store/detail/windows-terminal/9N0DX20HK701?hl=en-us&gl=us)
+ with [PowerShell](
+https://docs.microsoft.com/en-us/powershell/)
+ (built-in) or [Nushell](
+https://www.nushell.sh/)
 
-. . .
+
+...
 
 ::: {.fontsize-080}
-- Základné príkazy na navigáciu medzi adresármi v termináli:
-    - `pwd` --- vypíš aktuálny adresár
-    - `cd folder` --- zmeň aktuálny adresár na `folder`
+- Basic commands for navigating between directories in the terminal:
+    - `pwd` --- print the current directory
+    - `cd folder` --- change the current directory to `folder`
 
 ```sh
 >> pwd                       # C:/Users/tibor.stanko
@@ -22,69 +28,76 @@
 >> cd C:/Users/janko.hrasko  # C:/Users/janko.hrasko
 >> cd ~                      # C:/Users/tibor.stanko
 ```
+
 :::
 
 
-## Krok 1: Inštalácia Gitu
+## Step 1: Installing Git
 
-- Vo **Windowse** existuje viacero spôsobov ako nainštalovať Git, napr.
-    - cez [klasický inštalátor](https://git-scm.com/download/win)
-    - cez [scoop](https://scoop.sh/) (odporúčam) --- v PowerShell spustite nasledovné príkazy:
+- There are several ways to install Git on **Windows**, for example:
+    - using the [classic installer](https://git-scm.com/download/win)
+    - using [scoop](https://scoop.sh/) (recommended) --- run the following commands in PowerShell:
 
 ```sh
 Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
-irm get.scoop.sh | iex # inštalácia scoopu
-scoop install git # inštalácia gitu
-````
+irm get.scoop.sh | iex # install scoop
+scoop install git # install git
+```
 
-- Inštrukcie pre **macOS** alebo **Linux** sú na oficiálnej stránke [v angličtine](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) aj [v češtine](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
+- Instructions for **macOS** or **Linux** can be found on the official website in [English](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) or [Czech](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
 
 
-## Krok 2: Nastavenie Gitu
+## Step 2: Configuring Git
 
-- Skontrolujme či je Git správne nainštalovaný:
+- Check if Git is installed correctly:
+
 ```sh
 git --version
 ```
 
-- Predtým ako začneme pracovať s Gitom, je potrebné nastaviť si meno a email cez príkaz `git config`. Tieto údaje bude Git používať na priradenie autora k verzii.
+- Before we start working with Git, we need to set our name and email using the `git config` command. Git will use these details to assign the author of the version.
+
 ```sh
 git config --global user.name "Tibor Stanko"
 git config --global user.email "tibor.stanko@zurich.com"
 ```
 
-- Predvolenú vetvu si nastavíme na `main` (o [vetvách](#/vetvy-branches) si povieme viac neskôr)
+- Set the default branch to `main` (we will talk more about [branches](#/branches) later)
+
 ```sh
 git config --global init.defaultBranch "main"
 ```
 
+## Step 3: Creating a Git repository
 
-## Krok 3: Vytvorenie Git repozitára
+- Navigate to the directory where we want to create the repository:
 
-- Prepneme sa do adresára z ktorého chceme spraviť repozitár:
 ```sh
 cd ~/hello
 ```
 
-- Príkaz `git init` slúži na vytvorenie Git repozitára v aktuálnom adresári:
+- The `git init` command is used to create a Git repository in the current directory:
+
 ```sh
 git init
 ```
 
-- Po spustení príkazu Git vypíše:
+- After running the command, Git will output:
+
 ```changelog
 Initialized empty Git repository in C:/Users/tibor.stanko/hello/.git/
 ```
 
+## Step 3: Creating a Git repository
 
-## Krok 3: Vytvorenie Git repozitára
+- We can check the status of the repository using `git status`:
 
-- Stav repozitára môžeme skontrolovať cez `git status`:
 ```sh
 git status
 ```
 
-- Takto vyzerá stav prázdneho Git repozitáru (žiadne súbory ani uložené verzie):
+- This is what the status of an empty Git repository looks like (no files or saved versions):
+
 ```changelog
 On branch main
 
@@ -93,41 +106,36 @@ No commits yet
 nothing to commit (create/copy files and use "git add" to track)
 ```
 
+## Step 4: Saving a version
 
-## Krok 4: Uloženie verzie
+Saving a version involves two steps.
 
-Uloženie verzie prebieha v dvoch krokoch.
+1. Use `git add` to mark changes that should be added to the new version:
 
-1. Cez `git add` označíme zmeny ktoré majú byť pridané do novej verzie:
 ```sh
 git add hello.py
 ```
 
-2. Cez `git commit` vytvoríme záznam o novej verzii:
+2. Use `git commit` to create a record of the new version:
+
 ```sh
 git commit -m "Add hello.py"
 ```
 
-<!-- ::: {.fragment .fade-in .center}
-![](https://rogerdudler.github.io/git-guide/img/trees.png)
-::: -->
+## Step 4: Saving a version
+
+- The commit message is usually a short, one-line description specified with the `-m "commit message"` argument.
+- If you want to write a longer description, omit the `-m` argument. `git commit` will then open a text editor where you can write the description.
+- In Git on Windows, the default editor for writing commit messages is `vim`, which runs directly in the terminal. If you are not familiar with using `vim`, you can change the editor to `notepad`, for example:
+`git config --global core.editor notepad`
 
 
-## Krok 4: Uloženie verzie
-- Popis záznamu *(commit message)* je väčšinou krátka jednoriadková správa ktorá sa špecifikuje cez argument `-m "commit message"`
-- Ak chceme napísať dlhší popis, argument `-m` vynecháme. `git commit` vtedy otvorí textový editor v ktorom popis napíšeme. 
-- V Gite na Windowse je na písanie *commit message* predvolený editor `vim`, ktorý beží priamo v termináli. Ak nemáte skúsenosti s používaním vimu, môžete si editor zmeniť napr. na `notepad`:
-```sh
-git config --global core.editor notepad
-```
+## Step 4: Saving a version
 
-
-## Krok 4: Uloženie verzie
-<!-- - Je **dôležité** písať dobré *commit messages*!  -->
-Neflákajte písanie *commit messages*! 
+Don't slack off when writing commit messages!
 
 ::: {.center .width-060}
-![](./git-basics/img/git_commit_2x.png)
+![](./src/git-basics/img/git_commit_2x.png)
 :::
 
 :::footer
@@ -135,46 +143,83 @@ Neflákajte písanie *commit messages*!
 :::
 
 
-## Prečo verziu ukladáme v dvoch krokoch?
+## Why do we save a version in two steps?
 
-Niektoré systémy na kontrolu verzií fungujú tak že vytvoria novú verziu zo všetkých aktuálnych súborov v repozitári. Tento spôsob ukladania záloh môže byť nevýhodný. Príkladom je situácia keď sme v repozitári implementovali dve nezávislé funkcie, a chceme ich zachytiť v dvoch rozdielnych verziách. V Gite preto existuje koncept prípravnej zóny (*staging area*), vďaka ktorej máme kontrolu nad tým ktoré zmeny budú a ktoré nebudú pridané do nasledujúcej verzie.
+Some version control systems work by creating a new version from all the current files in the repository. This method of saving backups can be inefficient. For example, if we have implemented two independent features in the repository and we want to capture them in two separate versions. Therefore, Git introduces the concept of the *staging area*, which allows us to control which changes will be included in the next version.
 
 ```zsh
-# 1. add/stage - pridaj súbor prípravnej zóny
+# 1. add/stage - add file to the staging area
 git add test.txt
-# 2. commit - ulož novú verziu
+# 2. commit - save a new version
 git commit -m "added test.txt"
 ```
 
+## Step 5: Checking the status of the repository
 
-## Krok 5: Kontrola stavu repozitára
-
-- Aktuálny stav repozitára môžeme skontrolovať cez `git status`:
+- We can check the current status of the repository using `git status`:
 ```changelog
 On branch main
 nothing to commit, working tree clean
 ```
 
-- Cez príkaz `git log` sa môžeme presvedčiť o tom že záznam *(commit)* bol vytvorený:
+- We can use the `git log` command to verify that a commit was created:
+
 ```zsh
 commit bf5c9b4a320012b422546fcb86f5b957104bea55 (HEAD -> main)
 Author: Tibor Stanko <tibor.stanko@gmail.com>
 Date:   Tue Sep 13 17:00:00 2022 +0200
 
     Add hello.py
-``` 
+```
 
+## Unstaging a file
 
-## Úlohy (1) {.exercise #exercise-1-basics}
+- Use `git reset [file]` to unstage a file while retaining changes in the working directory
+
+```zsh
+git status
+```
+
+```changelog
+On branch main
+
+No commits yet
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+        new file:   test1.txt
+        new file:   test2.txt
+```
+
+```zsh
+git reset test2.txt
+git status
+```
+
+```changelog
+On branch main
+
+No commits yet
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+        new file:   test1.txt
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        test2.txt
+```
+
+## Exercises (1) {.exercise #exercise-1-basics}
 
 ::: {.exercise}
-1. Vytvor si na svojom počítači prázdny adresár `zoo`
-1. Sprav z adresára `zoo` Git repozitár
-1. Vytvor v repozitári súbor `test.txt` s ľubovoľným obsahom
-1. Pridaj `test.txt` do ďalšej verzie a ulož ju
-1. Skontroluj novú verziu cez `git log`
+1. Create an empty directory `zoo` on your computer.
+2. Turn the `zoo` directory into a Git repository.
+3. In the repository, create a file `test.txt` with any content.
+4. Add `test.txt` to the next version and save it.
+5. Check the new version using `git log`.
 :::
 
 ::: {.fontsize-080}
-**Tip**: nezabudni počas práce používať `git status` na zistenie aktuálneho stavu repozitára.
+**Tip**: don't forget to use `git status` while working to see the current status of the repository.
 :::

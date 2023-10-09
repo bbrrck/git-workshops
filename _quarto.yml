@@ -1,10 +1,9 @@
 project:
-  output-dir: _output/
+  output-dir: .build/
 format:
   revealjs: 
     width: 1920
     height: 860
-    # embed-resources: true
     auto-animate-easing: ease-in-out
     auto-animate-unmatched: false
     auto-animate-duration: 0.8
@@ -16,21 +15,25 @@ format:
     number-depth: 1
     number-sections: true
     preview-links: auto
-    # self-contained: false
     # slide-number: true
-    # standalone: true
     theme: assets/style/slides.scss
     title-slide-attributes:
       data-background-image: assets/img/hero.svg
       data-background-size: 50%
       data-background-position: bottom
     toc: false
+
+    embed-resources: true
+    # self-contained: false
+    standalone: true
+  
   # html:
   #   embed-resources: true
   #   highlight-style: gruvbox-dark
   #   number-sections: true
   #   standalone: true
   #   toc: true
+
 editor:
   markdown:
     references: 
