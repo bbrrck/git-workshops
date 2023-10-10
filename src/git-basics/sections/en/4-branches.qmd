@@ -15,7 +15,7 @@
 ```
 
 ::: {.fontsize-080 .before-1em}
-In Git, the default main branch used to be `master`. This name has become controversial in recent years and is gradually [being phased out](https://github.blog/changelog/2020-10-01-the-default-branch-for-newly-created-repositories-is-now-main/). Therefore, when [configuring Git](#/step-2-configuring-git), we changed `init.defaultBranch` to `main`.
+The default Git branch used to be `master`. Due to its negative connotations, this name is gradually [being phased out](https://github.blog/changelog/2020-10-01-the-default-branch-for-newly-created-repositories-is-now-main/). Therefore, when [configuring Git](#/step-2-configuring-git), we changed `init.defaultBranch` to `main`.
 :::
 
 ## What are branches good for?
@@ -126,9 +126,9 @@ After deletion, the branch is removed from history and cannot be restored.
 ## {background-image="./src/git-basics/img/git-conflict-vs-code-gui.png" background-size="contain"}
 
 
-## Summary
+<!-- ## Summary
 
-{{< include ./src/git-basics/diagrams/section-4-example.qmd >}}
+{{< include ./src/git-basics/diagrams/section-4-example.qmd >}} -->
 
 
 ## Exercises (2) {.exercise #exercise-2-branches}

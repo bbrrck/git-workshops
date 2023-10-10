@@ -49,8 +49,8 @@ git --version
 
 - Predtým ako začneme pracovať s Gitom, je potrebné nastaviť si meno a email cez príkaz `git config`. Tieto údaje bude Git používať na priradenie autora k verzii.
 ```sh
-git config --global user.name "Tibor Stanko"
-git config --global user.email "tibor.stanko@zurich.com"
+git config --global user.name "{{< var me.name >}}"
+git config --global user.email "{{< var me.email >}}"
 ```
 
 - Predvolenú vetvu si nastavíme na `main` (o [vetvách](#/vetvy-branches) si povieme viac neskôr)
@@ -158,7 +158,7 @@ nothing to commit, working tree clean
 - Cez príkaz `git log` sa môžeme presvedčiť o tom že záznam *(commit)* bol vytvorený:
 ```zsh
 commit bf5c9b4a320012b422546fcb86f5b957104bea55 (HEAD -> main)
-Author: Tibor Stanko <tibor.stanko@gmail.com>
+Author: {{< var me.name >}} <{{< var me.email >}}>
 Date:   Tue Sep 13 17:00:00 2022 +0200
 
     Add hello.py

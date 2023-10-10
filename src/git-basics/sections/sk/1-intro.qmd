@@ -3,7 +3,7 @@
 ## O mne 
 ::: {.columns}
 ::: {.column width="72%"}
-- [Tibor Stanko](https://tiborstanko.sk/), 32 rokov
+- [{{< var me.name >}}]({{< var me.website >}}), {{< var me.age >}} rokov
 - od 2020 dátový inžinier v Zurich Insurance, Bratislava 🇸🇰
 - predtým 6 rokov v akademickej sfére vo 🇫🇷 (PhD, postdoc)
 - rád automatizujem nudné úlohy s pomocou Pythonu 🐍

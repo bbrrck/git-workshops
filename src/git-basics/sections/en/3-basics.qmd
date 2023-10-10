@@ -6,20 +6,15 @@
 
 - In order to understand how Git works, we will start by using Git through the **terminal**
 - Later on, we will also show how to use Git directly in an IDE (e.g. VS Code)
-- On **Windows**, I recommend using [Windows Terminal](
-https://apps.microsoft.com/store/detail/windows-terminal/9N0DX20HK701?hl=en-us&gl=us)
- with [PowerShell](
-https://docs.microsoft.com/en-us/powershell/)
- (built-in) or [Nushell](
-https://www.nushell.sh/)
+- On **Windows**, I recommend using [Windows Terminal](https://apps.microsoft.com/store/detail/windows-terminal/9N0DX20HK701?hl=en-us&gl=us)
+ with [PowerShell](https://docs.microsoft.com/en-us/powershell/) (built-in) or [Nushell](https://www.nushell.sh/)
 
-
-...
 
 ::: {.fontsize-080}
 - Basic commands for navigating between directories in the terminal:
     - `pwd` --- print the current directory
     - `cd folder` --- change the current directory to `folder`
+    - `dir` --- list contents of the current directory
 
 ```sh
 >> pwd                       # C:/Users/tibor.stanko
@@ -58,8 +53,8 @@ git --version
 - Before we start working with Git, we need to set our name and email using the `git config` command. Git will use these details to assign the author of the version.
 
 ```sh
-git config --global user.name "Tibor Stanko"
-git config --global user.email "tibor.stanko@zurich.com"
+git config --global user.name "{{< var me.name >}}"
+git config --global user.email "{{< var me.email >}}"
 ```
 
 - Set the default branch to `main` (we will talk more about [branches](#/branches) later)
@@ -166,7 +161,7 @@ nothing to commit, working tree clean
 
 ```zsh
 commit bf5c9b4a320012b422546fcb86f5b957104bea55 (HEAD -> main)
-Author: Tibor Stanko <tibor.stanko@gmail.com>
+Author: {{< var me.name >}} <{{< var me.email >}}>
 Date:   Tue Sep 13 17:00:00 2022 +0200
 
     Add hello.py
@@ -177,6 +172,7 @@ Date:   Tue Sep 13 17:00:00 2022 +0200
 - Use `git reset [file]` to unstage a file while retaining changes in the working directory
 
 ```zsh
+git add dummy.txt
 git status
 ```
 
@@ -187,12 +183,15 @@ No commits yet
 
 Changes to be committed:
   (use "git rm --cached <file>..." to unstage)
-        new file:   test1.txt
-        new file:   test2.txt
+        new file:   dummy.txt
 ```
+
+## Unstaging a file
+
+- Use `git reset [file]` to unstage a file while retaining changes in the working directory
 
 ```zsh
-git reset test2.txt
+git reset dummy.txt
 git status
 ```
 
@@ -200,14 +199,10 @@ git status
 On branch main
 
 No commits yet
-
-Changes to be committed:
-  (use "git rm --cached <file>..." to unstage)
-        new file:   test1.txt
 
 Untracked files:
   (use "git add <file>..." to include in what will be committed)
-        test2.txt
+        dummy.txt
 ```
 
 ## Exercises (1) {.exercise #exercise-1-basics}
