@@ -1,4 +1,4 @@
-# Vetvy *(branches)*
+# Vetvy *(branches)* {#branches}
 
 {{< include ./src/git-basics/diagrams/section-4-branches.qmd >}}
 
@@ -19,7 +19,7 @@ V Gite je prednastavená hlavná vetva `master`. Tento názov sa v posledných r
 :::
 
 
-## Na čo sú dobré vetvy?
+## Načo sú dobré vetvy?
 
 - Vetvy umožňujú efektívne pracovať paralelne na viacerých častiach projektu
 - Príkladom je situácia keď vytvárame novú funkcionalitu (vetva A), a vyskytne sa bug ktorý musí byť hneď opravený (vetva B)

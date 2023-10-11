@@ -1,4 +1,4 @@
-# Advanced Git
+# Advanced Git {#advanced-git}
 
 ## `.gitignore`
 - specifies which files Git should ignore

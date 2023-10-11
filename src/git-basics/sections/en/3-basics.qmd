@@ -6,7 +6,7 @@
 
 - In order to understand how Git works, we will start by using Git through the **terminal**
 - Later on, we will also show how to use Git directly in an IDE (e.g. VS Code)
-- On **Windows**, I recommend using [Windows Terminal](https://apps.microsoft.com/store/detail/windows-terminal/9N0DX20HK701?hl=en-us&gl=us)
+- On **Windows**, I recommend [Windows Terminal](https://apps.microsoft.com/store/detail/windows-terminal/9N0DX20HK701?hl=en-us&gl=us)
  with [PowerShell](https://docs.microsoft.com/en-us/powershell/) (built-in) or [Nushell](https://www.nushell.sh/)
 
 
@@ -39,7 +39,7 @@ irm get.scoop.sh | iex # install scoop
 scoop install git # install git
 ```
 
-- Instructions for **macOS** or **Linux** can be found on the official website in [English](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) or [Czech](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
+- Instructions for **macOS** or **Linux** are on the official website in [English](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) or [Czech](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
 
 
 ## Step 2: Configuring Git
@@ -50,7 +50,7 @@ scoop install git # install git
 git --version
 ```
 
-- Before we start working with Git, we need to set our name and email using the `git config` command. Git will use these details to assign the author of the version.
+- Before we start working with Git, we need to set our name and email using the `git config` command. Git will use these details to assign version authorship.
 
 ```sh
 git config --global user.name "{{< var me.name >}}"
@@ -91,7 +91,7 @@ Initialized empty Git repository in C:/Users/tibor.stanko/hello/.git/
 git status
 ```
 
-- This is what the status of an empty Git repository looks like (no files or saved versions):
+- This is what an empty Git repository looks like (no files or saved versions):
 
 ```changelog
 On branch main
@@ -121,9 +121,10 @@ git commit -m "Add hello.py"
 
 - The commit message is usually a short, one-line description specified with the `-m "commit message"` argument.
 - If you want to write a longer description, omit the `-m` argument. `git commit` will then open a text editor where you can write the description.
-- In Git on Windows, the default editor for writing commit messages is `vim`, which runs directly in the terminal. If you are not familiar with using `vim`, you can change the editor to `notepad`, for example:
-`git config --global core.editor notepad`
-
+- In Git on Windows, the default editor for writing commit messages is `vim`, which runs directly in the terminal. If you are not familiar with using `vim`, you can change the editor, for example to `notepad`:
+```sh
+git config --global core.editor notepad
+```
 
 ## Step 4: Saving a version
 

@@ -8,8 +8,6 @@
 - Neskôr si ukážeme aj použitie Gitu priamo v IDE (napr. vo VS Code)
 - Vo **Windowse** odporúčam [Windows Terminal](https://apps.microsoft.com/store/detail/windows-terminal/9N0DX20HK701?hl=en-us&gl=us) s [PowerShell](https://docs.microsoft.com/en-us/powershell/) (built-in) alebo [Nushell](https://www.nushell.sh/)
 
-. . .
-
 ::: {.fontsize-080}
 - Základné príkazy na navigáciu medzi adresármi v termináli:
     - `pwd` --- vypíš aktuálny adresár
@@ -163,6 +161,44 @@ Date:   Tue Sep 13 17:00:00 2022 +0200
 
     Add hello.py
 ``` 
+
+## Odstránenie súboru z prípravnej zóny
+
+- Cez `git reset [file]` odstránime súbor z prípravnej zóny bez straty zmien v súbore
+
+```zsh
+git add dummy.txt
+git status
+```
+
+```changelog
+On branch main
+
+No commits yet
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+        new file:   dummy.txt
+```
+
+## Odstránenie súboru z prípravnej zóny
+
+- Cez `git reset [file]` odstránime súbor z prípravnej zóny bez straty zmien v súbore
+
+```zsh
+git reset dummy.txt
+git status
+```
+
+```changelog
+On branch main
+
+No commits yet
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        dummy.txt
+```
 
 
 ## Úlohy (1) {.exercise #exercise-1-basics}

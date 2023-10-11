@@ -1,10 +1,10 @@
-# Useful Resources
+# Useful Resources {#links}
 
 ## Links 
 ### sk
 - video course by Yablko: [Git a Github od základov](https://www.youtube.com/watch?v=0v5K4GvK4Gs)
 - video course on the [Informatika s Mišom](https://www.youtube.com/playlist?list=PLNAMH_0HgWT-ey31hQqrmi_Rgr4OVWgH3) channel
-- subject *Základy softvérového inžinierstva* at FEI TUKE
+- course *Základy softvérového inžinierstva* at FEI TUKE
     - part 2: [Systémy pre správu verzií](https://kurzy.kpi.fei.tuke.sk/zsi/labs/02-git.html)
     - part 3: [Práca s vetvami v systéme Git](https://kurzy.kpi.fei.tuke.sk/zsi/labs/03-git.html)
 

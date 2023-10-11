@@ -1,4 +1,4 @@
-# Vzdialené repozitáre *(remotes)*
+# Vzdialené repozitáre *(remotes)* {#remotes}
 
 
 ## Čo je to vzdialený repozitár *(remote)?*

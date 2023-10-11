@@ -7,7 +7,7 @@
 - od 2020 dátový inžinier v Zurich Insurance, Bratislava 🇸🇰
 - predtým 6 rokov v akademickej sfére vo 🇫🇷 (PhD, postdoc)
 - rád automatizujem nudné úlohy s pomocou Pythonu 🐍
-- nie som Git guru, no Git používam denne už viac ako 7 rokov
+- nie som Git guru, no Git používam denne už viac ako {{< var me.git-experience-years >}} rokov
 - moje voľnočasové aktivity: 👨‍👩‍👧‍👦🚲⛰️🎸🎹🍺
 :::
 ::: {.column width="28%"}

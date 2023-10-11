@@ -1,4 +1,4 @@
-# Remote Repositories
+# Remote Repositories {#remotes}
 
 ## What is a remote repository?
 

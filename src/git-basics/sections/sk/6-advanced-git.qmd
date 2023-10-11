@@ -1,4 +1,4 @@
-# Pokročilý Git
+# Pokročilý Git {#advanced-git}
 
 ## `.gitignore`
 - špecifikuje ktoré súbory má Git ignorovať
