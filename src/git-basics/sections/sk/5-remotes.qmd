@@ -225,12 +225,12 @@ git clone https://github.com/bbrrck/zoo.git # naklonuje sa do adresára `zoo`
 ## Úlohy (3) {.exercise #exercise-3-remotes}
 
 ::: {.fontsize-090 }
-1. Vytvor si na [Azure DevOps](https://dev.azure.com/tiborstanko/git-workshop-2023-04-19/_settings/repositories) repo s názvom `zoo-meno-priezvisko`, napr. `zoo-tibor-stanko`
-1. Pridaj tento *remote* do svojho lokálneho repa
-1. Nahraj lokálnu vetvu `main` na *remote*
-1. Na Githube pridaj do súboru `zoo.txt` za meno každého zvieraťa jeho emoji: 🐼🐘🐯🦒
-1. Zosynchronizuj lokálne repo s Githubom
-1. Na Githube pridaj do súboru `zoo.txt` nový riadok `krokodíl 🐊` a ulož novú verziu
-1. V lokálnom repe pridaj do súboru `zoo.txt` nový riadok `gorila 🦍` a ulož novú verziu
-1. Zosynchronizuj lokálne repo s Githubom a vyrieš vzniknutý *merge conflict*
+1. Vytvor si na [{{< var remoteserver.name >}}e]({{< var remoteserver.url >}}) repozitar s názvom {{< var remoteserver.repo-name >}}.
+1. Pridaj tento *remote* do svojho lokálneho repa.
+1. Nahraj lokálnu vetvu `main` na *remote*.
+1. Na {{< var remoteserver.name >}}e pridaj do súboru `zoo.txt` za meno každého zvieraťa jeho emoji: 🐼🐘🐯🦒
+1. Zosynchronizuj lokálne repo s {{< var remoteserver.name >}}om.
+1. Na {{< var remoteserver.name >}}e pridaj do súboru `zoo.txt` nový riadok `krokodíl 🐊` a ulož novú verziu.
+1. V lokálnom repe pridaj do súboru `zoo.txt` nový riadok `gorila 🦍` a ulož novú verziu.
+1. Zosynchronizuj lokálne repo s {{< var remoteserver.name >}}om a vyrieš vzniknutý *merge conflict*.
 :::
