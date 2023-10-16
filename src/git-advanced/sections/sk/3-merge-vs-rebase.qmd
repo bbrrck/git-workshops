@@ -1,0 +1,30 @@
+# Merge vs. Rebase {#merge-vs-rebase}
+
+## Merge vs Rebase
+
+V Gite existujú dva hlavné spôsoby, ako integrovať zmeny z jednej vetvy do druhej: `merge` a `rebase`.
+
+. . .
+
+Najjednoduchší spôsob integrácie vetiev je pomocou príkazu `merge`. Tento príkaz vykoná trojcestný merge medzi dvoma najnovšími snímok vetiev (C3 a C4) a najnovším spoločným predkom oboch vetiev (C2), čím vytvorí nový snímok (a commit).
+
+![](./assets/img/basic-rebase-1.png)
+
+
+![](./assets/img/basic-rebase-2.png)
+
+
+![](./assets/img/basic-rebase-3.png)
+
+## Notes
+
+- merge (no fast forward)
+- squash commit
+- rebase and fast forward
+- semi-linear merge
+
+https://medium.com/mindorks/understanding-git-merge-git-rebase-88e2afd42671
+
+https://www.atlassian.com/git/tutorials/merging-vs-rebasing
+
+

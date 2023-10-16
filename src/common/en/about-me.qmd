@@ -1,0 +1,14 @@
+## About me
+::: {.columns}
+::: {.column width="72%"}
+- [{{< var me.name >}}]({{< var me.website >}}), {{< var me.age >}} years
+- since 2020 Data Engineer in Zurich Insurance, Bratislava 🇸🇰
+- before that, 6 years in academia in 🇫🇷 (PhD, postdoc)
+- I enjoy automating boring tasks using Python 🐍
+- not a Git guru, but I've been using Git daily for over {{< var me.git-experience-years >}} years
+- my hobbies: 👨‍👩‍👧‍👦🚲⛰️🎸🎹🍺
+:::
+::: {.column width="28%"}
+![](/assets/img/tibors.jpg){.rounded-corners}
+:::
+:::

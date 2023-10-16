@@ -1,0 +1,3 @@
+# CI/CD s pomocou Gitu {#cicd}
+
+## Čo je to CI/CD

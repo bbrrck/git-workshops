@@ -1,0 +1,23 @@
+# Úvod {#intro}
+
+{{< include ./src/common/sk/about-me.qmd >}}
+
+## Obsah tohto workshopu
+
+::: {.columns}
+::: {.column width="40%"}
+1. [Úvod](#intro)
+1. [Vnútro Gitu](#git-internals) (+1)
+1. [Merge vs. Rebase](#merge-vs-rebase) (+1)
+1. [Časté problémy](#common-issues) (+2)
+1. [CI/CD s pomocou Gitu](#cicd) (+2)
+1. [SSH autentifikácia](#ssh) (+1)
+:::
+::: {.column width="60%" .nobullets}
+<!-- - &nbsp;   -->
+<!-- - &nbsp;   -->
+<!-- - --- [Úlohy (1)](#exercise-1) -->
+<!-- - --- [Úlohy (2)](#exercise-2) -->
+<!-- - --- [Úlohy (3)](#exercise-3)   -->
+:::
+:::

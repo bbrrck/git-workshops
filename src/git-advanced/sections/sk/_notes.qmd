@@ -1,0 +1,46 @@
+<!-- 
+    ## Contents
+    - Understanding Git internals: Git data model, history, objects (blobs, trees, commits), references
+        - demo using `git cat-file -p`
+    - Merging vs Rebasing
+    - Branching models - Gitflow, Trunk-based development
+    - Using SSH for Git authentication
+    - Submitting and reviewing Pull Requests
+    - Basics of CI/CD with Git
+        - practical example - Python package?
+-->
+
+<!-- 
+    - security and authentication               >>> EXERCISE: SET UP SSH
+    - branching - strategies (e.g. gitflow)     >>> EXERCISE: WORK ON PARALLEL BRANCHES (feature, hotfix)
+    - branching - rebasing
+    - advanced git commands
+        git clean
+        cherry-pick
+        git rebase
+        git merge --squash
+        git remote update --prune - remove references to merged remote branches, but keep them locally
+    - rewriting history, git commit -- amend, git rebase
+    - merging vs. rebasing
+        https://www.atlassian.com/git/tutorials/merging-vs-rebasing
+    - checkout vs reset vs revert
+        https://www.atlassian.com/git/tutorials/advanced-overview
+    - git hooks
+        https://www.atlassian.com/git/tutorials/git-hooks
+    - refs, reflog
+        https://www.atlassian.com/git/tutorials/refs-and-the-reflog
+    - tags and releases
+    - automation, CI/CD, Github/DevOps integration - what example? pytest?
+    - pull requests - collaboration, code review
+    - behind the scenes - Git internals: Git model, .git folder, objects, references, etc.
+    - other integrations - e.g. Jira
+    - git submodules - e.g. to separate common code from two projects (beginner workshop / advanced workshop - common css etc.)
+    - git stash 
+-->
+
+<!--
+    ### Resources
+    - https://git-scm.com/book/en/v2
+    - https://www.softwaretestinghelp.com/advanced-git-commands/
+    - https://www.atlassian.com/git/tutorials/advanced-overview
+-->

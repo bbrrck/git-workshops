@@ -1,0 +1,25 @@
+# SSH autentifikácia {#ssh}
+
+## Vytvorenie SSH kľúča
+
+```bash
+ssh-keygen # use default settings
+ssh-keygen -t rsa -C "tibor.stanko@zurich.com" # compatible with most git providers
+ssh-keygen -t ed25519 -C "tibor.stanko@zurich.com" # compatible with GitHub
+```
+
+## Skopírovanie SSH kľúča do schránky
+
+### Powershell
+
+```powershell
+Get-Content ~\.ssh\id_ed25519.pub | Set-Clipboard
+```
+
+&nbsp;
+
+### Command Prompt
+
+```bash
+clip < ~\.ssh\id_ed25519.pub
+```

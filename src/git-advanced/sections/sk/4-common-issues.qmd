@@ -1,0 +1,108 @@
+# Časté otázky a problémy {#common-issues}
+
+## Vrátenie zmien
+
+- Ako vrátim späť posledný commit?
+- Ako vrátim späť starší commit?
+- Ako vrátim späť viacero commitov naraz?
+- Ako vrátim späť len vybrané zmeny z commitu?
+- Ako vrátim späť zmeny ktoré už boli pushnuté?
+
+## `git revert`
+```zsh
+# odstráň zmeny vykonané v poslednom commite
+git revert HEAD
+# odstráň zmeny vykonané v poslednom commite
+git revert HEAD
+```
+
+## `git reset`
+
+```zsh
+# vráť repozitár do stavu po commite s commit_id
+git reset --hard <commit_id>
+```
+
+::: {.warning}
+Príkaz `git reset` mení históriu repozitára a môže spôsobiť stratu súborov.
+::: 
+
+## Undo/Redo
+
+```bash
+git commit -m "Something terribly misguided"
+git reset HEAD~1
+# [ edit files as necessary ]
+git add .
+git commit -c ORIG_HEAD # reuse old commit message and open commit editor
+git commit -C ORIG_HEAD # reuse old commit message and skip commit editor
+```
+
+:::footer
+[stackoverflow:927386](https://stackoverflow.com/a/927386/1606707)
+:::
+
+## Ako vrátim späť zmeny ktoré už boli pushnuté?
+```bash
+git commit -m "Something terribly misguided"
+git push origin main
+git reset HEAD~1
+# [ edit files as necessary ]
+git add .
+git commit -C ORIG_HEAD # reuse old commit message and skip commit editor
+git push origin main --force
+git push origin main --force-with-lease # even better
+```
+
+## Ako premenujem lokálnu vetvu?
+
+```bash
+# premenuj aktuálnu vetvu na 'newname'
+git branch -m newname
+
+# premenuj vetvu 'oldname' na 'newname'
+git branch -m oldname newname
+```
+
+:::footer
+[stackoverflow:6591213](https://stackoverflow.com/q/6591213/1606707)
+:::
+
+## Ako vymažem lokálnu aj vzdialenú vetvu?
+
+```bash
+git push -d <remote_name> <branch_name>
+git branch -d <branch_name>
+git fetch --all --prune # get rid of references to deleted remote branches
+```
+
+:::footer
+[stackoverflow:2003505](https://stackoverflow.com/q/2003505/1606707)
+:::
+
+## Ako presuniem posledný commit na novú vetvu?
+
+## Ako odstránim súbory z prípravnej zóny?
+
+## Ako zmením *commit message* v už vytvorenom commite?
+
+```bash
+git commit --amend -m "New commit message"
+```
+
+## Ako pridám súbory do už vytvoreného *commitu*?
+
+```bash
+git add zabudnuty_subor
+git commit --amend --no-edit # reuse commit message
+```
+
+## How can I reset or revert a file to a specific revision?
+
+```bash
+git checkout c5f567 -- file1/to/restore file2/to/restore
+```
+
+:::footer
+[stackoverflow:215718](https://stackoverflow.com/q/215718/1606707)
+:::
