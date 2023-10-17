@@ -1,0 +1,10 @@
+## Úlohy (1) {.exercise #exercise-1-internals}
+
+::: {.exercise}
+
+1. Naklonuj si testovací repozitár.
+1. Z priečinku `.git` nájdi súbor s hashom na ktorý ukazuje vetva `slovak`.
+1. Porovnaj hash s výstupom z príkazu `git rev-parse slovak`.
+1. Viacnásobným použitím príkazu `git cat-file -p` zisti aký obsah sa nacháda v súbore `hello.py` na vetve `slovak`.
+
+:::

@@ -172,6 +172,9 @@ $code-block-font-size: 0.8em;
 
         pre.markdown-source {
             color: #f4e7c9;
+        }
+
+        pre.tree, pre.markdown-source {
             background-color: #282828;
             padding: 0.5em;
             width: 90%;
@@ -181,6 +184,28 @@ $code-block-font-size: 0.8em;
             white-space: -pre-wrap;
             white-space: -o-pre-wrap;
             word-wrap: break-word;
+        }
+
+        pre.tree {
+            color: #eee;
+            b {
+                color: #ffa770;
+            }
+            i {
+                color: #999;
+            }
+            i:before {
+                content: "# ";
+            }
+            .blob {
+                color: rgb(255, 179, 179);
+            }
+            .tree {
+                color: rgb(176, 255, 176);
+            }
+            .commit {
+                color: rgb(173, 198, 247);
+            }
         }
 
         .markdown-preview {

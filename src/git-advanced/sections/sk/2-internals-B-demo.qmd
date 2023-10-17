@@ -1,0 +1,329 @@
+# Demo v Powershelli {#demo-powershell .unnumbered .unlisted}
+
+- `lsf` is an alias for `gci -Force -Recurse -File *.|Resolve-path -relative|Sort`
+- `tree` is an alias for `Get-PSTree .git -Exclude *hooks, *info, *pack, *config, *description | Select Hierarchy`
+
+
+##
+
+::: {.columns}
+
+::: {.column width="50%"}
+
+```bash
+cd ~
+git init test
+# Initialized empty Git repository in 
+# C:/Users/tibor.stanko/test/.git/
+cd test
+```
+
+:::
+
+::: {.column width="50%"}
+
+<pre class="tree">
+.git
+├── HEAD    <i>ref: refs/heads/main</i>
+│
+├── objects
+│
+│
+│
+│
+│
+│
+│
+│
+│
+│
+│
+│
+│
+│
+│
+│
+│
+│
+└── refs
+    ├── heads
+    |
+    └── tags
+</pre>
+
+:::
+
+:::
+
+
+##
+
+::: {.columns}
+
+::: {.column width="50%"}
+
+```bash
+echo "version 1" > test.txt
+git status
+# On branch main
+# No commits yet
+#
+# Untracked files:
+#         test.txt
+```
+
+:::
+
+::: {.column width="50%"}
+
+<pre class="tree">
+.git
+├── HEAD    <i>ref: refs/heads/main</i>
+│
+├── objects
+│
+│
+│
+│
+│
+│
+│
+│
+│
+│
+│
+│
+│
+│
+│
+│
+│
+│
+└── refs
+    ├── heads
+    |
+    └── tags
+</pre>
+
+:::
+
+:::
+
+##
+
+::: {.columns}
+
+::: {.column width="50%"}
+
+```bash
+git add test.txt
+git status
+# On branch main
+# No commits yet
+#
+# Changes to be committed:
+#         test.txt
+git ls-files --stage
+# 100644 594dc0e39bc4468ee19c
+#        67e65d37b97eb963b68b 0 test.txt
+```
+
+:::
+
+::: {.column width="50%"}
+
+<pre class="tree">
+.git
+├── HEAD    <i>ref: refs/heads/main</i>
+├── index
+├── objects
+│   └── 59 <i>blob [test.txt] 'version 1'</i>
+│       └── <span class="blob">4dc0e39bc4468ee19c67e65d37b97eb963b68b</span>
+│
+│
+│
+│
+│
+│
+│
+│
+│
+│
+│
+│
+│
+│
+│
+│
+└── refs
+    ├── heads
+    |
+    └── tags
+</pre>
+
+
+:::
+
+:::
+
+##
+
+::: {.columns}
+
+::: {.column width="50%" font-size="80%"}
+
+```bash 
+git commit -m "First"
+# [main (root-commit) c771cdc] First
+#  1 file changed, 0 insertions(+),
+#   ... 0 deletions(-)
+#  create mode 100644 test.txt
+git status
+# On branch main
+# nothing to commit, working tree clean
+```
+
+:::
+
+::: {.column width="50%"}
+
+<pre class="tree">
+.git
+├── HEAD    <i>ref: refs/heads/main</i>
+├── index
+├── objects
+│   ├── 59 <i>blob [test.txt] 'version 1'</i>
+│   │   └── <span class="blob">4dc0e39bc4468ee19c67e65d37b97eb963b68b</span>
+│   ├── 67 <i>tree [blob 594d]</i>
+│   │   └── <span class="tree">4d4d31b97233152f3be1825cc9e765fa2b2859</span>
+│   └── f8 <i>commit [tree 674d] "First"</i>
+│       └── <span class="commit">0a04ee3dfbeb5eb666ade615abc617c1ea20e3</span>
+│
+│
+│
+│
+│
+│
+│
+│
+│
+│
+│
+│
+└── refs
+    ├── heads
+    |   └── main <i>f80a...</i>
+    └── tags
+</pre>
+
+:::
+
+:::
+
+##
+
+::: {.columns}
+
+::: {.column width="50%" font-size="80%"}
+
+```bash 
+mkdir bak
+mi test.txt bak
+echo "version 2" > test.txt
+git add .
+git commit -m "Second"
+# [main 4ba094f] Second
+#  2 files changed, 0 insertions(+), 
+#   ... 0 deletions(-)
+#  create mode 100644 bak/test.txt
+```
+
+:::
+
+::: {.column width="50%"}
+
+<pre class="tree">
+.git
+├── HEAD    <i>ref: refs/heads/main</i>
+├── index
+├── objects
+│   ├── 59 <i>blob [test.txt] 'version 1'</i>
+│   │   └── <span class="blob">4dc0e39bc4468ee19c67e65d37b97eb963b68b</span>
+│   ├── 67 <i>tree [blob 594d]</i>
+│   │   └── <span class="tree">4d4d31b97233152f3be1825cc9e765fa2b2859</span>
+│   ├── f8 <i>commit [tree 674d] "First"</i>
+│   │   └── <span class="commit">0a04ee3dfbeb5eb666ade615abc617c1ea20e3</span>
+│   ├── f0 <i>blob [test.txt] 'version 2'</i>
+│   │   └── <span class="blob">d983103c610431663d84b3012d1b172f2f52ea</span>
+│   ├── 37 <i>tree [tree 674d, blob f0d9]</i>
+│   │   └── <span class="tree">87931e43c8baf51f3ffafc44f6394651a505ca</span>
+│   └── 53 <i>commit [tree 3787, par. f80a] "Second"</i>
+│       └── <span class="commit">9f7e662b0fa2ceb0df1dc9332179b06e5cdaec</span>
+│
+│
+│
+│
+│
+│
+└── refs
+    ├── heads
+    |   └── main <i>539f...</i>
+    └── tags
+</pre>
+
+:::
+
+:::
+
+##
+
+::: {.columns}
+
+::: {.column width="50%" font-size="80%"}
+
+```bash 
+echo "new" > new.txt
+git add new.txt
+git commit -m "Third"
+# [main 62e37a9] Third
+#  1 file changed, 0 insertions(+), 
+#   ... 0 deletions(-)
+#  create mode 100644 new.txt
+```
+
+:::
+
+::: {.column width="50%"}
+
+<pre class="tree">
+.git
+├── HEAD    <i>ref: refs/heads/main</i>
+├── index
+├── objects
+│   ├── 59 <i>blob [test.txt] 'version 1'</i>
+│   │   └── <span class="blob">4dc0e39bc4468ee19c67e65d37b97eb963b68b</span>
+│   ├── 67 <i>tree [blob 594d]</i>
+│   │   └── <span class="tree">4d4d31b97233152f3be1825cc9e765fa2b2859</span>
+│   ├── f8 <i>commit [tree 674d] "First"</i>
+│   │   └── <span class="commit">0a04ee3dfbeb5eb666ade615abc617c1ea20e3</span>
+│   ├── f0 <i>blob [test.txt] 'version 2'</i>
+│   │   └── <span class="blob">d983103c610431663d84b3012d1b172f2f52ea</span>
+│   ├── 37 <i>tree [tree 674d, blob f0d9]</i>
+│   │   └── <span class="tree">87931e43c8baf51f3ffafc44f6394651a505ca</span>
+│   ├── 53 <i>commit [tree 3787, par. f80a] "Second"</i>
+│   │   └── <span class="commit">9f7e662b0fa2ceb0df1dc9332179b06e5cdaec</span>
+│   ├── dc <i>blob [new.txt] 'new'</i>
+│   │   └── <span class="blob">334bff12fb7d7404c79935fa3ba535c3bb28d0</span>
+│   ├── b0 <i>tree [tree 674d, blob f0d9, blob dc33]</i>
+│   │   └── <span class="tree">ea95a512bad604278bcc96e8b8e726b462e010</span>
+│   └── 62 <i>commit [tree b0ea, par. 539f] "Third"</i>
+│       └── <span class="commit">e37a96f8f09d0421644817dea320108ceac481</span>
+└── refs
+    ├── heads
+    |   └── main <i>62e3...</i>
+    └── tags
+</pre>
+
+:::
+
+:::

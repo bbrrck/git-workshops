@@ -1,0 +1,146 @@
+## `.git` pre prázdny repozitár {#git-dir-empty}
+
+## &nbsp; {#git-log-pybrickz background-image="./assets/img/pybrickz-nicelog-2023-10-17-10-30.png" background-position="left"} 
+
+## `.git` pre reálny projekt {#git-dir-real-1}
+
+<pre class="tree">
+<b>pybrickz/.git</b>
+│   COMMIT_EDITMSG  <i>posledný popis záznamu upravený v lokálnom repozitári</i>
+│   config          <i>lokálna konfigurácia, aplikuje sa iba na tento repozitár</i>
+│   description     <i>don't worry about it</i>
+│   FETCH_HEAD      <i>pamätá si, čo bolo naposledy stiahnuté zo vzdialeného repozitára</i>
+│   HEAD            <i>ukazovateľ na aktuálnu vetvu/commit</i>
+│   index           <i>binárny zoznam ciest a SHA-1 hashov, obsah zobraz cez `git ls-files --stage`</i>
+│   ORIG_HEAD       <i>predchádzajúci stav HEAD, nastavený príkazmi s potenciálne nebezpečným správaním</i>
+│   packed-refs     <i>zabalené referencie (heads, tags)</i>
+├───<b>hooks</b> […]
+├───<b>info</b> […]
+├───<b>logs</b> […]
+├───<b>objects</b> […]
+└───<b>refs</b> […]
+</pre>
+
+## `.git/objects` {#git-dir-real-2}
+
+<pre class="tree">
+<b>pybrickz/.git</b>
+│   […]
+├───<b>hooks</b> […]
+├───<b>info</b> […]
+├───<b>logs</b> […]
+├───<b>objects</b>  <i>objekty - bloby, stromy (trees), commity</i>
+│   ├───<b>00</b>
+│   │       57f7cf16175d94fa850ad30918dffcd4cd850c
+│   ├───<b>01</b>
+│   │       4daec1e8a05a71852209c4caf9750bfe4717b1
+...
+│   ├───<b>fe</b>
+│   │       1c754ef352dece245b5f7a0d7047b048d7b1d9
+│   │       8a73f88812537678fde89e91c19c87623ff47c
+│   ├───<b>ff</b>
+│   │       7e837bf1dc59b8835767fdcf789e308528498a
+│   ├───<b>info</b> […]
+│   └───<b>pack</b> […]
+└───<b>refs</b> […]
+</pre>
+
+## `.git/refs` {#git-dir-real-3}
+
+<pre class="tree">
+<b>pybrickz/.git</b>
+│   […]
+├───<b>hooks</b> […]
+├───<b>info</b> […]
+├───<b>logs</b> […]
+├───<b>objects</b> […]
+└───<b>refs</b>     <i>referencie - vetvy, vzdialené vetvy, tagy</i>
+    ├───<b>heads</b> […]
+    ├───<b>remotes</b> […]
+    └───<b>tags</b> […]
+</pre>
+
+## `.git/refs/heads` {#git-dir-real-4}
+
+<pre class="tree">
+<b>pybrickz/.git</b>
+│   […]
+├───<b>hooks</b> […]
+├───<b>info</b> […]
+├───<b>logs</b> […]
+├───<b>objects</b> […]
+└───<b>refs</b>
+    ├───<b>heads</b>
+    │       dev
+    │       main
+    │       staging
+    │       ├───<b>bugfix</b>
+    │       │       bugfix-1    <i>vetva vytvorená cez `git branch bugfix/bugfix-1`</i>
+    │       │       bugfix-2    <i>vetva vytvorená cez `git branch bugfix/bugfix-2`</i>
+    │       └───<b>feature</b>
+    │               feature-A   <i>vetva vytvorená cez `git branch feature/feature-A`</i>
+    │               feature-B   <i>vetva vytvorená cez `git branch feature/feature-B`</i>
+    ├───<b>remotes</b> […]
+    └───<b>tags</b> […]
+</pre>
+
+## `.git/refs/remotes` {#git-dir-real-5}
+
+<pre class="tree">
+<b>pybrickz/.git</b>
+│   […]
+├───<b>hooks</b> […]
+├───<b>info</b> […]
+├───<b>logs</b> […]
+├───<b>objects</b> […]
+└───<b>refs</b>
+    ├───<b>heads</b> […]
+    ├───<b>remotes</b>
+    │   ├───<b>gh</b>
+    │   │       main
+    │   └───<b>origin</b>
+    │       │   dev
+    │       │   HEAD
+    │       │   main
+    │       ├───<b>bugfix</b>
+    │       │       bugfix-2
+    │       └───<b>feature</b>
+    │               my-awesome-feature-A
+    └───<b>tags</b> […]
+</pre>
+
+## `.git/refs/tags` {#git-dir-real-6}
+
+<pre class="tree">
+<b>pybrickz/.git</b>
+│   […]
+├───<b>hooks</b> […]
+├───<b>info</b> […]
+├───<b>logs</b> […]
+├───<b>objects</b> […]
+└───<b>refs</b>
+    ├───<b>heads</b> […]
+    ├───<b>remotes</b> […]
+    └───<b>tags</b>
+            v1.0.0
+            v1.0.1
+            ...
+            v2.6.4
+            v2.7.0
+</pre>
+
+## `.git/HEAD`
+
+- `HEAD` je ukazovateľ na aktuálnu vetvu alebo commit
+- `DETACHED HEAD` je situácia keď HEAD ukazuje na commit ktorý **nie je** hlavou vetvy 
+
+```bash
+cat .git/HEAD
+# ref: refs/heads/main
+git checkout 7c66409
+git status
+# HEAD detached at 7c66409
+# nothing to commit, working tree clean
+cat .git/HEAD
+# 7c66409021358486e63d2d40c9b07e2c35e8124d
+```

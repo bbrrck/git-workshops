@@ -2,72 +2,10 @@
 
 Čo sa skrýva vo [vnútri Gitu](https://git-scm.com/book/en/v2/Git-Internals-Plumbing-and-Porcelain)?
 
+{{< include ./src/git-advanced/sections/sk/2-internals-A-intro.qmd >}}
 
-## Čo je to Git?
+{{< include ./src/git-advanced/sections/sk/2-internals-B-demo.qmd >}}
 
-- **systém riadenia verzií**
-- angl. *version control system* (VCS) alebo *source control management* (SCM)
-- zaznamenáva históriu vývoja projektu
-- užitočný pre tímy aj pre jednotlivcov
-- nie je len o kóde, dovoľuje ukladať ľubovoľné súbory (aj netextové)
+{{< include ./src/git-advanced/sections/sk/2-internals-C-dotgit.qmd >}}
 
-
-## Ale... Čo je *skutočne* Git?
-
-- Git je **obsahovo adresovateľný** systém súborov
-- To znamená, že v jadre systému Git sa nachádza jednoduché úložisko údajov, ku ktorým sa dá pristupovať pomocou kľúčov.
-
-. . .
-
-## Čo Git ukladá?
-
-- *objects* = objekty
-- *references* = referencie
-
-## `.git` priečinok
-
-
-
-## Git Objekty
-
-Tri typy:
-
-1. *Blob* 
-    - len obsah, žiadne metadáta (cesta, meno)
-2. *Tree* = strom
-    - strom obsahuje bloby alebo ďalšie stromy
-3. *Commit* = záznam
-
-Každý objekt je identifikovateľný s pomocou svojho SHA-1 hashu.
-
-```bash
-git init test
-cd test
-find .git/objects -type f
-echo 'test content' | git hash-object -w --stdin
-git cat-file -p 08cf6101416f0ce0dda3c80e627f333854c4085c
-echo 'version 1' > test.txt
-git hash-object -w test.txt
-echo 'version 2' > test.txt
-git hash-object -w test.txt
-git cat-file -t e32092a83f837140c08e85a60ef16a6b2a208986
-```
-
-## *Plumbing &amp; Porcelain*
-
-![](./assets/img/plumbing-porcelain.png)
-
-- *porcelain*: high-level príkazy, ktoré používa bežný smrteľník
-    - `commit`, `log`, `merge`, `pull`, `push`, `status`, &hellip; 
-- *plumbing* ("core git"): low-level príkazy, používané interne gitom (príp. powerusermi)
-    - `cat-file`, `commit-tree`, `hash-object`, `ls-files`, `merge-base`, &hellip;
-
-## Hashes
-
-DEMO: compute hash in python
-
-## Merge Types
-
-
-
-## Merge Algorithms
+{{< include ./src/git-advanced/sections/sk/2-internals-D-exercises.qmd >}}

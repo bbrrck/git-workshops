@@ -1,0 +1,78 @@
+## Čo je to Git?
+
+- **systém riadenia verzií**
+- angl. *version control system* (VCS) alebo *source control management* (SCM)
+- zaznamenáva históriu vývoja projektu
+- užitočný pre tímy aj pre jednotlivcov
+- nie je len o kóde, dovoľuje ukladať ľubovoľné súbory (aj netextové)
+
+## Ale... Čo je *skutočne* Git?
+
+- Git je **obsahovo adresovateľný** systém súborov
+- To znamená, že **adresa** súboru (kľúč) je definovaná pomocou jeho **obsahu**
+- V jadre systému Git sa nachádza jednoduché úložisko údajov, ku ktorým sa dá pristupovať pomocou kľúčov
+- Kľúč = SHA-1 hash , napr. `655a20f99af32926cbf6d8fab092506ddd70e49c`
+
+## Čo Git ukladá?
+
+Ide najmä o:
+
+- objekty (*objects*)
+- referencie (*references* alebo *refs*)
+
+## Objekty
+
+1. *blob*
+    - len obsah, žiadne metadáta (cesta, meno)
+2. *tree* = strom
+    - strom obsahuje bloby alebo ďalšie stromy
+3. *commit* = záznam
+    - obsahuje ukazovatele na strom a iný commit (rodič)
+4. tag
+    - definuje alternatívne meno pre iný objekt, ktoré môže byť použité na interakciu s objektom namiesto hashu
+
+Každý objekt je identifikovateľný s pomocou svojho SHA-1 hashu.
+
+## Referencie = ukazovatele na objekty
+
+- vetva *nie je* sled commitov, ale len ukazovateľ (*pointer*) na určitý commit
+
+```bash
+cat .git/refs/heads/main
+# 7c66409021358486e63d2d40c9b07e2c35e8124d
+
+cat .git/refs/remotes/origin/dev
+# c29dc332ac3eebebffc5726e16d0e91df170103f
+
+cat .git/refs/tags/v2.6.3
+# d49de0ec577052db3e47e2baf5aff0be738637ac
+```
+
+::: {.fontsize-080}
+**Tip**: v powershelli môžeš namiesto príkazu `cat` použiť `gc` (alias pre `Get-Content`)
+:::
+
+## Typy príkazov
+
+::: {.columns}
+
+::: {.column width="75%"}
+
+*Porcelain:*
+
+- high-level príkazy, ktoré používa bežný smrteľník
+- `commit`, `log`, `merge`, `pull`, `push`, `status`, &hellip; 
+
+*Plumbing:*
+
+- "core git"
+- low-level príkazy, používané interne Gitom (príp. powerusermi)
+- `cat-file`, `commit-tree`, `hash-object`, `ls-files`, `merge-base`, `rev-parse`, &hellip;
+
+:::
+
+::: {.column width="25%"}
+![](./assets/img/plumbing-porcelain.png)
+:::
+
+:::
