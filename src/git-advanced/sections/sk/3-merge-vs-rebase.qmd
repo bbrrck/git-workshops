@@ -1,30 +1,188 @@
 # Merge vs. Rebase {#merge-vs-rebase}
 
-## Merge vs Rebase
+:::footer
+[atlassian.com/git/tutorials/merging-vs-rebasing](https://www.atlassian.com/git/tutorials/merging-vs-rebasing)
+:::
+
+## Zlučovanie zmien 
 
 V Gite existujú dva hlavné spôsoby, ako integrovať zmeny z jednej vetvy do druhej: `merge` a `rebase`.
 
-. . .
+## Zlučovanie zmien {background-image="https://wac-cdn.atlassian.com/dam/jcr:1523084b-d05a-4f5a-bd1a-01866ec09ca3/01%20A%20forked%20commit%20history.svg?cdnVersion=1263" background-size="100% 80%" background-position="center"}
 
-Najjednoduchší spôsob integrácie vetiev je pomocou príkazu `merge`. Tento príkaz vykoná trojcestný merge medzi dvoma najnovšími snímok vetiev (C3 a C4) a najnovším spoločným predkom oboch vetiev (C2), čím vytvorí nový snímok (a commit).
+## Zlúčenie cez `merge`
+- najjednoduchší spôsob zlučovania vetiev
+- trojcestné zlúčenie medzi dvoma vetvami (napr. `main` a `feature`) a ich najnovším spoločným predkom
+- vytvorí nový commit
 
-![](./assets/img/basic-rebase-1.png)
+## Zlúčenie cez `merge` {background-image="https://wac-cdn.atlassian.com/dam/jcr:4639eeb8-e417-434a-a3f8-a972277fc66a/02%20Merging%20main%20into%20the%20feature%20branh.svg?cdnVersion=1263" background-size="100% 90%" background-position="center"}
+
+## Zlúčenie cez `rebase` 
+- rebase vetvy `feature` na vetvu `main` znamená presunutie začiatku vetvy `feature` na koniec vetvy `main`
+- znamená to, že commity z `feature` budú znova vytvorené na vetve `main`
+- hlavná výhoda: oveľa čistejšia história projektu a menej "vidličiek"  
+
+## Zlúčenie cez `rebase` {background-image="https://wac-cdn.atlassian.com/dam/jcr:3bafddf5-fd55-4320-9310-3d28f4fca3af/03%20Rebasing%20the%20feature%20branch%20into%20main.svg?cdnVersion=1263" background-size="100% 90%" background-position="center"}
+
+## Kedy nepoužívať `rebase`? 
+- nikdy nepoužívajte `git rebase` na verejných alebo kolaboratívnych vetvách (najmä `main`)
+- v opačnom prípade môže dôjsť ku zmene alebo dokonca zmazaniu časti histórie
+
+## Kedy nepoužívať `rebase`? {background-image="https://wac-cdn.atlassian.com/dam/jcr:2908e0e6-f74b-4425-b5d2-f5eca8cfcd99/05%20Rebasing%20the%20main%20branch.svg?cdnVersion=1263" background-size="100% 90%" background-position="center"}
+
+## Demo: `merge`
+
+```bash
+git clone https://github.com/bbrrck/hello.git hello-merge; cd hello-merge
+git merge origin/french
+# Auto-merging hello.py
+git merge origin/slovak
+# CONFLICT (content): Merge conflict in hello.py
+# ... vyrieš konflikt ...
+git add .
+git commit
+# [main cef4a72] Merge remote-tracking branch 'origin/slovak'
+```
+
+## Demo: `rebase` (french)
+
+```bash
+git clone https://github.com/bbrrck/hello.git hello-rebase; cd hello-rebase
+git checkout french
+git rebase main
+# Successfully rebased and updated refs/heads/french.
+git checkout main
+git merge french
+# Updating 0297280..5f6f019
+# Fast-forward
+#  hello.py | 11 ++++++++++-
+#  1 file changed, 10 insertions(+), 1 deletion(-)
+```
+
+## Demo: `rebase` (slovak) - konflikt
+
+```bash
+git checkout slovak
+git rebase -i main
+# ... označ prostredný commit ako `fixup` ...
+# CONFLICT (content): Merge conflict in hello.py
+# ... vyrieš konflikt ...
+git add .
+git rebase --continue
+# Successfully rebased and updated refs/heads/slovak.
+git checkout main
+git merge slovak # Fast-forward
+```
 
 
-![](./assets/img/basic-rebase-2.png)
+## `git log --oneline --graph --all`
+
+::: {.columns}
+::: {.column width="50%"}
+Merge:
+
+<pre class="tree">
+*   <b>cef4a72</b> (main) Merge branch 'slovak'
+|\
+| * <b>163a9c3</b> (slovak) Add docstring for slovak
+| * <b>bd67d8d</b> Fix slovak
+| * <b>75fcf88</b> Add slovak
+* |   <b>bc3f86b</b> Merge branch 'french'
+|\ \
+| * | <b>a31caf9</b> (french) Add docstring for french
+| * | <b>6d348f3</b> Add french
+| |/
+* / <b>0297280</b> Add docstring for default
+|/
+* <b>4b4a8ad</b> Add hello.py
+* <b>60d4d94</b> Initial commit
+</pre>
+:::
+::: {.column width="50%"}
+Rebase:
+
+<pre class="tree">
+* <b>ab2fda1</b> (main, slovak) Add docstring for slovak
+* <b>806b97a</b> Add slovak
+* <b>5f6f019</b> (french) Add docstring for french
+* <b>ea40a3b</b> Add french
+* <b>0297280</b> Add docstring for default
+| * <b>163a9c3</b> Add docstring for slovak
+| * <b>bd67d8d</b> Fix slovak
+| * <b>75fcf88</b> Add slovak
+|/
+| * <b>a31caf9</b> Add docstring for french
+| * <b>6d348f3</b> Add french
+|/
+* <b>4b4a8ad</b> Add hello.py
+* <b>60d4d94</b> Initial commit
+</pre>
+:::
+:::
+
+## `git log main --oneline`
+
+::: {.columns}
+::: {.column width="50%"}
+Merge (10):
+
+<pre class="tree">
+<b>cef4a72</b> (main) Merge branch 'slovak'
+<b>bc3f86b</b> Merge branch 'french'
+<b>0297280</b> Add docstring for default
+<b>163a9c3</b> (slovak) Add docstring for slovak
+<b>bd67d8d</b> Fix slovak
+<b>75fcf88</b> Add slovak
+<b>a31caf9</b> (french) Add docstring for french
+<b>6d348f3</b> Add french
+<b>4b4a8ad</b> Add hello.py
+<b>60d4d94</b> Initial commit
+</pre>
+:::
+::: {.column width="50%"}
+Rebase (7):
+
+<pre class="tree">
+<b>ab2fda1</b> (main, slovak) Add docstring for slovak
+<b>806b97a</b> Add slovak
+<b>5f6f019</b> (french) Add docstring for french
+<b>ea40a3b</b> Add french
+<b>0297280</b> Add docstring for default
+<b>4b4a8ad</b> Add hello.py
+<b>60d4d94</b> Initial commit
+</pre>
+
+:::
+:::
 
 
-![](./assets/img/basic-rebase-3.png)
+## Úlohy (2) {.exercise #exercise-2-merge-rebase}
 
-## Notes
+::: {.exercise}
 
-- merge (no fast forward)
-- squash commit
-- rebase and fast forward
-- semi-linear merge
+1. Naklonuj si k sebe dve kópie [testovacieho repozitára](https://github.com/bbrrck/zoo.git): 
+```bash
+git clone https://github.com/bbrrck/zoo.git zoo-merge
+git clone https://github.com/bbrrck/zoo.git zoo-rebase
+```
+2. V repozitári `zoo-merge`:
+    a. Zlúč cez príkaz `git merge` vetvy `origin/krokodil` a `origin/gorila` do lokálnej vetvy `main`.
+    b. V oboch prípadoch vyrieš vzniknuté konflikty.
 
-https://medium.com/mindorks/understanding-git-merge-git-rebase-88e2afd42671
+*(pokračovanie na ďalšom slajde)*
+:::
 
-https://www.atlassian.com/git/tutorials/merging-vs-rebasing
+## Úlohy (2) {.exercise #exercise-2-merge-rebase-2}
+
+::: {.exercise font-size="80%"}
+
+3. V repozitári `zoo-merge`:
+    a. Prepni sa na vetvu `gorila` a zlúč na ňu cez príkaz `git rebase` vetvu `main`. Vyrieš vzniknuté konflikty.
+    b. Prepni sa na vetvu `main` a zlúč na ňu cez príkaz `git merge` vetvu `gorila`.
+    c. Prepni sa na vetvu `krokodil` a zlúč na cez príkaz `git rebase -i` vetvu `main`. Prostredný commit označ ako `fixup`. Vyrieš vzniknuté konflikty.
+    d. Prepni sa na vetvu `main` a zlúč na ňu cez príkaz `git merge` vetvu `krokodil`.
+4. S pomocou príkazu `git log` porovnaj stav oboch repozitárov.
+5. Čo by sa vo výsledku zmenilo, ak by si vynechal(a) krok 3b?
 
 
+:::

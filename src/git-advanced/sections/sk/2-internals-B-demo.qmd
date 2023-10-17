@@ -1,8 +1,7 @@
-# Demo v Powershelli {#demo-powershell .unnumbered .unlisted}
+# Demo {#demo-powershell .unnumbered .unlisted}
 
-- `lsf` is an alias for `gci -Force -Recurse -File *.|Resolve-path -relative|Sort`
-- `tree` is an alias for `Get-PSTree .git -Exclude *hooks, *info, *pack, *config, *description | Select Hierarchy`
-
+- powershell
+- `.git` tree
 
 ##
 
