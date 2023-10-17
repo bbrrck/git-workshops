@@ -13,9 +13,9 @@ date: "2023.10.18"
 :::
 
 {{< include ./src/git-advanced/sections/sk/1-intro.qmd >}}
-<!-- {{< include ./src/git-advanced/sections/sk/2-internals.qmd >}} -->
+{{< include ./src/git-advanced/sections/sk/2-internals.qmd >}}
 {{< include ./src/git-advanced/sections/sk/3-merge-vs-rebase.qmd >}}
-<!-- {{< include ./src/git-advanced/sections/sk/4-common-issues.qmd >}} -->
-<!-- {{< include ./src/git-advanced/sections/sk/5-cicd.qmd >}} -->
-<!-- {{< include ./src/git-advanced/sections/sk/6-ssh.qmd >}} -->
-<!-- {{< include ./src/common/sk/thanks.qmd >}} -->
+{{< include ./src/git-advanced/sections/sk/4-common-issues.qmd >}}
+{{< include ./src/git-advanced/sections/sk/5-cicd.qmd >}}
+{{< include ./src/git-advanced/sections/sk/6-ssh.qmd >}}
+{{< include ./src/common/sk/thanks.qmd >}}

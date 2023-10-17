@@ -1,20 +1,22 @@
 # Časté otázky a problémy {#common-issues}
 
-## Vrátenie zmien
 
-- Ako vrátim späť posledný commit?
-- Ako vrátim späť starší commit?
-- Ako vrátim späť viacero commitov naraz?
-- Ako vrátim späť len vybrané zmeny z commitu?
-- Ako vrátim späť zmeny ktoré už boli pushnuté?
+:::footer
+[stackoverflow:git](https://stackoverflow.com/questions/tagged/git?tab=votes&pagesize=100&sort=MostVotes)
+:::
+
+
 
 ## `git revert`
 ```zsh
-# odstráň zmeny vykonané v poslednom commite
-git revert HEAD
-# odstráň zmeny vykonané v poslednom commite
-git revert HEAD
+git revert HEAD   # odstráň zmeny vykonané v poslednom commite
+git revert HEAD~1 # odstráň zmeny vykonané v predposlednom commite
 ```
+
+::: {.myinfo}
+Príkaz `git revert` vytvorí novú verziu, a nemení históriu repozitára. 
+:::
+
 
 ## `git reset`
 
@@ -27,15 +29,32 @@ git reset --hard <commit_id>
 Príkaz `git reset` mení históriu repozitára a môže spôsobiť stratu súborov.
 ::: 
 
-## Undo/Redo
+## `reset` vs `revert` vs `checkout`
+
+| Príkaz         | Kontext | Použitie | 
+|----------------|---------|----------|
+| `git reset`	 | Commit  | Zahoď commity v súkromnej vetve alebo zahoď necommitnuté zmeny |
+| `git reset`	 | Súbor   | Odstráň súbor z prípravnej zóny (z indexu) |
+| `git checkout` | Commit  | Presun medzi vetvami alebo prezeranie starých verzií |
+| `git checkout` | Súbor   | Zahoď zmeny v pracovnom adresári |
+| `git revert`	 | Commit  | Vráť commity vo verejnej vetve |
+| `git revert`	 | Súbor   | (N/A) |
+
+: {tbl-colwidths="[23,10,67]"}
+
+:::footer
+[atlassian.com/git/tutorials/resetting-checking-out-and-reverting](https://www.atlassian.com/git/tutorials/resetting-checking-out-and-reverting)
+:::
+
+## Ako vrátim späť lokálne zmeny?
 
 ```bash
 git commit -m "Something terribly misguided"
 git reset HEAD~1
-# [ edit files as necessary ]
+# ... uprav súbory podľa potreby ...
 git add .
-git commit -c ORIG_HEAD # reuse old commit message and open commit editor
-git commit -C ORIG_HEAD # reuse old commit message and skip commit editor
+git commit -c ORIG_HEAD # otvor predošlý popis v commit editore
+git commit -C ORIG_HEAD # použi predošlý popis bez otvorenia commit editoru
 ```
 
 :::footer
@@ -43,16 +62,38 @@ git commit -C ORIG_HEAD # reuse old commit message and skip commit editor
 :::
 
 ## Ako vrátim späť zmeny ktoré už boli pushnuté?
+
 ```bash
 git commit -m "Something terribly misguided"
 git push origin main
 git reset HEAD~1
-# [ edit files as necessary ]
+# ... uprav súbory podľa potreby ...
 git add .
-git commit -C ORIG_HEAD # reuse old commit message and skip commit editor
-git push origin main --force
-git push origin main --force-with-lease # even better
+git commit -C ORIG_HEAD # použi predošlý popis bez otvorenia commit editoru
+git push origin main --force-with-lease # Do not use --force!
 ```
+
+:::footer
+[stackoverflow:22682870](https://stackoverflow.com/q/22682870/1606707)
+:::
+
+## Ako vrátim späť časť commitu?
+
+```bash
+git revert -n $bad_commit  # vráť commit späť, ale neukladaj zmeny
+git reset HEAD .           # zruš pridanie zmien
+git add --patch .          # pridaj požadované zmeny
+git commit                 # vytvor commit z týchto zmien
+git checkout -- .          # odstráň ostatné zmeny
+```
+
+::: {.fontsize-080}
+**Pozn.**: Zmeny, ktoré pridávame pomocou príkazu `git add --patch`, sú zmeny, ktoré chceme vrátiť späť, nie zmeny, ktoré chceme ponechať.
+:::
+
+:::footer
+[stackoverflow:4795600](https://stackoverflow.com/q/4795600/1606707)
+:::
 
 ## Ako premenujem lokálnu vetvu?
 
@@ -80,15 +121,36 @@ git fetch --all --prune # get rid of references to deleted remote branches
 [stackoverflow:2003505](https://stackoverflow.com/q/2003505/1606707)
 :::
 
-## Ako presuniem posledný commit na novú vetvu?
+## Ako presuniem posledných n commitov na novú vetvu?
+
+Presunutie posledných 3 commitov z `main` na novú vetvu `feature`:
+
+```bash
+git checkout main
+git branch feature
+git reset --hard HEAD~3
+git checkout feature
+```
+
+:::footer
+[stackoverflow:1628563](https://stackoverflow.com/q/1628563/1606707)
+:::
 
 ## Ako odstránim súbory z prípravnej zóny?
+
+```bash
+git rm --cached <file>
+```
 
 ## Ako zmením *commit message* v už vytvorenom commite?
 
 ```bash
 git commit --amend -m "New commit message"
 ```
+
+:::footer
+[stackoverflow:179123](https://stackoverflow.com/q/179123/1606707)
+:::
 
 ## Ako pridám súbory do už vytvoreného *commitu*?
 
@@ -97,12 +159,12 @@ git add zabudnuty_subor
 git commit --amend --no-edit # reuse commit message
 ```
 
-## How can I reset or revert a file to a specific revision?
+:::footer
+[stackoverflow:40503417](https://stackoverflow.com/q/40503417/1606707)
+:::
+
+## Ako môžem resetovať alebo vrátiť súbor na konkrétnu verziu?
 
 ```bash
 git checkout c5f567 -- file1/to/restore file2/to/restore
 ```
-
-:::footer
-[stackoverflow:215718](https://stackoverflow.com/q/215718/1606707)
-:::
