@@ -1,3 +1,13 @@
+## 
+
+::: {.center .width-030}
+![](./assets/img/xkcd-1597-git.png)
+:::
+
+:::footer
+[xkcd:1597](https://xkcd.com/1597/)
+:::
+
 ## Čo je to Git?
 
 - **systém riadenia verzií**

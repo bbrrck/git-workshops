@@ -11,6 +11,7 @@
 ```zsh
 git revert HEAD   # odstráň zmeny vykonané v poslednom commite
 git revert HEAD~1 # odstráň zmeny vykonané v predposlednom commite
+git revert d49de0 # odstráň zmeny vykonané v commite s hashom d49de0
 ```
 
 ::: {.myinfo}
@@ -21,8 +22,8 @@ Príkaz `git revert` vytvorí novú verziu, a nemení históriu repozitára.
 ## `git reset`
 
 ```zsh
-# vráť repozitár do stavu po commite s commit_id
-git reset --hard <commit_id>
+# vráť repozitár do stavu *po* commite s hashom d49de0
+git reset --hard d49de0
 ```
 
 ::: {.warning}
@@ -70,7 +71,7 @@ git reset HEAD~1
 # ... uprav súbory podľa potreby ...
 git add .
 git commit -C ORIG_HEAD # použi predošlý popis bez otvorenia commit editoru
-git push origin main --force-with-lease # Do not use --force!
+git push origin main --force-with-lease # nepouživaj '--force'!
 ```
 
 :::footer
@@ -114,7 +115,7 @@ git branch -m oldname newname
 ```bash
 git push -d <remote_name> <branch_name>
 git branch -d <branch_name>
-git fetch --all --prune # get rid of references to deleted remote branches
+git fetch --all --prune # vymaž referencie na vymazané vzdialené vetvy
 ```
 
 :::footer
@@ -126,10 +127,11 @@ git fetch --all --prune # get rid of references to deleted remote branches
 Presunutie posledných 3 commitov z `main` na novú vetvu `feature`:
 
 ```bash
-git checkout main
-git branch feature
-git reset --hard HEAD~3
-git checkout feature
+git checkout main           # prepni sa na main
+git branch feature          # vytvor novú vetvu feature ktorá ukazuje na rovnaký
+                            # commit ako main, ale neprepinaj sa na ňu
+git reset --hard HEAD~3     # vymaž posledné 3 commity
+git checkout feature        # prepni sa na vetvu feature
 ```
 
 :::footer
@@ -142,11 +144,17 @@ git checkout feature
 git rm --cached <file>
 ```
 
-## Ako zmením *commit message* v už vytvorenom commite?
+## Ako zmením popis v už vytvorenom commite?
 
 ```bash
 git commit --amend -m "New commit message"
 ```
+
+. . .
+
+::: {.warning}
+Ak už bol starý commit pushnutý na remote, po použití `git commit --amend` je potrebné pushnúť cez `git push --force` alebo `--force-with-lease`.
+:::
 
 :::footer
 [stackoverflow:179123](https://stackoverflow.com/q/179123/1606707)
@@ -156,8 +164,13 @@ git commit --amend -m "New commit message"
 
 ```bash
 git add zabudnuty_subor
-git commit --amend --no-edit # reuse commit message
+git commit --amend --no-edit # znovu použi predošlý commit message
 ```
+
+::: {.warning}
+Ak už bol starý commit pushnutý na remote, po použití `git commit --amend` je potrebné pushnúť cez `git push --force` alebo `--force-with-lease`.
+:::
+
 
 :::footer
 [stackoverflow:40503417](https://stackoverflow.com/q/40503417/1606707)

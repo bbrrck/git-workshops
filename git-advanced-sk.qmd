@@ -4,18 +4,15 @@ author: "{{< var me.name >}}"
 date: "2023.10.18"
 ---
 
-::: {.center .width-030}
-![](./assets/img/xkcd-1597-git.png)
-:::
-
-:::footer
-[xkcd:1597](https://xkcd.com/1597/)
-:::
-
 {{< include ./src/git-advanced/sections/sk/1-intro.qmd >}}
 {{< include ./src/git-advanced/sections/sk/2-internals.qmd >}}
 {{< include ./src/git-advanced/sections/sk/3-merge-vs-rebase.qmd >}}
 {{< include ./src/git-advanced/sections/sk/4-common-issues.qmd >}}
 {{< include ./src/git-advanced/sections/sk/5-cicd.qmd >}}
 {{< include ./src/git-advanced/sections/sk/6-ssh.qmd >}}
+
+{{< include ./src/git-basics/sections/sk/8-links.qmd >}}
+{{< include ./src/git-basics/sections/glossary.qmd >}}
+{{< include ./src/git-basics/sections/git-cheatsheet.qmd >}}
+
 {{< include ./src/common/sk/thanks.qmd >}}
