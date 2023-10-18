@@ -176,10 +176,10 @@ git clone https://github.com/bbrrck/zoo.git zoo-rebase
 
 ::: {.exercise font-size="80%"}
 
-3. V repozitári `zoo-merge`:
+3. V repozitári `zoo-rebase`:
     a. Prepni sa na vetvu `gorila` a zlúč na ňu cez príkaz `git rebase` vetvu `main`. Vyrieš vzniknuté konflikty.
     b. Prepni sa na vetvu `main` a zlúč na ňu cez príkaz `git merge` vetvu `gorila`.
-    c. Prepni sa na vetvu `krokodil` a zlúč na cez príkaz `git rebase -i` vetvu `main`. Prostredný commit označ ako `fixup`. Vyrieš vzniknuté konflikty.
+    c. Prepni sa na vetvu `krokodil` a zlúč na ňu cez príkaz `git rebase -i` vetvu `main`. Prostredný commit označ ako `fixup`. Vyrieš vzniknuté konflikty.
     d. Prepni sa na vetvu `main` a zlúč na ňu cez príkaz `git merge` vetvu `krokodil`.
 4. S pomocou príkazu `git log` porovnaj stav oboch repozitárov.
 5. Čo by sa vo výsledku zmenilo, ak by si vynechal(a) krok 3b?
