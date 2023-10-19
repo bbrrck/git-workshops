@@ -1,5 +1,453 @@
 [
   {
+    "objectID": "slides/git-basics-sk.html#o-mne",
+    "href": "slides/git-basics-sk.html#o-mne",
+    "title": "Git Basics Workshop",
+    "section": "O mne",
+    "text": "O mne\n\n\n\nTibor Stanko, 32 rokov\nod 2020 dátový inžinier v Zurich Insurance, Bratislava 🇸🇰\npredtým 6 rokov v akademickej sfére vo 🇫🇷 (PhD, postdoc)\nrád automatizujem nudné úlohy s pomocou Pythonu 🐍\nnie som Git guru, no Git používam denne už viac ako 8 rokov\nmoje voľnočasové aktivity: 👨‍👩‍👧‍👦🚲⛰️🎸🎹🍺"
+  },
+  {
+    "objectID": "slides/git-basics-sk.html#obsah-tohto-workshopu",
+    "href": "slides/git-basics-sk.html#obsah-tohto-workshopu",
+    "title": "Git Basics Workshop",
+    "section": "Obsah tohto workshopu",
+    "text": "Obsah tohto workshopu\n\n\n\nÚvod\nGit a Github\nZáklady Gitu\nVetvy (branches)\nVzdialené repozitáre (remotes)\nPokročilý Git\nUžitočné zdroje\n\n\n\n \n\n \n\n— Úlohy (1)\n— Úlohy (2)\n— Úlohy (3)"
+  },
+  {
+    "objectID": "slides/git-basics-sk.html#čo-je-to-git",
+    "href": "slides/git-basics-sk.html#čo-je-to-git",
+    "title": "Git Basics Workshop",
+    "section": "Čo je to Git?",
+    "text": "Čo je to Git?\n\nsystém riadenia verzií\nangl. version control system (VCS) alebo source control management (SCM)\nzaznamenáva históriu vývoja projektu\nužitočný pre tímy aj pre jednotlivcov\nnie je len o kóde, dovoľuje ukladať ľubovoľné súbory (aj netextové)"
+  },
+  {
+    "objectID": "slides/git-basics-sk.html#prečo-potrebujeme-systémy-riadenia-verzií",
+    "href": "slides/git-basics-sk.html#prečo-potrebujeme-systémy-riadenia-verzií",
+    "title": "Git Basics Workshop",
+    "section": "Prečo potrebujeme systémy riadenia verzií?",
+    "text": "Prečo potrebujeme systémy riadenia verzií?"
+  },
+  {
+    "objectID": "slides/git-basics-sk.html#prečo-potrebujeme-systémy-riadenia-verzií-1",
+    "href": "slides/git-basics-sk.html#prečo-potrebujeme-systémy-riadenia-verzií-1",
+    "title": "Git Basics Workshop",
+    "section": "Prečo potrebujeme systémy riadenia verzií?",
+    "text": "Prečo potrebujeme systémy riadenia verzií?"
+  },
+  {
+    "objectID": "slides/git-basics-sk.html#čo-umožňuje-git",
+    "href": "slides/git-basics-sk.html#čo-umožňuje-git",
+    "title": "Git Basics Workshop",
+    "section": "Čo umožňuje Git?",
+    "text": "Čo umožňuje Git?\n\n\nukladať verzie\nprepínať medzi verziami\nobnoviť predošlú verziu\nporovnávať verzie\nvytvárať vetvy\nzlučovať vetvy\nzálohovať súbory"
+  },
+  {
+    "objectID": "slides/git-basics-sk.html#čo-je-to-github",
+    "href": "slides/git-basics-sk.html#čo-je-to-github",
+    "title": "Git Basics Workshop",
+    "section": "Čo je to Github?",
+    "text": "Čo je to Github?\n\n“sociálna sieť pre programátorov”\nGit = systém riadenia verzií\nGithub = cloudový portál na ukladanie repozitárov\npoužíva Git, no nie je jeho súčasťou \nobsahuje funkcionalitu ktorá nie je v Gite\n\nIssues, Pull requests, Actions, …\n\npodobné služby: Gitlab, Bitbucket, Azure DevOps, a iné"
+  },
+  {
+    "objectID": "slides/git-basics-sk.html#krok-0-pracujeme-s-terminálom",
+    "href": "slides/git-basics-sk.html#krok-0-pracujeme-s-terminálom",
+    "title": "Git Basics Workshop",
+    "section": "Krok 0: Pracujeme s terminálom",
+    "text": "Krok 0: Pracujeme s terminálom\n\nAby sme pochopili ako Git funguje, budeme na začiatku spúšťať Git cez terminál\nNeskôr si ukážeme aj použitie Gitu priamo v IDE (napr. vo VS Code)\nVo Windowse odporúčam Windows Terminal s PowerShell (built-in) alebo Nushell\n\n\n\nZákladné príkazy na navigáciu medzi adresármi v termináli:\n\npwd — vypíš aktuálny adresár\ncd folder — zmeň aktuálny adresár na folder\n\n\n&gt;&gt; pwd                       # C:/Users/tibor.stanko\n&gt;&gt; cd folder                 # C:/Users/tibor.stanko/folder\n&gt;&gt; cd ..                     # C:/Users/tibor.stanko\n&gt;&gt; cd C:/Users/janko.hrasko  # C:/Users/janko.hrasko\n&gt;&gt; cd ~                      # C:/Users/tibor.stanko"
+  },
+  {
+    "objectID": "slides/git-basics-sk.html#krok-1-inštalácia-gitu",
+    "href": "slides/git-basics-sk.html#krok-1-inštalácia-gitu",
+    "title": "Git Basics Workshop",
+    "section": "Krok 1: Inštalácia Gitu",
+    "text": "Krok 1: Inštalácia Gitu\n\nVo Windowse existuje viacero spôsobov ako nainštalovať Git, napr.\n\ncez klasický inštalátor\ncez scoop (odporúčam) — v PowerShell spustite nasledovné príkazy:\n\n\nSet-ExecutionPolicy RemoteSigned -Scope CurrentUser\nirm get.scoop.sh | iex # inštalácia scoopu\nscoop install git # inštalácia gitu\n\nInštrukcie pre macOS alebo Linux sú na oficiálnej stránke v angličtine aj v češtine."
+  },
+  {
+    "objectID": "slides/git-basics-sk.html#krok-2-nastavenie-gitu",
+    "href": "slides/git-basics-sk.html#krok-2-nastavenie-gitu",
+    "title": "Git Basics Workshop",
+    "section": "Krok 2: Nastavenie Gitu",
+    "text": "Krok 2: Nastavenie Gitu\n\nSkontrolujme či je Git správne nainštalovaný:\n\ngit --version\n\nPredtým ako začneme pracovať s Gitom, je potrebné nastaviť si meno a email cez príkaz git config. Tieto údaje bude Git používať na priradenie autora k verzii.\n\ngit config --global user.name \"Tibor Stanko\"\ngit config --global user.email \"tibor.stanko@gmail.com\"\n\nPredvolenú vetvu si nastavíme na main (o vetvách si povieme viac neskôr)\n\ngit config --global init.defaultBranch \"main\""
+  },
+  {
+    "objectID": "slides/git-basics-sk.html#krok-3-vytvorenie-git-repozitára",
+    "href": "slides/git-basics-sk.html#krok-3-vytvorenie-git-repozitára",
+    "title": "Git Basics Workshop",
+    "section": "Krok 3: Vytvorenie Git repozitára",
+    "text": "Krok 3: Vytvorenie Git repozitára\n\nPrepneme sa do adresára z ktorého chceme spraviť repozitár:\n\ncd ~/hello\n\nPríkaz git init slúži na vytvorenie Git repozitára v aktuálnom adresári:\n\ngit init\n\nPo spustení príkazu Git vypíše:\n\nInitialized empty Git repository in C:/Users/tibor.stanko/hello/.git/"
+  },
+  {
+    "objectID": "slides/git-basics-sk.html#krok-3-vytvorenie-git-repozitára-1",
+    "href": "slides/git-basics-sk.html#krok-3-vytvorenie-git-repozitára-1",
+    "title": "Git Basics Workshop",
+    "section": "Krok 3: Vytvorenie Git repozitára",
+    "text": "Krok 3: Vytvorenie Git repozitára\n\nStav repozitára môžeme skontrolovať cez git status:\n\ngit status\n\nTakto vyzerá stav prázdneho Git repozitáru (žiadne súbory ani uložené verzie):\n\nOn branch main\n\nNo commits yet\n\nnothing to commit (create/copy files and use \"git add\" to track)"
+  },
+  {
+    "objectID": "slides/git-basics-sk.html#krok-4-uloženie-verzie",
+    "href": "slides/git-basics-sk.html#krok-4-uloženie-verzie",
+    "title": "Git Basics Workshop",
+    "section": "Krok 4: Uloženie verzie",
+    "text": "Krok 4: Uloženie verzie\nUloženie verzie prebieha v dvoch krokoch.\n\nCez git add označíme zmeny ktoré majú byť pridané do novej verzie:\n\ngit add hello.py\n\nCez git commit vytvoríme záznam o novej verzii:\n\ngit commit -m \"Add hello.py\""
+  },
+  {
+    "objectID": "slides/git-basics-sk.html#krok-4-uloženie-verzie-1",
+    "href": "slides/git-basics-sk.html#krok-4-uloženie-verzie-1",
+    "title": "Git Basics Workshop",
+    "section": "Krok 4: Uloženie verzie",
+    "text": "Krok 4: Uloženie verzie\n\nPopis záznamu (commit message) je väčšinou krátka jednoriadková správa ktorá sa špecifikuje cez argument -m \"commit message\"\nAk chceme napísať dlhší popis, argument -m vynecháme. git commit vtedy otvorí textový editor v ktorom popis napíšeme.\nV Gite na Windowse je na písanie commit message predvolený editor vim, ktorý beží priamo v termináli. Ak nemáte skúsenosti s používaním vimu, môžete si editor zmeniť napr. na notepad:\n\ngit config --global core.editor notepad"
+  },
+  {
+    "objectID": "slides/git-basics-sk.html#krok-4-uloženie-verzie-2",
+    "href": "slides/git-basics-sk.html#krok-4-uloženie-verzie-2",
+    "title": "Git Basics Workshop",
+    "section": "Krok 4: Uloženie verzie",
+    "text": "Krok 4: Uloženie verzie\n\nNeflákajte písanie commit messages!\n\n\n\n\nxkcd:1296"
+  },
+  {
+    "objectID": "slides/git-basics-sk.html#prečo-verziu-ukladáme-v-dvoch-krokoch",
+    "href": "slides/git-basics-sk.html#prečo-verziu-ukladáme-v-dvoch-krokoch",
+    "title": "Git Basics Workshop",
+    "section": "Prečo verziu ukladáme v dvoch krokoch?",
+    "text": "Prečo verziu ukladáme v dvoch krokoch?\nNiektoré systémy na kontrolu verzií fungujú tak že vytvoria novú verziu zo všetkých aktuálnych súborov v repozitári. Tento spôsob ukladania záloh môže byť nevýhodný. Príkladom je situácia keď sme v repozitári implementovali dve nezávislé funkcie, a chceme ich zachytiť v dvoch rozdielnych verziách. V Gite preto existuje koncept prípravnej zóny (staging area), vďaka ktorej máme kontrolu nad tým ktoré zmeny budú a ktoré nebudú pridané do nasledujúcej verzie.\n# 1. add/stage - pridaj súbor prípravnej zóny\ngit add test.txt\n# 2. commit - ulož novú verziu\ngit commit -m \"added test.txt\""
+  },
+  {
+    "objectID": "slides/git-basics-sk.html#krok-5-kontrola-stavu-repozitára",
+    "href": "slides/git-basics-sk.html#krok-5-kontrola-stavu-repozitára",
+    "title": "Git Basics Workshop",
+    "section": "Krok 5: Kontrola stavu repozitára",
+    "text": "Krok 5: Kontrola stavu repozitára\n\nAktuálny stav repozitára môžeme skontrolovať cez git status:\n\nOn branch main\nnothing to commit, working tree clean\n\nCez príkaz git log sa môžeme presvedčiť o tom že záznam (commit) bol vytvorený:\n\ncommit bf5c9b4a320012b422546fcb86f5b957104bea55 (HEAD -&gt; main)\nAuthor: Tibor Stanko &lt;tibor.stanko@gmail.com&gt;\nDate:   Tue Sep 13 17:00:00 2022 +0200\n\n    Add hello.py"
+  },
+  {
+    "objectID": "slides/git-basics-sk.html#odstránenie-súboru-z-prípravnej-zóny",
+    "href": "slides/git-basics-sk.html#odstránenie-súboru-z-prípravnej-zóny",
+    "title": "Git Basics Workshop",
+    "section": "Odstránenie súboru z prípravnej zóny",
+    "text": "Odstránenie súboru z prípravnej zóny\n\nCez git reset [file] odstránime súbor z prípravnej zóny bez straty zmien v súbore\n\ngit add dummy.txt\ngit status\nOn branch main\n\nNo commits yet\n\nChanges to be committed:\n  (use \"git rm --cached &lt;file&gt;...\" to unstage)\n        new file:   dummy.txt"
+  },
+  {
+    "objectID": "slides/git-basics-sk.html#odstránenie-súboru-z-prípravnej-zóny-1",
+    "href": "slides/git-basics-sk.html#odstránenie-súboru-z-prípravnej-zóny-1",
+    "title": "Git Basics Workshop",
+    "section": "Odstránenie súboru z prípravnej zóny",
+    "text": "Odstránenie súboru z prípravnej zóny\n\nCez git reset [file] odstránime súbor z prípravnej zóny bez straty zmien v súbore\n\ngit reset dummy.txt\ngit status\nOn branch main\n\nNo commits yet\n\nUntracked files:\n  (use \"git add &lt;file&gt;...\" to include in what will be committed)\n        dummy.txt"
+  },
+  {
+    "objectID": "slides/git-basics-sk.html#exercise-1-basics",
+    "href": "slides/git-basics-sk.html#exercise-1-basics",
+    "title": "Git Basics Workshop",
+    "section": "Úlohy (1)",
+    "text": "Úlohy (1)\n\n\nVytvor si na svojom počítači prázdny adresár zoo\nSprav z adresára zoo Git repozitár\nVytvor v repozitári súbor test.txt s ľubovoľným obsahom\nPridaj test.txt do ďalšej verzie a ulož ju\nSkontroluj novú verziu cez git log\n\n\n\nTip: nezabudni počas práce používať git status na zistenie aktuálneho stavu repozitára."
+  },
+  {
+    "objectID": "slides/git-basics-sk.html#čo-je-to-vetva-branch",
+    "href": "slides/git-basics-sk.html#čo-je-to-vetva-branch",
+    "title": "Git Basics Workshop",
+    "section": "Čo je to vetva (branch) ?",
+    "text": "Čo je to vetva (branch) ?\n\nVetvy slúžia na vybočenie z hlavnej línie a pokračovanie v práci bez zásahu do nej\nVetvenie je silnou stránkou Gitu — prepínanie medzi vetvami je rýchle, čo umožňuje časté vytváranie nových vetiev\nDoteraz sme pracovali na vetve main, ktorú automaticky vytvoril git init\nZoznam vetiev si môžeme pozrieť cez príkaz git branch:\n\n&gt;&gt; git branch\n* main\n\nV Gite je prednastavená hlavná vetva master. Tento názov sa v posledných rokoch stal kontroverzným a postupne sa prestáva používať. Preto sme pri nastavovaní Gitu zmenili init.defaultBranch na main."
+  },
+  {
+    "objectID": "slides/git-basics-sk.html#načo-sú-dobré-vetvy",
+    "href": "slides/git-basics-sk.html#načo-sú-dobré-vetvy",
+    "title": "Git Basics Workshop",
+    "section": "Načo sú dobré vetvy?",
+    "text": "Načo sú dobré vetvy?\n\nVetvy umožňujú efektívne pracovať paralelne na viacerých častiach projektu\nPríkladom je situácia keď vytvárame novú funkcionalitu (vetva A), a vyskytne sa bug ktorý musí byť hneď opravený (vetva B)\nVďaka Gitu môže práca na týchto dvoch vetvách prebiehať nezávisle\n\n\nrewrite/improve second bullet"
+  },
+  {
+    "objectID": "slides/git-basics-sk.html#vytvorenie-vetvy-branch",
+    "href": "slides/git-basics-sk.html#vytvorenie-vetvy-branch",
+    "title": "Git Basics Workshop",
+    "section": "Vytvorenie vetvy (branch)",
+    "text": "Vytvorenie vetvy (branch)\n\nNa vytvorenie novej vetvy s názvom french zavoláme\n\ngit branch french\n\nAk sa chceme prepnúť na novú vetvu:\n\ngit checkout french\n\nTieto dve operácie sa veľmi často robia spolu, preto existuje skratka:\n\ngit checkout -b slovak # vytvor vetvu 'slovak' a prepni sa na ňu"
+  },
+  {
+    "objectID": "slides/git-basics-sk.html#zlučovanie-vetiev-merge",
+    "href": "slides/git-basics-sk.html#zlučovanie-vetiev-merge",
+    "title": "Git Basics Workshop",
+    "section": "Zlučovanie vetiev (merge)",
+    "text": "Zlučovanie vetiev (merge)\n\nAk chceme pridať zmeny spravené na vetve slovak do hlavnej vetvy main, prepneme sa najprv na hlavnú vetvu:\n\ngit checkout main\n\nNa zlučovanie vetiev použijeme príkaz git merge:\n\ngit merge slovak"
+  },
+  {
+    "objectID": "slides/git-basics-sk.html#zlučovanie-vetiev-merge-1",
+    "href": "slides/git-basics-sk.html#zlučovanie-vetiev-merge-1",
+    "title": "Git Basics Workshop",
+    "section": "Zlučovanie vetiev (merge)",
+    "text": "Zlučovanie vetiev (merge)\nAuto-merge\n\nAk je to možné, Git automaticky zlúči zmeny z oboch vetiev. V takom prípade uvidíme nasledovný výstup:\n\n&gt;&gt; git merge slovak\nAuto-merging hello.py\nMerge made by the 'ort' strategy.\n hello.py | 12 +++++++++++-\n 1 file changed, 11 insertions(+), 1 deletion(-)"
+  },
+  {
+    "objectID": "slides/git-basics-sk.html#zlučovanie-vetiev-merge-2",
+    "href": "slides/git-basics-sk.html#zlučovanie-vetiev-merge-2",
+    "title": "Git Basics Workshop",
+    "section": "Zlučovanie vetiev (merge)",
+    "text": "Zlučovanie vetiev (merge)\nFast-forward\n\nV prípade že zlučovaná vetva je priamym potomkom cieľovej vetvy, Git urobí tzv. fast-forward:\n\n&gt;&gt; git merge comment\nUpdating 3a5d22e..9ad633c\nFast-forward\n hello.py | 1 +\n 1 file changed, 1 insertion(+)"
+  },
+  {
+    "objectID": "slides/git-basics-sk.html#zlučovanie-vetiev-merge-3",
+    "href": "slides/git-basics-sk.html#zlučovanie-vetiev-merge-3",
+    "title": "Git Basics Workshop",
+    "section": "Zlučovanie vetiev (merge)",
+    "text": "Zlučovanie vetiev (merge)\nRiešenie konfliktov\n\nAk automatické zlúčenie zlyhá, Git nám vo výstupe nahlási merge conflict. V takomto prípade musia byť zmeny z oboch vetiev zlúčené manuálne.\n\n&gt;&gt; git merge french\nAuto-merging hello.py\nCONFLICT (content): Merge conflict in hello.py\nAutomatic merge failed; fix conflicts and then commit the result.\n\nPo manuálnom zlúčení je potrebné pridať zmenené súbory do novej verzie:\n\ngit add hello.py\ngit commit -m \"Merged branch 'french'\""
+  },
+  {
+    "objectID": "slides/git-basics-sk.html#vymazanie-vetvy-delete",
+    "href": "slides/git-basics-sk.html#vymazanie-vetvy-delete",
+    "title": "Git Basics Workshop",
+    "section": "Vymazanie vetvy (delete)",
+    "text": "Vymazanie vetvy (delete)\n\nAk po zlúčení vetvu už nepotrebujeme, môžeme ju vymazať cez git branch --delete, skrátene git branch -d.\n\ngit branch -d comment\n\nPo vymazaní je vetva odstránená z histórie a nie je možné ju obnoviť."
+  },
+  {
+    "objectID": "slides/git-basics-sk.html#príklad-git-log-histórie",
+    "href": "slides/git-basics-sk.html#príklad-git-log-histórie",
+    "title": "Git Basics Workshop",
+    "section": "Príklad git log histórie",
+    "text": "Príklad git log histórie\n\nadd mermaid diagram for this git log output\n\n*   3a5d22e (HEAD -&gt; main) Merge branch 'french'\n|\\\n| * 21c7ab7 (french) Add french functionality\n* |   1364948 Merge branch 'slovak'\n|\\ \\\n| * | c3159a6 (slovak) Add slovak functionality\n| |/\n* / 67e86d0 Fix missing exclamation mark\n|/\n* de1543b Add hello.py"
+  },
+  {
+    "objectID": "slides/git-basics-sk.html#exercise-2-branches",
+    "href": "slides/git-basics-sk.html#exercise-2-branches",
+    "title": "Git Basics Workshop",
+    "section": "Úlohy (2)",
+    "text": "Úlohy (2)\n\n\nVo svojom lokálnom repozitári sa prepni na novú vetvu animals\nVytvor v repozitári nový súbor zoo.txt s nasledovným obsahom:\n\n\npanda\nslon\nlev\nzirafa\n\n\nUlož novú verziu ktorá bude obsahovať zoo.txt\nZlúč zmeny spravené na vetve animals do vetvy main a vymaž vetvu animals\nNa novej vetve tiger zmeň riadok lev na tiger a ulož novú verziu\nPrepni sa na vetvu main, oprav riadok zirafa na žirafa a ulož novú verziu\nZlúč zmeny z vetvy tiger s vetvou main"
+  },
+  {
+    "objectID": "slides/git-basics-sk.html#čo-je-to-vzdialený-repozitár-remote",
+    "href": "slides/git-basics-sk.html#čo-je-to-vzdialený-repozitár-remote",
+    "title": "Git Basics Workshop",
+    "section": "Čo je to vzdialený repozitár (remote)?",
+    "text": "Čo je to vzdialený repozitár (remote)?\n\nDoteraz sme pracovali s lokálnym Git repozitárom ktorý je uložený na našom počítači\nVzdialený repozitár (remote) je uložený na Internete — presnejšie, na webovom serveri\nnapr. github.com, firemný server, univerzitný server, …\n\n\n\nExistujú dva typy remote repozitárov:\n\nverejný (public) repozitár je zdieľaný so všetkými používateľmi s prístupom na server\nsúkromný (private) repozitár je zdieľaný iba s vybranými používateľmi"
+  },
+  {
+    "objectID": "slides/git-basics-sk.html#na-čo-slúžia-vzdialené-repozitáre",
+    "href": "slides/git-basics-sk.html#na-čo-slúžia-vzdialené-repozitáre",
+    "title": "Git Basics Workshop",
+    "section": "Na čo slúžia vzdialené repozitáre?",
+    "text": "Na čo slúžia vzdialené repozitáre?\n\nZálohovanie kódu\nZdieľanie kódu\nSynchronizácia kódu v tíme"
+  },
+  {
+    "objectID": "slides/git-basics-sk.html#vytvorenie-repozitára-na-githube-github.comnew",
+    "href": "slides/git-basics-sk.html#vytvorenie-repozitára-na-githube-github.comnew",
+    "title": "Git Basics Workshop",
+    "section": "Vytvorenie repozitára na Githube — github.com/new",
+    "text": "Vytvorenie repozitára na Githube — github.com/new"
+  },
+  {
+    "objectID": "slides/git-basics-sk.html#vytvorenie-repozitára-na-githube-github.comnew-1",
+    "href": "slides/git-basics-sk.html#vytvorenie-repozitára-na-githube-github.comnew-1",
+    "title": "Git Basics Workshop",
+    "section": "Vytvorenie repozitára na Githube — github.com/new",
+    "text": "Vytvorenie repozitára na Githube — github.com/new"
+  },
+  {
+    "objectID": "slides/git-basics-sk.html#vytvorenie-repozitára-na-githube-github.comnew-2",
+    "href": "slides/git-basics-sk.html#vytvorenie-repozitára-na-githube-github.comnew-2",
+    "title": "Git Basics Workshop",
+    "section": "Vytvorenie repozitára na Githube — github.com/new",
+    "text": "Vytvorenie repozitára na Githube — github.com/new"
+  },
+  {
+    "objectID": "slides/git-basics-sk.html#vytvorenie-repozitára-na-githube-github.comnew-3",
+    "href": "slides/git-basics-sk.html#vytvorenie-repozitára-na-githube-github.comnew-3",
+    "title": "Git Basics Workshop",
+    "section": "Vytvorenie repozitára na Githube — github.com/new",
+    "text": "Vytvorenie repozitára na Githube — github.com/new"
+  },
+  {
+    "objectID": "slides/git-basics-sk.html#vytvorenie-repozitára-na-githube-github.comnew-4",
+    "href": "slides/git-basics-sk.html#vytvorenie-repozitára-na-githube-github.comnew-4",
+    "title": "Git Basics Workshop",
+    "section": "Vytvorenie repozitára na Githube — github.com/new",
+    "text": "Vytvorenie repozitára na Githube — github.com/new"
+  },
+  {
+    "objectID": "slides/git-basics-sk.html#nastavenie-remote-v-lokálnom-repozitári",
+    "href": "slides/git-basics-sk.html#nastavenie-remote-v-lokálnom-repozitári",
+    "title": "Git Basics Workshop",
+    "section": "Nastavenie remote v lokálnom repozitári",
+    "text": "Nastavenie remote v lokálnom repozitári\n\nNa nastavenie vzdialeného repozitára použijeme príkaz git remote add &lt;name&gt; &lt;url&gt;:\n\ngit remote add origin https://github.com/bbrrck/zoo.git\n\nname bude Git používať ako meno vzdialeného repozitára na adrese url. Meno môže byť ľubovoľné; bežne sa stretneme s menom origin.\nLokálny repozitár môže mať priradený aj viac ako jeden remote."
+  },
+  {
+    "objectID": "slides/git-basics-sk.html#poslanie-lokálnej-kópie-na-remote",
+    "href": "slides/git-basics-sk.html#poslanie-lokálnej-kópie-na-remote",
+    "title": "Git Basics Workshop",
+    "section": "Poslanie lokálnej kópie na remote",
+    "text": "Poslanie lokálnej kópie na remote\n\nPríkaz git push &lt;remote&gt; &lt;branch&gt; “pretlačí” lokálne zmeny z vetvy branch do vzdialeného repozitára remote:\n\ngit push origin main\n\nPri prvom zavolaní git push je potrebné pridať argument -u:\n\ngit push -u origin main\n\n-u alebo --set-upstream nastaví predvolenú remote vetvu (origin/main) pre aktuálnu lokálnu vetvu (main)\nak remote vetva origin/main neexistuje, git push ju automaticky vytvorí"
+  },
+  {
+    "objectID": "slides/git-basics-sk.html#príklad-výstupu-z-git-push",
+    "href": "slides/git-basics-sk.html#príklad-výstupu-z-git-push",
+    "title": "Git Basics Workshop",
+    "section": "Príklad výstupu z git push",
+    "text": "Príklad výstupu z git push\ngit push -u origin main\n\nVýstup:\n\nEnumerating objects: 3, done.\nCounting objects: 100% (3/3), done.\nWriting objects: 100% (3/3), 241 bytes | 120.00 KiB/s, done.\nTotal 3 (delta 0), reused 0 (delta 0), pack-reused 0\nTo https://github.com/bbrrck/test-repo-01.git\n * [new branch]      main -&gt; main\nbranch 'main' set up to track 'origin/main'."
+  },
+  {
+    "objectID": "slides/git-basics-sk.html#odbočka-prihlásenie-do-githubu",
+    "href": "slides/git-basics-sk.html#odbočka-prihlásenie-do-githubu",
+    "title": "Git Basics Workshop",
+    "section": "Odbočka: prihlásenie do Githubu",
+    "text": "Odbočka: prihlásenie do Githubu\n\nAby mohol Git posielať dáta na Github, je potrebná autentifikácia\nNajjednoduchší spôsob na správu prihlasovacích udajov: Git Credential Manager\n(je súčasťou Git for Windows)\nKonfigurácia sa začne automaticky po prvom spustení git push"
+  },
+  {
+    "objectID": "slides/git-basics-sk.html#zoznam-vetiev",
+    "href": "slides/git-basics-sk.html#zoznam-vetiev",
+    "title": "Git Basics Workshop",
+    "section": "Zoznam vetiev",
+    "text": "Zoznam vetiev\n\ngit branch -a vypíše zoznam všetkých vetiev, lokálnych aj vzdialených\n-a je skratka pre --all\n\ngit branch -a\n\nVýstup — * označuje aktuálnu vetvu:\n\n* main\n  tiger\n  remotes/origin/main"
+  },
+  {
+    "objectID": "slides/git-basics-sk.html#konflikt-remote-zmeny-neexistujú-lokálne",
+    "href": "slides/git-basics-sk.html#konflikt-remote-zmeny-neexistujú-lokálne",
+    "title": "Git Basics Workshop",
+    "section": "Konflikt: remote zmeny neexistujú lokálne",
+    "text": "Konflikt: remote zmeny neexistujú lokálne\nTo https://github.com/bbrrck/zoo.git\n ! [rejected]        main -&gt; main (fetch first)\nerror: failed to push some refs to 'https://github.com/bbrrck/zoo.git'\nhint: Updates were rejected because the remote contains work that you do\nhint: not have locally. This is usually caused by another repository pushing\nhint: to the same ref. You may want to first integrate the remote changes\nhint: (e.g., 'git pull ...') before pushing again.\nhint: See the 'Note about fast-forwards' in 'git push --help' for details."
+  },
+  {
+    "objectID": "slides/git-basics-sk.html#stiahnutie-remote-zmien-do-lokálnej-vetvy",
+    "href": "slides/git-basics-sk.html#stiahnutie-remote-zmien-do-lokálnej-vetvy",
+    "title": "Git Basics Workshop",
+    "section": "Stiahnutie remote zmien do lokálnej vetvy",
+    "text": "Stiahnutie remote zmien do lokálnej vetvy\n\nPomocou príkazu git fetch stiahneme zoznam zmien z remote vetvy:\n\ngit fetch\n\nZmeny ktoré nie sú súčasťou lokálnej vetvy zlúčime pomocou git merge:\n\ngit merge # bez argumentov\n\nVo väčšine prípadov môžeme jednoducho zavolať príkaz git pull, ktorý je kombináciou git fetch a git merge:\n\ngit pull"
+  },
+  {
+    "objectID": "slides/git-basics-sk.html#klonovanie-existujúceho-remote-repozitára",
+    "href": "slides/git-basics-sk.html#klonovanie-existujúceho-remote-repozitára",
+    "title": "Git Basics Workshop",
+    "section": "Klonovanie existujúceho remote repozitára",
+    "text": "Klonovanie existujúceho remote repozitára\n\nExistujúci vzdialený repozitár môžeme naklonovať pomocou git clone:\n\ngit clone &lt;remote_url&gt; &lt;local_folder&gt;\n\nTento príkaz vytvorí kópiu repozitára z remote_url v adresári local_folder\nPríklad:\n\ngit clone https://github.com/bbrrck/zoo.git myzoo\n# alebo\ngit clone https://github.com/bbrrck/zoo.git # naklonuje sa do adresára `zoo`"
+  },
+  {
+    "objectID": "slides/git-basics-sk.html#exercise-3-remotes",
+    "href": "slides/git-basics-sk.html#exercise-3-remotes",
+    "title": "Git Basics Workshop",
+    "section": "Úlohy (3)",
+    "text": "Úlohy (3)\n\n\nVytvor si na Githube repozitar s názvom zoo.\nPridaj tento remote do svojho lokálneho repa.\nNahraj lokálnu vetvu main na remote.\nNa Githube pridaj do súboru zoo.txt za meno každého zvieraťa jeho emoji: 🐼🐘🐯🦒\nZosynchronizuj lokálne repo s Githubom.\nNa Githube pridaj do súboru zoo.txt nový riadok krokodíl 🐊 a ulož novú verziu.\nV lokálnom repe pridaj do súboru zoo.txt nový riadok gorila 🦍 a ulož novú verziu.\nZosynchronizuj lokálne repo s Githubom a vyrieš vzniknutý merge conflict."
+  },
+  {
+    "objectID": "slides/git-basics-sk.html#gitignore",
+    "href": "slides/git-basics-sk.html#gitignore",
+    "title": "Git Basics Workshop",
+    "section": ".gitignore",
+    "text": ".gitignore\n\nšpecifikuje ktoré súbory má Git ignorovať\n.gitignore generátor"
+  },
+  {
+    "objectID": "slides/git-basics-sk.html#git-command---help",
+    "href": "slides/git-basics-sk.html#git-command---help",
+    "title": "Git Basics Workshop",
+    "section": "git <command> --help",
+    "text": "git &lt;command&gt; --help\n# vypíš pomoc (dokumentáciu) ku danému príkazu -- napr. git commit\ngit commit --help \n# alebo \ngit commit -h"
+  },
+  {
+    "objectID": "slides/git-basics-sk.html#git-diff",
+    "href": "slides/git-basics-sk.html#git-diff",
+    "title": "Git Basics Workshop",
+    "section": "git diff",
+    "text": "git diff\n# zobraz zmeny medzi dvoma verziami\ngit diff\ngit diff zoo.txt\ngit diff 235a0d8 5d94512 zoo.txt\ngit diff HEAD~1 HEAD zoo.txt"
+  },
+  {
+    "objectID": "slides/git-basics-sk.html#git-cat-file--p",
+    "href": "slides/git-basics-sk.html#git-cat-file--p",
+    "title": "Git Basics Workshop",
+    "section": "git cat-file -p",
+    "text": "git cat-file -p\n# zobraz obsah Git objektu (commit, tree, blob)\ngit cat-file -p 235a0d8"
+  },
+  {
+    "objectID": "slides/git-basics-sk.html#git-restore",
+    "href": "slides/git-basics-sk.html#git-restore",
+    "title": "Git Basics Workshop",
+    "section": "git restore",
+    "text": "git restore\n# pridaj súbor do prípravnej zóny (staging area)\ngit add zoo.txt\n# odstráň súbor z prípravnej zóny (unstage)\ngit restore --staged zoo.txt"
+  },
+  {
+    "objectID": "slides/git-basics-sk.html#git-add---interactive",
+    "href": "slides/git-basics-sk.html#git-add---interactive",
+    "title": "Git Basics Workshop",
+    "section": "git add --interactive",
+    "text": "git add --interactive\n# interaktívne pridaj zmeny\ngit add --interactive \n# alebo\ngit add -i"
+  },
+  {
+    "objectID": "slides/git-basics-sk.html#git-log",
+    "href": "slides/git-basics-sk.html#git-log",
+    "title": "Git Basics Workshop",
+    "section": "git log",
+    "text": "git log\n# prispôb výstup z git logu \ngit log --all --oneline --graph --decorate\n# alebo\ngit config --global alias.nicelog \"log --all --graph --decorate --oneline\"\ngit nicelog"
+  },
+  {
+    "objectID": "slides/git-basics-sk.html#git-stash",
+    "href": "slides/git-basics-sk.html#git-stash",
+    "title": "Git Basics Workshop",
+    "section": "git stash",
+    "text": "git stash\n# dočasne odstráň zmeny vo working directory\ngit stash\n# obnov odstránené zmeny\ngit stash pop"
+  },
+  {
+    "objectID": "slides/git-basics-sk.html#git-blame",
+    "href": "slides/git-basics-sk.html#git-blame",
+    "title": "Git Basics Workshop",
+    "section": "git blame",
+    "text": "git blame\n# zisti kto spravil poslednú zmenu v každom riadku\ngit blame"
+  },
+  {
+    "objectID": "slides/git-basics-sk.html#git-revert",
+    "href": "slides/git-basics-sk.html#git-revert",
+    "title": "Git Basics Workshop",
+    "section": "git revert",
+    "text": "git revert\n# odstráň zmeny vykonané v poslednom commite\ngit revert HEAD\n\nPríkaz git revert vytvorí novú verziu, a nemení históriu repozitára."
+  },
+  {
+    "objectID": "slides/git-basics-sk.html#git-reset",
+    "href": "slides/git-basics-sk.html#git-reset",
+    "title": "Git Basics Workshop",
+    "section": "git reset",
+    "text": "git reset\n# vráť repozitár do stavu po commite s commit_id\ngit reset --hard &lt;commit_id&gt;\n\nPríkaz git reset mení históriu repozitára a môže spôsobiť stratu súborov."
+  },
+  {
+    "objectID": "slides/git-basics-sk.html#čo-je-to-markdown",
+    "href": "slides/git-basics-sk.html#čo-je-to-markdown",
+    "title": "Git Basics Workshop",
+    "section": "Čo je to Markdown?",
+    "text": "Čo je to Markdown?\n\nMarkdown je jednoduchý značkovací jazyk (ako HTML alebo TeX) ktorý sa používa na tvorbu rôznych typov obsahu: dokumenty, články, slidy, webstránky, …\nMarkdown je de facto štandard pre dokumentovanie Git projektov\nVäčšina Github projektov má README.md ktorý Github automaticky vyrenderuje\nPríklady dobre napísaných README súborov: matiassingers/awesome-readme\n\n\nAj tieto slidy boli vytvorené s použitím Markdownu! (pomocou systému Quarto)"
+  },
+  {
+    "objectID": "slides/git-basics-sk.html#section-2",
+    "href": "slides/git-basics-sk.html#section-2",
+    "title": "Git Basics Workshop",
+    "section": "",
+    "text": "# Markdown is Awesome\n\nMarkdown is very simple and versatile.\n\nThis is a Markdown paragraph. \nThis is still the same paragraph.\n\n## Formmatting options\n\nBulleted list:\n\n- *italic*\n- **bold**\n- ***bold and italic***\n- ~~strikethrough~~\n- [link](https://www.markdownguide.org/)\n- `code`\n\nNumbered list:\n\n1. first item\n2. second item\n3. last item\n\n\nMarkdown is Awesome\nMarkdown is very simple and versatile.\nThis is a Markdown paragraph. This is still the same paragraph.\nFormatting options\nBulleted list:\n\nitalic\nbold\nbold and italic\nstrikethrough\nlink\ncode\n\nNumbered list:\n\nfirst item\nsecond item\nlast item"
+  },
+  {
+    "objectID": "slides/git-basics-sk.html#section-3",
+    "href": "slides/git-basics-sk.html#section-3",
+    "title": "Git Basics Workshop",
+    "section": "",
+    "text": "### Code blocks\n\n```python\ndef main():\n    print(\"hello!\")\n\nif __name__ == \"__main__\":\n    main()\n```\n\n### Images\n\n![Queen Elizabeth II](https://upload.wikimedia.org/wikipedia/commons/1/11/Queen_Elizabeth_II_official_portrait_for_1959_tour_%28retouched%29_%28cropped%29_%283-to-4_aspect_ratio%29.jpg) \n\n### Blockquotes\n\n&gt; It’s worth remembering that it is often the small steps, not the giant leaps, that bring about the most lasting change.\n\n\n\nCode blocks\ndef main():\n    print(\"hello!\")\n\nif __name__ == \"__main__\":\n    main()\nImages\n\nBlockquotes\n\nIt’s worth remembering that it is often the small steps, not the giant leaps, that bring about the most lasting change."
+  },
+  {
+    "objectID": "slides/git-basics-sk.html#odkazy",
+    "href": "slides/git-basics-sk.html#odkazy",
+    "title": "Git Basics Workshop",
+    "section": "Odkazy",
+    "text": "Odkazy\nsk\n\nvideokurz od Yablka: Git a Github od základov\nvideokurz na kanáli Informatika s Mišom\npredmet Základy softvérového inžinierstva na FEI TUKE\n\nčasť 2: Systémy pre správu verzií\nčasť 3: Práca s vetvami v systéme Git"
+  },
+  {
+    "objectID": "slides/git-basics-sk.html#odkazy-1",
+    "href": "slides/git-basics-sk.html#odkazy-1",
+    "title": "Git Basics Workshop",
+    "section": "Odkazy",
+    "text": "Odkazy\nen\n\nGit cheat sheet\nPro Git, voľne dostupná oficiálna kniha, k dispozícii čiastočne aj v češtine\ngit - the simple guide\nGit tutoriály od Atlassianu\nCoursera: Introduction to Git and GitHub\nMissing Semester of CS Education, Lecture 6: Version Control (git)\nLearn how Git works internally with simple diagrams\nMarkdown Guide\nLearn Markdown in 5 minutes"
+  },
+  {
+    "objectID": "slides/git-basics-sk.html#git-slovník",
+    "href": "slides/git-basics-sk.html#git-slovník",
+    "title": "Git Basics Workshop",
+    "section": "Git slovník",
+    "text": "Git slovník\n\n\n\n\n\nen\nsk\n\n\n\n\nbranch\nvetva\n\n\nclone\nnaklonovanie repozitára\n\n\ncommit\nzáznam\n\n\ncommit message\npopis záznamu\n\n\nconflict\nkonflikt medzi verziami\n\n\nconflict resolution\nriešenie konfliktov\n\n\ndiff\nrozdiel medzi verziami\n\n\nmerge\nzlúčenie vetiev\n\n\n\n\n\n\n\nen\nsk\n\n\n\n\npull\nstiahnutie vzdialených zmien\n\n\npush\nodoslanie lokálnych zmien\n\n\nrepository\nrepozitár, úložisko\n\n\nremote\nvzdialený repozitár\n\n\nsnapshot\nsnímka\n\n\nstaging area\nprípravná oblasť (tiež index)\n\n\nstatus\nstav repozitára\n\n\nversion\nverzia"
+  },
+  {
+    "objectID": "slides/git-basics-sk.html#git-cheatsheet",
+    "href": "slides/git-basics-sk.html#git-cheatsheet",
+    "title": "Git Basics Workshop",
+    "section": "Git Cheatsheet",
+    "text": "Git Cheatsheet\n\n\n# Setup\ngit config --global user.name \"[first last]\"\ngit config --global user.email \"[valid-email]\"\ngit init\ngit clone [url]\n# Stage & Snapshot\ngit status\ngit add [file]\ngit reset [file]\ngit diff\ngit diff --staged\ngit commit -m \"[descriptive message]\"\n\n# Branch & Merge\ngit branch\ngit branch [branch-name]\ngit checkout\ngit merge [branch]\ngit log\n# Share & Update\ngit remote add [alias] [url]\ngit fetch [alias]\ngit merge [alias]/[branch]\ngit push [alias]/[branch]\ngit pull"
+  },
+  {
     "objectID": "slides/git-advanced-sk.html#o-mne",
     "href": "slides/git-advanced-sk.html#o-mne",
     "title": "Git Advanced Workshop",
@@ -849,454 +1297,6 @@
   {
     "objectID": "slides/git-basics-en.html#git-cheatsheet",
     "href": "slides/git-basics-en.html#git-cheatsheet",
-    "title": "Git Basics Workshop",
-    "section": "Git Cheatsheet",
-    "text": "Git Cheatsheet\n\n\n# Setup\ngit config --global user.name \"[first last]\"\ngit config --global user.email \"[valid-email]\"\ngit init\ngit clone [url]\n# Stage & Snapshot\ngit status\ngit add [file]\ngit reset [file]\ngit diff\ngit diff --staged\ngit commit -m \"[descriptive message]\"\n\n# Branch & Merge\ngit branch\ngit branch [branch-name]\ngit checkout\ngit merge [branch]\ngit log\n# Share & Update\ngit remote add [alias] [url]\ngit fetch [alias]\ngit merge [alias]/[branch]\ngit push [alias]/[branch]\ngit pull"
-  },
-  {
-    "objectID": "slides/git-basics-sk.html#o-mne",
-    "href": "slides/git-basics-sk.html#o-mne",
-    "title": "Git Basics Workshop",
-    "section": "O mne",
-    "text": "O mne\n\n\n\nTibor Stanko, 32 rokov\nod 2020 dátový inžinier v Zurich Insurance, Bratislava 🇸🇰\npredtým 6 rokov v akademickej sfére vo 🇫🇷 (PhD, postdoc)\nrád automatizujem nudné úlohy s pomocou Pythonu 🐍\nnie som Git guru, no Git používam denne už viac ako 8 rokov\nmoje voľnočasové aktivity: 👨‍👩‍👧‍👦🚲⛰️🎸🎹🍺"
-  },
-  {
-    "objectID": "slides/git-basics-sk.html#obsah-tohto-workshopu",
-    "href": "slides/git-basics-sk.html#obsah-tohto-workshopu",
-    "title": "Git Basics Workshop",
-    "section": "Obsah tohto workshopu",
-    "text": "Obsah tohto workshopu\n\n\n\nÚvod\nGit a Github\nZáklady Gitu\nVetvy (branches)\nVzdialené repozitáre (remotes)\nPokročilý Git\nUžitočné zdroje\n\n\n\n \n\n \n\n— Úlohy (1)\n— Úlohy (2)\n— Úlohy (3)"
-  },
-  {
-    "objectID": "slides/git-basics-sk.html#čo-je-to-git",
-    "href": "slides/git-basics-sk.html#čo-je-to-git",
-    "title": "Git Basics Workshop",
-    "section": "Čo je to Git?",
-    "text": "Čo je to Git?\n\nsystém riadenia verzií\nangl. version control system (VCS) alebo source control management (SCM)\nzaznamenáva históriu vývoja projektu\nužitočný pre tímy aj pre jednotlivcov\nnie je len o kóde, dovoľuje ukladať ľubovoľné súbory (aj netextové)"
-  },
-  {
-    "objectID": "slides/git-basics-sk.html#prečo-potrebujeme-systémy-riadenia-verzií",
-    "href": "slides/git-basics-sk.html#prečo-potrebujeme-systémy-riadenia-verzií",
-    "title": "Git Basics Workshop",
-    "section": "Prečo potrebujeme systémy riadenia verzií?",
-    "text": "Prečo potrebujeme systémy riadenia verzií?"
-  },
-  {
-    "objectID": "slides/git-basics-sk.html#prečo-potrebujeme-systémy-riadenia-verzií-1",
-    "href": "slides/git-basics-sk.html#prečo-potrebujeme-systémy-riadenia-verzií-1",
-    "title": "Git Basics Workshop",
-    "section": "Prečo potrebujeme systémy riadenia verzií?",
-    "text": "Prečo potrebujeme systémy riadenia verzií?"
-  },
-  {
-    "objectID": "slides/git-basics-sk.html#čo-umožňuje-git",
-    "href": "slides/git-basics-sk.html#čo-umožňuje-git",
-    "title": "Git Basics Workshop",
-    "section": "Čo umožňuje Git?",
-    "text": "Čo umožňuje Git?\n\n\nukladať verzie\nprepínať medzi verziami\nobnoviť predošlú verziu\nporovnávať verzie\nvytvárať vetvy\nzlučovať vetvy\nzálohovať súbory"
-  },
-  {
-    "objectID": "slides/git-basics-sk.html#čo-je-to-github",
-    "href": "slides/git-basics-sk.html#čo-je-to-github",
-    "title": "Git Basics Workshop",
-    "section": "Čo je to Github?",
-    "text": "Čo je to Github?\n\n“sociálna sieť pre programátorov”\nGit = systém riadenia verzií\nGithub = cloudový portál na ukladanie repozitárov\npoužíva Git, no nie je jeho súčasťou \nobsahuje funkcionalitu ktorá nie je v Gite\n\nIssues, Pull requests, Actions, …\n\npodobné služby: Gitlab, Bitbucket, Azure DevOps, a iné"
-  },
-  {
-    "objectID": "slides/git-basics-sk.html#krok-0-pracujeme-s-terminálom",
-    "href": "slides/git-basics-sk.html#krok-0-pracujeme-s-terminálom",
-    "title": "Git Basics Workshop",
-    "section": "Krok 0: Pracujeme s terminálom",
-    "text": "Krok 0: Pracujeme s terminálom\n\nAby sme pochopili ako Git funguje, budeme na začiatku spúšťať Git cez terminál\nNeskôr si ukážeme aj použitie Gitu priamo v IDE (napr. vo VS Code)\nVo Windowse odporúčam Windows Terminal s PowerShell (built-in) alebo Nushell\n\n\n\nZákladné príkazy na navigáciu medzi adresármi v termináli:\n\npwd — vypíš aktuálny adresár\ncd folder — zmeň aktuálny adresár na folder\n\n\n&gt;&gt; pwd                       # C:/Users/tibor.stanko\n&gt;&gt; cd folder                 # C:/Users/tibor.stanko/folder\n&gt;&gt; cd ..                     # C:/Users/tibor.stanko\n&gt;&gt; cd C:/Users/janko.hrasko  # C:/Users/janko.hrasko\n&gt;&gt; cd ~                      # C:/Users/tibor.stanko"
-  },
-  {
-    "objectID": "slides/git-basics-sk.html#krok-1-inštalácia-gitu",
-    "href": "slides/git-basics-sk.html#krok-1-inštalácia-gitu",
-    "title": "Git Basics Workshop",
-    "section": "Krok 1: Inštalácia Gitu",
-    "text": "Krok 1: Inštalácia Gitu\n\nVo Windowse existuje viacero spôsobov ako nainštalovať Git, napr.\n\ncez klasický inštalátor\ncez scoop (odporúčam) — v PowerShell spustite nasledovné príkazy:\n\n\nSet-ExecutionPolicy RemoteSigned -Scope CurrentUser\nirm get.scoop.sh | iex # inštalácia scoopu\nscoop install git # inštalácia gitu\n\nInštrukcie pre macOS alebo Linux sú na oficiálnej stránke v angličtine aj v češtine."
-  },
-  {
-    "objectID": "slides/git-basics-sk.html#krok-2-nastavenie-gitu",
-    "href": "slides/git-basics-sk.html#krok-2-nastavenie-gitu",
-    "title": "Git Basics Workshop",
-    "section": "Krok 2: Nastavenie Gitu",
-    "text": "Krok 2: Nastavenie Gitu\n\nSkontrolujme či je Git správne nainštalovaný:\n\ngit --version\n\nPredtým ako začneme pracovať s Gitom, je potrebné nastaviť si meno a email cez príkaz git config. Tieto údaje bude Git používať na priradenie autora k verzii.\n\ngit config --global user.name \"Tibor Stanko\"\ngit config --global user.email \"tibor.stanko@gmail.com\"\n\nPredvolenú vetvu si nastavíme na main (o vetvách si povieme viac neskôr)\n\ngit config --global init.defaultBranch \"main\""
-  },
-  {
-    "objectID": "slides/git-basics-sk.html#krok-3-vytvorenie-git-repozitára",
-    "href": "slides/git-basics-sk.html#krok-3-vytvorenie-git-repozitára",
-    "title": "Git Basics Workshop",
-    "section": "Krok 3: Vytvorenie Git repozitára",
-    "text": "Krok 3: Vytvorenie Git repozitára\n\nPrepneme sa do adresára z ktorého chceme spraviť repozitár:\n\ncd ~/hello\n\nPríkaz git init slúži na vytvorenie Git repozitára v aktuálnom adresári:\n\ngit init\n\nPo spustení príkazu Git vypíše:\n\nInitialized empty Git repository in C:/Users/tibor.stanko/hello/.git/"
-  },
-  {
-    "objectID": "slides/git-basics-sk.html#krok-3-vytvorenie-git-repozitára-1",
-    "href": "slides/git-basics-sk.html#krok-3-vytvorenie-git-repozitára-1",
-    "title": "Git Basics Workshop",
-    "section": "Krok 3: Vytvorenie Git repozitára",
-    "text": "Krok 3: Vytvorenie Git repozitára\n\nStav repozitára môžeme skontrolovať cez git status:\n\ngit status\n\nTakto vyzerá stav prázdneho Git repozitáru (žiadne súbory ani uložené verzie):\n\nOn branch main\n\nNo commits yet\n\nnothing to commit (create/copy files and use \"git add\" to track)"
-  },
-  {
-    "objectID": "slides/git-basics-sk.html#krok-4-uloženie-verzie",
-    "href": "slides/git-basics-sk.html#krok-4-uloženie-verzie",
-    "title": "Git Basics Workshop",
-    "section": "Krok 4: Uloženie verzie",
-    "text": "Krok 4: Uloženie verzie\nUloženie verzie prebieha v dvoch krokoch.\n\nCez git add označíme zmeny ktoré majú byť pridané do novej verzie:\n\ngit add hello.py\n\nCez git commit vytvoríme záznam o novej verzii:\n\ngit commit -m \"Add hello.py\""
-  },
-  {
-    "objectID": "slides/git-basics-sk.html#krok-4-uloženie-verzie-1",
-    "href": "slides/git-basics-sk.html#krok-4-uloženie-verzie-1",
-    "title": "Git Basics Workshop",
-    "section": "Krok 4: Uloženie verzie",
-    "text": "Krok 4: Uloženie verzie\n\nPopis záznamu (commit message) je väčšinou krátka jednoriadková správa ktorá sa špecifikuje cez argument -m \"commit message\"\nAk chceme napísať dlhší popis, argument -m vynecháme. git commit vtedy otvorí textový editor v ktorom popis napíšeme.\nV Gite na Windowse je na písanie commit message predvolený editor vim, ktorý beží priamo v termináli. Ak nemáte skúsenosti s používaním vimu, môžete si editor zmeniť napr. na notepad:\n\ngit config --global core.editor notepad"
-  },
-  {
-    "objectID": "slides/git-basics-sk.html#krok-4-uloženie-verzie-2",
-    "href": "slides/git-basics-sk.html#krok-4-uloženie-verzie-2",
-    "title": "Git Basics Workshop",
-    "section": "Krok 4: Uloženie verzie",
-    "text": "Krok 4: Uloženie verzie\n\nNeflákajte písanie commit messages!\n\n\n\n\nxkcd:1296"
-  },
-  {
-    "objectID": "slides/git-basics-sk.html#prečo-verziu-ukladáme-v-dvoch-krokoch",
-    "href": "slides/git-basics-sk.html#prečo-verziu-ukladáme-v-dvoch-krokoch",
-    "title": "Git Basics Workshop",
-    "section": "Prečo verziu ukladáme v dvoch krokoch?",
-    "text": "Prečo verziu ukladáme v dvoch krokoch?\nNiektoré systémy na kontrolu verzií fungujú tak že vytvoria novú verziu zo všetkých aktuálnych súborov v repozitári. Tento spôsob ukladania záloh môže byť nevýhodný. Príkladom je situácia keď sme v repozitári implementovali dve nezávislé funkcie, a chceme ich zachytiť v dvoch rozdielnych verziách. V Gite preto existuje koncept prípravnej zóny (staging area), vďaka ktorej máme kontrolu nad tým ktoré zmeny budú a ktoré nebudú pridané do nasledujúcej verzie.\n# 1. add/stage - pridaj súbor prípravnej zóny\ngit add test.txt\n# 2. commit - ulož novú verziu\ngit commit -m \"added test.txt\""
-  },
-  {
-    "objectID": "slides/git-basics-sk.html#krok-5-kontrola-stavu-repozitára",
-    "href": "slides/git-basics-sk.html#krok-5-kontrola-stavu-repozitára",
-    "title": "Git Basics Workshop",
-    "section": "Krok 5: Kontrola stavu repozitára",
-    "text": "Krok 5: Kontrola stavu repozitára\n\nAktuálny stav repozitára môžeme skontrolovať cez git status:\n\nOn branch main\nnothing to commit, working tree clean\n\nCez príkaz git log sa môžeme presvedčiť o tom že záznam (commit) bol vytvorený:\n\ncommit bf5c9b4a320012b422546fcb86f5b957104bea55 (HEAD -&gt; main)\nAuthor: Tibor Stanko &lt;tibor.stanko@gmail.com&gt;\nDate:   Tue Sep 13 17:00:00 2022 +0200\n\n    Add hello.py"
-  },
-  {
-    "objectID": "slides/git-basics-sk.html#odstránenie-súboru-z-prípravnej-zóny",
-    "href": "slides/git-basics-sk.html#odstránenie-súboru-z-prípravnej-zóny",
-    "title": "Git Basics Workshop",
-    "section": "Odstránenie súboru z prípravnej zóny",
-    "text": "Odstránenie súboru z prípravnej zóny\n\nCez git reset [file] odstránime súbor z prípravnej zóny bez straty zmien v súbore\n\ngit add dummy.txt\ngit status\nOn branch main\n\nNo commits yet\n\nChanges to be committed:\n  (use \"git rm --cached &lt;file&gt;...\" to unstage)\n        new file:   dummy.txt"
-  },
-  {
-    "objectID": "slides/git-basics-sk.html#odstránenie-súboru-z-prípravnej-zóny-1",
-    "href": "slides/git-basics-sk.html#odstránenie-súboru-z-prípravnej-zóny-1",
-    "title": "Git Basics Workshop",
-    "section": "Odstránenie súboru z prípravnej zóny",
-    "text": "Odstránenie súboru z prípravnej zóny\n\nCez git reset [file] odstránime súbor z prípravnej zóny bez straty zmien v súbore\n\ngit reset dummy.txt\ngit status\nOn branch main\n\nNo commits yet\n\nUntracked files:\n  (use \"git add &lt;file&gt;...\" to include in what will be committed)\n        dummy.txt"
-  },
-  {
-    "objectID": "slides/git-basics-sk.html#exercise-1-basics",
-    "href": "slides/git-basics-sk.html#exercise-1-basics",
-    "title": "Git Basics Workshop",
-    "section": "Úlohy (1)",
-    "text": "Úlohy (1)\n\n\nVytvor si na svojom počítači prázdny adresár zoo\nSprav z adresára zoo Git repozitár\nVytvor v repozitári súbor test.txt s ľubovoľným obsahom\nPridaj test.txt do ďalšej verzie a ulož ju\nSkontroluj novú verziu cez git log\n\n\n\nTip: nezabudni počas práce používať git status na zistenie aktuálneho stavu repozitára."
-  },
-  {
-    "objectID": "slides/git-basics-sk.html#čo-je-to-vetva-branch",
-    "href": "slides/git-basics-sk.html#čo-je-to-vetva-branch",
-    "title": "Git Basics Workshop",
-    "section": "Čo je to vetva (branch) ?",
-    "text": "Čo je to vetva (branch) ?\n\nVetvy slúžia na vybočenie z hlavnej línie a pokračovanie v práci bez zásahu do nej\nVetvenie je silnou stránkou Gitu — prepínanie medzi vetvami je rýchle, čo umožňuje časté vytváranie nových vetiev\nDoteraz sme pracovali na vetve main, ktorú automaticky vytvoril git init\nZoznam vetiev si môžeme pozrieť cez príkaz git branch:\n\n&gt;&gt; git branch\n* main\n\nV Gite je prednastavená hlavná vetva master. Tento názov sa v posledných rokoch stal kontroverzným a postupne sa prestáva používať. Preto sme pri nastavovaní Gitu zmenili init.defaultBranch na main."
-  },
-  {
-    "objectID": "slides/git-basics-sk.html#načo-sú-dobré-vetvy",
-    "href": "slides/git-basics-sk.html#načo-sú-dobré-vetvy",
-    "title": "Git Basics Workshop",
-    "section": "Načo sú dobré vetvy?",
-    "text": "Načo sú dobré vetvy?\n\nVetvy umožňujú efektívne pracovať paralelne na viacerých častiach projektu\nPríkladom je situácia keď vytvárame novú funkcionalitu (vetva A), a vyskytne sa bug ktorý musí byť hneď opravený (vetva B)\nVďaka Gitu môže práca na týchto dvoch vetvách prebiehať nezávisle\n\n\nrewrite/improve second bullet"
-  },
-  {
-    "objectID": "slides/git-basics-sk.html#vytvorenie-vetvy-branch",
-    "href": "slides/git-basics-sk.html#vytvorenie-vetvy-branch",
-    "title": "Git Basics Workshop",
-    "section": "Vytvorenie vetvy (branch)",
-    "text": "Vytvorenie vetvy (branch)\n\nNa vytvorenie novej vetvy s názvom french zavoláme\n\ngit branch french\n\nAk sa chceme prepnúť na novú vetvu:\n\ngit checkout french\n\nTieto dve operácie sa veľmi často robia spolu, preto existuje skratka:\n\ngit checkout -b slovak # vytvor vetvu 'slovak' a prepni sa na ňu"
-  },
-  {
-    "objectID": "slides/git-basics-sk.html#zlučovanie-vetiev-merge",
-    "href": "slides/git-basics-sk.html#zlučovanie-vetiev-merge",
-    "title": "Git Basics Workshop",
-    "section": "Zlučovanie vetiev (merge)",
-    "text": "Zlučovanie vetiev (merge)\n\nAk chceme pridať zmeny spravené na vetve slovak do hlavnej vetvy main, prepneme sa najprv na hlavnú vetvu:\n\ngit checkout main\n\nNa zlučovanie vetiev použijeme príkaz git merge:\n\ngit merge slovak"
-  },
-  {
-    "objectID": "slides/git-basics-sk.html#zlučovanie-vetiev-merge-1",
-    "href": "slides/git-basics-sk.html#zlučovanie-vetiev-merge-1",
-    "title": "Git Basics Workshop",
-    "section": "Zlučovanie vetiev (merge)",
-    "text": "Zlučovanie vetiev (merge)\nAuto-merge\n\nAk je to možné, Git automaticky zlúči zmeny z oboch vetiev. V takom prípade uvidíme nasledovný výstup:\n\n&gt;&gt; git merge slovak\nAuto-merging hello.py\nMerge made by the 'ort' strategy.\n hello.py | 12 +++++++++++-\n 1 file changed, 11 insertions(+), 1 deletion(-)"
-  },
-  {
-    "objectID": "slides/git-basics-sk.html#zlučovanie-vetiev-merge-2",
-    "href": "slides/git-basics-sk.html#zlučovanie-vetiev-merge-2",
-    "title": "Git Basics Workshop",
-    "section": "Zlučovanie vetiev (merge)",
-    "text": "Zlučovanie vetiev (merge)\nFast-forward\n\nV prípade že zlučovaná vetva je priamym potomkom cieľovej vetvy, Git urobí tzv. fast-forward:\n\n&gt;&gt; git merge comment\nUpdating 3a5d22e..9ad633c\nFast-forward\n hello.py | 1 +\n 1 file changed, 1 insertion(+)"
-  },
-  {
-    "objectID": "slides/git-basics-sk.html#zlučovanie-vetiev-merge-3",
-    "href": "slides/git-basics-sk.html#zlučovanie-vetiev-merge-3",
-    "title": "Git Basics Workshop",
-    "section": "Zlučovanie vetiev (merge)",
-    "text": "Zlučovanie vetiev (merge)\nRiešenie konfliktov\n\nAk automatické zlúčenie zlyhá, Git nám vo výstupe nahlási merge conflict. V takomto prípade musia byť zmeny z oboch vetiev zlúčené manuálne.\n\n&gt;&gt; git merge french\nAuto-merging hello.py\nCONFLICT (content): Merge conflict in hello.py\nAutomatic merge failed; fix conflicts and then commit the result.\n\nPo manuálnom zlúčení je potrebné pridať zmenené súbory do novej verzie:\n\ngit add hello.py\ngit commit -m \"Merged branch 'french'\""
-  },
-  {
-    "objectID": "slides/git-basics-sk.html#vymazanie-vetvy-delete",
-    "href": "slides/git-basics-sk.html#vymazanie-vetvy-delete",
-    "title": "Git Basics Workshop",
-    "section": "Vymazanie vetvy (delete)",
-    "text": "Vymazanie vetvy (delete)\n\nAk po zlúčení vetvu už nepotrebujeme, môžeme ju vymazať cez git branch --delete, skrátene git branch -d.\n\ngit branch -d comment\n\nPo vymazaní je vetva odstránená z histórie a nie je možné ju obnoviť."
-  },
-  {
-    "objectID": "slides/git-basics-sk.html#príklad-git-log-histórie",
-    "href": "slides/git-basics-sk.html#príklad-git-log-histórie",
-    "title": "Git Basics Workshop",
-    "section": "Príklad git log histórie",
-    "text": "Príklad git log histórie\n\nadd mermaid diagram for this git log output\n\n*   3a5d22e (HEAD -&gt; main) Merge branch 'french'\n|\\\n| * 21c7ab7 (french) Add french functionality\n* |   1364948 Merge branch 'slovak'\n|\\ \\\n| * | c3159a6 (slovak) Add slovak functionality\n| |/\n* / 67e86d0 Fix missing exclamation mark\n|/\n* de1543b Add hello.py"
-  },
-  {
-    "objectID": "slides/git-basics-sk.html#exercise-2-branches",
-    "href": "slides/git-basics-sk.html#exercise-2-branches",
-    "title": "Git Basics Workshop",
-    "section": "Úlohy (2)",
-    "text": "Úlohy (2)\n\n\nVo svojom lokálnom repozitári sa prepni na novú vetvu animals\nVytvor v repozitári nový súbor zoo.txt s nasledovným obsahom:\n\n\npanda\nslon\nlev\nzirafa\n\n\nUlož novú verziu ktorá bude obsahovať zoo.txt\nZlúč zmeny spravené na vetve animals do vetvy main a vymaž vetvu animals\nNa novej vetve tiger zmeň riadok lev na tiger a ulož novú verziu\nPrepni sa na vetvu main, oprav riadok zirafa na žirafa a ulož novú verziu\nZlúč zmeny z vetvy tiger s vetvou main"
-  },
-  {
-    "objectID": "slides/git-basics-sk.html#čo-je-to-vzdialený-repozitár-remote",
-    "href": "slides/git-basics-sk.html#čo-je-to-vzdialený-repozitár-remote",
-    "title": "Git Basics Workshop",
-    "section": "Čo je to vzdialený repozitár (remote)?",
-    "text": "Čo je to vzdialený repozitár (remote)?\n\nDoteraz sme pracovali s lokálnym Git repozitárom ktorý je uložený na našom počítači\nVzdialený repozitár (remote) je uložený na Internete — presnejšie, na webovom serveri\nnapr. github.com, firemný server, univerzitný server, …\n\n\n\nExistujú dva typy remote repozitárov:\n\nverejný (public) repozitár je zdieľaný so všetkými používateľmi s prístupom na server\nsúkromný (private) repozitár je zdieľaný iba s vybranými používateľmi"
-  },
-  {
-    "objectID": "slides/git-basics-sk.html#na-čo-slúžia-vzdialené-repozitáre",
-    "href": "slides/git-basics-sk.html#na-čo-slúžia-vzdialené-repozitáre",
-    "title": "Git Basics Workshop",
-    "section": "Na čo slúžia vzdialené repozitáre?",
-    "text": "Na čo slúžia vzdialené repozitáre?\n\nZálohovanie kódu\nZdieľanie kódu\nSynchronizácia kódu v tíme"
-  },
-  {
-    "objectID": "slides/git-basics-sk.html#vytvorenie-repozitára-na-githube-github.comnew",
-    "href": "slides/git-basics-sk.html#vytvorenie-repozitára-na-githube-github.comnew",
-    "title": "Git Basics Workshop",
-    "section": "Vytvorenie repozitára na Githube — github.com/new",
-    "text": "Vytvorenie repozitára na Githube — github.com/new"
-  },
-  {
-    "objectID": "slides/git-basics-sk.html#vytvorenie-repozitára-na-githube-github.comnew-1",
-    "href": "slides/git-basics-sk.html#vytvorenie-repozitára-na-githube-github.comnew-1",
-    "title": "Git Basics Workshop",
-    "section": "Vytvorenie repozitára na Githube — github.com/new",
-    "text": "Vytvorenie repozitára na Githube — github.com/new"
-  },
-  {
-    "objectID": "slides/git-basics-sk.html#vytvorenie-repozitára-na-githube-github.comnew-2",
-    "href": "slides/git-basics-sk.html#vytvorenie-repozitára-na-githube-github.comnew-2",
-    "title": "Git Basics Workshop",
-    "section": "Vytvorenie repozitára na Githube — github.com/new",
-    "text": "Vytvorenie repozitára na Githube — github.com/new"
-  },
-  {
-    "objectID": "slides/git-basics-sk.html#vytvorenie-repozitára-na-githube-github.comnew-3",
-    "href": "slides/git-basics-sk.html#vytvorenie-repozitára-na-githube-github.comnew-3",
-    "title": "Git Basics Workshop",
-    "section": "Vytvorenie repozitára na Githube — github.com/new",
-    "text": "Vytvorenie repozitára na Githube — github.com/new"
-  },
-  {
-    "objectID": "slides/git-basics-sk.html#vytvorenie-repozitára-na-githube-github.comnew-4",
-    "href": "slides/git-basics-sk.html#vytvorenie-repozitára-na-githube-github.comnew-4",
-    "title": "Git Basics Workshop",
-    "section": "Vytvorenie repozitára na Githube — github.com/new",
-    "text": "Vytvorenie repozitára na Githube — github.com/new"
-  },
-  {
-    "objectID": "slides/git-basics-sk.html#nastavenie-remote-v-lokálnom-repozitári",
-    "href": "slides/git-basics-sk.html#nastavenie-remote-v-lokálnom-repozitári",
-    "title": "Git Basics Workshop",
-    "section": "Nastavenie remote v lokálnom repozitári",
-    "text": "Nastavenie remote v lokálnom repozitári\n\nNa nastavenie vzdialeného repozitára použijeme príkaz git remote add &lt;name&gt; &lt;url&gt;:\n\ngit remote add origin https://github.com/bbrrck/zoo.git\n\nname bude Git používať ako meno vzdialeného repozitára na adrese url. Meno môže byť ľubovoľné; bežne sa stretneme s menom origin.\nLokálny repozitár môže mať priradený aj viac ako jeden remote."
-  },
-  {
-    "objectID": "slides/git-basics-sk.html#poslanie-lokálnej-kópie-na-remote",
-    "href": "slides/git-basics-sk.html#poslanie-lokálnej-kópie-na-remote",
-    "title": "Git Basics Workshop",
-    "section": "Poslanie lokálnej kópie na remote",
-    "text": "Poslanie lokálnej kópie na remote\n\nPríkaz git push &lt;remote&gt; &lt;branch&gt; “pretlačí” lokálne zmeny z vetvy branch do vzdialeného repozitára remote:\n\ngit push origin main\n\nPri prvom zavolaní git push je potrebné pridať argument -u:\n\ngit push -u origin main\n\n-u alebo --set-upstream nastaví predvolenú remote vetvu (origin/main) pre aktuálnu lokálnu vetvu (main)\nak remote vetva origin/main neexistuje, git push ju automaticky vytvorí"
-  },
-  {
-    "objectID": "slides/git-basics-sk.html#príklad-výstupu-z-git-push",
-    "href": "slides/git-basics-sk.html#príklad-výstupu-z-git-push",
-    "title": "Git Basics Workshop",
-    "section": "Príklad výstupu z git push",
-    "text": "Príklad výstupu z git push\ngit push -u origin main\n\nVýstup:\n\nEnumerating objects: 3, done.\nCounting objects: 100% (3/3), done.\nWriting objects: 100% (3/3), 241 bytes | 120.00 KiB/s, done.\nTotal 3 (delta 0), reused 0 (delta 0), pack-reused 0\nTo https://github.com/bbrrck/test-repo-01.git\n * [new branch]      main -&gt; main\nbranch 'main' set up to track 'origin/main'."
-  },
-  {
-    "objectID": "slides/git-basics-sk.html#odbočka-prihlásenie-do-githubu",
-    "href": "slides/git-basics-sk.html#odbočka-prihlásenie-do-githubu",
-    "title": "Git Basics Workshop",
-    "section": "Odbočka: prihlásenie do Githubu",
-    "text": "Odbočka: prihlásenie do Githubu\n\nAby mohol Git posielať dáta na Github, je potrebná autentifikácia\nNajjednoduchší spôsob na správu prihlasovacích udajov: Git Credential Manager\n(je súčasťou Git for Windows)\nKonfigurácia sa začne automaticky po prvom spustení git push"
-  },
-  {
-    "objectID": "slides/git-basics-sk.html#zoznam-vetiev",
-    "href": "slides/git-basics-sk.html#zoznam-vetiev",
-    "title": "Git Basics Workshop",
-    "section": "Zoznam vetiev",
-    "text": "Zoznam vetiev\n\ngit branch -a vypíše zoznam všetkých vetiev, lokálnych aj vzdialených\n-a je skratka pre --all\n\ngit branch -a\n\nVýstup — * označuje aktuálnu vetvu:\n\n* main\n  tiger\n  remotes/origin/main"
-  },
-  {
-    "objectID": "slides/git-basics-sk.html#konflikt-remote-zmeny-neexistujú-lokálne",
-    "href": "slides/git-basics-sk.html#konflikt-remote-zmeny-neexistujú-lokálne",
-    "title": "Git Basics Workshop",
-    "section": "Konflikt: remote zmeny neexistujú lokálne",
-    "text": "Konflikt: remote zmeny neexistujú lokálne\nTo https://github.com/bbrrck/zoo.git\n ! [rejected]        main -&gt; main (fetch first)\nerror: failed to push some refs to 'https://github.com/bbrrck/zoo.git'\nhint: Updates were rejected because the remote contains work that you do\nhint: not have locally. This is usually caused by another repository pushing\nhint: to the same ref. You may want to first integrate the remote changes\nhint: (e.g., 'git pull ...') before pushing again.\nhint: See the 'Note about fast-forwards' in 'git push --help' for details."
-  },
-  {
-    "objectID": "slides/git-basics-sk.html#stiahnutie-remote-zmien-do-lokálnej-vetvy",
-    "href": "slides/git-basics-sk.html#stiahnutie-remote-zmien-do-lokálnej-vetvy",
-    "title": "Git Basics Workshop",
-    "section": "Stiahnutie remote zmien do lokálnej vetvy",
-    "text": "Stiahnutie remote zmien do lokálnej vetvy\n\nPomocou príkazu git fetch stiahneme zoznam zmien z remote vetvy:\n\ngit fetch\n\nZmeny ktoré nie sú súčasťou lokálnej vetvy zlúčime pomocou git merge:\n\ngit merge # bez argumentov\n\nVo väčšine prípadov môžeme jednoducho zavolať príkaz git pull, ktorý je kombináciou git fetch a git merge:\n\ngit pull"
-  },
-  {
-    "objectID": "slides/git-basics-sk.html#klonovanie-existujúceho-remote-repozitára",
-    "href": "slides/git-basics-sk.html#klonovanie-existujúceho-remote-repozitára",
-    "title": "Git Basics Workshop",
-    "section": "Klonovanie existujúceho remote repozitára",
-    "text": "Klonovanie existujúceho remote repozitára\n\nExistujúci vzdialený repozitár môžeme naklonovať pomocou git clone:\n\ngit clone &lt;remote_url&gt; &lt;local_folder&gt;\n\nTento príkaz vytvorí kópiu repozitára z remote_url v adresári local_folder\nPríklad:\n\ngit clone https://github.com/bbrrck/zoo.git myzoo\n# alebo\ngit clone https://github.com/bbrrck/zoo.git # naklonuje sa do adresára `zoo`"
-  },
-  {
-    "objectID": "slides/git-basics-sk.html#exercise-3-remotes",
-    "href": "slides/git-basics-sk.html#exercise-3-remotes",
-    "title": "Git Basics Workshop",
-    "section": "Úlohy (3)",
-    "text": "Úlohy (3)\n\n\nVytvor si na Githube repozitar s názvom zoo.\nPridaj tento remote do svojho lokálneho repa.\nNahraj lokálnu vetvu main na remote.\nNa Githube pridaj do súboru zoo.txt za meno každého zvieraťa jeho emoji: 🐼🐘🐯🦒\nZosynchronizuj lokálne repo s Githubom.\nNa Githube pridaj do súboru zoo.txt nový riadok krokodíl 🐊 a ulož novú verziu.\nV lokálnom repe pridaj do súboru zoo.txt nový riadok gorila 🦍 a ulož novú verziu.\nZosynchronizuj lokálne repo s Githubom a vyrieš vzniknutý merge conflict."
-  },
-  {
-    "objectID": "slides/git-basics-sk.html#gitignore",
-    "href": "slides/git-basics-sk.html#gitignore",
-    "title": "Git Basics Workshop",
-    "section": ".gitignore",
-    "text": ".gitignore\n\nšpecifikuje ktoré súbory má Git ignorovať\n.gitignore generátor"
-  },
-  {
-    "objectID": "slides/git-basics-sk.html#git-command---help",
-    "href": "slides/git-basics-sk.html#git-command---help",
-    "title": "Git Basics Workshop",
-    "section": "git <command> --help",
-    "text": "git &lt;command&gt; --help\n# vypíš pomoc (dokumentáciu) ku danému príkazu -- napr. git commit\ngit commit --help \n# alebo \ngit commit -h"
-  },
-  {
-    "objectID": "slides/git-basics-sk.html#git-diff",
-    "href": "slides/git-basics-sk.html#git-diff",
-    "title": "Git Basics Workshop",
-    "section": "git diff",
-    "text": "git diff\n# zobraz zmeny medzi dvoma verziami\ngit diff\ngit diff zoo.txt\ngit diff 235a0d8 5d94512 zoo.txt\ngit diff HEAD~1 HEAD zoo.txt"
-  },
-  {
-    "objectID": "slides/git-basics-sk.html#git-cat-file--p",
-    "href": "slides/git-basics-sk.html#git-cat-file--p",
-    "title": "Git Basics Workshop",
-    "section": "git cat-file -p",
-    "text": "git cat-file -p\n# zobraz obsah Git objektu (commit, tree, blob)\ngit cat-file -p 235a0d8"
-  },
-  {
-    "objectID": "slides/git-basics-sk.html#git-restore",
-    "href": "slides/git-basics-sk.html#git-restore",
-    "title": "Git Basics Workshop",
-    "section": "git restore",
-    "text": "git restore\n# pridaj súbor do prípravnej zóny (staging area)\ngit add zoo.txt\n# odstráň súbor z prípravnej zóny (unstage)\ngit restore --staged zoo.txt"
-  },
-  {
-    "objectID": "slides/git-basics-sk.html#git-add---interactive",
-    "href": "slides/git-basics-sk.html#git-add---interactive",
-    "title": "Git Basics Workshop",
-    "section": "git add --interactive",
-    "text": "git add --interactive\n# interaktívne pridaj zmeny\ngit add --interactive \n# alebo\ngit add -i"
-  },
-  {
-    "objectID": "slides/git-basics-sk.html#git-log",
-    "href": "slides/git-basics-sk.html#git-log",
-    "title": "Git Basics Workshop",
-    "section": "git log",
-    "text": "git log\n# prispôb výstup z git logu \ngit log --all --oneline --graph --decorate\n# alebo\ngit config --global alias.nicelog \"log --all --graph --decorate --oneline\"\ngit nicelog"
-  },
-  {
-    "objectID": "slides/git-basics-sk.html#git-stash",
-    "href": "slides/git-basics-sk.html#git-stash",
-    "title": "Git Basics Workshop",
-    "section": "git stash",
-    "text": "git stash\n# dočasne odstráň zmeny vo working directory\ngit stash\n# obnov odstránené zmeny\ngit stash pop"
-  },
-  {
-    "objectID": "slides/git-basics-sk.html#git-blame",
-    "href": "slides/git-basics-sk.html#git-blame",
-    "title": "Git Basics Workshop",
-    "section": "git blame",
-    "text": "git blame\n# zisti kto spravil poslednú zmenu v každom riadku\ngit blame"
-  },
-  {
-    "objectID": "slides/git-basics-sk.html#git-revert",
-    "href": "slides/git-basics-sk.html#git-revert",
-    "title": "Git Basics Workshop",
-    "section": "git revert",
-    "text": "git revert\n# odstráň zmeny vykonané v poslednom commite\ngit revert HEAD\n\nPríkaz git revert vytvorí novú verziu, a nemení históriu repozitára."
-  },
-  {
-    "objectID": "slides/git-basics-sk.html#git-reset",
-    "href": "slides/git-basics-sk.html#git-reset",
-    "title": "Git Basics Workshop",
-    "section": "git reset",
-    "text": "git reset\n# vráť repozitár do stavu po commite s commit_id\ngit reset --hard &lt;commit_id&gt;\n\nPríkaz git reset mení históriu repozitára a môže spôsobiť stratu súborov."
-  },
-  {
-    "objectID": "slides/git-basics-sk.html#čo-je-to-markdown",
-    "href": "slides/git-basics-sk.html#čo-je-to-markdown",
-    "title": "Git Basics Workshop",
-    "section": "Čo je to Markdown?",
-    "text": "Čo je to Markdown?\n\nMarkdown je jednoduchý značkovací jazyk (ako HTML alebo TeX) ktorý sa používa na tvorbu rôznych typov obsahu: dokumenty, články, slidy, webstránky, …\nMarkdown je de facto štandard pre dokumentovanie Git projektov\nVäčšina Github projektov má README.md ktorý Github automaticky vyrenderuje\nPríklady dobre napísaných README súborov: matiassingers/awesome-readme\n\n\nAj tieto slidy boli vytvorené s použitím Markdownu! (pomocou systému Quarto)"
-  },
-  {
-    "objectID": "slides/git-basics-sk.html#section-2",
-    "href": "slides/git-basics-sk.html#section-2",
-    "title": "Git Basics Workshop",
-    "section": "",
-    "text": "# Markdown is Awesome\n\nMarkdown is very simple and versatile.\n\nThis is a Markdown paragraph. \nThis is still the same paragraph.\n\n## Formmatting options\n\nBulleted list:\n\n- *italic*\n- **bold**\n- ***bold and italic***\n- ~~strikethrough~~\n- [link](https://www.markdownguide.org/)\n- `code`\n\nNumbered list:\n\n1. first item\n2. second item\n3. last item\n\n\nMarkdown is Awesome\nMarkdown is very simple and versatile.\nThis is a Markdown paragraph. This is still the same paragraph.\nFormatting options\nBulleted list:\n\nitalic\nbold\nbold and italic\nstrikethrough\nlink\ncode\n\nNumbered list:\n\nfirst item\nsecond item\nlast item"
-  },
-  {
-    "objectID": "slides/git-basics-sk.html#section-3",
-    "href": "slides/git-basics-sk.html#section-3",
-    "title": "Git Basics Workshop",
-    "section": "",
-    "text": "### Code blocks\n\n```python\ndef main():\n    print(\"hello!\")\n\nif __name__ == \"__main__\":\n    main()\n```\n\n### Images\n\n![Queen Elizabeth II](https://upload.wikimedia.org/wikipedia/commons/1/11/Queen_Elizabeth_II_official_portrait_for_1959_tour_%28retouched%29_%28cropped%29_%283-to-4_aspect_ratio%29.jpg) \n\n### Blockquotes\n\n&gt; It’s worth remembering that it is often the small steps, not the giant leaps, that bring about the most lasting change.\n\n\n\nCode blocks\ndef main():\n    print(\"hello!\")\n\nif __name__ == \"__main__\":\n    main()\nImages\n\nBlockquotes\n\nIt’s worth remembering that it is often the small steps, not the giant leaps, that bring about the most lasting change."
-  },
-  {
-    "objectID": "slides/git-basics-sk.html#odkazy",
-    "href": "slides/git-basics-sk.html#odkazy",
-    "title": "Git Basics Workshop",
-    "section": "Odkazy",
-    "text": "Odkazy\nsk\n\nvideokurz od Yablka: Git a Github od základov\nvideokurz na kanáli Informatika s Mišom\npredmet Základy softvérového inžinierstva na FEI TUKE\n\nčasť 2: Systémy pre správu verzií\nčasť 3: Práca s vetvami v systéme Git"
-  },
-  {
-    "objectID": "slides/git-basics-sk.html#odkazy-1",
-    "href": "slides/git-basics-sk.html#odkazy-1",
-    "title": "Git Basics Workshop",
-    "section": "Odkazy",
-    "text": "Odkazy\nen\n\nGit cheat sheet\nPro Git, voľne dostupná oficiálna kniha, k dispozícii čiastočne aj v češtine\ngit - the simple guide\nGit tutoriály od Atlassianu\nCoursera: Introduction to Git and GitHub\nMissing Semester of CS Education, Lecture 6: Version Control (git)\nLearn how Git works internally with simple diagrams\nMarkdown Guide\nLearn Markdown in 5 minutes"
-  },
-  {
-    "objectID": "slides/git-basics-sk.html#git-slovník",
-    "href": "slides/git-basics-sk.html#git-slovník",
-    "title": "Git Basics Workshop",
-    "section": "Git slovník",
-    "text": "Git slovník\n\n\n\n\n\nen\nsk\n\n\n\n\nbranch\nvetva\n\n\nclone\nnaklonovanie repozitára\n\n\ncommit\nzáznam\n\n\ncommit message\npopis záznamu\n\n\nconflict\nkonflikt medzi verziami\n\n\nconflict resolution\nriešenie konfliktov\n\n\ndiff\nrozdiel medzi verziami\n\n\nmerge\nzlúčenie vetiev\n\n\n\n\n\n\n\nen\nsk\n\n\n\n\npull\nstiahnutie vzdialených zmien\n\n\npush\nodoslanie lokálnych zmien\n\n\nrepository\nrepozitár, úložisko\n\n\nremote\nvzdialený repozitár\n\n\nsnapshot\nsnímka\n\n\nstaging area\nprípravná oblasť (tiež index)\n\n\nstatus\nstav repozitára\n\n\nversion\nverzia"
-  },
-  {
-    "objectID": "slides/git-basics-sk.html#git-cheatsheet",
-    "href": "slides/git-basics-sk.html#git-cheatsheet",
     "title": "Git Basics Workshop",
     "section": "Git Cheatsheet",
     "text": "Git Cheatsheet\n\n\n# Setup\ngit config --global user.name \"[first last]\"\ngit config --global user.email \"[valid-email]\"\ngit init\ngit clone [url]\n# Stage & Snapshot\ngit status\ngit add [file]\ngit reset [file]\ngit diff\ngit diff --staged\ngit commit -m \"[descriptive message]\"\n\n# Branch & Merge\ngit branch\ngit branch [branch-name]\ngit checkout\ngit merge [branch]\ngit log\n# Share & Update\ngit remote add [alias] [url]\ngit fetch [alias]\ngit merge [alias]/[branch]\ngit push [alias]/[branch]\ngit pull"
