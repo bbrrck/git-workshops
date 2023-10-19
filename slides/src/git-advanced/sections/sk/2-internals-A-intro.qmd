@@ -1,7 +1,7 @@
 ## 
 
 ::: {.center .width-030}
-![](./assets/img/xkcd-1597-git.png)
+![](./static/img/xkcd-1597-git.png)
 :::
 
 :::footer
@@ -82,7 +82,7 @@ cat .git/refs/tags/v2.6.3
 :::
 
 ::: {.column width="25%"}
-![](./assets/img/plumbing-porcelain.png)
+![](./static/img/plumbing-porcelain.png)
 :::
 
 :::

@@ -9,6 +9,6 @@
 - my hobbies: 👨‍👩‍👧‍👦🚲⛰️🎸🎹🍺
 :::
 ::: {.column width="28%"}
-![](./assets/img/tibors.jpg){.rounded-corners}
+![](./static/img/tibors.jpg){.rounded-corners}
 :::
 :::

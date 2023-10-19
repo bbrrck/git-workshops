@@ -1,4 +1,4 @@
-## &nbsp; {#git-log-pybrickz background-image="./assets/img/pybrickz-nicelog-2023-10-17-10-30.png" background-position="left"} 
+## &nbsp; {#git-log-pybrickz background-image="./static/img/pybrickz-nicelog-2023-10-17-10-30.png" background-position="left"} 
 
 ## `.git` pre reálny projekt {#git-dir-real-1}
 

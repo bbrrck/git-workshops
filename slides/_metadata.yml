@@ -14,9 +14,9 @@ format:
     number-sections: true
     preview-links: auto
     slide-number: true
-    theme: assets/style/slides.scss
+    theme: static/style/slides.scss
     title-slide-attributes:
-      data-background-image: assets/img/hero.svg
+      data-background-image: static/img/hero.svg
       data-background-size: 50%
       data-background-position: bottom
     toc: false
