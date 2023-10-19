@@ -1,3 +1,72 @@
 ---
-title: "Git Workshops: Slides"
+title: "Materials for Git Workshops"
+author: Tibor Stanko
+date: today
+published-title: "Last Updated"
+number-sections: true
+number-depth: 2
+shift-heading-level-by: 1
+code-overflow: wrap
+highlight-style: github-dark
 ---
+
+This page contains links to materials for Git workshops created and presented by [me](https://tiborstanko.sk). All slides are in html format and were created using [Quarto](https://quarto.org/) and [reveal.js](https://revealjs.com/).
+
+# Git Basics Workshop
+
+## Slides
+
+- [Basics - English version](slides/git-basics-en.html)
+- [Basics - Slovak version](slides/git-basics-sk.html)
+
+## Contents
+
+Duration: 4h (2x2h)
+
+1. Intro
+2. Git & Github
+3. Basic Concepts *(+exercises)*
+4. Branches *(+exercises)*
+5. Remotes *(+exercises)*
+6. Advanced Git
+7. Useful Resources
+
+## Prerequisites
+
+To complete the exercises, you need to have Git installed on your local machine (version 2.37 or later). For instructions on how to install Git, see chapter [1.5 Getting Started - Installing Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) of Pro Git book.
+
+To verify that Git is installed on your machine, run the following command:
+
+```bash
+git --version
+```
+
+If Git is not available, you should get an error. Otherwise, you will see output similar to the following:
+
+```bash
+git version 2.37.0.windows.1
+```
+
+---
+
+# Git Advanced Workshop
+
+## Slides
+
+- [Advanced - Slovak version](slides/git-advanced-sk.html)
+
+## Contents
+
+Duration: 3h
+
+1. Intro
+2. Git Internals *(+exercises)*
+3. Merge vs. Rebase *(+exercises*)
+4. Frequent Questions and Issues
+5. ~~CI/CD with Git~~ (TBA)
+6. SSH Authentication
+
+## Repositories
+
+- [hello - demo repo](https://github.com/bbrrck/hello/)
+- [zoo - test repo](https://github.com/bbrrck/zoo/)
