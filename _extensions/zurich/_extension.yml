@@ -6,7 +6,7 @@ contributes:
     html:
       theme:
         zurich_light.scss
-      embed-resources: true
+      # embed-resources: true
       df-print: paged
       code-fold: true
       code-tools: true
