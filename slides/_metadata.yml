@@ -20,6 +20,6 @@ format:
       data-background-size: 50%
       data-background-position: bottom
     toc: false
-    embed-resources: true
-    self-contained: false
-    standalone: true
+    # embed-resources: true
+    # self-contained: false
+    # standalone: true
