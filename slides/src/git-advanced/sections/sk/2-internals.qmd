@@ -3,9 +3,6 @@
 Čo sa skrýva vo [vnútri Gitu](https://git-scm.com/book/en/v2/Git-Internals-Plumbing-and-Porcelain)?
 
 {{< include ./src/git-advanced/sections/sk/2-internals-A-intro.qmd >}}
-
 {{< include ./src/git-advanced/sections/sk/2-internals-B-demo.qmd >}}
-
 {{< include ./src/git-advanced/sections/sk/2-internals-C-dotgit.qmd >}}
-
 {{< include ./src/git-advanced/sections/sk/2-internals-D-exercises.qmd >}}

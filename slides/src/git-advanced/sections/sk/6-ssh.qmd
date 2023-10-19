@@ -4,8 +4,8 @@
 
 ```bash
 ssh-keygen # use default settings
-ssh-keygen -t rsa -C "tibor.stanko@zurich.com" # compatible with most git providers
-ssh-keygen -t ed25519 -C "tibor.stanko@zurich.com" # compatible with GitHub
+ssh-keygen -t rsa -C "name@email.com" # compatible with most git providers
+ssh-keygen -t ed25519 -C "name@email.com" # compatible with GitHub
 ```
 
 ## Skopírovanie SSH kľúča do schránky

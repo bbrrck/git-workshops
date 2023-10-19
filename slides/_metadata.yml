@@ -1,0 +1,25 @@
+format:
+  revealjs: 
+    width: 1920
+    height: 860
+    auto-animate-easing: ease-in-out
+    auto-animate-unmatched: false
+    auto-animate-duration: 0.8
+    center-title-slide: true
+    code-line-numbers: false
+    code-overflow: wrap
+    highlight-style: github-dark
+    mermaid-format: svg
+    number-depth: 1
+    number-sections: true
+    preview-links: auto
+    slide-number: true
+    theme: assets/style/slides.scss
+    title-slide-attributes:
+      data-background-image: assets/img/hero.svg
+      data-background-size: 50%
+      data-background-position: bottom
+    toc: false
+    embed-resources: true
+    self-contained: false
+    standalone: true

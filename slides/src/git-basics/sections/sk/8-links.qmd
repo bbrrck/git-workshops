@@ -23,32 +23,4 @@
 
 ## Git slovník
 
-::: {.columns}
-
-::: {.column width="50%" .git-slovnik}
-| en | sk |
-|---|---|
-| *branch*              | vetva |
-| *clone*               | naklonovanie repozitára |
-| *commit*              | záznam |
-| *commit message*      | popis záznamu |
-| *conflict*            | konflikt medzi verziami |
-| *conflict resolution* | riešenie konfliktov |
-| *diff*                | rozdiel medzi verziami |
-| *merge*               | zlúčenie vetiev |
-:::
-
-::: {.column width="50%" .git-slovnik}
-| en | sk |
-|---|---|
-| *pull*                | stiahnutie vzdialených zmien |
-| *push*                | odoslanie lokálnych zmien |
-| *repository*          | repozitár, úložisko |
-| *remote*              | vzdialený repozitár |
-| *snapshot*            | snímka |
-| *staging area*        | prípravná oblasť (tiež *index*) |
-| *status*              | stav repozitára |
-| *version*             | verzia |
-:::
-
-:::
+{{< include ./src/git-basics/sections/glossary.qmd >}}

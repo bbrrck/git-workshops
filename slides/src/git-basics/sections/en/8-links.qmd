@@ -20,3 +20,7 @@
 - [Markdown Guide](https://www.markdownguide.org/)
 - [Learn Markdown in 5 minutes](https://manan-tank.medium.com/learn-markdown-in-5-minutes-7cc01405495e)
 
+
+## Git Glossary
+
+{{< include ./src/git-basics/sections/glossary.qmd >}}

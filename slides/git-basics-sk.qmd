@@ -12,7 +12,5 @@ date: "2023.10.11"
 {{< include ./src/git-basics/sections/sk/6-advanced-git.qmd >}}
 {{< include ./src/git-basics/sections/sk/7-markdown.qmd >}}
 {{< include ./src/git-basics/sections/sk/8-links.qmd >}}
-{{< include ./src/git-basics/sections/glossary.qmd >}}
 {{< include ./src/git-basics/sections/git-cheatsheet.qmd >}}
-
 {{< include ./src/common/sk/thanks.qmd >}} 

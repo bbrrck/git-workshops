@@ -1,38 +1,23 @@
 project:
-  output-dir: .build/
-format:
-  revealjs: 
-    width: 1920
-    height: 860
-    auto-animate-easing: ease-in-out
-    auto-animate-unmatched: false
-    auto-animate-duration: 0.8
-    center-title-slide: true
-    code-line-numbers: false
-    code-overflow: wrap
-    highlight-style: github-dark
-    mermaid-format: svg
-    number-depth: 1
-    number-sections: true
-    preview-links: auto
-    # slide-number: true
-    theme: assets/style/slides.scss
-    title-slide-attributes:
-      data-background-image: assets/img/hero.svg
-      data-background-size: 50%
-      data-background-position: bottom
-    toc: false
+  type: website
+  render:
+    - index.qmd
+    - "slides/*.qmd"
+  post-render: 
+    - "cp -rnv slides/static/. _site/slides/" # source: https://github.com/quarto-dev/quarto-cli/discussions/4162#discussioncomment-4831352
 
-    embed-resources: true
-    # self-contained: false
-    standalone: true
-  
-  # html:
-  #   embed-resources: true
-  #   highlight-style: gruvbox-dark
-  #   number-sections: true
-  #   standalone: true
-  #   toc: true
+website:
+  title: "Git Workshops"
+  navbar:
+    left:
+      - slides/git-basics-en.qmd
+      - slides/git-basics-sk.qmd
+      - slides/git-advanced-sk.qmd
+
+format:
+  html:
+    theme: cosmo
+    toc: true  
 
 editor:
   markdown:
