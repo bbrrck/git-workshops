@@ -854,6 +854,27 @@
     "text": "Git Cheatsheet\n\n\n# Setup\ngit config --global user.name \"[first last]\"\ngit config --global user.email \"[valid-email]\"\ngit init\ngit clone [url]\n# Stage & Snapshot\ngit status\ngit add [file]\ngit reset [file]\ngit diff\ngit diff --staged\ngit commit -m \"[descriptive message]\"\n\n# Branch & Merge\ngit branch\ngit branch [branch-name]\ngit checkout\ngit merge [branch]\ngit log\n# Share & Update\ngit remote add [alias] [url]\ngit fetch [alias]\ngit merge [alias]/[branch]\ngit push [alias]/[branch]\ngit pull"
   },
   {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Materials for Git Workshops",
+    "section": "",
+    "text": "This page contains links to materials for Git workshops created and presented by me. All slides are in html format and were created using Quarto and reveal.js."
+  },
+  {
+    "objectID": "index.html#git-basics-workshop",
+    "href": "index.html#git-basics-workshop",
+    "title": "Materials for Git Workshops",
+    "section": "1 Git Basics Workshop",
+    "text": "1 Git Basics Workshop\n\nSlides\n\nBasics - English version\nBasics - Slovak version\n\n\n\nContents\nDuration: 4h (2x2h)\n\nIntro\nGit & Github\nBasic Concepts (+exercises)\nBranches (+exercises)\nRemotes (+exercises)\nAdvanced Git\nUseful Resources\n\n\n\nPrerequisites\nTo complete the exercises, you need to have Git installed on your local machine (version 2.37 or later). For instructions on how to install Git, see chapter 1.5 Getting Started - Installing Git of Pro Git book.\nTo verify that Git is installed on your machine, run the following command:\ngit --version\nIf Git is not available, you should get an error. Otherwise, you will see output similar to the following:\ngit version 2.37.0.windows.1"
+  },
+  {
+    "objectID": "index.html#git-advanced-workshop",
+    "href": "index.html#git-advanced-workshop",
+    "title": "Materials for Git Workshops",
+    "section": "2 Git Advanced Workshop",
+    "text": "2 Git Advanced Workshop\n\nSlides\n\nAdvanced - Slovak version\n\n\n\nContents\nDuration: 3h\n\nIntro\nGit Internals (+exercises)\nMerge vs. Rebase (+exercises)\nFrequent Questions and Issues\nCI/CD with Git (TBA)\nSSH Authentication\n\n\n\nRepositories\n\nhello - demo repo\nzoo - test repo"
+  },
+  {
     "objectID": "slides/git-basics-en.html#about-me",
     "href": "slides/git-basics-en.html#about-me",
     "title": "Git Basics Workshop",
