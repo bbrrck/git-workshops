@@ -21,14 +21,16 @@ This page contains links to materials for Git workshops created and presented by
 
 ## Contents
 
-Duration: 4h (2x2h)
+This workshop is suitable for both beginners who are new to Git, as well as users with a working knowledge of Git who want to gain a better understanding of the concepts behind it. It will help participants improve their proficiency in using Git effectively in their daily work. The workshop combines theoretical insights with hands-on practical exercises.
+
+**Duration:** 4h (2x2h) or 3h
 
 1. Intro
 2. Git & Github
 3. Basic Concepts *(+exercises)*
 4. Branches *(+exercises)*
 5. Remotes *(+exercises)*
-6. Advanced Git
+6. Glimpse into Advanced Git
 7. Useful Resources
 
 ## Prerequisites
@@ -57,7 +59,9 @@ git version 2.37.0.windows.1
 
 ## Contents
 
-Duration: 3h
+This workshop is sutiable for those that are familiar with the basics of Git, and want to dive deeper into advanced Git concepts and best practices. The workshop combines theoretical insights with hands-on practical exercises.
+
+**Duration:** 4h (2x2h) or 3h
 
 1. Intro
 2. Git Internals *(+exercises)*
@@ -65,6 +69,7 @@ Duration: 3h
 4. Frequent Questions and Issues
 5. ~~CI/CD with Git~~ (TBA)
 6. SSH Authentication
+7. *other topics suggested by participants*
 
 ## Repositories
 

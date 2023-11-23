@@ -1,0 +1,103 @@
+---
+title: "Git Workshops"
+author: Tibor Stanko
+date: today
+published-title: "Last Updated"
+code-overflow: wrap
+colorlinks: true
+embed-resources: true
+highlight-style: github-dark
+number-depth: 2
+number-sections: true
+output-dir: _output
+shift-heading-level-by: 1
+# theme: yeti
+toc: false
+---
+
+# Git Basics Workshop
+
+## Overview
+
+|           |                                            |
+| --------- | ------------------------------------------ |
+| Trainer   | Tibor Stanko - Data Engineer from ZNA team |
+| Cost      | free of charge                             |
+| Duration  | 2 x 2h                                     |
+
+## Schedule 
+
+| Day   | Date                   | Time               |
+| ----- | ---------------------- | ------------------ |
+| Day 1 | 24.01.2024 (Wednesday) | 9:00 AM - 11:00 AM |
+| Day 2 | 25.01.2024 (Thursday)  | 9:00 AM - 11:00 AM |
+
+## Description
+
+This workshop is suitable for both beginners who are new to Git, as well as users with a working knowledge of Git who want to gain a better understanding of the concepts behind it. It will help participants improve their proficiency in using Git effectively in their daily work.
+
+**Structure:**
+
+- Maximum of 12 participants per session
+- Live form in Gerlach meeting room
+- 2-day training
+
+## Contents
+
+1. Intro
+2. Git & Github
+3. Basics of Git
+4. Branches
+5. Remotes
+6. Glimpse into Advanced Git
+7. Useful Resources
+
+
+## Prerequisities
+
+- Workshop is suitable for beginners & intermediate learners.
+{{< include ./install.qmd >}}
+
+---
+
+# Git Advanced Workshop
+
+## Overview
+
+|           |                                            |
+| --------- | ------------------------------------------ |
+| Trainer   | Tibor Stanko - Data Engineer from ZNA team |
+| Cost      | free of charge                             |
+| Duration  | 2 x 2h                                     |
+
+## Schedule 
+
+| Day   | Date                   | Time                |
+| ----- | ---------------------- | ------------------- |
+| Day 1 | 30.01.2024 (Tuesday)   |  9:00 AM - 11:00 AM |
+| Day 2 | 31.01.2024 (Wednesday) | 13:00 AM - 15:00 AM |
+
+## Description
+
+This workshop is sutiable for those that are familiar with the basics of Git, and want to dive deeper into advanced Git concepts and best practices. The workshop combines theoretical insights with hands-on practical exercises.
+
+**Structure:**
+
+- Maximum of 12 participants per session
+- Live form in Gerlach meeting room
+- 2-day training
+
+## Contents
+
+1. Understanding Git Internals (data model; history; objects - blobs, trees, commits; references)
+2. Merging vs Rebasing
+3. Common Branching Models (Gitflow, Trunk-based development, etc.)
+4. Using SSH for Authentication
+5. Submitting and Reviewing Pull Requests
+6. Basics of CI/CD with Git
+7. *Other topics suggested by participants*
+
+## Prerequisites
+
+- Participants need basic familiarity with Git, for instance acquired via the Git Basics Workshop.
+{{< include ./install.qmd >}}

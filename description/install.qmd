@@ -1,0 +1,10 @@
+- Participants must have Git installed on their computers:
+  - If you already have Git, verify that you have version `2.37` or later.
+  - If you do not have Git, install it using one of the following methods. Both options should work without admin rights.
+    - *Option 1:*
+      - Through the Start menu search & launch the program ”cmd” (*prikazovy riadok*).
+      - Copy & run the following command: `winget install --id Git.Git -e --source winget`
+    - *Option 2:*
+      - Get the installer directly from [git-scm.com/download/win](https://git-scm.com/download/win).
+      - Download "64-bit Git for Windows Setup".
+      - Run the installer.
