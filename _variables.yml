@@ -2,8 +2,8 @@ me:
   name: Tibor Stanko
   email: tibor.stanko@gmail.com
   website: https://tiborstanko.sk
-  age: 32
-  git-experience-years: 8 # start = 2015
+  age: 33
+  git-experience-years: 9 # start = 2015
 
 workshop-basics:
   name: "Git Basics Workshop"
@@ -22,14 +22,14 @@ remoteserver:
   # name: Azure DevOps
   # url: https://dev.azure.com/tiborstanko/git-workshop-2023-04-19/_settings/repositories
   # repo-name: "`zoo-firstname-lastname`, e.g. `zoo-tibor-stanko`"
-  
+
   ##################
   # ::: GITHUB ::: #
   ##################
   name: Github
   url: https://github.com/new
   repo-name: "`zoo`"
-  
+
   ################
   # ::: GOGS ::: #
   ################

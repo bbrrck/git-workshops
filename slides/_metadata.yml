@@ -1,5 +1,5 @@
 format:
-  revealjs: 
+  revealjs:
     width: 1920
     height: 860
     auto-animate-easing: ease-in-out
@@ -8,13 +8,14 @@ format:
     center-title-slide: true
     code-line-numbers: false
     code-overflow: wrap
-    highlight-style: github-dark
+    # highlight-style: github-dark
+    highlight-style: monokai
     mermaid-format: svg
     number-depth: 1
     number-sections: true
     preview-links: auto
     slide-number: true
-    theme: static/style/slides.scss
+    theme: [simple, static/style/slides.scss]
     title-slide-attributes:
       data-background-image: static/img/hero.svg
       data-background-size: 50%

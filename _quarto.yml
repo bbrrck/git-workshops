@@ -11,7 +11,7 @@ website:
 
 format:
   html:
-    theme: yeti
+    theme: litera
     toc: false
 
 editor:

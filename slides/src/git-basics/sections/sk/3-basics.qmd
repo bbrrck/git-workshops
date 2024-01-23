@@ -114,9 +114,10 @@ git commit -m "Add hello.py"
 ## Krok 4: Uloženie verzie
 - Popis záznamu *(commit message)* je väčšinou krátka jednoriadková správa ktorá sa špecifikuje cez argument `-m "commit message"`
 - Ak chceme napísať dlhší popis, argument `-m` vynecháme. `git commit` vtedy otvorí textový editor v ktorom popis napíšeme. 
-- V Gite na Windowse je na písanie *commit message* predvolený editor `vim`, ktorý beží priamo v termináli. Ak nemáte skúsenosti s používaním vimu, môžete si editor zmeniť napr. na `notepad`:
+- V Gite na Windowse je na písanie *commit message* predvolený editor `vim`, ktorý beží priamo v termináli. Ak nemáte skúsenosti s používaním vimu, [môžete si editor zmeniť](https://docs.github.com/en/get-started/getting-started-with-git/associating-text-editors-with-git):
 ```sh
-git config --global core.editor notepad
+git config --global core.editor notepad # Notepad
+git config --global core.editor "code --wait" # VS Code
 ```
 
 

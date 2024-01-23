@@ -121,9 +121,10 @@ git commit -m "Add hello.py"
 
 - The commit message is usually a short, one-line description specified with the `-m "commit message"` argument.
 - If you want to write a longer description, omit the `-m` argument. `git commit` will then open a text editor where you can write the description.
-- In Git on Windows, the default editor for writing commit messages is `vim`, which runs directly in the terminal. If you are not familiar with using `vim`, you can change the editor, for example to `notepad`:
+- In Git on Windows, the default editor for writing commit messages is `vim`, which runs directly in the terminal. If you are not familiar with using `vim`, you can [change the editor](https://docs.github.com/en/get-started/getting-started-with-git/associating-text-editors-with-git):
 ```sh
-git config --global core.editor notepad
+git config --global core.editor notepad # Notepad
+git config --global core.editor "code --wait" # VS Code
 ```
 
 ## Step 4: Saving a version

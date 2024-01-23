@@ -11,7 +11,7 @@
 /* Font families */
 // 'simple' theme default fonts:
 //      content: Lato
-//      headings: News Cycle 
+//      headings: News Cycle  
 // $font-family-sans-serif: "Source Sans Pro", sans-serif !default;
 // $presentation-heading-font: "News Cycle", sans-serif !default;
 
@@ -174,7 +174,8 @@ $code-block-font-size: 0.8em;
             color: #f4e7c9;
         }
 
-        pre.tree, pre.markdown-source {
+        pre.tree,
+        pre.markdown-source {
             background-color: #282828;
             padding: 0.5em;
             width: 90%;
@@ -188,21 +189,27 @@ $code-block-font-size: 0.8em;
 
         pre.tree {
             color: #eee;
+
             b {
                 color: #ffa770;
             }
+
             i {
                 color: #999;
             }
+
             i:before {
                 content: "# ";
             }
+
             .blob {
                 color: rgb(255, 179, 179);
             }
+
             .tree {
                 color: rgb(176, 255, 176);
             }
+
             .commit {
                 color: rgb(173, 198, 247);
             }

@@ -1,7 +1,7 @@
 ---
 title: "{{< var workshop-advanced.name >}}"
 author: "{{< var me.name >}}"
-date: "2023.10.18"
+# date: "2023.10.18"
 ---
 
 {{< include ./src/git-advanced/sections/sk/1-intro.qmd >}}
