@@ -3,7 +3,7 @@ project:
   render:
     - index.qmd
     - "slides/*.qmd"
-  post-render: 
+  post-render:
     - "cp -rnv slides/static/. _site/slides/" # source: https://github.com/quarto-dev/quarto-cli/discussions/4162#discussioncomment-4831352
 
 website:
@@ -12,9 +12,9 @@ website:
 format:
   html:
     theme: yeti
-    toc: false  
+    toc: false
 
 editor:
   markdown:
-    references: 
+    references:
       location: block
