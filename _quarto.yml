@@ -3,8 +3,8 @@ project:
   render:
     - index.qmd
     - "slides/*.qmd"
-  post-render:
-    - "cp -rnv slides/static/. _site/slides/" # source: https://github.com/quarto-dev/quarto-cli/discussions/4162#discussioncomment-4831352
+  # post-render:
+  #   - "cp -rnv slides/static/. _site/slides/" # source: https://github.com/quarto-dev/quarto-cli/discussions/4162#discussioncomment-4831352
 
 website:
   title: "Git Workshops"
