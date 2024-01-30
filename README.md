@@ -17,3 +17,9 @@ Materials for Git Workshops presented by Tibor Stanko.
 
 - October 18, 2023 (Zurich internal, 1x3h)
 - January 30-31, 2024 (Zurich internal, 2x2h)
+
+## TODO
+
+- creating tags with description
+- git hooks
+- cloning repo such that all objects are unpacked

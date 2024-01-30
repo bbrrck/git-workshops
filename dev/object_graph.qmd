@@ -1,0 +1,40 @@
+```mermaid
+graph LR;
+    commit1["first commit"]
+    commit2["second commit"]
+    commit3["third commit"]
+    
+    tree1["tree"]
+    tree2["tree"]
+    tree3["tree"]
+    
+    test1["test.txt"]
+    test2["test.txt"]
+    test3["test.txt"]
+    new2["new.txt"]
+
+    bak["bak"]
+    
+    version1["&quot;version 1&quot;"];
+    version2["&quot;version 2&quot;"];
+    newfile["&quot;new file&quot;"]
+
+    commit2-->commit1
+    commit3-->commit2
+
+    commit1-->tree1
+    commit2-->tree2
+    commit3-->tree3
+    tree3-->bak
+    tree3-->test3
+    test3-->version2
+    bak-->tree1
+
+    tree1-->test1
+    test1-->version1
+    
+    tree2-->test2
+    tree2-->new2
+    test2-->version2
+    new2-->newfile
+```

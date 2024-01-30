@@ -6,9 +6,9 @@
 2. [Vnútro Gitu](#git-internals)
 3. [Merge vs. Rebase](#merge-vs-rebase)
 4. [Časté otázky a problémy](#common-issues)
-5. *Pull Requests*
-6. *Branching Models*
-7. [CI/CD s pomocou Gitu](#cicd)
+5. [Git workflowy](#workflow) = modely vetvenia
+6. [Pull Requesty](#pull-requests)
+7. [~~CI/CD s pomocou Gitu~~](#cicd)
 8. [SSH autentifikácia](#ssh)
 :::
 ::: {.column width="60%" .nobullets}

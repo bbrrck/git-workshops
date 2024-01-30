@@ -1,0 +1,12 @@
+# Pull Requesty {#pull-requests}
+
+## Čo je to pull request?
+
+- *pull request* je žiadosť o začlenenie zmien do projektu
+- jeho vytvorením žiadame (*request*) vlastníka projektu (*maintainera*), aby si stiahol (*pull*) naše zmeny a začlenil ich do projektu
+- môže byť vytvorený vrámci workflowov ako napr. *feature* alebo *forking*, ale nie vrámci *centralized* workflowu
+
+
+## Na čo je dobrý pull request?
+
+- umožňuje diskutovať o zmene
