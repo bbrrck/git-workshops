@@ -2,11 +2,16 @@
 
 ## Čo je to pull request?
 
-- *pull request* je žiadosť o začlenenie zmien do projektu
-- jeho vytvorením žiadame (*request*) vlastníka projektu (*maintainera*), aby si stiahol (*pull*) naše zmeny a začlenil ich do projektu
+- jeho vytvorením žiadame (*request*) správcu projektu (*maintainer*), aby si stiahol (*pull*) naše zmeny a začlenil ich do projektu
 - môže byť vytvorený vrámci workflowov ako napr. *feature* alebo *forking*, ale nie vrámci *centralized* workflowu
+- umožňuje vývojárom diskutovať o zmene a vykonávať *code reviews*
 
+**Príklady:**
 
-## Na čo je dobrý pull request?
+- [Pybrickz #481](https://dev.azure.com/zna-predictive-analytics/dna-packages/_git/pybrickz/pullrequest/481)
+- [Quartodoc #240](https://github.com/machow/quartodoc/pull/240)
+- [Quartodoc #288](https://github.com/machow/quartodoc/pull/288)
 
-- umožňuje diskutovať o zmene
+:::footer
+[Making a Pull Request](https://www.atlassian.com/git/tutorials/making-a-pull-request) (Atlassian)
+:::

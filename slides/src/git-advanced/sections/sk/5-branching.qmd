@@ -13,7 +13,7 @@ V Gite existuje mnoho rôznych workflowov, ktoré sa líšia v tom, ako použív
 - *etc.*
 
 :::footer
-Projekt Git Workflows Warehouse obsahuje [katalóg 50 workflowov](https://gitworkflows.cs.manchester.ac.uk/workflow-catalogue/) a tiež užitočný [zoznam zdrojov](https://gitworkflows.cs.manchester.ac.uk/resources-comparing-git-workflows/).
+Projekt *Git Workflows Warehouse* obsahuje [katalóg 50-tich workflowov](https://gitworkflows.cs.manchester.ac.uk/workflow-catalogue/) a tiež užitočný [zoznam zdrojov](https://gitworkflows.cs.manchester.ac.uk/resources-comparing-git-workflows/).
 :::
 
 
@@ -78,16 +78,22 @@ Pozri [trunkbaseddevelopment.com](https://trunkbaseddevelopment.com/) a tiež [W
 
 ## Trunk-based development
 
-> Feature-based deployment can be beneficial for teams that value the isolation of features and are willing to manage the complexities of merging these features back into the mainline. On the other hand, trunk-based deployment is suited for organizations that prioritize rapid integration and releases and have the infrastructure to manage continuous integrations and feature flags.
+> **Feature-based deployment** can be beneficial for teams that value the isolation of features and are willing to manage the complexities of merging these features back into the mainline. On the other hand, **trunk-based deployment** is suited for organizations that prioritize rapid integration and releases and have the infrastructure to manage continuous integrations and feature flags.
 
 > In recent years, with the rise of DevOps and agile methodologies, there's been a clear trend towards more frequent integrations and releases. This trend has made trunk-based development, with its emphasis on rapid integration and release, increasingly popular among many tech giants and startups alike. However, as with all methodologies, it's essential to evaluate the specific needs and capabilities of an organization before adopting a deployment strategy.
+
 
 :::footer
 [Feature-Based Deployment vs. Trunk-Based Deployment](https://www.linkedin.com/pulse/feature-based-deployment-vs-trunk-based-john-nochowitz/) by John Nochowitz
 :::
 
+## Zdieľané vetvy mimo hlavnej línie spôsobujú problémy *(merge hell)*{background-image="https://trunkbaseddevelopment.com/trunk1a.png" background-size="70%" background-position="center"}
 
-## Gitflow Workflow
+## Menšie tímy {background-image="https://trunkbaseddevelopment.com/trunk1b.png" background-size="70%" background-position="center"}
+
+## Väčšie tímy {background-image="https://trunkbaseddevelopment.com/trunk1c.png" background-size="70%" background-position="center"}
+
+## Gitflow workflow
 
 - rozšírenie feature branching workflowu o `develop` a `release`, a `hotfix` vetvy
 - účel každej vetvy je jasne definovaný
@@ -96,6 +102,12 @@ Pozri [trunkbaseddevelopment.com](https://trunkbaseddevelopment.com/) a tiež [W
   - `feature` - vývoj nových funkcií
   - `release` - príprava na vydanie
   - `hotfix` - oprava chýb v produkčnej verzii
+
+::: footer
+[A successful Git branching model](https://nvie.com/posts/a-successful-git-branching-model/) (Vincent Driessen)
+:::
+
+## Gitflow workflow
 
 **Výhody:**
 
@@ -106,13 +118,15 @@ Pozri [trunkbaseddevelopment.com](https://trunkbaseddevelopment.com/) a tiež [W
 
 - veľké množstvo vetiev
 - merge hell
-
-## Gitflow Workflow
+  
+<div style="font-size:80%">
 
 > Gitflow is a **legacy** Git workflow that was originally a disruptive and novel strategy for managing Git branches. Gitflow has fallen in popularity in favor of [trunk-based workflows](https://www.atlassian.com/continuous-delivery/continuous-integration/trunk-based-development), which are now considered best practices for modern continuous software development and [DevOps](https://www.atlassian.com/devops/what-is-devops) practices. Gitflow also can be challenging to use with [CI/CD](https://www.atlassian.com/continuous-delivery).
 
+</div>
+
 ::: footer
-Pozri [A successful Git branching model](https://nvie.com/posts/a-successful-git-branching-model/) (Vincent Driessen) a [Gitflow workflow](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow) (Atlassian).
+[Gitflow workflow](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow) (Atlassian)
 :::
 
 ## {background-image="https://wac-cdn.atlassian.com/dam/jcr:34c86360-8dea-4be4-92f7-6597d4d5bfae/02%20Feature%20branches.svg?cdnVersion=1419" background-size="100% 80%" background-position="center"}
@@ -121,7 +135,7 @@ Pozri [A successful Git branching model](https://nvie.com/posts/a-successful-git
 
 ## {background-image="https://wac-cdn.atlassian.com/dam/jcr:cc0b526e-adb7-4d45-874e-9bcea9898b4a/04%20Hotfix%20branches.svg?cdnVersion=1419" background-size="100% 80%" background-position="center"}
 
-## Gitflow Workflow
+## Gitflow workflow
 
 The overall flow of Gitflow is:
 
@@ -138,4 +152,6 @@ The overall flow of Gitflow is:
 - vývojári nemajú priamy prístup k hlavnému repozitáru, ale vytvárajú si *fork* (kópiu) repozitára, na ktorom pracujú
 - bežne používaný v open-source projektoch
 
-## {background-image="https://www.dalescott.net/wp-content/uploads/2012/09/centralized-github-4-1024x625.png" background-size="80% 80%" background-position="center"}
+::: {.center .width-050}
+![](https://www.dalescott.net/wp-content/uploads/2012/09/centralized-github-4-1024x625.png)
+:::
