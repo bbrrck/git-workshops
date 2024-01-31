@@ -4,7 +4,7 @@
     "href": "slides/git-basics-sk.html#o-mne",
     "title": "Git Basics Workshop",
     "section": "O mne",
-    "text": "O mne\n\n\n\nTibor Stanko, 32 rokov\nod 2020 dátový inžinier v Zurich Insurance, Bratislava 🇸🇰\npredtým 6 rokov v akademickej sfére vo 🇫🇷 (PhD, postdoc)\nrád automatizujem nudné úlohy s pomocou Pythonu 🐍\nnie som Git guru, no Git používam denne už viac ako 8 rokov\nmoje voľnočasové aktivity: 👨‍👩‍👧‍👦🚲⛰️🎸🎹🍺"
+    "text": "O mne\n\n\n\nTibor Stanko, 33 rokov\nod 2020 dátový inžinier v Zurich Insurance, Bratislava 🇸🇰\npredtým 6 rokov v akademickej sfére vo 🇫🇷 (PhD, postdoc)\nrád automatizujem nudné úlohy s pomocou Pythonu 🐍\nnie som Git guru, no Git používam denne už viac ako 9 rokov\nmoje voľnočasové aktivity: 👨‍👩‍👧‍👦🚲⛰️🎸🎹🍺"
   },
   {
     "objectID": "slides/git-basics-sk.html#obsah-tohto-workshopu",
@@ -95,7 +95,7 @@
     "href": "slides/git-basics-sk.html#krok-4-uloženie-verzie-1",
     "title": "Git Basics Workshop",
     "section": "Krok 4: Uloženie verzie",
-    "text": "Krok 4: Uloženie verzie\n\nPopis záznamu (commit message) je väčšinou krátka jednoriadková správa ktorá sa špecifikuje cez argument -m \"commit message\"\nAk chceme napísať dlhší popis, argument -m vynecháme. git commit vtedy otvorí textový editor v ktorom popis napíšeme.\nV Gite na Windowse je na písanie commit message predvolený editor vim, ktorý beží priamo v termináli. Ak nemáte skúsenosti s používaním vimu, môžete si editor zmeniť napr. na notepad:\n\ngit config --global core.editor notepad"
+    "text": "Krok 4: Uloženie verzie\n\nPopis záznamu (commit message) je väčšinou krátka jednoriadková správa ktorá sa špecifikuje cez argument -m \"commit message\"\nAk chceme napísať dlhší popis, argument -m vynecháme. git commit vtedy otvorí textový editor v ktorom popis napíšeme.\nV Gite na Windowse je na písanie commit message predvolený editor vim, ktorý beží priamo v termináli. Ak nemáte skúsenosti s používaním vimu, môžete si editor zmeniť:\n\ngit config --global core.editor notepad # Notepad\ngit config --global core.editor \"code --wait\" # VS Code"
   },
   {
     "objectID": "slides/git-basics-sk.html#krok-4-uloženie-verzie-2",
@@ -452,14 +452,14 @@
     "href": "slides/git-advanced-sk.html#o-mne",
     "title": "Git Advanced Workshop",
     "section": "O mne",
-    "text": "O mne\n\n\n\nTibor Stanko, 32 rokov\nod 2020 dátový inžinier v Zurich Insurance, Bratislava 🇸🇰\npredtým 6 rokov v akademickej sfére vo 🇫🇷 (PhD, postdoc)\nrád automatizujem nudné úlohy s pomocou Pythonu 🐍\nnie som Git guru, no Git používam denne už viac ako 8 rokov\nmoje voľnočasové aktivity: 👨‍👩‍👧‍👦🚲⛰️🎸🎹🍺"
+    "text": "O mne\n\n\n\nTibor Stanko, 33 rokov\nod 2020 dátový inžinier v Zurich Insurance, Bratislava 🇸🇰\npredtým 6 rokov v akademickej sfére vo 🇫🇷 (PhD, postdoc)\nrád automatizujem nudné úlohy s pomocou Pythonu 🐍\nnie som Git guru, no Git používam denne už viac ako 9 rokov\nmoje voľnočasové aktivity: 👨‍👩‍👧‍👦🚲⛰️🎸🎹🍺"
   },
   {
     "objectID": "slides/git-advanced-sk.html#obsah-tohto-workshopu",
     "href": "slides/git-advanced-sk.html#obsah-tohto-workshopu",
     "title": "Git Advanced Workshop",
     "section": "Obsah tohto workshopu",
-    "text": "Obsah tohto workshopu\n\n\n\nÚvod\nVnútro Gitu\nMerge vs. Rebase\nČasté otázky a problémy\nCI/CD s pomocou Gitu\nSSH autentifikácia\n\n\n\n \n\n— Úlohy (1)\n— Úlohy (2)"
+    "text": "Obsah tohto workshopu\n\n\n\nÚvod\nVnútro Gitu\nMerge vs. Rebase\nČasté otázky a problémy\nGit workflowy = modely vetvenia\nPull Requesty\nCI/CD s pomocou Gitu\nSSH autentifikácia\n\n\n\n \n\n— Úlohy (1)\n— Úlohy (2)"
   },
   {
     "objectID": "slides/git-advanced-sk.html#section",
@@ -607,6 +607,20 @@
     "title": "Git Advanced Workshop",
     "section": "Úlohy (1)",
     "text": "Úlohy (1)\n\n\nNaklonuj si testovací repozitár:\n\ngit clone https://github.com/bbrrck/hello.git \n\nZ priečinku .git nájdi súbor s hashom na ktorý ukazuje vetva slovak.\nPorovnaj hash s výstupom z príkazu git rev-parse slovak.\nViacnásobným použitím príkazu git cat-file -p zisti aký obsah sa nacháda v súbore hello.py na vetve slovak.\n\nHint: ako argument za -p použi hash z predošlého kroku."
+  },
+  {
+    "objectID": "slides/git-advanced-sk.html#odbočka-ako-rozbaliť-git-objekty",
+    "href": "slides/git-advanced-sk.html#odbočka-ako-rozbaliť-git-objekty",
+    "title": "Git Advanced Workshop",
+    "section": "Odbočka: Ako rozbaliť git objekty?",
+    "text": "Odbočka: Ako rozbaliť git objekty?\nPo naklonovaní repozitára sa v priečinku .git/objects nachádzajú všetky objekty, ktoré Git používa, niektoré z nich však môžu byť zabalené v priečinku pack.\ngit clone https://github.com/bbrrck/hello.git\ncd hello\nls .git/objects\n# .git/objects/info\n# .git/objects/pack\nls .git/objects/pack\n# .git/objects/pack/pack-48cae0e3bd98461308f23caeb2cfcc3df0b34da8.idx\n# .git/objects/pack/pack-48cae0e3bd98461308f23caeb2cfcc3df0b34da8.pack\n# .git/objects/pack/pack-48cae0e3bd98461308f23caeb2cfcc3df0b34da8.rev"
+  },
+  {
+    "objectID": "slides/git-advanced-sk.html#odbočka-ako-rozbaliť-git-objekty-2",
+    "href": "slides/git-advanced-sk.html#odbočka-ako-rozbaliť-git-objekty-2",
+    "title": "Git Advanced Workshop",
+    "section": "Odbočka: Ako rozbaliť git objekty? (2)",
+    "text": "Odbočka: Ako rozbaliť git objekty? (2)\nManuálne rozbalenie objektov je možné pomocou príkazu git unpack-objects. Ak však tento príkaz použijeme na súbory z predošlého príkladu, nič sa nestane. Je to preto, lebo Git nerozbalí objekty ktoré sa už nachádzajú v repozitári. Pred rozbalením objektov je preto potrebné ich najprv presunúť do inej časti repozitára.\n# Presuň súbory so zabalenými objektami do dočasného priečinku\nmkdir temp; mv .git/objects/pack/* temp\n# Rozbaľ objekty\ncat temp/*.pack | git unpack-objects\n# Vymaž dočasný priečinok\nrm -rf temp\n\nMimo experimentovania manuálne rozbaľovanie objektov nie je potrebné.\n\n\nstackoverflow:16972155"
   },
   {
     "objectID": "slides/git-advanced-sk.html#zlučovanie-zmien",
@@ -805,6 +819,97 @@
     "text": "Ako môžem resetovať alebo vrátiť súbor na konkrétnu verziu?\ngit checkout c5f567 -- file1/to/restore file2/to/restore"
   },
   {
+    "objectID": "slides/git-advanced-sk.html#aké-workflowy-existujú",
+    "href": "slides/git-advanced-sk.html#aké-workflowy-existujú",
+    "title": "Git Advanced Workshop",
+    "section": "Aké workflowy existujú?",
+    "text": "Aké workflowy existujú?\n\nCentralized\nFeature branch (FB)\nTrunk-based development (TBD)\nGitflow\nForking workflow\netc.\n\n\nProjekt Git Workflows Warehouse obsahuje katalóg 50-tich workflowov a tiež užitočný zoznam zdrojov."
+  },
+  {
+    "objectID": "slides/git-advanced-sk.html#centralized-workflow",
+    "href": "slides/git-advanced-sk.html#centralized-workflow",
+    "title": "Git Advanced Workshop",
+    "section": "Centralized workflow",
+    "text": "Centralized workflow\n\nvšetci vývojári pracujú na jednej vetve (main), žiadne ďalšie vetvy sa nepoužívajú\n\nVýhody:\n\njednoduché pochopenie, implementácia, aj použitie\nperfektne lineárna história\n\nNevýhody:\n\nriešenie konfliktov môže byť zložité\nnevyužíva potenciál distribuovaného systému\n\n\nCentralized workflow (Atlassian)"
+  },
+  {
+    "objectID": "slides/git-advanced-sk.html#feature-branching",
+    "href": "slides/git-advanced-sk.html#feature-branching",
+    "title": "Git Advanced Workshop",
+    "section": "Feature branching",
+    "text": "Feature branching\n\nvývoj prebieha na samostatných feature vetvách, ktoré sa následne zlučujú do main vetvy\n\nVýhody:\n\nnové funkcie sú vyvíjané izolovane, stabilný main\numožňuje používanie pull requestov, code reviews, kolaboratívny vývoj\n\nNevýhody:\n\npotenciálne veľa vetiev\npri dlhotrvajúcich vetvách môže byť zložité riešiť konflikty\n\n\nGit feature branch workflow (Atlassian)"
+  },
+  {
+    "objectID": "slides/git-advanced-sk.html#trunk-based-development",
+    "href": "slides/git-advanced-sk.html#trunk-based-development",
+    "title": "Git Advanced Workshop",
+    "section": "Trunk-based development",
+    "text": "Trunk-based development\n\npodobný feature branching workflowu, ale feature vetvy sú krátke a často mergované do main vetvy (aj niekoľkokrát denne)\nvhodný v kombinácii s automatickým testovaním a nasadzovaním (CI/CD)\n\nVýhody:\n\nkód na hlavnej vetve je vždy release ready\n\nNevýhody:\n\nnutné automatizované testovanie a nasadzovanie\nvyžaduje zrelý vývojový tím\n\n\nPozri trunkbaseddevelopment.com a tiež Why Google Stores Billions of Lines of Code in a Single Repository"
+  },
+  {
+    "objectID": "slides/git-advanced-sk.html#trunk-based-development-1",
+    "href": "slides/git-advanced-sk.html#trunk-based-development-1",
+    "title": "Git Advanced Workshop",
+    "section": "Trunk-based development",
+    "text": "Trunk-based development\n\nFeature-based deployment can be beneficial for teams that value the isolation of features and are willing to manage the complexities of merging these features back into the mainline. On the other hand, trunk-based deployment is suited for organizations that prioritize rapid integration and releases and have the infrastructure to manage continuous integrations and feature flags.\n\n\nIn recent years, with the rise of DevOps and agile methodologies, there’s been a clear trend towards more frequent integrations and releases. This trend has made trunk-based development, with its emphasis on rapid integration and release, increasingly popular among many tech giants and startups alike. However, as with all methodologies, it’s essential to evaluate the specific needs and capabilities of an organization before adopting a deployment strategy.\n\n\nFeature-Based Deployment vs. Trunk-Based Deployment by John Nochowitz"
+  },
+  {
+    "objectID": "slides/git-advanced-sk.html#zdieľané-vetvy-mimo-hlavnej-línie-spôsobujú-problémy-merge-hell",
+    "href": "slides/git-advanced-sk.html#zdieľané-vetvy-mimo-hlavnej-línie-spôsobujú-problémy-merge-hell",
+    "title": "Git Advanced Workshop",
+    "section": "Zdieľané vetvy mimo hlavnej línie spôsobujú problémy (merge hell)",
+    "text": "Zdieľané vetvy mimo hlavnej línie spôsobujú problémy (merge hell)"
+  },
+  {
+    "objectID": "slides/git-advanced-sk.html#menšie-tímy",
+    "href": "slides/git-advanced-sk.html#menšie-tímy",
+    "title": "Git Advanced Workshop",
+    "section": "Menšie tímy",
+    "text": "Menšie tímy"
+  },
+  {
+    "objectID": "slides/git-advanced-sk.html#väčšie-tímy",
+    "href": "slides/git-advanced-sk.html#väčšie-tímy",
+    "title": "Git Advanced Workshop",
+    "section": "Väčšie tímy",
+    "text": "Väčšie tímy"
+  },
+  {
+    "objectID": "slides/git-advanced-sk.html#gitflow-workflow",
+    "href": "slides/git-advanced-sk.html#gitflow-workflow",
+    "title": "Git Advanced Workshop",
+    "section": "Gitflow workflow",
+    "text": "Gitflow workflow\n\nrozšírenie feature branching workflowu o develop a release, a hotfix vetvy\núčel každej vetvy je jasne definovaný\n\nmain - produkčná vetva\ndevelop - vývojová vetva\nfeature - vývoj nových funkcií\nrelease - príprava na vydanie\nhotfix - oprava chýb v produkčnej verzii\n\n\n\nA successful Git branching model (Vincent Driessen)"
+  },
+  {
+    "objectID": "slides/git-advanced-sk.html#gitflow-workflow-1",
+    "href": "slides/git-advanced-sk.html#gitflow-workflow-1",
+    "title": "Git Advanced Workshop",
+    "section": "Gitflow workflow",
+    "text": "Gitflow workflow\nVýhody:\n\nvšetky výhody feature branching workflowu\nvhodný pre projekty s dlhším vývojom a pravidelnými releasmi\n\nNevýhody:\n\nveľké množstvo vetiev\nmerge hell\n\n\n\nGitflow is a legacy Git workflow that was originally a disruptive and novel strategy for managing Git branches. Gitflow has fallen in popularity in favor of trunk-based workflows, which are now considered best practices for modern continuous software development and DevOps practices. Gitflow also can be challenging to use with CI/CD.\n\n\n\nGitflow workflow (Atlassian)"
+  },
+  {
+    "objectID": "slides/git-advanced-sk.html#gitflow-workflow-2",
+    "href": "slides/git-advanced-sk.html#gitflow-workflow-2",
+    "title": "Git Advanced Workshop",
+    "section": "Gitflow workflow",
+    "text": "Gitflow workflow\nThe overall flow of Gitflow is:\n\nA develop branch is created from main\nA release branch is created from develop\nFeature branches are created from develop\nWhen a feature is complete it is merged into the develop branch\nWhen the release branch is done it is merged into develop and main\nIf an issue in main is detected a hotfix branch is created from main\nOnce the hotfix is complete it is merged to both develop and main"
+  },
+  {
+    "objectID": "slides/git-advanced-sk.html#forking-workflow",
+    "href": "slides/git-advanced-sk.html#forking-workflow",
+    "title": "Git Advanced Workshop",
+    "section": "Forking workflow",
+    "text": "Forking workflow\n\nvývojári nemajú priamy prístup k hlavnému repozitáru, ale vytvárajú si fork (kópiu) repozitára, na ktorom pracujú\nbežne používaný v open-source projektoch"
+  },
+  {
+    "objectID": "slides/git-advanced-sk.html#čo-je-to-pull-request",
+    "href": "slides/git-advanced-sk.html#čo-je-to-pull-request",
+    "title": "Git Advanced Workshop",
+    "section": "Čo je to pull request?",
+    "text": "Čo je to pull request?\n\njeho vytvorením žiadame (request) správcu projektu (maintainer), aby si stiahol (pull) naše zmeny a začlenil ich do projektu\nmôže byť vytvorený vrámci workflowov ako napr. feature alebo forking, ale nie vrámci centralized workflowu\numožňuje vývojárom diskutovať o zmene a vykonávať code reviews\n\nPríklady:\n\nPybrickz #481\nQuartodoc #240\nQuartodoc #288\n\n\nMaking a Pull Request (Atlassian)"
+  },
+  {
     "objectID": "slides/git-advanced-sk.html#čo-je-to-cicd",
     "href": "slides/git-advanced-sk.html#čo-je-to-cicd",
     "title": "Git Advanced Workshop",
@@ -879,7 +984,7 @@
     "href": "slides/git-basics-en.html#about-me",
     "title": "Git Basics Workshop",
     "section": "About me",
-    "text": "About me\n\n\n\nTibor Stanko, 32 years\nsince 2020 Data Engineer in Zurich Insurance, Bratislava 🇸🇰\nbefore that, 6 years in academia in 🇫🇷 (PhD, postdoc)\nI enjoy automating boring tasks using Python 🐍\nnot a Git guru, but I’ve been using Git daily for over 8 years\nmy hobbies: 👨‍👩‍👧‍👦🚲⛰️🎸🎹🍺"
+    "text": "About me\n\n\n\nTibor Stanko, 33 years\nsince 2020 Data Engineer in Zurich Insurance, Bratislava 🇸🇰\nbefore that, 6 years in academia in 🇫🇷 (PhD, postdoc)\nI enjoy automating boring tasks using Python 🐍\nnot a Git guru, but I’ve been using Git daily for over 9 years\nmy hobbies: 👨‍👩‍👧‍👦🚲⛰️🎸🎹🍺"
   },
   {
     "objectID": "slides/git-basics-en.html#contents-of-this-workshop",
@@ -970,7 +1075,7 @@
     "href": "slides/git-basics-en.html#step-4-saving-a-version-1",
     "title": "Git Basics Workshop",
     "section": "Step 4: Saving a version",
-    "text": "Step 4: Saving a version\n\nThe commit message is usually a short, one-line description specified with the -m \"commit message\" argument.\nIf you want to write a longer description, omit the -m argument. git commit will then open a text editor where you can write the description.\nIn Git on Windows, the default editor for writing commit messages is vim, which runs directly in the terminal. If you are not familiar with using vim, you can change the editor, for example to notepad:\n\ngit config --global core.editor notepad"
+    "text": "Step 4: Saving a version\n\nThe commit message is usually a short, one-line description specified with the -m \"commit message\" argument.\nIf you want to write a longer description, omit the -m argument. git commit will then open a text editor where you can write the description.\nIn Git on Windows, the default editor for writing commit messages is vim, which runs directly in the terminal. If you are not familiar with using vim, you can change the editor:\n\ngit config --global core.editor notepad # Notepad\ngit config --global core.editor \"code --wait\" # VS Code"
   },
   {
     "objectID": "slides/git-basics-en.html#step-4-saving-a-version-2",

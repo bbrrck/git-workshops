@@ -1,1 +1,1 @@
-Sitemap: https://github.com/bbrrck/git-workshops/sitemap.xml
+Sitemap: https://bbrrck.github.io/git-workshops/sitemap.xml
