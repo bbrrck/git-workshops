@@ -1,0 +1,157 @@
+# Git workflowy = modely vetvenia {#workflow}
+
+V Gite existuje mnoho rôznych workflowov, ktoré sa líšia v tom, ako používajú vetvenie (branching). V tejto kapitole si ukážeme niekoľko najpoužívanejších workflowov a ich výhody a nevýhody.
+
+
+## Aké workflowy existujú?
+
+- Centralized
+- Feature branch (FB)
+- Trunk-based development (TBD)
+- Gitflow
+- Forking workflow
+- *etc.*
+
+:::footer
+Projekt *Git Workflows Warehouse* obsahuje [katalóg 50-tich workflowov](https://gitworkflows.cs.manchester.ac.uk/workflow-catalogue/) a tiež užitočný [zoznam zdrojov](https://gitworkflows.cs.manchester.ac.uk/resources-comparing-git-workflows/).
+:::
+
+
+## Centralized workflow
+
+- všetci vývojári pracujú na jednej vetve (`main`), žiadne ďalšie vetvy sa nepoužívajú
+
+**Výhody:**
+
+- jednoduché pochopenie, implementácia, aj použitie
+- perfektne lineárna história
+
+**Nevýhody:**
+
+- riešenie konfliktov môže byť zložité
+- nevyužíva potenciál distribuovaného systému
+
+::: footer
+[Centralized workflow](https://www.atlassian.com/git/tutorials/comparing-workflows) (Atlassian)
+:::
+
+## {background-image="https://wac-cdn.atlassian.com/dam/jcr:2943ffa0-df0a-493b-8677-30b31a1a43e3/02%20Local%20Repository.svg?cdnVersion=1418" background-size="100% 80%" background-position="center"}
+
+## {background-image="https://wac-cdn.atlassian.com/dam/jcr:78c9d390-8f85-48a3-833e-fdbc6eb65282/Marys_Repository.svg?cdnVersion=1418" background-size="100% 80%" background-position="center"}
+
+
+## Feature branching
+
+- vývoj prebieha na samostatných `feature` vetvách, ktoré sa následne zlučujú do `main` vetvy
+
+**Výhody:**
+
+- nové funkcie sú vyvíjané izolovane, stabilný `main` 
+- umožňuje používanie pull requestov, code reviews, kolaboratívny vývoj
+
+**Nevýhody:**
+
+- potenciálne veľa vetiev
+- pri dlhotrvajúcich vetvách môže byť zložité riešiť konflikty
+
+:::footer
+[Git feature branch workflow](https://www.atlassian.com/git/tutorials/comparing-workflows/feature-branch-workflow) (Atlassian)
+:::
+
+## Trunk-based development
+
+- podobný feature branching workflowu, ale `feature` vetvy sú krátke a často mergované do `main` vetvy (aj niekoľkokrát denne)
+- vhodný v kombinácii s automatickým testovaním a nasadzovaním (CI/CD)
+
+**Výhody:**
+
+- kód na hlavnej vetve je vždy *release ready*
+
+**Nevýhody:**
+
+- nutné automatizované testovanie a nasadzovanie
+- vyžaduje zrelý vývojový tím
+
+:::footer
+Pozri [trunkbaseddevelopment.com](https://trunkbaseddevelopment.com/) a tiež [Why Google Stores Billions of Lines of Code in a Single Repository](https://research.google/pubs/why-google-stores-billions-of-lines-of-code-in-a-single-repository/)
+:::
+
+## Trunk-based development
+
+> **Feature-based deployment** can be beneficial for teams that value the isolation of features and are willing to manage the complexities of merging these features back into the mainline. On the other hand, **trunk-based deployment** is suited for organizations that prioritize rapid integration and releases and have the infrastructure to manage continuous integrations and feature flags.
+
+> In recent years, with the rise of DevOps and agile methodologies, there's been a clear trend towards more frequent integrations and releases. This trend has made trunk-based development, with its emphasis on rapid integration and release, increasingly popular among many tech giants and startups alike. However, as with all methodologies, it's essential to evaluate the specific needs and capabilities of an organization before adopting a deployment strategy.
+
+
+:::footer
+[Feature-Based Deployment vs. Trunk-Based Deployment](https://www.linkedin.com/pulse/feature-based-deployment-vs-trunk-based-john-nochowitz/) by John Nochowitz
+:::
+
+## Zdieľané vetvy mimo hlavnej línie spôsobujú problémy *(merge hell)*{background-image="https://trunkbaseddevelopment.com/trunk1a.png" background-size="70%" background-position="center"}
+
+## Menšie tímy {background-image="https://trunkbaseddevelopment.com/trunk1b.png" background-size="70%" background-position="center"}
+
+## Väčšie tímy {background-image="https://trunkbaseddevelopment.com/trunk1c.png" background-size="70%" background-position="center"}
+
+## Gitflow workflow
+
+- rozšírenie feature branching workflowu o `develop` a `release`, a `hotfix` vetvy
+- účel každej vetvy je jasne definovaný
+  - `main` - produkčná vetva
+  - `develop` - vývojová vetva
+  - `feature` - vývoj nových funkcií
+  - `release` - príprava na vydanie
+  - `hotfix` - oprava chýb v produkčnej verzii
+
+::: footer
+[A successful Git branching model](https://nvie.com/posts/a-successful-git-branching-model/) (Vincent Driessen)
+:::
+
+## Gitflow workflow
+
+**Výhody:**
+
+- všetky výhody feature branching workflowu
+- vhodný pre projekty s dlhším vývojom a pravidelnými releasmi
+
+**Nevýhody:**
+
+- veľké množstvo vetiev
+- merge hell
+  
+<div style="font-size:80%">
+
+> Gitflow is a **legacy** Git workflow that was originally a disruptive and novel strategy for managing Git branches. Gitflow has fallen in popularity in favor of [trunk-based workflows](https://www.atlassian.com/continuous-delivery/continuous-integration/trunk-based-development), which are now considered best practices for modern continuous software development and [DevOps](https://www.atlassian.com/devops/what-is-devops) practices. Gitflow also can be challenging to use with [CI/CD](https://www.atlassian.com/continuous-delivery).
+
+</div>
+
+::: footer
+[Gitflow workflow](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow) (Atlassian)
+:::
+
+## {background-image="https://wac-cdn.atlassian.com/dam/jcr:34c86360-8dea-4be4-92f7-6597d4d5bfae/02%20Feature%20branches.svg?cdnVersion=1419" background-size="100% 80%" background-position="center"}
+
+## {background-image="https://wac-cdn.atlassian.com/dam/jcr:8f00f1a4-ef2d-498a-a2c6-8020bb97902f/03%20Release%20branches.svg?cdnVersion=1419" background-size="100% 80%" background-position="center"}
+
+## {background-image="https://wac-cdn.atlassian.com/dam/jcr:cc0b526e-adb7-4d45-874e-9bcea9898b4a/04%20Hotfix%20branches.svg?cdnVersion=1419" background-size="100% 80%" background-position="center"}
+
+## Gitflow workflow
+
+The overall flow of Gitflow is:
+
+1. A `develop` branch is created from `main`
+2. A `release` branch is created from `develop`
+3. `Feature` branches are created from `develop`
+4. When a `feature` is complete it is merged into the `develop` branch
+5. When the `release` branch is done it is merged into `develop` and `main`
+6. If an issue in main is detected a `hotfix` branch is created from `main`
+7. Once the `hotfix` is complete it is merged to both `develop` and `main`
+
+## Forking workflow
+
+- vývojári nemajú priamy prístup k hlavnému repozitáru, ale vytvárajú si *fork* (kópiu) repozitára, na ktorom pracujú
+- bežne používaný v open-source projektoch
+
+::: {.center .width-050}
+![](https://www.dalescott.net/wp-content/uploads/2012/09/centralized-github-4-1024x625.png)
+:::

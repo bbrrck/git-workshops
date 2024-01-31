@@ -12,3 +12,42 @@ git clone https://github.com/bbrrck/hello.git
     - Hint: ako argument za `-p` použi hash z predošlého kroku.
 
 :::
+
+## Odbočka: Ako rozbaliť git objekty?
+
+Po naklonovaní repozitára sa v priečinku `.git/objects` nachádzajú všetky objekty, ktoré Git používa, niektoré z nich však môžu byť zabalené v priečinku `pack`.
+
+
+```bash
+git clone https://github.com/bbrrck/hello.git
+cd hello
+ls .git/objects
+# .git/objects/info
+# .git/objects/pack
+ls .git/objects/pack
+# .git/objects/pack/pack-48cae0e3bd98461308f23caeb2cfcc3df0b34da8.idx
+# .git/objects/pack/pack-48cae0e3bd98461308f23caeb2cfcc3df0b34da8.pack
+# .git/objects/pack/pack-48cae0e3bd98461308f23caeb2cfcc3df0b34da8.rev
+```
+
+## Odbočka: Ako rozbaliť git objekty? (2)
+
+Manuálne rozbalenie objektov je možné pomocou príkazu [git unpack-objects](https://git-scm.com/docs/git-unpack-objects). Ak však tento príkaz použijeme na súbory z predošlého príkladu, nič sa nestane. Je to preto, lebo Git nerozbalí objekty ktoré sa už nachádzajú v repozitári. Pred rozbalením objektov je preto potrebné ich najprv presunúť do inej časti repozitára.
+
+```bash
+# Presuň súbory so zabalenými objektami do dočasného priečinku
+mkdir temp; mv .git/objects/pack/* temp
+# Rozbaľ objekty
+cat temp/*.pack | git unpack-objects
+# Vymaž dočasný priečinok
+rm -rf temp
+```
+
+::: {.warning}
+Mimo experimentovania manuálne rozbaľovanie objektov nie je potrebné.
+::: 
+
+
+:::footer
+[stackoverflow:16972155](https://stackoverflow.com/a/16972155)
+:::
