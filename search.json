@@ -4,7 +4,7 @@
     "href": "slides/git-basics-sk.html#o-mne",
     "title": "Git Basics Workshop",
     "section": "O mne",
-    "text": "O mne\n\n\n\nTibor Stanko, 33 rokov\nod 2020 dátový inžinier v Zurich Insurance, Bratislava 🇸🇰\npredtým 6 rokov v akademickej sfére vo 🇫🇷 (PhD, postdoc)\nrád automatizujem nudné úlohy s pomocou Pythonu 🐍\nnie som Git guru, no Git používam denne už viac ako 9 rokov\nmoje voľnočasové aktivity: 👨‍👩‍👧‍👦🚲⛰️🎸🎹🍺"
+    "text": "O mne\n\n\n\nTibor Stanko, 34 rokov\nod 2020 dátový inžinier v Zurich Insurance, Bratislava 🇸🇰\npredtým 6 rokov v akademickej sfére vo 🇫🇷 (PhD, postdoc)\nrád automatizujem nudné úlohy s pomocou Pythonu 🐍\nnie som Git guru, no Git používam denne už viac ako 10 rokov\nmoje voľnočasové aktivity: 👨‍👩‍👧‍👦🚲⛰️🎸🎹🍺"
   },
   {
     "objectID": "slides/git-basics-sk.html#obsah-tohto-workshopu",
@@ -452,7 +452,7 @@
     "href": "slides/git-advanced-sk.html#o-mne",
     "title": "Git Advanced Workshop",
     "section": "O mne",
-    "text": "O mne\n\n\n\nTibor Stanko, 33 rokov\nod 2020 dátový inžinier v Zurich Insurance, Bratislava 🇸🇰\npredtým 6 rokov v akademickej sfére vo 🇫🇷 (PhD, postdoc)\nrád automatizujem nudné úlohy s pomocou Pythonu 🐍\nnie som Git guru, no Git používam denne už viac ako 9 rokov\nmoje voľnočasové aktivity: 👨‍👩‍👧‍👦🚲⛰️🎸🎹🍺"
+    "text": "O mne\n\n\n\nTibor Stanko, 34 rokov\nod 2020 dátový inžinier v Zurich Insurance, Bratislava 🇸🇰\npredtým 6 rokov v akademickej sfére vo 🇫🇷 (PhD, postdoc)\nrád automatizujem nudné úlohy s pomocou Pythonu 🐍\nnie som Git guru, no Git používam denne už viac ako 10 rokov\nmoje voľnočasové aktivity: 👨‍👩‍👧‍👦🚲⛰️🎸🎹🍺"
   },
   {
     "objectID": "slides/git-advanced-sk.html#obsah-tohto-workshopu",
@@ -970,63 +970,14 @@
     "href": "index.html#git-basics-workshop",
     "title": "Materials for Git Workshops",
     "section": "1 Git Basics Workshop",
-    "text": "1 Git Basics Workshop\n\nSlides\n\nBasics - English version\nBasics - Slovak version\n\n\n\nContents\nThis workshop is suitable for both beginners who are new to Git, as well as users with a working knowledge of Git who want to gain a better understanding of the concepts behind it. It will help participants improve their proficiency in using Git effectively in their daily work. The workshop combines theoretical insights with hands-on practical exercises.\nDuration: 4h (2x2h) or 3h\n\nIntro\nGit & Github\nBasic Concepts (+exercises)\nBranches (+exercises)\nRemotes (+exercises)\nGlimpse into Advanced Git\nUseful Resources\n\n\n\nPrerequisites\nTo complete the exercises, you need to have Git installed on your local machine (version 2.37 or later). For instructions on how to install Git, see chapter 1.5 Getting Started - Installing Git of Pro Git book.\nTo verify that Git is installed on your machine, run the following command:\ngit --version\nIf Git is not available, you should get an error. Otherwise, you will see output similar to the following:\ngit version 2.37.0.windows.1"
+    "text": "1 Git Basics Workshop\n\n1.1 Slides\n\nBasics - English version\nBasics - Slovak version\n\n\n\n1.2 Contents\nThis workshop is suitable for both beginners who are new to Git, as well as users with a working knowledge of Git who want to gain a better understanding of the concepts behind it. It will help participants improve their proficiency in using Git effectively in their daily work. The workshop combines theoretical insights with hands-on practical exercises.\nDuration: 4h (2x2h) or 3h\n\nIntro\nGit & Github\nBasic Concepts (+exercises)\nBranches (+exercises)\nRemotes (+exercises)\nGlimpse into Advanced Git\nUseful Resources\n\n\n\n1.3 Prerequisites\nTo complete the exercises, you need to have Git installed on your local machine (version 2.37 or later). For instructions on how to install Git, see chapter 1.5 Getting Started - Installing Git of Pro Git book.\nTo verify that Git is installed on your machine, run the following command:\ngit --version\nIf Git is not available, you should get an error. Otherwise, you will see output similar to the following:\ngit version 2.37.0.windows.1"
   },
   {
     "objectID": "index.html#git-advanced-workshop",
     "href": "index.html#git-advanced-workshop",
     "title": "Materials for Git Workshops",
     "section": "2 Git Advanced Workshop",
-    "text": "2 Git Advanced Workshop\n\nSlides\n\nAdvanced - Slovak version\n\n\n\nContents\nThis workshop is sutiable for those that are familiar with the basics of Git, and want to dive deeper into advanced Git concepts and best practices. The workshop combines theoretical insights with hands-on practical exercises.\nDuration: 4h (2x2h) or 3h\n\nIntro\nGit Internals (+exercises)\nMerge vs. Rebase (+exercises)\nFrequent Questions and Issues\nCI/CD with Git (TBA)\nSSH Authentication\nother topics suggested by participants\n\n\n\nRepositories\n\nhello - demo repo\nzoo - test repo"
-  },
-  {
-    "objectID": "slides/git-basics-en.html#about-me",
-    "href": "slides/git-basics-en.html#about-me",
-    "title": "Git Basics Workshop",
-    "section": "About me",
-    "text": "About me\n\n\n\nTibor Stanko, 33 years\nsince 2020 Data Engineer in Zurich Insurance, Bratislava 🇸🇰\nbefore that, 6 years in academia in 🇫🇷 (PhD, postdoc)\nI enjoy automating boring tasks using Python 🐍\nnot a Git guru, but I’ve been using Git daily for over 9 years\nmy hobbies: 👨‍👩‍👧‍👦🚲⛰️🎸🎹🍺"
-  },
-  {
-    "objectID": "slides/git-basics-en.html#contents-of-this-workshop",
-    "href": "slides/git-basics-en.html#contents-of-this-workshop",
-    "title": "Git Basics Workshop",
-    "section": "Contents of this workshop",
-    "text": "Contents of this workshop\n\n\n\nIntro\nGit & Github\nBasic Concepts\nBranches\nRemotes\nAdvanced Git\nUseful Resources\n\n\n\n \n\n \n\n— Exercises (1)\n— Exercises (2)\n— Exercises (3)"
-  },
-  {
-    "objectID": "slides/git-basics-en.html#what-is-git",
-    "href": "slides/git-basics-en.html#what-is-git",
-    "title": "Git Basics Workshop",
-    "section": "What is Git?",
-    "text": "What is Git?\n\nversion control system (VCS) or source control management (SCM)\nin Slovak: systém riadenia verzií\nkeeps track of project development history\nuseful for teams and for individuals\nnot only about code, enables saving arbitrary files (including non-text)"
-  },
-  {
-    "objectID": "slides/git-basics-en.html#why-do-we-need-version-control-systems",
-    "href": "slides/git-basics-en.html#why-do-we-need-version-control-systems",
-    "title": "Git Basics Workshop",
-    "section": "Why do we need version control systems",
-    "text": "Why do we need version control systems"
-  },
-  {
-    "objectID": "slides/git-basics-en.html#why-do-we-need-version-control-systems-1",
-    "href": "slides/git-basics-en.html#why-do-we-need-version-control-systems-1",
-    "title": "Git Basics Workshop",
-    "section": "Why do we need version control systems",
-    "text": "Why do we need version control systems"
-  },
-  {
-    "objectID": "slides/git-basics-en.html#what-can-you-do-with-git",
-    "href": "slides/git-basics-en.html#what-can-you-do-with-git",
-    "title": "Git Basics Workshop",
-    "section": "What can you do with Git?",
-    "text": "What can you do with Git?\n\nsave versions\nswitch between versions\nrestore a previous version\ncompare versions\ncreate branches\nmerge branches\nback up files"
-  },
-  {
-    "objectID": "slides/git-basics-en.html#what-is-github",
-    "href": "slides/git-basics-en.html#what-is-github",
-    "title": "Git Basics Workshop",
-    "section": "What is Github?",
-    "text": "What is Github?\n\n“social network for programmers”\nGit = version control system\nGithub = portal for maintaining repositories\nuses Git, but is not a part of Git\nhas functionality beyond Git\n\nIssues, Pull requests, Actions, …\n\nsimilar services: Gitlab, Bitbucket, Azure DevOps, etc."
+    "text": "2 Git Advanced Workshop\n\n2.1 Slides\n\nAdvanced - Slovak version\n\n\n\n2.2 Contents\nThis workshop is sutiable for those that are familiar with the basics of Git, and want to dive deeper into advanced Git concepts and best practices. The workshop combines theoretical insights with hands-on practical exercises.\nDuration: 4h (2x2h) or 3h\n\nIntro\nGit Internals (+exercises)\nMerge vs. Rebase (+exercises)\nFrequent Questions and Issues\nCI/CD with Git (TBA)\nSSH Authentication\nother topics suggested by participants\n\n\n\n2.3 Repositories\n\nhello - demo repo\nzoo - test repo"
   },
   {
     "objectID": "slides/git-basics-en.html#step-0-working-with-the-terminal",
@@ -1118,6 +1069,55 @@
     "title": "Git Basics Workshop",
     "section": "Exercises (1)",
     "text": "Exercises (1)\n\n\nCreate an empty directory zoo on your computer.\nTurn the zoo directory into a Git repository.\nIn the repository, create a file test.txt with any content.\nAdd test.txt to the next version and save it.\nCheck the new version using git log.\n\n\n\nTip: don’t forget to use git status while working to see the current status of the repository."
+  },
+  {
+    "objectID": "slides/git-basics-en.html#about-me",
+    "href": "slides/git-basics-en.html#about-me",
+    "title": "Git Basics Workshop",
+    "section": "About me",
+    "text": "About me\n\n\n\nTibor Stanko, 34 years\nsince 2020 Data Engineer in Zurich Insurance, Bratislava 🇸🇰\nbefore that, 6 years in academia in 🇫🇷 (PhD, postdoc)\nI enjoy automating boring tasks using Python 🐍\nnot a Git guru, but I’ve been using Git daily for over 10 years\nmy hobbies: 👨‍👩‍👧‍👦🚲⛰️🎸🎹🍺"
+  },
+  {
+    "objectID": "slides/git-basics-en.html#contents-of-this-workshop",
+    "href": "slides/git-basics-en.html#contents-of-this-workshop",
+    "title": "Git Basics Workshop",
+    "section": "Contents of this workshop",
+    "text": "Contents of this workshop\n\n\n\nIntro\nGit & Github\nBasic Concepts\nBranches\nRemotes\nAdvanced Git\nUseful Resources\n\n\n\n \n\n \n\n— Exercises (1)\n— Exercises (2)\n— Exercises (3)"
+  },
+  {
+    "objectID": "slides/git-basics-en.html#what-is-git",
+    "href": "slides/git-basics-en.html#what-is-git",
+    "title": "Git Basics Workshop",
+    "section": "What is Git?",
+    "text": "What is Git?\n\nversion control system (VCS) or source control management (SCM)\nin Slovak: systém riadenia verzií\nkeeps track of project development history\nuseful for teams and for individuals\nnot only about code, enables saving arbitrary files (including non-text)"
+  },
+  {
+    "objectID": "slides/git-basics-en.html#why-do-we-need-version-control-systems",
+    "href": "slides/git-basics-en.html#why-do-we-need-version-control-systems",
+    "title": "Git Basics Workshop",
+    "section": "Why do we need version control systems",
+    "text": "Why do we need version control systems"
+  },
+  {
+    "objectID": "slides/git-basics-en.html#why-do-we-need-version-control-systems-1",
+    "href": "slides/git-basics-en.html#why-do-we-need-version-control-systems-1",
+    "title": "Git Basics Workshop",
+    "section": "Why do we need version control systems",
+    "text": "Why do we need version control systems"
+  },
+  {
+    "objectID": "slides/git-basics-en.html#what-can-you-do-with-git",
+    "href": "slides/git-basics-en.html#what-can-you-do-with-git",
+    "title": "Git Basics Workshop",
+    "section": "What can you do with Git?",
+    "text": "What can you do with Git?\n\nsave versions\nswitch between versions\nrestore a previous version\ncompare versions\ncreate branches\nmerge branches\nback up files"
+  },
+  {
+    "objectID": "slides/git-basics-en.html#what-is-github",
+    "href": "slides/git-basics-en.html#what-is-github",
+    "title": "Git Basics Workshop",
+    "section": "What is Github?",
+    "text": "What is Github?\n\n“social network for programmers”\nGit = version control system\nGithub = portal for maintaining repositories\nuses Git, but is not a part of Git\nhas functionality beyond Git\n\nIssues, Pull requests, Actions, …\n\nsimilar services: Gitlab, Bitbucket, Azure DevOps, etc."
   },
   {
     "objectID": "slides/git-basics-en.html#what-is-a-branch",
