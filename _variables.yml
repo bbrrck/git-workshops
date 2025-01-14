@@ -2,8 +2,8 @@ me:
   name: Tibor Stanko
   email: tibor.stanko@gmail.com
   website: https://tiborstanko.sk
-  age: 33
-  git-experience-years: 9 # start = 2015
+  age: 34
+  git-experience-years: 10 # start = 2015
 
 workshop-basics:
   name: "Git Basics Workshop"

@@ -12,11 +12,13 @@ Materials for Git Workshops presented by Tibor Stanko.
 - April 19-20, 2023 (Zurich internal, 2x2h)
 - October 11-12, 2023 (Zurich internal, 2x2h)
 - January 24-25, 2024 (Zurich internal, 2x2h)
+- January 15-16, 2025 (Zurich internal, 2x2h)
 
 ### Git Advanced
 
 - October 18, 2023 (Zurich internal, 1x3h)
 - January 30-31, 2024 (Zurich internal, 2x2h)
+- January 22-23, 2025 (Zurich internal, 2x2h)
 
 ## TODO
 
