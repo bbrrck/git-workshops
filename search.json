@@ -980,6 +980,566 @@
     "text": "2 Git Advanced Workshop\n\n2.1 Slides\n\nAdvanced - Slovak version\n\n\n\n2.2 Contents\nThis workshop is sutiable for those that are familiar with the basics of Git, and want to dive deeper into advanced Git concepts and best practices. The workshop combines theoretical insights with hands-on practical exercises.\nDuration: 4h (2x2h) or 3h\n\nIntro\nGit Internals (+exercises)\nMerge vs. Rebase (+exercises)\nFrequent Questions and Issues\nCI/CD with Git (TBA)\nSSH Authentication\nother topics suggested by participants\n\n\n\n2.3 Repositories\n\nhello - demo repo\nzoo - test repo"
   },
   {
+    "objectID": "slides/git-advanced-en.html#about-me",
+    "href": "slides/git-advanced-en.html#about-me",
+    "title": "Git Advanced Workshop",
+    "section": "About me",
+    "text": "About me\n\n\n\nTibor Stanko, 34 years\nsince 2020 Data Engineer in Zurich Insurance, Bratislava 🇸🇰\nbefore that, 6 years in academia in 🇫🇷 (PhD, postdoc)\nI enjoy automating boring tasks using Python 🐍\nnot a Git guru, but I’ve been using Git daily for over 10 years\nmy hobbies: 👨‍👩‍👧‍👦🚲⛰️🎸🎹🍺"
+  },
+  {
+    "objectID": "slides/git-advanced-en.html#contents-of-this-workshop",
+    "href": "slides/git-advanced-en.html#contents-of-this-workshop",
+    "title": "Git Advanced Workshop",
+    "section": "Contents of this workshop",
+    "text": "Contents of this workshop\n\n\n\nIntro\nGit internals\nMerge vs. Rebase\nCommon issues\nBranching strategies\nPull requests\nCI/CD using Git\nSSH authentication\n\n\n\n \n\n— Exercises (1)\n— Exercises (2)"
+  },
+  {
+    "objectID": "slides/git-advanced-en.html#section",
+    "href": "slides/git-advanced-en.html#section",
+    "title": "Git Advanced Workshop",
+    "section": "",
+    "text": "xkcd:1597"
+  },
+  {
+    "objectID": "slides/git-advanced-en.html#what-is-git",
+    "href": "slides/git-advanced-en.html#what-is-git",
+    "title": "Git Advanced Workshop",
+    "section": "What is Git?",
+    "text": "What is Git?\n\nversion control system (VCS) or source control management (SCM)\nin Slovak: systém riadenia verzií\nkeeps track of project development history\nuseful for teams and for individuals\nnot only about code, enables saving arbitrary files (including non-text)"
+  },
+  {
+    "objectID": "slides/git-advanced-en.html#but-what-really-is-git",
+    "href": "slides/git-advanced-en.html#but-what-really-is-git",
+    "title": "Git Advanced Workshop",
+    "section": "But… what really is Git?",
+    "text": "But… what really is Git?\n\nGit is a content-addressable file system\nThis means that the address of a file (key) is defined by its content\nAt the core of the Git system is a simple data store that can be accessed using keys\nKey = SHA-1 hash, e.g., 655a20f99af32926cbf6d8fab092506ddd70e49c"
+  },
+  {
+    "objectID": "slides/git-advanced-en.html#what-does-git-store",
+    "href": "slides/git-advanced-en.html#what-does-git-store",
+    "title": "Git Advanced Workshop",
+    "section": "What does Git store?",
+    "text": "What does Git store?\nMainly:\n\nobjects\nreferences (or refs)"
+  },
+  {
+    "objectID": "slides/git-advanced-en.html#objects",
+    "href": "slides/git-advanced-en.html#objects",
+    "title": "Git Advanced Workshop",
+    "section": "Objects",
+    "text": "Objects\n\nblob\n\nonly content, no metadata (path, name)\n\ntree\n\na tree contains blobs or other trees\n\ncommit\n\ncontains pointers to a tree and another commit (parent)\n\ntag\n\ndefines an alternative name for another object, which can be used to interact with the object instead of the hash\n\n\nEach object is identifiable by its SHA-1 hash."
+  },
+  {
+    "objectID": "slides/git-advanced-en.html#references-pointers-to-objects",
+    "href": "slides/git-advanced-en.html#references-pointers-to-objects",
+    "title": "Git Advanced Workshop",
+    "section": "References = pointers to objects",
+    "text": "References = pointers to objects\n\nA branch is not a sequence of commits, but just a pointer to a specific commit\n\ncat .git/refs/heads/main\n# 7c66409021358486e63d2d40c9b07e2c35e8124d\n\ncat .git/refs/remotes/origin/dev\n# c29dc332ac3eebebffc5726e16d0e91df170103f\n\ncat .git/refs/tags/v2.6.3\n# d49de0ec577052db3e47e2baf5aff0be738637ac\n\nTip: In PowerShell, you can use gc (alias for Get-Content) instead of the cat command."
+  },
+  {
+    "objectID": "slides/git-advanced-en.html#types-of-commands",
+    "href": "slides/git-advanced-en.html#types-of-commands",
+    "title": "Git Advanced Workshop",
+    "section": "Types of Commands",
+    "text": "Types of Commands\n\n\nPorcelain:\n\nhigh-level commands used by everyday users\ncommit, log, merge, pull, push, status, …\n\nPlumbing:\n\n“core git”\nlow-level commands used internally by Git (or by power users)\ncat-file, commit-tree, hash-object, ls-files, merge-base, rev-parse, …"
+  },
+  {
+    "objectID": "slides/git-advanced-en.html#section-1",
+    "href": "slides/git-advanced-en.html#section-1",
+    "title": "Git Advanced Workshop",
+    "section": "",
+    "text": "cd ~\ngit init test\n# Initialized empty Git repository in \n# C:/Users/tibor.stanko/test/.git/\ncd test\n\n.git\n├── HEAD    ref: refs/heads/main\n│\n├── objects\n│\n│\n│\n│\n│\n│\n│\n│\n│\n│\n│\n│\n│\n│\n│\n│\n│\n│\n└── refs\n    ├── heads\n    |\n    └── tags"
+  },
+  {
+    "objectID": "slides/git-advanced-en.html#section-2",
+    "href": "slides/git-advanced-en.html#section-2",
+    "title": "Git Advanced Workshop",
+    "section": "",
+    "text": "echo \"version 1\" &gt; test.txt\ngit status\n# On branch main\n# No commits yet\n#\n# Untracked files:\n#         test.txt\n\n.git\n├── HEAD    ref: refs/heads/main\n│\n├── objects\n│\n│\n│\n│\n│\n│\n│\n│\n│\n│\n│\n│\n│\n│\n│\n│\n│\n│\n└── refs\n    ├── heads\n    |\n    └── tags"
+  },
+  {
+    "objectID": "slides/git-advanced-en.html#section-3",
+    "href": "slides/git-advanced-en.html#section-3",
+    "title": "Git Advanced Workshop",
+    "section": "",
+    "text": "git add test.txt\ngit status\n# On branch main\n# No commits yet\n#\n# Changes to be committed:\n#         test.txt\ngit ls-files --stage\n# 100644 594dc0e39bc4468ee19c\n#        67e65d37b97eb963b68b 0 test.txt\n\n.git\n├── HEAD    ref: refs/heads/main\n├── index\n├── objects\n│   └── 59 blob [test.txt] 'version 1'\n│       └── 4dc0e39bc4468ee19c67e65d37b97eb963b68b\n│\n│\n│\n│\n│\n│\n│\n│\n│\n│\n│\n│\n│\n│\n│\n│\n└── refs\n    ├── heads\n    |\n    └── tags"
+  },
+  {
+    "objectID": "slides/git-advanced-en.html#section-4",
+    "href": "slides/git-advanced-en.html#section-4",
+    "title": "Git Advanced Workshop",
+    "section": "",
+    "text": "git commit -m \"First\"\n# [main (root-commit) c771cdc] First\n#  1 file changed, 0 insertions(+),\n#   ... 0 deletions(-)\n#  create mode 100644 test.txt\ngit status\n# On branch main\n# nothing to commit, working tree clean\n\n.git\n├── HEAD    ref: refs/heads/main\n├── index\n├── objects\n│   ├── 59 blob [test.txt] 'version 1'\n│   │   └── 4dc0e39bc4468ee19c67e65d37b97eb963b68b\n│   ├── 67 tree [blob 594d]\n│   │   └── 4d4d31b97233152f3be1825cc9e765fa2b2859\n│   └── f8 commit [tree 674d] \"First\"\n│       └── 0a04ee3dfbeb5eb666ade615abc617c1ea20e3\n│\n│\n│\n│\n│\n│\n│\n│\n│\n│\n│\n│\n└── refs\n    ├── heads\n    |   └── main f80a...\n    └── tags"
+  },
+  {
+    "objectID": "slides/git-advanced-en.html#section-5",
+    "href": "slides/git-advanced-en.html#section-5",
+    "title": "Git Advanced Workshop",
+    "section": "",
+    "text": "mkdir bak\nmi test.txt bak\necho \"version 2\" &gt; test.txt\ngit add .\ngit commit -m \"Second\"\n# [main 4ba094f] Second\n#  2 files changed, 0 insertions(+), \n#   ... 0 deletions(-)\n#  create mode 100644 bak/test.txt\n\n.git\n├── HEAD    ref: refs/heads/main\n├── index\n├── objects\n│   ├── 59 blob [test.txt] 'version 1'\n│   │   └── 4dc0e39bc4468ee19c67e65d37b97eb963b68b\n│   ├── 67 tree [blob 594d]\n│   │   └── 4d4d31b97233152f3be1825cc9e765fa2b2859\n│   ├── f8 commit [tree 674d] \"First\"\n│   │   └── 0a04ee3dfbeb5eb666ade615abc617c1ea20e3\n│   ├── f0 blob [test.txt] 'version 2'\n│   │   └── d983103c610431663d84b3012d1b172f2f52ea\n│   ├── 37 tree [tree 674d, blob f0d9]\n│   │   └── 87931e43c8baf51f3ffafc44f6394651a505ca\n│   └── 53 commit [tree 3787, par. f80a] \"Second\"\n│       └── 9f7e662b0fa2ceb0df1dc9332179b06e5cdaec\n│\n│\n│\n│\n│\n│\n└── refs\n    ├── heads\n    |   └── main 539f...\n    └── tags"
+  },
+  {
+    "objectID": "slides/git-advanced-en.html#section-6",
+    "href": "slides/git-advanced-en.html#section-6",
+    "title": "Git Advanced Workshop",
+    "section": "",
+    "text": "echo \"new\" &gt; new.txt\ngit add new.txt\ngit commit -m \"Third\"\n# [main 62e37a9] Third\n#  1 file changed, 0 insertions(+), \n#   ... 0 deletions(-)\n#  create mode 100644 new.txt\n\n.git\n├── HEAD    ref: refs/heads/main\n├── index\n├── objects\n│   ├── 59 blob [test.txt] 'version 1'\n│   │   └── 4dc0e39bc4468ee19c67e65d37b97eb963b68b\n│   ├── 67 tree [blob 594d]\n│   │   └── 4d4d31b97233152f3be1825cc9e765fa2b2859\n│   ├── f8 commit [tree 674d] \"First\"\n│   │   └── 0a04ee3dfbeb5eb666ade615abc617c1ea20e3\n│   ├── f0 blob [test.txt] 'version 2'\n│   │   └── d983103c610431663d84b3012d1b172f2f52ea\n│   ├── 37 tree [tree 674d, blob f0d9]\n│   │   └── 87931e43c8baf51f3ffafc44f6394651a505ca\n│   ├── 53 commit [tree 3787, par. f80a] \"Second\"\n│   │   └── 9f7e662b0fa2ceb0df1dc9332179b06e5cdaec\n│   ├── dc blob [new.txt] 'new'\n│   │   └── 334bff12fb7d7404c79935fa3ba535c3bb28d0\n│   ├── b0 tree [tree 674d, blob f0d9, blob dc33]\n│   │   └── ea95a512bad604278bcc96e8b8e726b462e010\n│   └── 62 commit [tree b0ea, par. 539f] \"Third\"\n│       └── e37a96f8f09d0421644817dea320108ceac481\n└── refs\n    ├── heads\n    |   └── main 62e3...\n    └── tags"
+  },
+  {
+    "objectID": "slides/git-advanced-en.html#git-dir-real-1",
+    "href": "slides/git-advanced-en.html#git-dir-real-1",
+    "title": "Git Advanced Workshop",
+    "section": ".git for a real project",
+    "text": ".git for a real project\npybrickz/.git\n│   COMMIT_EDITMSG  last commit message edited in the local repository\n│   config          local configuration, applies only to this repository\n│   description     don't worry about it\n│   FETCH_HEAD      remembers what was last fetched from the remote repository\n│   HEAD            pointer to the current branch/commit\n│   index           binary list of paths and SHA-1 hashes, view content with `git ls-files --stage`\n│   ORIG_HEAD       previous state of HEAD, set by commands with potentially dangerous behavior\n│   packed-refs     packed references (heads, tags)\n├───hooks […]\n├───info […]\n├───logs […]\n├───objects […]\n└───refs […]"
+  },
+  {
+    "objectID": "slides/git-advanced-en.html#git-dir-real-2",
+    "href": "slides/git-advanced-en.html#git-dir-real-2",
+    "title": "Git Advanced Workshop",
+    "section": ".git/objects",
+    "text": ".git/objects\npybrickz/.git\n│   […]\n├───hooks […]\n├───info […]\n├───logs […]\n├───objects  objects - blobs, trees, commits\n│   ├───00\n│   │       57f7cf16175d94fa850ad30918dffcd4cd850c\n│   ├───01\n│   │       4daec1e8a05a71852209c4caf9750bfe4717b1\n...\n│   ├───fe\n│   │       1c754ef352dece245b5f7a0d7047b048d7b1d9\n│   │       8a73f88812537678fde89e91c19c87623ff47c\n│   ├───ff\n│   │       7e837bf1dc59b8835767fdcf789e308528498a\n│   ├───info […]\n│   └───pack […]\n└───refs […]"
+  },
+  {
+    "objectID": "slides/git-advanced-en.html#git-dir-real-3",
+    "href": "slides/git-advanced-en.html#git-dir-real-3",
+    "title": "Git Advanced Workshop",
+    "section": ".git/refs",
+    "text": ".git/refs\npybrickz/.git\n│   […]\n├───hooks […]\n├───info […]\n├───logs […]\n├───objects […]\n└───refs     references - branches, remote branches, tags\n    ├───heads […]\n    ├───remotes […]\n    └───tags […]"
+  },
+  {
+    "objectID": "slides/git-advanced-en.html#git-dir-real-4",
+    "href": "slides/git-advanced-en.html#git-dir-real-4",
+    "title": "Git Advanced Workshop",
+    "section": ".git/refs/heads",
+    "text": ".git/refs/heads\npybrickz/.git\n│   […]\n├───hooks […]\n├───info […]\n├───logs […]\n├───objects […]\n└───refs\n    ├───heads\n    │       dev\n    │       main\n    │       staging\n    │       ├───bugfix\n    │       │       bugfix-1    branch created via `git branch bugfix/bugfix-1`\n    │       │       bugfix-2    branch created via `git branch bugfix/bugfix-2`\n    │       └───feature\n    │               feature-A   branch created via `git branch feature/feature-A`\n    │               feature-B   branch created via `git branch feature/feature-B`\n    ├───remotes […]\n    └───tags […]"
+  },
+  {
+    "objectID": "slides/git-advanced-en.html#git-dir-real-5",
+    "href": "slides/git-advanced-en.html#git-dir-real-5",
+    "title": "Git Advanced Workshop",
+    "section": ".git/refs/remotes",
+    "text": ".git/refs/remotes\npybrickz/.git\n│   […]\n├───hooks […]\n├───info […]\n├───logs […]\n├───objects […]\n└───refs\n    ├───heads […]\n    ├───remotes\n    │   ├───gh\n    │   │       main\n    │   └───origin\n    │       │   dev\n    │       │   HEAD\n    │       │   main\n    │       ├───bugfix\n    │       │       bugfix-2\n    │       └───feature\n    │               my-awesome-feature-A\n    └───tags […]"
+  },
+  {
+    "objectID": "slides/git-advanced-en.html#git-dir-real-6",
+    "href": "slides/git-advanced-en.html#git-dir-real-6",
+    "title": "Git Advanced Workshop",
+    "section": ".git/refs/tags",
+    "text": ".git/refs/tags\npybrickz/.git\n│   […]\n├───hooks […]\n├───info […]\n├───logs […]\n├───objects […]\n└───refs\n    ├───heads […]\n    ├───remotes […]\n    └───tags\n            v1.0.0\n            v1.0.1\n            ...\n            v2.6.4\n            v2.7.0"
+  },
+  {
+    "objectID": "slides/git-advanced-en.html#githead",
+    "href": "slides/git-advanced-en.html#githead",
+    "title": "Git Advanced Workshop",
+    "section": ".git/HEAD",
+    "text": ".git/HEAD\n\nHEAD is a pointer to the current branch or commit\nDETACHED HEAD is a situation where HEAD points to a commit that is not the head of a branch\n\ncat .git/HEAD\n# ref: refs/heads/main\ngit checkout 7c66409\ngit status\n# HEAD detached at 7c66409\n# nothing to commit, working tree clean\ncat .git/HEAD\n# 7c66409021358486e63d2d40c9b07e2c35e8124d"
+  },
+  {
+    "objectID": "slides/git-advanced-en.html#exercise-1-internals",
+    "href": "slides/git-advanced-en.html#exercise-1-internals",
+    "title": "Git Advanced Workshop",
+    "section": "Tasks (1)",
+    "text": "Tasks (1)\n\n\nClone the test repository:\n\ngit clone https://github.com/bbrrck/hello.git \n\nFrom the .git directory, find the file with the hash that the slovak branch points to.\nCompare the hash with the output of the git rev-parse slovak command.\nUsing the git cat-file -p command multiple times, find out what content is in the hello.py file on the slovak branch.\n\nHint: use the hash from the previous step as the argument for -p."
+  },
+  {
+    "objectID": "slides/git-advanced-en.html#sidebar-how-to-unpack-git-objects",
+    "href": "slides/git-advanced-en.html#sidebar-how-to-unpack-git-objects",
+    "title": "Git Advanced Workshop",
+    "section": "Sidebar: How to Unpack Git Objects?",
+    "text": "Sidebar: How to Unpack Git Objects?\nAfter cloning the repository, all the objects that Git uses are located in the .git/objects directory, but some of them may be packed in the pack directory.\ngit clone https://github.com/bbrrck/hello.git\ncd hello\nls .git/objects\n# .git/objects/info\n# .git/objects/pack\nls .git/objects/pack\n# .git/objects/pack/pack-48cae0e3bd98461308f23caeb2cfcc3df0b34da8.idx\n# .git/objects/pack/pack-48cae0e3bd98461308f23caeb2cfcc3df0b34da8.pack\n# .git/objects/pack/pack-48cae0e3bd98461308f23caeb2cfcc3df0b34da8.rev"
+  },
+  {
+    "objectID": "slides/git-advanced-en.html#sidebar-how-to-unpack-git-objects-2",
+    "href": "slides/git-advanced-en.html#sidebar-how-to-unpack-git-objects-2",
+    "title": "Git Advanced Workshop",
+    "section": "Sidebar: How to Unpack Git Objects? (2)",
+    "text": "Sidebar: How to Unpack Git Objects? (2)\nManual unpacking of objects is possible using the git unpack-objects command. However, if we use this command on the files from the previous example, nothing will happen. This is because Git will not unpack objects that are already in the repository. Therefore, before unpacking the objects, it is necessary to move them to another part of the repository.\n# Move the files with packed objects to a temporary directory\nmkdir temp; mv .git/objects/pack/* temp\n# Unpack the objects\ncat temp/*.pack | git unpack-objects\n# Delete the temporary directory\nrm -rf temp\n\nManual unpacking of objects is not necessary outside of experimentation.\n\n\nstackoverflow:16972155"
+  },
+  {
+    "objectID": "slides/git-advanced-en.html#merging-changes",
+    "href": "slides/git-advanced-en.html#merging-changes",
+    "title": "Git Advanced Workshop",
+    "section": "Merging Changes",
+    "text": "Merging Changes\nIn Git, there are two main ways to integrate changes from one branch into another: merge and rebase."
+  },
+  {
+    "objectID": "slides/git-advanced-en.html#merging-changes-1",
+    "href": "slides/git-advanced-en.html#merging-changes-1",
+    "title": "Git Advanced Workshop",
+    "section": "Merging Changes",
+    "text": "Merging Changes"
+  },
+  {
+    "objectID": "slides/git-advanced-en.html#merging-via-merge",
+    "href": "slides/git-advanced-en.html#merging-via-merge",
+    "title": "Git Advanced Workshop",
+    "section": "Merging via merge",
+    "text": "Merging via merge\n\nthe simplest way to combine branches\na three-way merge between two branches (e.g., main and feature) and their latest common ancestor\ncreates a new commit"
+  },
+  {
+    "objectID": "slides/git-advanced-en.html#merging-via-merge-1",
+    "href": "slides/git-advanced-en.html#merging-via-merge-1",
+    "title": "Git Advanced Workshop",
+    "section": "Merging via merge",
+    "text": "Merging via merge"
+  },
+  {
+    "objectID": "slides/git-advanced-en.html#merging-via-rebase",
+    "href": "slides/git-advanced-en.html#merging-via-rebase",
+    "title": "Git Advanced Workshop",
+    "section": "Merging via rebase",
+    "text": "Merging via rebase\n\nrebasing the feature branch onto the main branch means moving the start of the feature branch to the end of the main branch\nthis means that commits from feature will be recreated on the main branch\nmain advantage: a cleaner, more linear project history with fewer “forks”"
+  },
+  {
+    "objectID": "slides/git-advanced-en.html#merging-via-rebase-1",
+    "href": "slides/git-advanced-en.html#merging-via-rebase-1",
+    "title": "Git Advanced Workshop",
+    "section": "Merging via rebase",
+    "text": "Merging via rebase"
+  },
+  {
+    "objectID": "slides/git-advanced-en.html#when-not-to-use-rebase",
+    "href": "slides/git-advanced-en.html#when-not-to-use-rebase",
+    "title": "Git Advanced Workshop",
+    "section": "When not to use rebase?",
+    "text": "When not to use rebase?\n\nnever use git rebase on public or collaborative branches (especially main)\notherwise, part of the history may be changed or even deleted"
+  },
+  {
+    "objectID": "slides/git-advanced-en.html#when-not-to-use-rebase-1",
+    "href": "slides/git-advanced-en.html#when-not-to-use-rebase-1",
+    "title": "Git Advanced Workshop",
+    "section": "When not to use rebase?",
+    "text": "When not to use rebase?"
+  },
+  {
+    "objectID": "slides/git-advanced-en.html#demo-merge",
+    "href": "slides/git-advanced-en.html#demo-merge",
+    "title": "Git Advanced Workshop",
+    "section": "Demo: merge",
+    "text": "Demo: merge\ngit clone https://github.com/bbrrck/hello.git hello-merge; cd hello-merge\ngit merge origin/french\n# Auto-merging hello.py\ngit merge origin/slovak\n# CONFLICT (content): Merge conflict in hello.py\n# ... resolve the conflict ...\ngit add .\ngit commit\n# [main cef4a72] Merge remote-tracking branch 'origin/slovak'"
+  },
+  {
+    "objectID": "slides/git-advanced-en.html#demo-rebase-french",
+    "href": "slides/git-advanced-en.html#demo-rebase-french",
+    "title": "Git Advanced Workshop",
+    "section": "Demo: rebase (french)",
+    "text": "Demo: rebase (french)\ngit clone https://github.com/bbrrck/hello.git hello-rebase; cd hello-rebase\ngit checkout french\ngit rebase main\n# Successfully rebased and updated refs/heads/french.\ngit checkout main\ngit merge french\n# Updating 0297280..5f6f019\n# Fast-forward\n#  hello.py | 11 ++++++++++-\n#  1 file changed, 10 insertions(+), 1 deletion(-)"
+  },
+  {
+    "objectID": "slides/git-advanced-en.html#demo-rebase-slovak---conflict",
+    "href": "slides/git-advanced-en.html#demo-rebase-slovak---conflict",
+    "title": "Git Advanced Workshop",
+    "section": "Demo: rebase (slovak) - conflict",
+    "text": "Demo: rebase (slovak) - conflict\ngit checkout slovak\ngit rebase -i main\n# ... mark the middle commit as `fixup` ...\n# CONFLICT (content): Merge conflict in hello.py\n# ... resolve the conflict ...\ngit add .\ngit rebase --continue\n# Successfully rebased and updated refs/heads/slovak.\ngit checkout main\ngit merge slovak # Fast-forward"
+  },
+  {
+    "objectID": "slides/git-advanced-en.html#git-log---oneline---graph---all",
+    "href": "slides/git-advanced-en.html#git-log---oneline---graph---all",
+    "title": "Git Advanced Workshop",
+    "section": "git log --oneline --graph --all",
+    "text": "git log --oneline --graph --all\n\n\nMerge:\n*   cef4a72 (main) Merge branch 'slovak'\n|\\\n| * 163a9c3 (slovak) Add docstring for slovak\n| * bd67d8d Fix slovak\n| * 75fcf88 Add slovak\n* |   bc3f86b Merge branch 'french'\n|\\ \\\n| * | a31caf9 (french) Add docstring for french\n| * | 6d348f3 Add french\n| |/\n* / 0297280 Add docstring for default\n|/\n* 4b4a8ad Add hello.py\n* 60d4d94 Initial commit\n\n\nRebase:\n* ab2fda1 (main, slovak) Add docstring for slovak\n* 806b97a Add slovak\n* 5f6f019 (french) Add docstring for french\n* ea40a3b Add french\n* 0297280 Add docstring for default\n| * 163a9c3 Add docstring for slovak\n| * bd67d8d Fix slovak\n| * 75fcf88 Add slovak\n|/\n| * a31caf9 Add docstring for french\n| * 6d348f3 Add french\n|/\n* 4b4a8ad Add hello.py\n* 60d4d94 Initial commit"
+  },
+  {
+    "objectID": "slides/git-advanced-en.html#git-log-main---oneline",
+    "href": "slides/git-advanced-en.html#git-log-main---oneline",
+    "title": "Git Advanced Workshop",
+    "section": "git log main --oneline",
+    "text": "git log main --oneline\n\n\nMerge (10):\ncef4a72 (main) Merge branch 'slovak'\nbc3f86b Merge branch 'french'\n0297280 Add docstring for default\n163a9c3 (slovak) Add docstring for slovak\nbd67d8d Fix slovak\n75fcf88 Add slovak\na31caf9 (french) Add docstring for french\n6d348f3 Add french\n4b4a8ad Add hello.py\n60d4d94 Initial commit\n\n\nRebase (7):\nab2fda1 (main, slovak) Add docstring for slovak\n806b97a Add slovak\n5f6f019 (french) Add docstring for french\nea40a3b Add french\n0297280 Add docstring for default\n4b4a8ad Add hello.py\n60d4d94 Initial commit"
+  },
+  {
+    "objectID": "slides/git-advanced-en.html#exercise-2-merge-rebase",
+    "href": "slides/git-advanced-en.html#exercise-2-merge-rebase",
+    "title": "Git Advanced Workshop",
+    "section": "Tasks (2)",
+    "text": "Tasks (2)\n\n\nClone two copies of the test repository:\n\ngit clone https://github.com/bbrrck/zoo.git zoo-merge\ngit clone https://github.com/bbrrck/zoo.git zoo-rebase\n\nIn the zoo-merge repository:\n\nMerge the origin/krokodil and origin/gorila branches into the local main branch using the git merge command.\nResolve any conflicts that arise in both cases.\n\n\n(continued on the next slide)"
+  },
+  {
+    "objectID": "slides/git-advanced-en.html#exercise-2-merge-rebase-2",
+    "href": "slides/git-advanced-en.html#exercise-2-merge-rebase-2",
+    "title": "Git Advanced Workshop",
+    "section": "Tasks (2)",
+    "text": "Tasks (2)\n\n\nIn the zoo-rebase repository:\n\nSwitch to the gorila branch and rebase the main branch onto it using the git rebase command. Resolve any conflicts that arise.\nSwitch to the main branch and merge the gorila branch into it using the git merge command.\nSwitch to the krokodil branch and rebase the main branch onto it using the git rebase -i command. Mark the middle commit as fixup. Resolve any conflicts that arise.\nSwitch to the main branch and merge the krokodil branch into it using the git merge command.\n\nUse the git log command to compare the state of both repositories.\nWhat would change in the result if you skipped step 3b?"
+  },
+  {
+    "objectID": "slides/git-advanced-en.html#git-revert",
+    "href": "slides/git-advanced-en.html#git-revert",
+    "title": "Git Advanced Workshop",
+    "section": "git revert",
+    "text": "git revert\ngit revert HEAD   # remove changes made in the last commit\ngit revert HEAD~1 # remove changes made in the second to last commit\ngit revert d49de0 # remove changes made in the commit with hash d49de0\n\nThe git revert command creates a new version and does not change the repository history."
+  },
+  {
+    "objectID": "slides/git-advanced-en.html#git-reset",
+    "href": "slides/git-advanced-en.html#git-reset",
+    "title": "Git Advanced Workshop",
+    "section": "git reset",
+    "text": "git reset\n# revert the repository to the state *after* the commit with hash d49de0\ngit reset --hard d49de0\n\nThe git reset command changes the repository history and can cause file loss."
+  },
+  {
+    "objectID": "slides/git-advanced-en.html#reset-vs-revert-vs-checkout",
+    "href": "slides/git-advanced-en.html#reset-vs-revert-vs-checkout",
+    "title": "Git Advanced Workshop",
+    "section": "reset vs revert vs checkout",
+    "text": "reset vs revert vs checkout\n\n\n\n\n\n\n\n\nCommand\nContext\nUsage\n\n\n\n\ngit reset\nCommit\nDiscard commits in a private branch or discard uncommitted changes\n\n\ngit reset\nFile\nRemove a file from the staging area (from the index)\n\n\ngit checkout\nCommit\nSwitch between branches or view old versions\n\n\ngit checkout\nFile\nDiscard changes in the working directory\n\n\ngit revert\nCommit\nRevert commits in a public branch\n\n\ngit revert\nFile\n(N/A)\n\n\n\n\natlassian.com/git/tutorials/resetting-checking-out-and-reverting"
+  },
+  {
+    "objectID": "slides/git-advanced-en.html#how-do-i-revert-local-changes",
+    "href": "slides/git-advanced-en.html#how-do-i-revert-local-changes",
+    "title": "Git Advanced Workshop",
+    "section": "How do I revert local changes?",
+    "text": "How do I revert local changes?\ngit commit -m \"Something terribly misguided\"\ngit reset HEAD~1\n# ... modify files as needed ...\ngit add .\ngit commit -c ORIG_HEAD # open the previous message in the commit editor\ngit commit -C ORIG_HEAD # use the previous message without opening the commit editor\n\nstackoverflow:927386"
+  },
+  {
+    "objectID": "slides/git-advanced-en.html#how-do-i-revert-changes-that-have-already-been-pushed",
+    "href": "slides/git-advanced-en.html#how-do-i-revert-changes-that-have-already-been-pushed",
+    "title": "Git Advanced Workshop",
+    "section": "How do I revert changes that have already been pushed?",
+    "text": "How do I revert changes that have already been pushed?\ngit commit -m \"Something terribly misguided\"\ngit push origin main\ngit reset HEAD~1\n# ... modify files as needed ...\ngit add .\ngit commit -C ORIG_HEAD # use the previous message without opening the commit editor\ngit push origin main --force-with-lease # do not use '--force'!\n\nstackoverflow:22682870"
+  },
+  {
+    "objectID": "slides/git-advanced-en.html#how-do-i-revert-part-of-a-commit",
+    "href": "slides/git-advanced-en.html#how-do-i-revert-part-of-a-commit",
+    "title": "Git Advanced Workshop",
+    "section": "How do I revert part of a commit?",
+    "text": "How do I revert part of a commit?\ngit revert -n $bad_commit  # revert the commit, but do not save changes\ngit reset HEAD .           # unstage the changes\ngit add --patch .          # stage the desired changes\ngit commit                 # create a commit from these changes\ngit checkout -- .          # discard the remaining changes\n\nNote: The changes we add using the git add --patch command are the changes we want to revert, not the changes we want to keep.\n\n\nstackoverflow:4795600"
+  },
+  {
+    "objectID": "slides/git-advanced-en.html#how-do-i-rename-a-local-branch",
+    "href": "slides/git-advanced-en.html#how-do-i-rename-a-local-branch",
+    "title": "Git Advanced Workshop",
+    "section": "How do I rename a local branch?",
+    "text": "How do I rename a local branch?\n# rename the current branch to 'newname'\ngit branch -m newname\n\n# rename the branch 'oldname' to 'newname'\ngit branch -m oldname newname\n\nstackoverflow:6591213"
+  },
+  {
+    "objectID": "slides/git-advanced-en.html#how-do-i-delete-a-local-and-remote-branch",
+    "href": "slides/git-advanced-en.html#how-do-i-delete-a-local-and-remote-branch",
+    "title": "Git Advanced Workshop",
+    "section": "How do I delete a local and remote branch?",
+    "text": "How do I delete a local and remote branch?\ngit push -d &lt;remote_name&gt; &lt;branch_name&gt;\ngit branch -d &lt;branch_name&gt;\ngit fetch --all --prune # remove references to deleted remote branches\n\nstackoverflow:2003505"
+  },
+  {
+    "objectID": "slides/git-advanced-en.html#how-do-i-move-the-last-n-commits-to-a-new-branch",
+    "href": "slides/git-advanced-en.html#how-do-i-move-the-last-n-commits-to-a-new-branch",
+    "title": "Git Advanced Workshop",
+    "section": "How do I move the last n commits to a new branch?",
+    "text": "How do I move the last n commits to a new branch?\nMoving the last 3 commits from main to a new branch feature:\ngit checkout main           # switch to main\ngit branch feature          # create a new branch feature pointing to the same\n                            # commit as main, but do not switch to it\ngit reset --hard HEAD~3     # remove the last 3 commits\ngit checkout feature        # switch to the feature branch\n\nstackoverflow:1628563"
+  },
+  {
+    "objectID": "slides/git-advanced-en.html#how-do-i-remove-files-from-the-staging-area",
+    "href": "slides/git-advanced-en.html#how-do-i-remove-files-from-the-staging-area",
+    "title": "Git Advanced Workshop",
+    "section": "How do I remove files from the staging area?",
+    "text": "How do I remove files from the staging area?\ngit rm --cached &lt;file&gt;"
+  },
+  {
+    "objectID": "slides/git-advanced-en.html#how-do-i-change-the-message-of-an-already-created-commit",
+    "href": "slides/git-advanced-en.html#how-do-i-change-the-message-of-an-already-created-commit",
+    "title": "Git Advanced Workshop",
+    "section": "How do I change the message of an already created commit?",
+    "text": "How do I change the message of an already created commit?\ngit commit --amend -m \"New commit message\"\n\n\nIf the old commit has already been pushed to the remote, after using git commit --amend you need to push with git push --force or --force-with-lease.\n\n\nstackoverflow:179123"
+  },
+  {
+    "objectID": "slides/git-advanced-en.html#how-do-i-add-files-to-an-already-created-commit",
+    "href": "slides/git-advanced-en.html#how-do-i-add-files-to-an-already-created-commit",
+    "title": "Git Advanced Workshop",
+    "section": "How do I add files to an already created commit?",
+    "text": "How do I add files to an already created commit?\ngit add forgotten_file\ngit commit --amend --no-edit # reuse the previous commit message\n\nIf the old commit has already been pushed to the remote, after using git commit --amend you need to push with git push --force or --force-with-lease.\n\n\nstackoverflow:40503417"
+  },
+  {
+    "objectID": "slides/git-advanced-en.html#how-can-i-reset-or-revert-a-file-to-a-specific-version",
+    "href": "slides/git-advanced-en.html#how-can-i-reset-or-revert-a-file-to-a-specific-version",
+    "title": "Git Advanced Workshop",
+    "section": "How can I reset or revert a file to a specific version?",
+    "text": "How can I reset or revert a file to a specific version?\ngit checkout c5f567 -- file1/to/restore file2/to/restore"
+  },
+  {
+    "objectID": "slides/git-advanced-en.html#what-workflows-exist",
+    "href": "slides/git-advanced-en.html#what-workflows-exist",
+    "title": "Git Advanced Workshop",
+    "section": "What workflows exist?",
+    "text": "What workflows exist?\n\nCentralized\nFeature branch (FB)\nTrunk-based development (TBD)\nGitflow\nForking workflow\netc.\n\n\nThe Git Workflows Warehouse project contains a catalog of 50 workflows and also a useful list of resources."
+  },
+  {
+    "objectID": "slides/git-advanced-en.html#centralized-workflow",
+    "href": "slides/git-advanced-en.html#centralized-workflow",
+    "title": "Git Advanced Workshop",
+    "section": "Centralized workflow",
+    "text": "Centralized workflow\n\nall developers work on one branch (main), no other branches are used\n\nAdvantages:\n\nsimple to understand, implement, and use\nperfectly linear history\n\nDisadvantages:\n\nconflict resolution can be complex\ndoes not utilize the potential of a distributed system\n\n\nCentralized workflow (Atlassian)"
+  },
+  {
+    "objectID": "slides/git-advanced-en.html#feature-branching",
+    "href": "slides/git-advanced-en.html#feature-branching",
+    "title": "Git Advanced Workshop",
+    "section": "Feature branching",
+    "text": "Feature branching\n\ndevelopment takes place on separate feature branches, which are then merged into the main branch\n\nAdvantages:\n\nnew features are developed in isolation, stable main\nallows the use of pull requests, code reviews, collaborative development\n\nDisadvantages:\n\npotentially many branches\nresolving conflicts in long-lived branches can be complex\n\n\nGit feature branch workflow (Atlassian)"
+  },
+  {
+    "objectID": "slides/git-advanced-en.html#trunk-based-development",
+    "href": "slides/git-advanced-en.html#trunk-based-development",
+    "title": "Git Advanced Workshop",
+    "section": "Trunk-based development",
+    "text": "Trunk-based development\n\nsimilar to the feature branching workflow, but feature branches are short-lived and frequently merged into the main branch (even several times a day)\nsuitable in combination with automated testing and deployment (CI/CD)\n\nAdvantages:\n\ncode on the main branch is always release ready\n\nDisadvantages:\n\nrequires automated testing and deployment\nrequires a mature development team\n\n\nSee trunkbaseddevelopment.com and also Why Google Stores Billions of Lines of Code in a Single Repository"
+  },
+  {
+    "objectID": "slides/git-advanced-en.html#trunk-based-development-1",
+    "href": "slides/git-advanced-en.html#trunk-based-development-1",
+    "title": "Git Advanced Workshop",
+    "section": "Trunk-based development",
+    "text": "Trunk-based development\n\nFeature-based deployment can be beneficial for teams that value the isolation of features and are willing to manage the complexities of merging these features back into the mainline. On the other hand, trunk-based deployment is suited for organizations that prioritize rapid integration and releases and have the infrastructure to manage continuous integrations and feature flags.\n\n\nIn recent years, with the rise of DevOps and agile methodologies, there’s been a clear trend towards more frequent integrations and releases. This trend has made trunk-based development, with its emphasis on rapid integration and release, increasingly popular among many tech giants and startups alike. However, as with all methodologies, it’s essential to evaluate the specific needs and capabilities of an organization before adopting a deployment strategy.\n\n\nFeature-Based Deployment vs. Trunk-Based Deployment by John Nochowitz"
+  },
+  {
+    "objectID": "slides/git-advanced-en.html#shared-branches-outside-the-mainline-cause-problems-merge-hell",
+    "href": "slides/git-advanced-en.html#shared-branches-outside-the-mainline-cause-problems-merge-hell",
+    "title": "Git Advanced Workshop",
+    "section": "Shared branches outside the mainline cause problems (merge hell)",
+    "text": "Shared branches outside the mainline cause problems (merge hell)"
+  },
+  {
+    "objectID": "slides/git-advanced-en.html#smaller-teams",
+    "href": "slides/git-advanced-en.html#smaller-teams",
+    "title": "Git Advanced Workshop",
+    "section": "Smaller teams",
+    "text": "Smaller teams"
+  },
+  {
+    "objectID": "slides/git-advanced-en.html#larger-teams",
+    "href": "slides/git-advanced-en.html#larger-teams",
+    "title": "Git Advanced Workshop",
+    "section": "Larger teams",
+    "text": "Larger teams"
+  },
+  {
+    "objectID": "slides/git-advanced-en.html#gitflow-workflow",
+    "href": "slides/git-advanced-en.html#gitflow-workflow",
+    "title": "Git Advanced Workshop",
+    "section": "Gitflow workflow",
+    "text": "Gitflow workflow\n\nextension of the feature branching workflow with develop, release, and hotfix branches\nthe purpose of each branch is clearly defined\n\nmain - production branch\ndevelop - development branch\nfeature - development of new features\nrelease - preparation for release\nhotfix - fixing bugs in the production version\n\n\n\nA successful Git branching model (Vincent Driessen)"
+  },
+  {
+    "objectID": "slides/git-advanced-en.html#gitflow-workflow-1",
+    "href": "slides/git-advanced-en.html#gitflow-workflow-1",
+    "title": "Git Advanced Workshop",
+    "section": "Gitflow workflow",
+    "text": "Gitflow workflow\nAdvantages:\n\nall the advantages of the feature branching workflow\nsuitable for projects with longer development and regular releases\n\nDisadvantages:\n\na large number of branches\nmerge hell\n\n\n\nGitflow is a legacy Git workflow that was originally a disruptive and novel strategy for managing Git branches. Gitflow has fallen in popularity in favor of trunk-based workflows, which are now considered best practices for modern continuous software development and DevOps practices. Gitflow also can be challenging to use with CI/CD.\n\n\n\nGitflow workflow (Atlassian)"
+  },
+  {
+    "objectID": "slides/git-advanced-en.html#gitflow-workflow-2",
+    "href": "slides/git-advanced-en.html#gitflow-workflow-2",
+    "title": "Git Advanced Workshop",
+    "section": "Gitflow workflow",
+    "text": "Gitflow workflow\nThe overall flow of Gitflow is:\n\nA develop branch is created from main\nA release branch is created from develop\nFeature branches are created from develop\nWhen a feature is complete it is merged into the develop branch\nWhen the release branch is done it is merged into develop and main\nIf an issue in main is detected a hotfix branch is created from main\nOnce the hotfix is complete it is merged to both develop and main"
+  },
+  {
+    "objectID": "slides/git-advanced-en.html#forking-workflow",
+    "href": "slides/git-advanced-en.html#forking-workflow",
+    "title": "Git Advanced Workshop",
+    "section": "Forking workflow",
+    "text": "Forking workflow\n\ndevelopers do not have direct access to the main repository but create a fork (copy) of the repository they work on\ncommonly used in open-source projects"
+  },
+  {
+    "objectID": "slides/git-advanced-en.html#what-is-a-pull-request",
+    "href": "slides/git-advanced-en.html#what-is-a-pull-request",
+    "title": "Git Advanced Workshop",
+    "section": "What is a pull request?",
+    "text": "What is a pull request?\n\nby creating it, we request the project maintainer to pull our changes and incorporate them into the project\nit can be created within workflows such as feature or forking, but not within the centralized workflow\nit allows developers to discuss the change and perform code reviews\n\nExamples:\n\nPybrickz #481\nQuartodoc #240\nQuartodoc #288\n\n\nMaking a Pull Request (Atlassian)"
+  },
+  {
+    "objectID": "slides/git-advanced-en.html#čo-je-to-cicd",
+    "href": "slides/git-advanced-en.html#čo-je-to-cicd",
+    "title": "Git Advanced Workshop",
+    "section": "Čo je to CI/CD?",
+    "text": "Čo je to CI/CD?\n\nCI = continuous integration\nCD = continuous delivery"
+  },
+  {
+    "objectID": "slides/git-advanced-en.html#creating-an-ssh-key",
+    "href": "slides/git-advanced-en.html#creating-an-ssh-key",
+    "title": "Git Advanced Workshop",
+    "section": "Creating an SSH key",
+    "text": "Creating an SSH key\nssh-keygen # use default settings\nssh-keygen -t rsa -C \"name@email.com\" # compatible with most git providers\nssh-keygen -t ed25519 -C \"name@email.com\" # compatible with GitHub"
+  },
+  {
+    "objectID": "slides/git-advanced-en.html#copying-the-ssh-key-to-the-clipboard",
+    "href": "slides/git-advanced-en.html#copying-the-ssh-key-to-the-clipboard",
+    "title": "Git Advanced Workshop",
+    "section": "Copying the SSH key to the clipboard",
+    "text": "Copying the SSH key to the clipboard\nPowershell\nGet-Content ~\\.ssh\\id_ed25519.pub | Set-Clipboard\n \nCommand Prompt\nclip &lt; ~\\.ssh\\id_ed25519.pub"
+  },
+  {
+    "objectID": "slides/git-advanced-en.html#links-1",
+    "href": "slides/git-advanced-en.html#links-1",
+    "title": "Git Advanced Workshop",
+    "section": "Links",
+    "text": "Links\nsk\n\nvideo course by Yablko: Git a Github od základov\nvideo course on the Informatika s Mišom channel\ncourse Základy softvérového inžinierstva at FEI TUKE\n\npart 2: Systémy pre správu verzií\npart 3: Práca s vetvami v systéme Git"
+  },
+  {
+    "objectID": "slides/git-advanced-en.html#links-2",
+    "href": "slides/git-advanced-en.html#links-2",
+    "title": "Git Advanced Workshop",
+    "section": "Links",
+    "text": "Links\nen\n\nGit cheat sheet\nPro Git, freely available official book, also available in Czech\ngit - the simple guide\nGit tutorials from Atlassian\nCoursera: Introduction to Git and GitHub\nMissing Semester of CS Education, Lecture 6: Version Control (git)\nLearn how Git works internally with simple diagrams\nMarkdown Guide\nLearn Markdown in 5 minutes"
+  },
+  {
+    "objectID": "slides/git-advanced-en.html#git-glossary",
+    "href": "slides/git-advanced-en.html#git-glossary",
+    "title": "Git Advanced Workshop",
+    "section": "Git Glossary",
+    "text": "Git Glossary\n\n\n\n\n\nen\nsk\n\n\n\n\nbranch\nvetva\n\n\nclone\nnaklonovanie repozitára\n\n\ncommit\nzáznam\n\n\ncommit message\npopis záznamu\n\n\nconflict\nkonflikt medzi verziami\n\n\nconflict resolution\nriešenie konfliktov\n\n\ndiff\nrozdiel medzi verziami\n\n\nmerge\nzlúčenie vetiev\n\n\n\n\n\n\n\nen\nsk\n\n\n\n\npull\nstiahnutie vzdialených zmien\n\n\npush\nodoslanie lokálnych zmien\n\n\nrepository\nrepozitár, úložisko\n\n\nremote\nvzdialený repozitár\n\n\nsnapshot\nsnímka\n\n\nstaging area\nprípravná oblasť (tiež index)\n\n\nstatus\nstav repozitára\n\n\nversion\nverzia"
+  },
+  {
+    "objectID": "slides/git-advanced-en.html#git-cheatsheet",
+    "href": "slides/git-advanced-en.html#git-cheatsheet",
+    "title": "Git Advanced Workshop",
+    "section": "Git Cheatsheet",
+    "text": "Git Cheatsheet\n\n\n# Setup\ngit config --global user.name \"[first last]\"\ngit config --global user.email \"[valid-email]\"\ngit init\ngit clone [url]\n# Stage & Snapshot\ngit status\ngit add [file]\ngit reset [file]\ngit diff\ngit diff --staged\ngit commit -m \"[descriptive message]\"\n\n# Branch & Merge\ngit branch\ngit branch [branch-name]\ngit checkout\ngit merge [branch]\ngit log\n# Share & Update\ngit remote add [alias] [url]\ngit fetch [alias]\ngit merge [alias]/[branch]\ngit push [alias]/[branch]\ngit pull"
+  },
+  {
+    "objectID": "slides/git-basics-en.html#about-me",
+    "href": "slides/git-basics-en.html#about-me",
+    "title": "Git Basics Workshop",
+    "section": "About me",
+    "text": "About me\n\n\n\nTibor Stanko, 34 years\nsince 2020 Data Engineer in Zurich Insurance, Bratislava 🇸🇰\nbefore that, 6 years in academia in 🇫🇷 (PhD, postdoc)\nI enjoy automating boring tasks using Python 🐍\nnot a Git guru, but I’ve been using Git daily for over 10 years\nmy hobbies: 👨‍👩‍👧‍👦🚲⛰️🎸🎹🍺"
+  },
+  {
+    "objectID": "slides/git-basics-en.html#contents-of-this-workshop",
+    "href": "slides/git-basics-en.html#contents-of-this-workshop",
+    "title": "Git Basics Workshop",
+    "section": "Contents of this workshop",
+    "text": "Contents of this workshop\n\n\n\nIntro\nGit & Github\nBasic Concepts\nBranches\nRemotes\nAdvanced Git\nUseful Resources\n\n\n\n \n\n \n\n— Exercises (1)\n— Exercises (2)\n— Exercises (3)"
+  },
+  {
+    "objectID": "slides/git-basics-en.html#what-is-git",
+    "href": "slides/git-basics-en.html#what-is-git",
+    "title": "Git Basics Workshop",
+    "section": "What is Git?",
+    "text": "What is Git?\n\nversion control system (VCS) or source control management (SCM)\nin Slovak: systém riadenia verzií\nkeeps track of project development history\nuseful for teams and for individuals\nnot only about code, enables saving arbitrary files (including non-text)"
+  },
+  {
+    "objectID": "slides/git-basics-en.html#why-do-we-need-version-control-systems",
+    "href": "slides/git-basics-en.html#why-do-we-need-version-control-systems",
+    "title": "Git Basics Workshop",
+    "section": "Why do we need version control systems",
+    "text": "Why do we need version control systems"
+  },
+  {
+    "objectID": "slides/git-basics-en.html#why-do-we-need-version-control-systems-1",
+    "href": "slides/git-basics-en.html#why-do-we-need-version-control-systems-1",
+    "title": "Git Basics Workshop",
+    "section": "Why do we need version control systems",
+    "text": "Why do we need version control systems"
+  },
+  {
+    "objectID": "slides/git-basics-en.html#what-can-you-do-with-git",
+    "href": "slides/git-basics-en.html#what-can-you-do-with-git",
+    "title": "Git Basics Workshop",
+    "section": "What can you do with Git?",
+    "text": "What can you do with Git?\n\nsave versions\nswitch between versions\nrestore a previous version\ncompare versions\ncreate branches\nmerge branches\nback up files"
+  },
+  {
+    "objectID": "slides/git-basics-en.html#what-is-github",
+    "href": "slides/git-basics-en.html#what-is-github",
+    "title": "Git Basics Workshop",
+    "section": "What is Github?",
+    "text": "What is Github?\n\n“social network for programmers”\nGit = version control system\nGithub = portal for maintaining repositories\nuses Git, but is not a part of Git\nhas functionality beyond Git\n\nIssues, Pull requests, Actions, …\n\nsimilar services: Gitlab, Bitbucket, Azure DevOps, etc."
+  },
+  {
     "objectID": "slides/git-basics-en.html#step-0-working-with-the-terminal",
     "href": "slides/git-basics-en.html#step-0-working-with-the-terminal",
     "title": "Git Basics Workshop",
@@ -1069,55 +1629,6 @@
     "title": "Git Basics Workshop",
     "section": "Exercises (1)",
     "text": "Exercises (1)\n\n\nCreate an empty directory zoo on your computer.\nTurn the zoo directory into a Git repository.\nIn the repository, create a file test.txt with any content.\nAdd test.txt to the next version and save it.\nCheck the new version using git log.\n\n\n\nTip: don’t forget to use git status while working to see the current status of the repository."
-  },
-  {
-    "objectID": "slides/git-basics-en.html#about-me",
-    "href": "slides/git-basics-en.html#about-me",
-    "title": "Git Basics Workshop",
-    "section": "About me",
-    "text": "About me\n\n\n\nTibor Stanko, 34 years\nsince 2020 Data Engineer in Zurich Insurance, Bratislava 🇸🇰\nbefore that, 6 years in academia in 🇫🇷 (PhD, postdoc)\nI enjoy automating boring tasks using Python 🐍\nnot a Git guru, but I’ve been using Git daily for over 10 years\nmy hobbies: 👨‍👩‍👧‍👦🚲⛰️🎸🎹🍺"
-  },
-  {
-    "objectID": "slides/git-basics-en.html#contents-of-this-workshop",
-    "href": "slides/git-basics-en.html#contents-of-this-workshop",
-    "title": "Git Basics Workshop",
-    "section": "Contents of this workshop",
-    "text": "Contents of this workshop\n\n\n\nIntro\nGit & Github\nBasic Concepts\nBranches\nRemotes\nAdvanced Git\nUseful Resources\n\n\n\n \n\n \n\n— Exercises (1)\n— Exercises (2)\n— Exercises (3)"
-  },
-  {
-    "objectID": "slides/git-basics-en.html#what-is-git",
-    "href": "slides/git-basics-en.html#what-is-git",
-    "title": "Git Basics Workshop",
-    "section": "What is Git?",
-    "text": "What is Git?\n\nversion control system (VCS) or source control management (SCM)\nin Slovak: systém riadenia verzií\nkeeps track of project development history\nuseful for teams and for individuals\nnot only about code, enables saving arbitrary files (including non-text)"
-  },
-  {
-    "objectID": "slides/git-basics-en.html#why-do-we-need-version-control-systems",
-    "href": "slides/git-basics-en.html#why-do-we-need-version-control-systems",
-    "title": "Git Basics Workshop",
-    "section": "Why do we need version control systems",
-    "text": "Why do we need version control systems"
-  },
-  {
-    "objectID": "slides/git-basics-en.html#why-do-we-need-version-control-systems-1",
-    "href": "slides/git-basics-en.html#why-do-we-need-version-control-systems-1",
-    "title": "Git Basics Workshop",
-    "section": "Why do we need version control systems",
-    "text": "Why do we need version control systems"
-  },
-  {
-    "objectID": "slides/git-basics-en.html#what-can-you-do-with-git",
-    "href": "slides/git-basics-en.html#what-can-you-do-with-git",
-    "title": "Git Basics Workshop",
-    "section": "What can you do with Git?",
-    "text": "What can you do with Git?\n\nsave versions\nswitch between versions\nrestore a previous version\ncompare versions\ncreate branches\nmerge branches\nback up files"
-  },
-  {
-    "objectID": "slides/git-basics-en.html#what-is-github",
-    "href": "slides/git-basics-en.html#what-is-github",
-    "title": "Git Basics Workshop",
-    "section": "What is Github?",
-    "text": "What is Github?\n\n“social network for programmers”\nGit = version control system\nGithub = portal for maintaining repositories\nuses Git, but is not a part of Git\nhas functionality beyond Git\n\nIssues, Pull requests, Actions, …\n\nsimilar services: Gitlab, Bitbucket, Azure DevOps, etc."
   },
   {
     "objectID": "slides/git-basics-en.html#what-is-a-branch",
