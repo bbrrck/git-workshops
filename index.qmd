@@ -16,8 +16,8 @@ This page contains links to materials for Git workshops created and presented by
 
 ## Slides
 
-- [Basics - English version](slides/git-basics-en.html)
-- [Basics - Slovak version](slides/git-basics-sk.html)
+- [Basics - English version](slides/git-basics-en.qmd)
+- [Basics - Slovak version](slides/git-basics-sk.qmd)
 
 ## Contents
 
@@ -55,7 +55,8 @@ git version 2.37.0.windows.1
 
 ## Slides
 
-- [Advanced - Slovak version](slides/git-advanced-sk.html)
+- [Advanced - English version](slides/git-advanced-en.qmd)
+- [Advanced - Slovak version](slides/git-advanced-sk.qmd)
 
 ## Contents
 

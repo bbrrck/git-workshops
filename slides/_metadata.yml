@@ -16,6 +16,7 @@ format:
     preview-links: auto
     slide-number: true
     theme: [simple, static/style/slides.scss]
+    # theme: [dark, static/style/slides.scss]
     title-slide-attributes:
       data-background-image: static/img/hero.svg
       data-background-size: 50%
