@@ -1,0 +1,187 @@
+# Merge vs. Rebase {#merge-vs-rebase}
+
+:::footer
+[atlassian.com/git/tutorials/merging-vs-rebasing](https://www.atlassian.com/git/tutorials/merging-vs-rebasing)
+:::
+
+## Merging Changes
+
+In Git, there are two main ways to integrate changes from one branch into another: `merge` and `rebase`.
+
+## Merging Changes {background-image="https://wac-cdn.atlassian.com/dam/jcr:1523084b-d05a-4f5a-bd1a-01866ec09ca3/01%20A%20forked%20commit%20history.svg?cdnVersion=1263" background-size="100% 80%" background-position="center"}
+
+## Merging via `merge`
+- the simplest way to combine branches
+- a three-way merge between two branches (e.g., `main` and `feature`) and their latest common ancestor
+- creates a new commit
+
+## Merging via `merge` {background-image="https://wac-cdn.atlassian.com/dam/jcr:4639eeb8-e417-434a-a3f8-a972277fc66a/02%20Merging%20main%20into%20the%20feature%20branh.svg?cdnVersion=1263" background-size="100% 90%" background-position="center"}
+
+## Merging via `rebase` 
+- rebasing the `feature` branch onto the `main` branch means moving the start of the `feature` branch to the end of the `main` branch
+- this means that commits from `feature` will be recreated on the `main` branch
+- main advantage: a cleaner, more linear project history with fewer "forks"
+
+## Merging via `rebase` {background-image="https://wac-cdn.atlassian.com/dam/jcr:3bafddf5-fd55-4320-9310-3d28f4fca3af/03%20Rebasing%20the%20feature%20branch%20into%20main.svg?cdnVersion=1263" background-size="100% 90%" background-position="center"}
+
+## When not to use `rebase`?
+- never use `git rebase` on public or collaborative branches (especially `main`)
+- otherwise, part of the history may be changed or even deleted
+
+## When not to use `rebase`? {background-image="https://wac-cdn.atlassian.com/dam/jcr:2908e0e6-f74b-4425-b5d2-f5eca8cfcd99/05%20Rebasing%20the%20main%20branch.svg?cdnVersion=1263" background-size="100% 90%" background-position="center"}
+
+## Demo: `merge`
+
+```bash
+git clone https://github.com/bbrrck/hello.git hello-merge; cd hello-merge
+git merge origin/french
+# Auto-merging hello.py
+git merge origin/slovak
+# CONFLICT (content): Merge conflict in hello.py
+# ... resolve the conflict ...
+git add .
+git commit
+# [main cef4a72] Merge remote-tracking branch 'origin/slovak'
+```
+
+## Demo: `rebase` (french)
+
+```bash
+git clone https://github.com/bbrrck/hello.git hello-rebase; cd hello-rebase
+git checkout french
+git rebase main
+# Successfully rebased and updated refs/heads/french.
+git checkout main
+git merge french
+# Updating 0297280..5f6f019
+# Fast-forward
+#  hello.py | 11 ++++++++++-
+#  1 file changed, 10 insertions(+), 1 deletion(-)
+```
+
+## Demo: `rebase` (slovak) - conflict
+
+```bash
+git checkout slovak
+git rebase -i main
+# ... mark the middle commit as `fixup` ...
+# CONFLICT (content): Merge conflict in hello.py
+# ... resolve the conflict ...
+git add .
+git rebase --continue
+# Successfully rebased and updated refs/heads/slovak.
+git checkout main
+git merge slovak # Fast-forward
+```
+
+
+## `git log --oneline --graph --all`
+
+::: {.columns}
+::: {.column width="50%"}
+Merge:
+
+<pre class="tree">
+*   <b>cef4a72</b> (main) Merge branch 'slovak'
+|\
+| * <b>163a9c3</b> (slovak) Add docstring for slovak
+| * <b>bd67d8d</b> Fix slovak
+| * <b>75fcf88</b> Add slovak
+* |   <b>bc3f86b</b> Merge branch 'french'
+|\ \
+| * | <b>a31caf9</b> (french) Add docstring for french
+| * | <b>6d348f3</b> Add french
+| |/
+* / <b>0297280</b> Add docstring for default
+|/
+* <b>4b4a8ad</b> Add hello.py
+* <b>60d4d94</b> Initial commit
+</pre>
+:::
+::: {.column width="50%"}
+Rebase:
+
+<pre class="tree">
+* <b>ab2fda1</b> (main, slovak) Add docstring for slovak
+* <b>806b97a</b> Add slovak
+* <b>5f6f019</b> (french) Add docstring for french
+* <b>ea40a3b</b> Add french
+* <b>0297280</b> Add docstring for default
+| * <b>163a9c3</b> Add docstring for slovak
+| * <b>bd67d8d</b> Fix slovak
+| * <b>75fcf88</b> Add slovak
+|/
+| * <b>a31caf9</b> Add docstring for french
+| * <b>6d348f3</b> Add french
+|/
+* <b>4b4a8ad</b> Add hello.py
+* <b>60d4d94</b> Initial commit
+</pre>
+:::
+:::
+
+## `git log main --oneline`
+
+::: {.columns}
+::: {.column width="50%"}
+Merge (10):
+
+<pre class="tree">
+<b>cef4a72</b> (main) Merge branch 'slovak'
+<b>bc3f86b</b> Merge branch 'french'
+<b>0297280</b> Add docstring for default
+<b>163a9c3</b> (slovak) Add docstring for slovak
+<b>bd67d8d</b> Fix slovak
+<b>75fcf88</b> Add slovak
+<b>a31caf9</b> (french) Add docstring for french
+<b>6d348f3</b> Add french
+<b>4b4a8ad</b> Add hello.py
+<b>60d4d94</b> Initial commit
+</pre>
+:::
+::: {.column width="50%"}
+Rebase (7):
+
+<pre class="tree">
+<b>ab2fda1</b> (main, slovak) Add docstring for slovak
+<b>806b97a</b> Add slovak
+<b>5f6f019</b> (french) Add docstring for french
+<b>ea40a3b</b> Add french
+<b>0297280</b> Add docstring for default
+<b>4b4a8ad</b> Add hello.py
+<b>60d4d94</b> Initial commit
+</pre>
+
+:::
+:::
+
+
+## Tasks (2) {.exercise #exercise-2-merge-rebase}
+
+::: {.exercise}
+
+1. Clone two copies of the [test repository](https://github.com/bbrrck/zoo.git):
+```bash
+git clone https://github.com/bbrrck/zoo.git zoo-merge
+git clone https://github.com/bbrrck/zoo.git zoo-rebase
+```
+2. In the `zoo-merge` repository:
+    a. Merge the `origin/krokodil` and `origin/gorila` branches into the local `main` branch using the `git merge` command.
+    b. Resolve any conflicts that arise in both cases.
+
+*(continued on the next slide)*
+:::
+
+## Tasks (2) {.exercise #exercise-2-merge-rebase-2}
+
+::: {.exercise font-size="80%"}
+
+3. In the `zoo-rebase` repository:
+    a. Switch to the `gorila` branch and rebase the `main` branch onto it using the `git rebase` command. Resolve any conflicts that arise.
+    b. Switch to the `main` branch and merge the `gorila` branch into it using the `git merge` command.
+    c. Switch to the `krokodil` branch and rebase the `main` branch onto it using the `git rebase -i` command. Mark the middle commit as `fixup`. Resolve any conflicts that arise.
+    d. Switch to the `main` branch and merge the `krokodil` branch into it using the `git merge` command.
+4. Use the `git log` command to compare the state of both repositories.
+5. What would change in the result if you skipped step 3b?
+
+:::

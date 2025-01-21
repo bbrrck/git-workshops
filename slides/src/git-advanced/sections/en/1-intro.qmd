@@ -1,0 +1,23 @@
+# Intro {#intro}
+
+{{< include ./src/common/en/about-me.qmd >}}
+
+## Contents of this workshop
+
+::: {.columns}
+::: {.column width="40%"}
+1. [Intro](#intro)
+2. [Git internals](#git-internals)
+3. [Merge vs. Rebase](#merge-vs-rebase)
+4. [Common issues](#common-issues)
+5. [Branching strategies](#workflow)
+6. [Pull requests](#pull-requests)
+7. [~~CI/CD using Git~~](#cicd)
+8. [SSH authentication](#ssh)
+:::
+::: {.column width="60%" .nobullets}
+- &nbsp;  
+- --- [Exercises (1)](#exercise-1-internals)
+- --- [Exercises (2)](#exercise-2-merge-rebase)
+:::
+:::

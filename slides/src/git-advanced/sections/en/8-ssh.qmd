@@ -1,0 +1,25 @@
+# SSH Authentication {#ssh}
+
+## Creating an SSH key
+
+```bash
+ssh-keygen # use default settings
+ssh-keygen -t rsa -C "name@email.com" # compatible with most git providers
+ssh-keygen -t ed25519 -C "name@email.com" # compatible with GitHub
+```
+
+## Copying the SSH key to the clipboard
+
+### Powershell
+
+```powershell
+Get-Content ~\.ssh\id_ed25519.pub | Set-Clipboard
+```
+
+&nbsp;
+
+### Command Prompt
+
+```bash
+clip < ~\.ssh\id_ed25519.pub
+```

@@ -1,0 +1,17 @@
+# Pull Requests {#pull-requests}
+
+## What is a pull request?
+
+- by creating it, we request the project maintainer to pull our changes and incorporate them into the project
+- it can be created within workflows such as feature or forking, but not within the centralized workflow
+- it allows developers to discuss the change and perform code reviews
+
+**Examples:**
+
+- [Pybrickz #481](https://dev.azure.com/zna-predictive-analytics/dna-packages/_git/pybrickz/pullrequest/481)
+- [Quartodoc #240](https://github.com/machow/quartodoc/pull/240)
+- [Quartodoc #288](https://github.com/machow/quartodoc/pull/288)
+
+:::footer
+[Making a Pull Request](https://www.atlassian.com/git/tutorials/making-a-pull-request) (Atlassian)
+:::

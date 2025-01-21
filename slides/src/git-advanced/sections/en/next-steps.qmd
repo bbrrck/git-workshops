@@ -1,0 +1,8 @@
+# What We Didn't Learn
+
+- hooks
+- submodules
+- pruning
+- cherry picking
+- LFS = Large File Storage
+- garbage collection (`git gc`)

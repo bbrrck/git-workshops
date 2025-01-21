@@ -1,0 +1,144 @@
+## &nbsp; {#git-log-pybrickz background-image="./static/img/pybrickz-nicelog-2023-10-17-10-30.png" background-position="left"} 
+
+## `.git` for a real project {#git-dir-real-1}
+
+<pre class="tree">
+<b>pybrickz/.git</b>
+│   COMMIT_EDITMSG  <i>last commit message edited in the local repository</i>
+│   config          <i>local configuration, applies only to this repository</i>
+│   description     <i>don't worry about it</i>
+│   FETCH_HEAD      <i>remembers what was last fetched from the remote repository</i>
+│   HEAD            <i>pointer to the current branch/commit</i>
+│   index           <i>binary list of paths and SHA-1 hashes, view content with `git ls-files --stage`</i>
+│   ORIG_HEAD       <i>previous state of HEAD, set by commands with potentially dangerous behavior</i>
+│   packed-refs     <i>packed references (heads, tags)</i>
+├───<b>hooks</b> […]
+├───<b>info</b> […]
+├───<b>logs</b> […]
+├───<b>objects</b> […]
+└───<b>refs</b> […]
+</pre>
+
+## `.git/objects` {#git-dir-real-2}
+
+<pre class="tree">
+<b>pybrickz/.git</b>
+│   […]
+├───<b>hooks</b> […]
+├───<b>info</b> […]
+├───<b>logs</b> […]
+├───<b>objects</b>  <i>objects - blobs, trees, commits</i>
+│   ├───<b>00</b>
+│   │       57f7cf16175d94fa850ad30918dffcd4cd850c
+│   ├───<b>01</b>
+│   │       4daec1e8a05a71852209c4caf9750bfe4717b1
+...
+│   ├───<b>fe</b>
+│   │       1c754ef352dece245b5f7a0d7047b048d7b1d9
+│   │       8a73f88812537678fde89e91c19c87623ff47c
+│   ├───<b>ff</b>
+│   │       7e837bf1dc59b8835767fdcf789e308528498a
+│   ├───<b>info</b> […]
+│   └───<b>pack</b> […]
+└───<b>refs</b> […]
+</pre>
+
+## `.git/refs` {#git-dir-real-3}
+
+<pre class="tree">
+<b>pybrickz/.git</b>
+│   […]
+├───<b>hooks</b> […]
+├───<b>info</b> […]
+├───<b>logs</b> […]
+├───<b>objects</b> […]
+└───<b>refs</b>     <i>references - branches, remote branches, tags</i>
+    ├───<b>heads</b> […]
+    ├───<b>remotes</b> […]
+    └───<b>tags</b> […]
+</pre>
+
+## `.git/refs/heads` {#git-dir-real-4}
+
+<pre class="tree">
+<b>pybrickz/.git</b>
+│   […]
+├───<b>hooks</b> […]
+├───<b>info</b> […]
+├───<b>logs</b> […]
+├───<b>objects</b> […]
+└───<b>refs</b>
+    ├───<b>heads</b>
+    │       dev
+    │       main
+    │       staging
+    │       ├───<b>bugfix</b>
+    │       │       bugfix-1    <i>branch created via `git branch bugfix/bugfix-1`</i>
+    │       │       bugfix-2    <i>branch created via `git branch bugfix/bugfix-2`</i>
+    │       └───<b>feature</b>
+    │               feature-A   <i>branch created via `git branch feature/feature-A`</i>
+    │               feature-B   <i>branch created via `git branch feature/feature-B`</i>
+    ├───<b>remotes</b> […]
+    └───<b>tags</b> […]
+</pre>
+
+## `.git/refs/remotes` {#git-dir-real-5}
+
+<pre class="tree">
+<b>pybrickz/.git</b>
+│   […]
+├───<b>hooks</b> […]
+├───<b>info</b> […]
+├───<b>logs</b> […]
+├───<b>objects</b> […]
+└───<b>refs</b>
+    ├───<b>heads</b> […]
+    ├───<b>remotes</b>
+    │   ├───<b>gh</b>
+    │   │       main
+    │   └───<b>origin</b>
+    │       │   dev
+    │       │   HEAD
+    │       │   main
+    │       ├───<b>bugfix</b>
+    │       │       bugfix-2
+    │       └───<b>feature</b>
+    │               my-awesome-feature-A
+    └───<b>tags</b> […]
+</pre>
+
+## `.git/refs/tags` {#git-dir-real-6}
+
+<pre class="tree">
+<b>pybrickz/.git</b>
+│   […]
+├───<b>hooks</b> […]
+├───<b>info</b> […]
+├───<b>logs</b> […]
+├───<b>objects</b> […]
+└───<b>refs</b>
+    ├───<b>heads</b> […]
+    ├───<b>remotes</b> […]
+    └───<b>tags</b>
+            v1.0.0
+            v1.0.1
+            ...
+            v2.6.4
+            v2.7.0
+</pre>
+
+## `.git/HEAD`
+
+- `HEAD` is a pointer to the current branch or commit
+- `DETACHED HEAD` is a situation where HEAD points to a commit that is **not** the head of a branch
+
+```bash
+cat .git/HEAD
+# ref: refs/heads/main
+git checkout 7c66409
+git status
+# HEAD detached at 7c66409
+# nothing to commit, working tree clean
+cat .git/HEAD
+# 7c66409021358486e63d2d40c9b07e2c35e8124d
+```

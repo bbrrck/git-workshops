@@ -1,7 +1,6 @@
 ---
 title: "{{< var workshop-basics.name >}}"
 author: "{{< var me.name >}}"
-# date: "2023.10.11"
 ---
 
 {{< include ./src/git-basics/sections/sk/1-intro.qmd >}}

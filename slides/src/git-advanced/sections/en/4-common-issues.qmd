@@ -1,0 +1,181 @@
+# Frequent questions and issues {#common-issues}
+
+
+:::footer
+[stackoverflow:git](https://stackoverflow.com/questions/tagged/git?tab=votes&pagesize=100&sort=MostVotes)
+:::
+
+
+
+## `git revert`
+```zsh
+git revert HEAD   # remove changes made in the last commit
+git revert HEAD~1 # remove changes made in the second to last commit
+git revert d49de0 # remove changes made in the commit with hash d49de0
+```
+
+::: {.myinfo}
+The `git revert` command creates a new version and does not change the repository history.
+:::
+
+## `git reset`
+
+```zsh
+# revert the repository to the state *after* the commit with hash d49de0
+git reset --hard d49de0
+```
+
+::: {.warning}
+The `git reset` command changes the repository history and can cause file loss.
+:::
+
+## `reset` vs `revert` vs `checkout`
+
+| Command        | Context | Usage | 
+|----------------|---------|----------|
+| `git reset`    | Commit  | Discard commits in a private branch or discard uncommitted changes |
+| `git reset`    | File    | Remove a file from the staging area (from the index) |
+| `git checkout` | Commit  | Switch between branches or view old versions |
+| `git checkout` | File    | Discard changes in the working directory |
+| `git revert`   | Commit  | Revert commits in a public branch |
+| `git revert`   | File    | (N/A) |
+
+: {tbl-colwidths="[23,10,67]"}
+
+:::footer
+[atlassian.com/git/tutorials/resetting-checking-out-and-reverting](https://www.atlassian.com/git/tutorials/resetting-checking-out-and-reverting)
+:::
+
+## How do I revert local changes?
+
+```bash
+git commit -m "Something terribly misguided"
+git reset HEAD~1
+# ... modify files as needed ...
+git add .
+git commit -c ORIG_HEAD # open the previous message in the commit editor
+git commit -C ORIG_HEAD # use the previous message without opening the commit editor
+```
+
+:::footer
+[stackoverflow:927386](https://stackoverflow.com/a/927386/1606707)
+:::
+
+## How do I revert changes that have already been pushed?
+
+```bash
+git commit -m "Something terribly misguided"
+git push origin main
+git reset HEAD~1
+# ... modify files as needed ...
+git add .
+git commit -C ORIG_HEAD # use the previous message without opening the commit editor
+git push origin main --force-with-lease # do not use '--force'!
+```
+
+:::footer
+[stackoverflow:22682870](https://stackoverflow.com/q/22682870/1606707)
+:::
+
+## How do I revert part of a commit?
+
+```bash
+git revert -n $bad_commit  # revert the commit, but do not save changes
+git reset HEAD .           # unstage the changes
+git add --patch .          # stage the desired changes
+git commit                 # create a commit from these changes
+git checkout -- .          # discard the remaining changes
+```
+
+::: {.fontsize-080}
+**Note**: The changes we add using the `git add --patch` command are the changes we want to revert, not the changes we want to keep.
+:::
+
+:::footer
+[stackoverflow:4795600](https://stackoverflow.com/q/4795600/1606707)
+:::
+
+## How do I rename a local branch?
+
+```bash
+# rename the current branch to 'newname'
+git branch -m newname
+
+# rename the branch 'oldname' to 'newname'
+git branch -m oldname newname
+```
+
+:::footer
+[stackoverflow:6591213](https://stackoverflow.com/q/6591213/1606707)
+:::
+
+## How do I delete a local and remote branch?
+
+```bash
+git push -d <remote_name> <branch_name>
+git branch -d <branch_name>
+git fetch --all --prune # remove references to deleted remote branches
+```
+
+:::footer
+[stackoverflow:2003505](https://stackoverflow.com/q/2003505/1606707)
+:::
+
+## How do I move the last n commits to a new branch?
+
+Moving the last 3 commits from `main` to a new branch `feature`:
+
+```bash
+git checkout main           # switch to main
+git branch feature          # create a new branch feature pointing to the same
+                            # commit as main, but do not switch to it
+git reset --hard HEAD~3     # remove the last 3 commits
+git checkout feature        # switch to the feature branch
+```
+
+:::footer
+[stackoverflow:1628563](https://stackoverflow.com/q/1628563/1606707)
+:::
+
+## How do I remove files from the staging area?
+
+```bash
+git rm --cached <file>
+```
+
+## How do I change the message of an already created commit?
+
+```bash
+git commit --amend -m "New commit message"
+```
+
+. . .
+
+::: {.warning}
+If the old commit has already been pushed to the remote, after using `git commit --amend` you need to push with `git push --force` or `--force-with-lease`.
+:::
+
+:::footer
+[stackoverflow:179123](https://stackoverflow.com/q/179123/1606707)
+:::
+
+## How do I add files to an already created commit?
+
+```bash
+git add forgotten_file
+git commit --amend --no-edit # reuse the previous commit message
+```
+
+::: {.warning}
+If the old commit has already been pushed to the remote, after using `git commit --amend` you need to push with `git push --force` or `--force-with-lease`.
+:::
+
+:::footer
+[stackoverflow:40503417](https://stackoverflow.com/q/40503417/1606707)
+:::
+
+## How can I reset or revert a file to a specific version?
+
+```bash
+git checkout c5f567 -- file1/to/restore file2/to/restore
+```

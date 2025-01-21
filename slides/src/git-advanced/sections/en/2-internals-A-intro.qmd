@@ -1,0 +1,88 @@
+## 
+
+::: {.center .width-030}
+![](./static/img/xkcd-1597-git.png)
+:::
+
+:::footer
+[xkcd:1597](https://xkcd.com/1597/)
+:::
+
+## What is Git?
+
+- **version control system** (VCS) or **source control management** (SCM)
+- in Slovak: *systém riadenia verzií*
+- keeps track of project development history
+- useful for teams and for individuals
+- not only about code, enables saving arbitrary files (including non-text)
+
+## But... what *really* is Git?
+
+- Git is a **content-addressable** file system
+- This means that the **address** of a file (key) is defined by its **content**
+- At the core of the Git system is a simple data store that can be accessed using keys
+- Key = SHA-1 hash, e.g., `655a20f99af32926cbf6d8fab092506ddd70e49c`
+
+## What does Git store?
+
+Mainly:
+
+- objects
+- references (or refs)
+
+## Objects
+
+1. *blob*
+    - only content, no metadata (path, name)
+2. *tree*
+    - a tree contains blobs or other trees
+3. *commit*
+    - contains pointers to a tree and another commit (parent)
+4. *tag*
+    - defines an alternative name for another object, which can be used to interact with the object instead of the hash
+
+Each object is identifiable by its SHA-1 hash.
+
+## References = pointers to objects
+
+- A branch is *not* a sequence of commits, but just a pointer to a specific commit
+
+```bash
+cat .git/refs/heads/main
+# 7c66409021358486e63d2d40c9b07e2c35e8124d
+
+cat .git/refs/remotes/origin/dev
+# c29dc332ac3eebebffc5726e16d0e91df170103f
+
+cat .git/refs/tags/v2.6.3
+# d49de0ec577052db3e47e2baf5aff0be738637ac
+```
+
+::: {.fontsize-080}
+**Tip**: In PowerShell, you can use `gc` (alias for `Get-Content`) instead of the `cat` command.
+:::
+
+## Types of Commands
+
+::: {.columns}
+
+::: {.column width="75%"}
+
+*Porcelain:*
+
+- high-level commands used by everyday users
+- `commit`, `log`, `merge`, `pull`, `push`, `status`, …
+
+*Plumbing:*
+
+- "core git"
+- low-level commands used internally by Git (or by power users)
+- `cat-file`, `commit-tree`, `hash-object`, `ls-files`, `merge-base`, `rev-parse`, …
+
+:::
+
+::: {.column width="25%"}
+![](./static/img/plumbing-porcelain.png)
+:::
+
+:::

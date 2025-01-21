@@ -17,7 +17,6 @@ git clone https://github.com/bbrrck/hello.git
 
 Po naklonovaní repozitára sa v priečinku `.git/objects` nachádzajú všetky objekty, ktoré Git používa, niektoré z nich však môžu byť zabalené v priečinku `pack`.
 
-
 ```bash
 git clone https://github.com/bbrrck/hello.git
 cd hello

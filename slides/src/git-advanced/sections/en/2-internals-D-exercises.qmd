@@ -1,0 +1,52 @@
+## Tasks (1) {.exercise #exercise-1-internals}
+
+::: {.exercise}
+
+1. Clone the test repository:
+```bash
+git clone https://github.com/bbrrck/hello.git 
+```
+2. From the `.git` directory, find the file with the hash that the `slovak` branch points to.
+3. Compare the hash with the output of the `git rev-parse slovak` command.
+4. Using the `git cat-file -p` command multiple times, find out what content is in the `hello.py` file on the `slovak` branch.
+    - Hint: use the hash from the previous step as the argument for `-p`.
+
+:::
+
+## Sidebar: How to Unpack Git Objects?
+
+After cloning the repository, all the objects that Git uses are located in the `.git/objects` directory, but some of them may be packed in the `pack` directory.
+
+```bash
+git clone https://github.com/bbrrck/hello.git
+cd hello
+ls .git/objects
+# .git/objects/info
+# .git/objects/pack
+ls .git/objects/pack
+# .git/objects/pack/pack-48cae0e3bd98461308f23caeb2cfcc3df0b34da8.idx
+# .git/objects/pack/pack-48cae0e3bd98461308f23caeb2cfcc3df0b34da8.pack
+# .git/objects/pack/pack-48cae0e3bd98461308f23caeb2cfcc3df0b34da8.rev
+```
+
+## Sidebar: How to Unpack Git Objects? (2)
+
+Manual unpacking of objects is possible using the git unpack-objects command. However, if we use this command on the files from the previous example, nothing will happen. This is because Git will not unpack objects that are already in the repository. Therefore, before unpacking the objects, it is necessary to move them to another part of the repository.
+
+```bash
+# Move the files with packed objects to a temporary directory
+mkdir temp; mv .git/objects/pack/* temp
+# Unpack the objects
+cat temp/*.pack | git unpack-objects
+# Delete the temporary directory
+rm -rf temp
+```
+
+::: {.warning}
+Manual unpacking of objects is not necessary outside of experimentation.
+::: 
+
+
+:::footer
+[stackoverflow:16972155](https://stackoverflow.com/a/16972155)
+:::

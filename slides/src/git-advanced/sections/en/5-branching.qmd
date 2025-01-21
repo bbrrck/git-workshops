@@ -1,0 +1,153 @@
+# Git Workflows = Branching Models {#workflow}
+
+In Git, there are many different workflows that differ in how they use branching. In this chapter, we will show some of the most commonly used workflows and their advantages and disadvantages.
+
+## What workflows exist?
+
+- Centralized
+- Feature branch (FB)
+- Trunk-based development (TBD)
+- Gitflow
+- Forking workflow
+- *etc.*
+
+:::footer
+The *Git Workflows Warehouse* project contains a [catalog of 50 workflows](https://gitworkflows.cs.manchester.ac.uk/workflow-catalogue/) and also a useful [list of resources](https://gitworkflows.cs.manchester.ac.uk/resources-comparing-git-workflows/).
+:::
+
+## Centralized workflow
+
+- all developers work on one branch (`main`), no other branches are used
+
+**Advantages:**
+
+- simple to understand, implement, and use
+- perfectly linear history
+
+**Disadvantages:**
+
+- conflict resolution can be complex
+- does not utilize the potential of a distributed system
+
+::: footer
+[Centralized workflow](https://www.atlassian.com/git/tutorials/comparing-workflows) (Atlassian)
+:::
+
+## {background-image="https://wac-cdn.atlassian.com/dam/jcr:2943ffa0-df0a-493b-8677-30b31a1a43e3/02%20Local%20Repository.svg?cdnVersion=1418" background-size="100% 80%" background-position="center"}
+
+## {background-image="https://wac-cdn.atlassian.com/dam/jcr:78c9d390-8f85-48a3-833e-fdbc6eb65282/Marys_Repository.svg?cdnVersion=1418" background-size="100% 80%" background-position="center"}
+
+## Feature branching
+
+- development takes place on separate `feature` branches, which are then merged into the `main` branch
+
+**Advantages:**
+
+- new features are developed in isolation, stable `main`
+- allows the use of pull requests, code reviews, collaborative development
+
+**Disadvantages:**
+
+- potentially many branches
+- resolving conflicts in long-lived branches can be complex
+
+:::footer
+[Git feature branch workflow](https://www.atlassian.com/git/tutorials/comparing-workflows/feature-branch-workflow) (Atlassian)
+:::
+
+## Trunk-based development
+
+- similar to the feature branching workflow, but `feature` branches are short-lived and frequently merged into the `main` branch (even several times a day)
+- suitable in combination with automated testing and deployment (CI/CD)
+
+**Advantages:**
+
+- code on the main branch is always *release ready*
+
+**Disadvantages:**
+
+- requires automated testing and deployment
+- requires a mature development team
+
+:::footer
+See [trunkbaseddevelopment.com](https://trunkbaseddevelopment.com/) and also [Why Google Stores Billions of Lines of Code in a Single Repository](https://research.google/pubs/why-google-stores-billions-of-lines-of-code-in-a-single-repository/)
+:::
+
+## Trunk-based development
+
+> **Feature-based deployment** can be beneficial for teams that value the isolation of features and are willing to manage the complexities of merging these features back into the mainline. On the other hand, **trunk-based deployment** is suited for organizations that prioritize rapid integration and releases and have the infrastructure to manage continuous integrations and feature flags.
+
+> In recent years, with the rise of DevOps and agile methodologies, there's been a clear trend towards more frequent integrations and releases. This trend has made trunk-based development, with its emphasis on rapid integration and release, increasingly popular among many tech giants and startups alike. However, as with all methodologies, it's essential to evaluate the specific needs and capabilities of an organization before adopting a deployment strategy.
+
+:::footer
+[Feature-Based Deployment vs. Trunk-Based Deployment](https://www.linkedin.com/pulse/feature-based-deployment-vs-trunk-based-john-nochowitz/) by John Nochowitz
+:::
+
+## Shared branches outside the mainline cause problems *(merge hell)*{background-image="https://trunkbaseddevelopment.com/trunk1a.png" background-size="70%" background-position="center"}
+
+## Smaller teams {background-image="https://trunkbaseddevelopment.com/trunk1b.png" background-size="70%" background-position="center"}
+
+## Larger teams {background-image="https://trunkbaseddevelopment.com/trunk1c.png" background-size="70%" background-position="center"}
+
+## Gitflow workflow
+
+- extension of the feature branching workflow with `develop`, `release`, and `hotfix` branches
+- the purpose of each branch is clearly defined
+  - `main` - production branch
+  - `develop` - development branch
+  - `feature` - development of new features
+  - `release` - preparation for release
+  - `hotfix` - fixing bugs in the production version
+
+::: footer
+[A successful Git branching model](https://nvie.com/posts/a-successful-git-branching-model/) (Vincent Driessen)
+:::
+
+## Gitflow workflow
+
+**Advantages:**
+
+- all the advantages of the feature branching workflow
+- suitable for projects with longer development and regular releases
+
+**Disadvantages:**
+
+- a large number of branches
+- merge hell
+
+<div style="font-size:80%">
+
+> Gitflow is a **legacy** Git workflow that was originally a disruptive and novel strategy for managing Git branches. Gitflow has fallen in popularity in favor of [trunk-based workflows](https://www.atlassian.com/continuous-delivery/continuous-integration/trunk-based-development), which are now considered best practices for modern continuous software development and [DevOps](https://www.atlassian.com/devops/what-is-devops) practices. Gitflow also can be challenging to use with [CI/CD](https://www.atlassian.com/continuous-delivery).
+
+</div>
+
+::: footer
+[Gitflow workflow](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow) (Atlassian)
+:::
+
+## {background-image="https://wac-cdn.atlassian.com/dam/jcr:34c86360-8dea-4be4-92f7-6597d4d5bfae/02%20Feature%20branches.svg?cdnVersion=1419" background-size="100% 80%" background-position="center"}
+
+## {background-image="https://wac-cdn.atlassian.com/dam/jcr:8f00f1a4-ef2d-498a-a2c6-8020bb97902f/03%20Release%20branches.svg?cdnVersion=1419" background-size="100% 80%" background-position="center"}
+
+## {background-image="https://wac-cdn.atlassian.com/dam/jcr:cc0b526e-adb7-4d45-874e-9bcea9898b4a/04%20Hotfix%20branches.svg?cdnVersion=1419" background-size="100% 80%" background-position="center"}
+
+## Gitflow workflow
+
+The overall flow of Gitflow is:
+
+1. A `develop` branch is created from `main`
+2. A `release` branch is created from `develop`
+3. `Feature` branches are created from `develop`
+4. When a `feature` is complete it is merged into the `develop` branch
+5. When the `release` branch is done it is merged into `develop` and `main`
+6. If an issue in main is detected a `hotfix` branch is created from `main`
+7. Once the `hotfix` is complete it is merged to both `develop` and `main`
+
+## Forking workflow
+
+- developers do not have direct access to the main repository but create a *fork* (copy) of the repository they work on
+- commonly used in open-source projects
+
+::: {.center .width-050}
+![](https://www.dalescott.net/wp-content/uploads/2012/09/centralized-github-4-1024x625.png)
+:::
