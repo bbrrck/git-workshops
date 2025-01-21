@@ -234,8 +234,7 @@ Tibor Stanko
 <li><a href="#/merge-vs-rebase">Merge vs.&nbsp;Rebase</a></li>
 <li><a href="#/common-issues">Common issues</a></li>
 <li><a href="#/workflow">Branching strategies</a></li>
-<li><a href="#/pull-requests">Pull requests</a></li>
-<li><a href="#/cicd"><del>CI/CD using Git</del></a></li>
+<li><a href="#/pull-requests">Pull requests</a> <!-- 7. [~~CI/CD using Git~~](#cicd) --></li>
 <li><a href="#/ssh">SSH authentication</a></li>
 </ol>
 </div><div class="column nobullets" style="width:60%;">
@@ -1346,27 +1345,11 @@ Tibor Stanko
 <div class="footer">
 <p><a href="https://www.atlassian.com/git/tutorials/making-a-pull-request">Making a Pull Request</a> (Atlassian)</p>
 </div>
+<!-- {{< include ./src/git-advanced/sections/en/7-cicd.qmd >}} -->
 </section></section>
 <section>
-<section id="cicd" class="title-slide slide level1 center" data-number="7">
-<h1><span class="header-section-number">7</span> CI/CD s pomocou Gitu</h1>
-
-<img data-src="https://www.mabl.com/hubfs/CICDBlog.png" class="r-stretch"></section>
-<section id="čo-je-to-cicd" class="slide level2">
-<h2>Čo je to CI/CD?</h2>
-<ul>
-<li>CI = continuous integration</li>
-<li>CD = continuous delivery</li>
-</ul>
-<!-- - CI/CD automates much or all of the manual human intervention traditionally needed to get new code from a commit into production, encompassing the build, test (including integration tests, unit tests, and regression tests), and deploy phases, as well as infrastructure provisioning.
-
-- With a CI/CD pipeline, development teams can make changes to code that are then automatically tested and pushed out for delivery and deployment. Get CI/CD right and downtime is minimized and code releases happen faster.
-
-- CI/CD is an essential part of DevOps and any modern software development practice. -->
-</section></section>
-<section>
-<section id="ssh" class="title-slide slide level1 center" data-number="8">
-<h1><span class="header-section-number">8</span> SSH Authentication</h1>
+<section id="ssh" class="title-slide slide level1 center" data-number="7">
+<h1><span class="header-section-number">7</span> SSH Authentication</h1>
 
 </section>
 <section id="creating-an-ssh-key" class="slide level2">
@@ -1383,8 +1366,8 @@ Tibor Stanko
 <h3 id="command-prompt">Command Prompt</h3>
 <div class="sourceCode" id="cb30"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb30-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">clip</span> <span class="op">&lt;</span> ~\.ssh\id_ed25519.pub</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section></section>
-<section id="what-we-didnt-learn" class="title-slide slide level1 center" data-number="9">
-<h1><span class="header-section-number">9</span> What We Didn’t Learn</h1>
+<section id="what-we-didnt-learn" class="title-slide slide level1 center" data-number="8">
+<h1><span class="header-section-number">8</span> What We Didn’t Learn</h1>
 <ul>
 <li>hooks</li>
 <li>submodules</li>
@@ -1396,8 +1379,8 @@ Tibor Stanko
 </section>
 
 <section>
-<section id="links" class="title-slide slide level1 center" data-number="10">
-<h1><span class="header-section-number">10</span> Useful Resources</h1>
+<section id="links" class="title-slide slide level1 center" data-number="9">
+<h1><span class="header-section-number">9</span> Useful Resources</h1>
 
 </section>
 <section id="links-1" class="slide level2">
@@ -1857,7 +1840,7 @@ Tibor Stanko
       }
         var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
         var mailtoRegex = new RegExp(/^mailto:/);
-          var filterRegex = new RegExp("https:\/\/bbrrck\.github\.io\/git-workshops\/");
+          var filterRegex = new RegExp('/' + window.location.host + '/');
         var isInternal = (href) => {
             return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
         }

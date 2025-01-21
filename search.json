@@ -977,7 +977,7 @@
     "href": "index.html#git-advanced-workshop",
     "title": "Materials for Git Workshops",
     "section": "2 Git Advanced Workshop",
-    "text": "2 Git Advanced Workshop\n\n2.1 Slides\n\nAdvanced - Slovak version\n\n\n\n2.2 Contents\nThis workshop is sutiable for those that are familiar with the basics of Git, and want to dive deeper into advanced Git concepts and best practices. The workshop combines theoretical insights with hands-on practical exercises.\nDuration: 4h (2x2h) or 3h\n\nIntro\nGit Internals (+exercises)\nMerge vs. Rebase (+exercises)\nFrequent Questions and Issues\nCI/CD with Git (TBA)\nSSH Authentication\nother topics suggested by participants\n\n\n\n2.3 Repositories\n\nhello - demo repo\nzoo - test repo"
+    "text": "2 Git Advanced Workshop\n\n2.1 Slides\n\nAdvanced - English version\nAdvanced - Slovak version\n\n\n\n2.2 Contents\nThis workshop is sutiable for those that are familiar with the basics of Git, and want to dive deeper into advanced Git concepts and best practices. The workshop combines theoretical insights with hands-on practical exercises.\nDuration: 4h (2x2h) or 3h\n\nIntro\nGit Internals (+exercises)\nMerge vs. Rebase (+exercises)\nFrequent Questions and Issues\nCI/CD with Git (TBA)\nSSH Authentication\nother topics suggested by participants\n\n\n\n2.3 Repositories\n\nhello - demo repo\nzoo - test repo"
   },
   {
     "objectID": "slides/git-advanced-en.html#about-me",
@@ -991,7 +991,7 @@
     "href": "slides/git-advanced-en.html#contents-of-this-workshop",
     "title": "Git Advanced Workshop",
     "section": "Contents of this workshop",
-    "text": "Contents of this workshop\n\n\n\nIntro\nGit internals\nMerge vs. Rebase\nCommon issues\nBranching strategies\nPull requests\nCI/CD using Git\nSSH authentication\n\n\n\n \n\n— Exercises (1)\n— Exercises (2)"
+    "text": "Contents of this workshop\n\n\n\nIntro\nGit internals\nMerge vs. Rebase\nCommon issues\nBranching strategies\nPull requests \nSSH authentication\n\n\n\n \n\n— Exercises (1)\n— Exercises (2)"
   },
   {
     "objectID": "slides/git-advanced-en.html#section",
