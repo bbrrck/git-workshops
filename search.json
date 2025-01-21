@@ -1442,13 +1442,6 @@
     "text": "What is a pull request?\n\nby creating it, we request the project maintainer to pull our changes and incorporate them into the project\nit can be created within workflows such as feature or forking, but not within the centralized workflow\nit allows developers to discuss the change and perform code reviews\n\nExamples:\n\nPybrickz #481\nQuartodoc #240\nQuartodoc #288\n\n\nMaking a Pull Request (Atlassian)"
   },
   {
-    "objectID": "slides/git-advanced-en.html#čo-je-to-cicd",
-    "href": "slides/git-advanced-en.html#čo-je-to-cicd",
-    "title": "Git Advanced Workshop",
-    "section": "Čo je to CI/CD?",
-    "text": "Čo je to CI/CD?\n\nCI = continuous integration\nCD = continuous delivery"
-  },
-  {
     "objectID": "slides/git-advanced-en.html#creating-an-ssh-key",
     "href": "slides/git-advanced-en.html#creating-an-ssh-key",
     "title": "Git Advanced Workshop",
