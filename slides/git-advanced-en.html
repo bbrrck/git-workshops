@@ -743,7 +743,7 @@ Tibor Stanko
 <span id="cb8-8"><a aria-hidden="true" tabindex="-1"></a><span class="co"># 7c66409021358486e63d2d40c9b07e2c35e8124d</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="exercise-1-internals" class="slide level2 exercise">
-<h2>Tasks (1)</h2>
+<h2>Exercises (1)</h2>
 <div class="exercise">
 <ol type="1">
 <li>Clone the test repository:</li>
@@ -940,7 +940,7 @@ Tibor Stanko
 </div></div>
 </section>
 <section id="exercise-2-merge-rebase" class="slide level2 exercise">
-<h2>Tasks (2)</h2>
+<h2>Exercises (2)</h2>
 <div class="exercise">
 <ol type="1">
 <li>Clone two copies of the <a href="https://github.com/bbrrck/zoo.git">test repository</a>:</li>
@@ -958,20 +958,33 @@ Tibor Stanko
 </div>
 </section>
 <section id="exercise-2-merge-rebase-2" class="slide level2 exercise">
-<h2>Tasks (2)</h2>
+<h2>Exercises (2)</h2>
 <div class="exercise" data-font-size="80%">
 <ol start="3" type="1">
 <li>In the <code>zoo-rebase</code> repository:
 <ol type="a">
-<li>Switch to the <code>gorila</code> branch and rebase the <code>main</code> branch onto it using the <code>git rebase</code> command. Resolve any conflicts that arise.</li>
-<li>Switch to the <code>main</code> branch and merge the <code>gorila</code> branch into it using the <code>git merge</code> command.</li>
-<li>Switch to the <code>krokodil</code> branch and rebase the <code>main</code> branch onto it using the <code>git rebase -i</code> command. Mark the middle commit as <code>fixup</code>. Resolve any conflicts that arise.</li>
-<li>Switch to the <code>main</code> branch and merge the <code>krokodil</code> branch into it using the <code>git merge</code> command.</li>
+<li>Switch to the <code>gorila</code> branch and rebase it onto the <code>main</code> branch using <code>git rebase</code>. Resolve any conflicts that arise.</li>
+<li>Switch to the <code>main</code> branch and <code>git merge</code> the <code>gorila</code> branch into it.</li>
+<li>Switch to the <code>krokodil</code> branch and rebase if onto the <code>main</code> branch using <code>git rebase -i</code>. Mark the middle commit as <code>fixup</code>. Resolve conflicts.</li>
+<li>Switch to the <code>main</code> branch and <code>git merge</code> the <code>krokodil</code> branch into it.</li>
 </ol></li>
 <li>Use the <code>git log</code> command to compare the state of both repositories.</li>
 <li>What would change in the result if you skipped step 3b?</li>
 </ol>
 </div>
+</section>
+<section id="sidebar-squash-merge" class="slide level2">
+<h2>Sidebar: Squash Merge</h2>
+<p><code>git merge --squash</code> creates a single commit on the target branch.</p>
+<p>Usage:</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># 1. checkout to the branch you want to merge into</span></span>
+<span id="cb16-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout main</span>
+<span id="cb16-3"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-4"><a aria-hidden="true" tabindex="-1"></a><span class="co"># 2. perform the squash merge</span></span>
+<span id="cb16-5"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> merge <span class="at">--squash</span> feature-branch</span>
+<span id="cb16-6"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-7"><a aria-hidden="true" tabindex="-1"></a><span class="co"># 3. commit the changes</span></span>
+<span id="cb16-8"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"Squashed commit from feature-branch"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section></section>
 <section>
 <section id="common-issues" class="title-slide slide level1 center" data-number="4">
@@ -982,17 +995,17 @@ Tibor Stanko
 </section>
 <section id="git-revert" class="slide level2">
 <h2><code>git revert</code></h2>
-<div class="sourceCode" id="cb16"><pre class="sourceCode zsh code-with-copy"><code class="sourceCode zsh"><span id="cb16-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> revert HEAD   <span class="co"># remove changes made in the last commit</span></span>
-<span id="cb16-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> revert HEAD<span class="pp">~</span>1 <span class="co"># remove changes made in the second to last commit</span></span>
-<span id="cb16-3"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> revert d49de0 <span class="co"># remove changes made in the commit with hash d49de0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode zsh code-with-copy"><code class="sourceCode zsh"><span id="cb17-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> revert HEAD   <span class="co"># remove changes made in the last commit</span></span>
+<span id="cb17-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> revert HEAD<span class="pp">~</span>1 <span class="co"># remove changes made in the second to last commit</span></span>
+<span id="cb17-3"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> revert d49de0 <span class="co"># remove changes made in the commit with hash d49de0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="myinfo">
 <p>The <code>git revert</code> command creates a new version and does not change the repository history.</p>
 </div>
 </section>
 <section id="git-reset" class="slide level2">
 <h2><code>git reset</code></h2>
-<div class="sourceCode" id="cb17"><pre class="sourceCode zsh code-with-copy"><code class="sourceCode zsh"><span id="cb17-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># revert the repository to the state *after* the commit with hash d49de0</span></span>
-<span id="cb17-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> reset <span class="at">--hard</span> d49de0</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode zsh code-with-copy"><code class="sourceCode zsh"><span id="cb18-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># revert the repository to the state *after* the commit with hash d49de0</span></span>
+<span id="cb18-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> reset <span class="at">--hard</span> d49de0</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="warning">
 <p>The <code>git reset</code> command changes the repository history and can cause file loss.</p>
 </div>
@@ -1051,36 +1064,36 @@ Tibor Stanko
 </section>
 <section id="how-do-i-revert-local-changes" class="slide level2">
 <h2>How do I revert local changes?</h2>
-<div class="sourceCode" id="cb18"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"Something terribly misguided"</span></span>
-<span id="cb18-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> reset HEAD~1</span>
-<span id="cb18-3"><a aria-hidden="true" tabindex="-1"></a><span class="co"># ... modify files as needed ...</span></span>
-<span id="cb18-4"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add .</span>
-<span id="cb18-5"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-c</span> ORIG_HEAD <span class="co"># open the previous message in the commit editor</span></span>
-<span id="cb18-6"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-C</span> ORIG_HEAD <span class="co"># use the previous message without opening the commit editor</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"Something terribly misguided"</span></span>
+<span id="cb19-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> reset HEAD~1</span>
+<span id="cb19-3"><a aria-hidden="true" tabindex="-1"></a><span class="co"># ... modify files as needed ...</span></span>
+<span id="cb19-4"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add .</span>
+<span id="cb19-5"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-c</span> ORIG_HEAD <span class="co"># open the previous message in the commit editor</span></span>
+<span id="cb19-6"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-C</span> ORIG_HEAD <span class="co"># use the previous message without opening the commit editor</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="footer">
 <p><a href="https://stackoverflow.com/a/927386/1606707">stackoverflow:927386</a></p>
 </div>
 </section>
 <section id="how-do-i-revert-changes-that-have-already-been-pushed" class="slide level2">
 <h2>How do I revert changes that have already been pushed?</h2>
-<div class="sourceCode" id="cb19"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"Something terribly misguided"</span></span>
-<span id="cb19-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push origin main</span>
-<span id="cb19-3"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> reset HEAD~1</span>
-<span id="cb19-4"><a aria-hidden="true" tabindex="-1"></a><span class="co"># ... modify files as needed ...</span></span>
-<span id="cb19-5"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add .</span>
-<span id="cb19-6"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-C</span> ORIG_HEAD <span class="co"># use the previous message without opening the commit editor</span></span>
-<span id="cb19-7"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push origin main <span class="at">--force-with-lease</span> <span class="co"># do not use '--force'!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"Something terribly misguided"</span></span>
+<span id="cb20-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push origin main</span>
+<span id="cb20-3"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> reset HEAD~1</span>
+<span id="cb20-4"><a aria-hidden="true" tabindex="-1"></a><span class="co"># ... modify files as needed ...</span></span>
+<span id="cb20-5"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add .</span>
+<span id="cb20-6"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-C</span> ORIG_HEAD <span class="co"># use the previous message without opening the commit editor</span></span>
+<span id="cb20-7"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push origin main <span class="at">--force-with-lease</span> <span class="co"># do not use '--force'!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="footer">
 <p><a href="https://stackoverflow.com/q/22682870/1606707">stackoverflow:22682870</a></p>
 </div>
 </section>
 <section id="how-do-i-revert-part-of-a-commit" class="slide level2">
 <h2>How do I revert part of a commit?</h2>
-<div class="sourceCode" id="cb20"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> revert <span class="at">-n</span> <span class="va">$bad_commit</span>  <span class="co"># revert the commit, but do not save changes</span></span>
-<span id="cb20-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> reset HEAD .           <span class="co"># unstage the changes</span></span>
-<span id="cb20-3"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add <span class="at">--patch</span> .          <span class="co"># stage the desired changes</span></span>
-<span id="cb20-4"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit                 <span class="co"># create a commit from these changes</span></span>
-<span id="cb20-5"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout <span class="at">--</span> .          <span class="co"># discard the remaining changes</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> revert <span class="at">-n</span> <span class="va">$bad_commit</span>  <span class="co"># revert the commit, but do not save changes</span></span>
+<span id="cb21-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> reset HEAD .           <span class="co"># unstage the changes</span></span>
+<span id="cb21-3"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add <span class="at">--patch</span> .          <span class="co"># stage the desired changes</span></span>
+<span id="cb21-4"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit                 <span class="co"># create a commit from these changes</span></span>
+<span id="cb21-5"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout <span class="at">--</span> .          <span class="co"># discard the remaining changes</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="fontsize-080">
 <p><strong>Note</strong>: The changes we add using the <code>git add --patch</code> command are the changes we want to revert, not the changes we want to keep.</p>
 </div>
@@ -1090,20 +1103,20 @@ Tibor Stanko
 </section>
 <section id="how-do-i-rename-a-local-branch" class="slide level2">
 <h2>How do I rename a local branch?</h2>
-<div class="sourceCode" id="cb21"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># rename the current branch to 'newname'</span></span>
-<span id="cb21-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> branch <span class="at">-m</span> newname</span>
-<span id="cb21-3"><a aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-4"><a aria-hidden="true" tabindex="-1"></a><span class="co"># rename the branch 'oldname' to 'newname'</span></span>
-<span id="cb21-5"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> branch <span class="at">-m</span> oldname newname</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb22-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># rename the current branch to 'newname'</span></span>
+<span id="cb22-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> branch <span class="at">-m</span> newname</span>
+<span id="cb22-3"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-4"><a aria-hidden="true" tabindex="-1"></a><span class="co"># rename the branch 'oldname' to 'newname'</span></span>
+<span id="cb22-5"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> branch <span class="at">-m</span> oldname newname</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="footer">
 <p><a href="https://stackoverflow.com/q/6591213/1606707">stackoverflow:6591213</a></p>
 </div>
 </section>
 <section id="how-do-i-delete-a-local-and-remote-branch" class="slide level2">
 <h2>How do I delete a local and remote branch?</h2>
-<div class="sourceCode" id="cb22"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb22-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push <span class="at">-d</span> <span class="op">&lt;</span>remote_name<span class="op">&gt;</span> <span class="op">&lt;</span>branch_name<span class="op">&gt;</span></span>
-<span id="cb22-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> branch <span class="at">-d</span> <span class="op">&lt;</span>branch_name<span class="op">&gt;</span></span>
-<span id="cb22-3"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> fetch <span class="at">--all</span> <span class="at">--prune</span> <span class="co"># remove references to deleted remote branches</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb23-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push <span class="at">-d</span> <span class="op">&lt;</span>remote_name<span class="op">&gt;</span> <span class="op">&lt;</span>branch_name<span class="op">&gt;</span></span>
+<span id="cb23-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> branch <span class="at">-d</span> <span class="op">&lt;</span>branch_name<span class="op">&gt;</span></span>
+<span id="cb23-3"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> fetch <span class="at">--all</span> <span class="at">--prune</span> <span class="co"># remove references to deleted remote branches</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="footer">
 <p><a href="https://stackoverflow.com/q/2003505/1606707">stackoverflow:2003505</a></p>
 </div>
@@ -1111,22 +1124,22 @@ Tibor Stanko
 <section id="how-do-i-move-the-last-n-commits-to-a-new-branch" class="slide level2">
 <h2>How do I move the last n commits to a new branch?</h2>
 <p>Moving the last 3 commits from <code>main</code> to a new branch <code>feature</code>:</p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb23-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout main           <span class="co"># switch to main</span></span>
-<span id="cb23-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> branch feature          <span class="co"># create a new branch feature pointing to the same</span></span>
-<span id="cb23-3"><a aria-hidden="true" tabindex="-1"></a>                            <span class="co"># commit as main, but do not switch to it</span></span>
-<span id="cb23-4"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> reset <span class="at">--hard</span> HEAD~3     <span class="co"># remove the last 3 commits</span></span>
-<span id="cb23-5"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout feature        <span class="co"># switch to the feature branch</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb24-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout main           <span class="co"># switch to main</span></span>
+<span id="cb24-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> branch feature          <span class="co"># create a new branch feature pointing to the same</span></span>
+<span id="cb24-3"><a aria-hidden="true" tabindex="-1"></a>                            <span class="co"># commit as main, but do not switch to it</span></span>
+<span id="cb24-4"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> reset <span class="at">--hard</span> HEAD~3     <span class="co"># remove the last 3 commits</span></span>
+<span id="cb24-5"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout feature        <span class="co"># switch to the feature branch</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="footer">
 <p><a href="https://stackoverflow.com/q/1628563/1606707">stackoverflow:1628563</a></p>
 </div>
 </section>
 <section id="how-do-i-remove-files-from-the-staging-area" class="slide level2">
 <h2>How do I remove files from the staging area?</h2>
-<div class="sourceCode" id="cb24"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb24-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> rm <span class="at">--cached</span> <span class="op">&lt;</span>file<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb25-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> rm <span class="at">--cached</span> <span class="op">&lt;</span>file<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="how-do-i-change-the-message-of-an-already-created-commit" class="slide level2">
 <h2>How do I change the message of an already created commit?</h2>
-<div class="sourceCode" id="cb25"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb25-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">--amend</span> <span class="at">-m</span> <span class="st">"New commit message"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb26-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">--amend</span> <span class="at">-m</span> <span class="st">"New commit message"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="fragment">
 <div class="warning">
 <p>If the old commit has already been pushed to the remote, after using <code>git commit --amend</code> you need to push with <code>git push --force</code> or <code>--force-with-lease</code>.</p>
@@ -1138,8 +1151,8 @@ Tibor Stanko
 </section>
 <section id="how-do-i-add-files-to-an-already-created-commit" class="slide level2">
 <h2>How do I add files to an already created commit?</h2>
-<div class="sourceCode" id="cb26"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb26-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add forgotten_file</span>
-<span id="cb26-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">--amend</span> <span class="at">--no-edit</span> <span class="co"># reuse the previous commit message</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb27-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add forgotten_file</span>
+<span id="cb27-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">--amend</span> <span class="at">--no-edit</span> <span class="co"># reuse the previous commit message</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="warning">
 <p>If the old commit has already been pushed to the remote, after using <code>git commit --amend</code> you need to push with <code>git push --force</code> or <code>--force-with-lease</code>.</p>
 </div>
@@ -1149,7 +1162,7 @@ Tibor Stanko
 </section>
 <section id="how-can-i-reset-or-revert-a-file-to-a-specific-version" class="slide level2">
 <h2>How can I reset or revert a file to a specific version?</h2>
-<div class="sourceCode" id="cb27"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb27-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout c5f567 <span class="at">--</span> file1/to/restore file2/to/restore</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb28-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout c5f567 <span class="at">--</span> file1/to/restore file2/to/restore</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section></section>
 <section>
 <section id="workflow" class="title-slide slide level1 center" data-number="5">
@@ -1354,17 +1367,17 @@ Tibor Stanko
 </section>
 <section id="creating-an-ssh-key" class="slide level2">
 <h2>Creating an SSH key</h2>
-<div class="sourceCode" id="cb28"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb28-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">ssh-keygen</span> <span class="co"># use default settings</span></span>
-<span id="cb28-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">ssh-keygen</span> <span class="at">-t</span> rsa <span class="at">-C</span> <span class="st">"name@email.com"</span> <span class="co"># compatible with most git providers</span></span>
-<span id="cb28-3"><a aria-hidden="true" tabindex="-1"></a><span class="fu">ssh-keygen</span> <span class="at">-t</span> ed25519 <span class="at">-C</span> <span class="st">"name@email.com"</span> <span class="co"># compatible with GitHub</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb29-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">ssh-keygen</span> <span class="co"># use default settings</span></span>
+<span id="cb29-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">ssh-keygen</span> <span class="at">-t</span> rsa <span class="at">-C</span> <span class="st">"name@email.com"</span> <span class="co"># compatible with most git providers</span></span>
+<span id="cb29-3"><a aria-hidden="true" tabindex="-1"></a><span class="fu">ssh-keygen</span> <span class="at">-t</span> ed25519 <span class="at">-C</span> <span class="st">"name@email.com"</span> <span class="co"># compatible with GitHub</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="copying-the-ssh-key-to-the-clipboard" class="slide level2">
 <h2>Copying the SSH key to the clipboard</h2>
 <h3 id="powershell">Powershell</h3>
-<div class="sourceCode" id="cb29"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb29-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">Get-Content</span> <span class="op">~</span>\<span class="op">.</span><span class="fu">ssh</span>\id_ed25519<span class="op">.</span><span class="fu">pub</span> <span class="op">|</span> <span class="fu">Set-Clipboard</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb30-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">Get-Content</span> <span class="op">~</span>\<span class="op">.</span><span class="fu">ssh</span>\id_ed25519<span class="op">.</span><span class="fu">pub</span> <span class="op">|</span> <span class="fu">Set-Clipboard</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>&nbsp;</p>
 <h3 id="command-prompt">Command Prompt</h3>
-<div class="sourceCode" id="cb30"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb30-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">clip</span> <span class="op">&lt;</span> ~\.ssh\id_ed25519.pub</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb31-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">clip</span> <span class="op">&lt;</span> ~\.ssh\id_ed25519.pub</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section></section>
 <section id="what-we-didnt-learn" class="title-slide slide level1 center" data-number="8">
 <h1><span class="header-section-number">8</span> What We Didn’t Learn</h1>
@@ -1506,31 +1519,31 @@ Tibor Stanko
 <h2>Git Cheatsheet</h2>
 <div class="columns">
 <div class="column git-cheatsheet" style="width:50%;">
-<div class="sourceCode" id="cb31"><pre class="sourceCode zsh code-with-copy"><code class="sourceCode zsh"><span id="cb31-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Setup</span></span>
-<span id="cb31-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> user.name <span class="st">"[first last]"</span></span>
-<span id="cb31-3"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> user.email <span class="st">"[valid-email]"</span></span>
-<span id="cb31-4"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> init</span>
-<span id="cb31-5"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone <span class="pp">[</span><span class="st">url</span><span class="pp">]</span></span>
-<span id="cb31-6"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Stage &amp; Snapshot</span></span>
-<span id="cb31-7"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> status</span>
-<span id="cb31-8"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add <span class="pp">[</span><span class="st">file</span><span class="pp">]</span></span>
-<span id="cb31-9"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> reset <span class="pp">[</span><span class="st">file</span><span class="pp">]</span></span>
-<span id="cb31-10"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> diff</span>
-<span id="cb31-11"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> diff <span class="at">--staged</span></span>
-<span id="cb31-12"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"[descriptive message]"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode zsh code-with-copy"><code class="sourceCode zsh"><span id="cb32-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Setup</span></span>
+<span id="cb32-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> user.name <span class="st">"[first last]"</span></span>
+<span id="cb32-3"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> user.email <span class="st">"[valid-email]"</span></span>
+<span id="cb32-4"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> init</span>
+<span id="cb32-5"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone <span class="pp">[</span><span class="st">url</span><span class="pp">]</span></span>
+<span id="cb32-6"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Stage &amp; Snapshot</span></span>
+<span id="cb32-7"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> status</span>
+<span id="cb32-8"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add <span class="pp">[</span><span class="st">file</span><span class="pp">]</span></span>
+<span id="cb32-9"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> reset <span class="pp">[</span><span class="st">file</span><span class="pp">]</span></span>
+<span id="cb32-10"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> diff</span>
+<span id="cb32-11"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> diff <span class="at">--staged</span></span>
+<span id="cb32-12"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"[descriptive message]"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column git-cheatsheet" style="width:50%;">
-<div class="sourceCode" id="cb32"><pre class="sourceCode zsh code-with-copy"><code class="sourceCode zsh"><span id="cb32-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Branch &amp; Merge</span></span>
-<span id="cb32-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> branch</span>
-<span id="cb32-3"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> branch <span class="pp">[</span><span class="st">branch</span><span class="op">-</span><span class="st">name</span><span class="pp">]</span></span>
-<span id="cb32-4"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout</span>
-<span id="cb32-5"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> merge <span class="pp">[</span><span class="st">branch</span><span class="pp">]</span></span>
-<span id="cb32-6"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> log</span>
-<span id="cb32-7"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Share &amp; Update</span></span>
-<span id="cb32-8"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> remote add <span class="pp">[</span><span class="st">alias</span><span class="pp">]</span> <span class="pp">[</span><span class="st">url</span><span class="pp">]</span></span>
-<span id="cb32-9"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> fetch <span class="pp">[</span><span class="st">alias</span><span class="pp">]</span></span>
-<span id="cb32-10"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> merge <span class="pp">[</span><span class="st">alias</span><span class="pp">]</span>/<span class="pp">[</span><span class="st">branch</span><span class="pp">]</span></span>
-<span id="cb32-11"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push <span class="pp">[</span><span class="st">alias</span><span class="pp">]</span>/<span class="pp">[</span><span class="st">branch</span><span class="pp">]</span></span>
-<span id="cb32-12"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> pull</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode zsh code-with-copy"><code class="sourceCode zsh"><span id="cb33-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Branch &amp; Merge</span></span>
+<span id="cb33-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> branch</span>
+<span id="cb33-3"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> branch <span class="pp">[</span><span class="st">branch</span><span class="op">-</span><span class="st">name</span><span class="pp">]</span></span>
+<span id="cb33-4"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout</span>
+<span id="cb33-5"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> merge <span class="pp">[</span><span class="st">branch</span><span class="pp">]</span></span>
+<span id="cb33-6"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> log</span>
+<span id="cb33-7"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Share &amp; Update</span></span>
+<span id="cb33-8"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> remote add <span class="pp">[</span><span class="st">alias</span><span class="pp">]</span> <span class="pp">[</span><span class="st">url</span><span class="pp">]</span></span>
+<span id="cb33-9"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> fetch <span class="pp">[</span><span class="st">alias</span><span class="pp">]</span></span>
+<span id="cb33-10"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> merge <span class="pp">[</span><span class="st">alias</span><span class="pp">]</span>/<span class="pp">[</span><span class="st">branch</span><span class="pp">]</span></span>
+<span id="cb33-11"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push <span class="pp">[</span><span class="st">alias</span><span class="pp">]</span>/<span class="pp">[</span><span class="st">branch</span><span class="pp">]</span></span>
+<span id="cb33-12"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> pull</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div>
 </section></section>
 <section id="thanks-for-your-attention" class="title-slide slide level1 unnumbered unlisted center">
@@ -1840,7 +1853,7 @@ Tibor Stanko
       }
         var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
         var mailtoRegex = new RegExp(/^mailto:/);
-          var filterRegex = new RegExp("https:\/\/bbrrck\.github\.io\/git-workshops\/");
+          var filterRegex = new RegExp('/' + window.location.host + '/');
         var isInternal = (href) => {
             return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
         }

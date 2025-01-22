@@ -1137,8 +1137,8 @@
     "objectID": "slides/git-advanced-en.html#exercise-1-internals",
     "href": "slides/git-advanced-en.html#exercise-1-internals",
     "title": "Git Advanced Workshop",
-    "section": "Tasks (1)",
-    "text": "Tasks (1)\n\n\nClone the test repository:\n\ngit clone https://github.com/bbrrck/hello.git \n\nFrom the .git directory, find the file with the hash that the slovak branch points to.\nCompare the hash with the output of the git rev-parse slovak command.\nUsing the git cat-file -p command multiple times, find out what content is in the hello.py file on the slovak branch.\n\nHint: use the hash from the previous step as the argument for -p."
+    "section": "Exercises (1)",
+    "text": "Exercises (1)\n\n\nClone the test repository:\n\ngit clone https://github.com/bbrrck/hello.git \n\nFrom the .git directory, find the file with the hash that the slovak branch points to.\nCompare the hash with the output of the git rev-parse slovak command.\nUsing the git cat-file -p command multiple times, find out what content is in the hello.py file on the slovak branch.\n\nHint: use the hash from the previous step as the argument for -p."
   },
   {
     "objectID": "slides/git-advanced-en.html#sidebar-how-to-unpack-git-objects",
@@ -1249,15 +1249,15 @@
     "objectID": "slides/git-advanced-en.html#exercise-2-merge-rebase",
     "href": "slides/git-advanced-en.html#exercise-2-merge-rebase",
     "title": "Git Advanced Workshop",
-    "section": "Tasks (2)",
-    "text": "Tasks (2)\n\n\nClone two copies of the test repository:\n\ngit clone https://github.com/bbrrck/zoo.git zoo-merge\ngit clone https://github.com/bbrrck/zoo.git zoo-rebase\n\nIn the zoo-merge repository:\n\nMerge the origin/krokodil and origin/gorila branches into the local main branch using the git merge command.\nResolve any conflicts that arise in both cases.\n\n\n(continued on the next slide)"
+    "section": "Exercises (2)",
+    "text": "Exercises (2)\n\n\nClone two copies of the test repository:\n\ngit clone https://github.com/bbrrck/zoo.git zoo-merge\ngit clone https://github.com/bbrrck/zoo.git zoo-rebase\n\nIn the zoo-merge repository:\n\nMerge the origin/krokodil and origin/gorila branches into the local main branch using the git merge command.\nResolve any conflicts that arise in both cases.\n\n\n(continued on the next slide)"
   },
   {
     "objectID": "slides/git-advanced-en.html#exercise-2-merge-rebase-2",
     "href": "slides/git-advanced-en.html#exercise-2-merge-rebase-2",
     "title": "Git Advanced Workshop",
-    "section": "Tasks (2)",
-    "text": "Tasks (2)\n\n\nIn the zoo-rebase repository:\n\nSwitch to the gorila branch and rebase the main branch onto it using the git rebase command. Resolve any conflicts that arise.\nSwitch to the main branch and merge the gorila branch into it using the git merge command.\nSwitch to the krokodil branch and rebase the main branch onto it using the git rebase -i command. Mark the middle commit as fixup. Resolve any conflicts that arise.\nSwitch to the main branch and merge the krokodil branch into it using the git merge command.\n\nUse the git log command to compare the state of both repositories.\nWhat would change in the result if you skipped step 3b?"
+    "section": "Exercises (2)",
+    "text": "Exercises (2)\n\n\nIn the zoo-rebase repository:\n\nSwitch to the gorila branch and rebase it onto the main branch using git rebase. Resolve any conflicts that arise.\nSwitch to the main branch and git merge the gorila branch into it.\nSwitch to the krokodil branch and rebase if onto the main branch using git rebase -i. Mark the middle commit as fixup. Resolve conflicts.\nSwitch to the main branch and git merge the krokodil branch into it.\n\nUse the git log command to compare the state of both repositories.\nWhat would change in the result if you skipped step 3b?"
   },
   {
     "objectID": "slides/git-advanced-en.html#git-revert",
@@ -1440,6 +1440,13 @@
     "title": "Git Advanced Workshop",
     "section": "What is a pull request?",
     "text": "What is a pull request?\n\nby creating it, we request the project maintainer to pull our changes and incorporate them into the project\nit can be created within workflows such as feature or forking, but not within the centralized workflow\nit allows developers to discuss the change and perform code reviews\n\nExamples:\n\nPybrickz #481\nQuartodoc #240\nQuartodoc #288\n\n\nMaking a Pull Request (Atlassian)"
+  },
+  {
+    "objectID": "slides/git-advanced-en.html#čo-je-to-cicd",
+    "href": "slides/git-advanced-en.html#čo-je-to-cicd",
+    "title": "Git Advanced Workshop",
+    "section": "Čo je to CI/CD?",
+    "text": "Čo je to CI/CD?\n\nCI = continuous integration\nCD = continuous delivery"
   },
   {
     "objectID": "slides/git-advanced-en.html#creating-an-ssh-key",
@@ -1930,5 +1937,12 @@
     "title": "Git Basics Workshop",
     "section": "Git Cheatsheet",
     "text": "Git Cheatsheet\n\n\n# Setup\ngit config --global user.name \"[first last]\"\ngit config --global user.email \"[valid-email]\"\ngit init\ngit clone [url]\n# Stage & Snapshot\ngit status\ngit add [file]\ngit reset [file]\ngit diff\ngit diff --staged\ngit commit -m \"[descriptive message]\"\n\n# Branch & Merge\ngit branch\ngit branch [branch-name]\ngit checkout\ngit merge [branch]\ngit log\n# Share & Update\ngit remote add [alias] [url]\ngit fetch [alias]\ngit merge [alias]/[branch]\ngit push [alias]/[branch]\ngit pull"
+  },
+  {
+    "objectID": "slides/git-advanced-en.html#sidebar-squash-merge",
+    "href": "slides/git-advanced-en.html#sidebar-squash-merge",
+    "title": "Git Advanced Workshop",
+    "section": "Sidebar: Squash Merge",
+    "text": "Sidebar: Squash Merge\ngit merge --squash creates a single commit on the target branch.\nUsage:\n# 1. checkout to the branch you want to merge into\ngit checkout main\n\n# 2. perform the squash merge\ngit merge --squash feature-branch\n\n# 3. commit the changes\ngit commit -m \"Squashed commit from feature-branch\""
   }
 ]
