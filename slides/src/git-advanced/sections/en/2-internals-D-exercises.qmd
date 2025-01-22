@@ -1,4 +1,4 @@
-## Tasks (1) {.exercise #exercise-1-internals}
+## Exercises (1) {.exercise #exercise-1-internals}
 
 ::: {.exercise}
 
