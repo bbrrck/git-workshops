@@ -82,40 +82,40 @@ git merge slovak # Fast-forward
 Merge:
 
 <pre class="tree">
-*   <b>cef4a72</b> (main) Merge branch 'slovak'
+*   <span class="hash">cef4a72</span> <span class="branch">(main)</span> Merge branch 'slovak'
 |\
-| * <b>163a9c3</b> (slovak) Add docstring for slovak
-| * <b>bd67d8d</b> Fix slovak
-| * <b>75fcf88</b> Add slovak
-* |   <b>bc3f86b</b> Merge branch 'french'
+| * <span class="hash">163a9c3</span> <span class="branch">(slovak)</span> Add docstring for slovak
+| * <span class="hash">bd67d8d</span> Fix slovak
+| * <span class="hash">75fcf88</span> Add slovak
+* |   <span class="hash">bc3f86b</span> Merge branch 'french'
 |\ \
-| * | <b>a31caf9</b> (french) Add docstring for french
-| * | <b>6d348f3</b> Add french
+| * | <span class="hash">a31caf9</span> <span class="branch">(french)</span> Add docstring for french
+| * | <span class="hash">6d348f3</span> Add french
 | |/
-* / <b>0297280</b> Add docstring for default
+* / <span class="hash">0297280</span> Add docstring for default
 |/
-* <b>4b4a8ad</b> Add hello.py
-* <b>60d4d94</b> Initial commit
+* <span class="hash">4b4a8ad</span> Add hello.py
+* <span class="hash">60d4d94</span> Initial commit
 </pre>
 :::
 ::: {.column width="50%"}
 Rebase:
 
 <pre class="tree">
-* <b>ab2fda1</b> (main, slovak) Add docstring for slovak
-* <b>806b97a</b> Add slovak
-* <b>5f6f019</b> (french) Add docstring for french
-* <b>ea40a3b</b> Add french
-* <b>0297280</b> Add docstring for default
-| * <b>163a9c3</b> Add docstring for slovak
-| * <b>bd67d8d</b> Fix slovak
-| * <b>75fcf88</b> Add slovak
+* <span class="hash">ab2fda1</span> <span class="branch">(main, slovak)</span> Add docstring for slovak
+* <span class="hash">806b97a</span> Add slovak
+* <span class="hash">5f6f019</span> <span class="branch">(french)</span> Add docstring for french
+* <span class="hash">ea40a3b</span> Add french
+* <span class="hash">0297280</span> Add docstring for default
+| * <span class="hash">163a9c3</span> Add docstring for slovak
+| * <span class="hash">bd67d8d</span> Fix slovak
+| * <span class="hash">75fcf88</span> Add slovak
 |/
-| * <b>a31caf9</b> Add docstring for french
-| * <b>6d348f3</b> Add french
+| * <span class="hash">a31caf9</span> Add docstring for french
+| * <span class="hash">6d348f3</span> Add french
 |/
-* <b>4b4a8ad</b> Add hello.py
-* <b>60d4d94</b> Initial commit
+* <span class="hash">4b4a8ad</span> Add hello.py
+* <span class="hash">60d4d94</span> Initial commit
 </pre>
 :::
 :::
@@ -127,29 +127,29 @@ Rebase:
 Merge (10):
 
 <pre class="tree">
-<b>cef4a72</b> (main) Merge branch 'slovak'
-<b>bc3f86b</b> Merge branch 'french'
-<b>0297280</b> Add docstring for default
-<b>163a9c3</b> (slovak) Add docstring for slovak
-<b>bd67d8d</b> Fix slovak
-<b>75fcf88</b> Add slovak
-<b>a31caf9</b> (french) Add docstring for french
-<b>6d348f3</b> Add french
-<b>4b4a8ad</b> Add hello.py
-<b>60d4d94</b> Initial commit
+<span class="hash">cef4a72</span> <span class="branch">(main)</span> Merge branch 'slovak'
+<span class="hash">bc3f86b</span> Merge branch 'french'
+<span class="hash">0297280</span> Add docstring for default
+<span class="hash">163a9c3</span> <span class="branch">(slovak)</span> Add docstring for slovak
+<span class="hash">bd67d8d</span> Fix slovak
+<span class="hash">75fcf88</span> Add slovak
+<span class="hash">a31caf9</span> <span class="branch">(french)</span> Add docstring for french
+<span class="hash">6d348f3</span> Add french
+<span class="hash">4b4a8ad</span> Add hello.py
+<span class="hash">60d4d94</span> Initial commit
 </pre>
 :::
 ::: {.column width="50%"}
 Rebase (7):
 
 <pre class="tree">
-<b>ab2fda1</b> (main, slovak) Add docstring for slovak
-<b>806b97a</b> Add slovak
-<b>5f6f019</b> (french) Add docstring for french
-<b>ea40a3b</b> Add french
-<b>0297280</b> Add docstring for default
-<b>4b4a8ad</b> Add hello.py
-<b>60d4d94</b> Initial commit
+<span class="hash">ab2fda1</span> <span class="branch">(main, slovak)</span> Add docstring for slovak
+<span class="hash">806b97a</span> Add slovak
+<span class="hash">5f6f019</span> <span class="branch">(french)</span> Add docstring for french
+<span class="hash">ea40a3b</span> Add french
+<span class="hash">0297280</span> Add docstring for default
+<span class="hash">4b4a8ad</span> Add hello.py
+<span class="hash">60d4d94</span> Initial commit
 </pre>
 
 :::
@@ -197,8 +197,82 @@ Usage:
 git checkout main
 
 # 2. perform the squash merge
-git merge --squash feature-branch
+git merge --squash slovak
 
 # 3. commit the changes
-git commit -m "Squashed commit from feature-branch"
+git commit -m "Squash slovak"
 ```
+
+## Sidebar: Squash Merge
+
+::: {.columns}
+::: {.column width="50%"}
+Merge:
+<pre class="tree">
+*   <span class="hash">cef4a72</span> <span class="branch">(main)</span> Merge branch 'slovak'
+|\
+| * <span class="hash">163a9c3</span> <span class="branch">(slovak)</span> Add docstring for slovak
+| * <span class="hash">bd67d8d</span> Fix slovak
+| * <span class="hash">75fcf88</span> Add slovak
+* |   <span class="hash">bc3f86b</span> Merge branch 'french'
+|\ \
+| * | <span class="hash">a31caf9</span> <span class="branch">(french)</span> Add docstring for french
+| * | <span class="hash">6d348f3</span> Add french
+| |/
+* / <span class="hash">0297280</span> Add docstring for default
+|/
+* <span class="hash">4b4a8ad</span> Add hello.py
+* <span class="hash">60d4d94</span> Initial commit
+</pre>:::
+::: {.column width="50%"}
+Squash Merge:
+<pre class="tree">
+* <span class="hash">f3492de</span> <span class="branch">(main)</span> Squash french
+* <span class="hash">d23ef42</span> Squash slovak
+* <span class="hash">54b75b3</span> Add docstring for default
+| * <span class="hash">437cd19</span> <span class="branch">(slovak)</span> Add docstring for slovak
+| * <span class="hash">5a92065</span> Fix slovak
+| * <span class="hash">c1344d5</span> Add slovak
+|/
+| * <span class="hash">0962e07</span> <span class="branch">(french)</span> Add docstring for french
+| * <span class="hash">7571e67</span> Add french
+|/
+* <span class="hash">de2c4ac</span> Add hello.py
+* <span class="hash">944ce4e</span> Initial commit
+</pre>
+:::
+:::
+
+## Sidebar: Squash Merge
+
+::: {.columns}
+::: {.column width="50%"}
+Merge (10):
+<pre class="tree">
+<span class="hash">cef4a72</span> <span class="branch">(main)</span> Merge branch 'slovak'
+<span class="hash">bc3f86b</span> Merge branch 'french'
+<span class="hash">0297280</span> Add docstring for default
+<span class="hash">163a9c3</span> <span class="branch">(slovak)</span> Add docstring for slovak
+<span class="hash">bd67d8d</span> Fix slovak
+<span class="hash">75fcf88</span> Add slovak
+<span class="hash">a31caf9</span> <span class="branch">(french)</span> Add docstring for french
+<span class="hash">6d348f3</span> Add french
+<span class="hash">4b4a8ad</span> Add hello.py
+<span class="hash">60d4d94</span> Initial commit
+</pre>
+:::
+::: {.column width="50%"}
+Squash Merge (5):
+<pre class="tree">
+<span class="hash">f3492de</span> <span class="branch">(main)</span> Squash french
+<span class="hash">d23ef42</span> Squash slovak
+<span class="hash">54b75b3</span> Add docstring for default
+<span class="hash">de2c4ac</span> Add hello.py
+<span class="hash">944ce4e</span> Initial commit
+</pre>
+:::
+:::
+
+::: {.warning}
+After performing a squash merge, you should always delete the feature branch. 
+::: 

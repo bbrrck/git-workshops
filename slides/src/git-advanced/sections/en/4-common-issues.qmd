@@ -15,7 +15,7 @@ git revert d49de0 # remove changes made in the commit with hash d49de0
 ```
 
 ::: {.myinfo}
-The `git revert` command creates a new version and does not change the repository history.
+`git revert` creates a new version and does not change the repository history.
 :::
 
 ## `git reset`
@@ -26,7 +26,7 @@ git reset --hard d49de0
 ```
 
 ::: {.warning}
-The `git reset` command changes the repository history and can cause file loss.
+`git reset --hard` changes the repository history and can cause file loss.
 :::
 
 ## `reset` vs `revert` vs `checkout`
@@ -80,11 +80,11 @@ git push origin main --force-with-lease # do not use '--force'!
 ## How do I revert part of a commit?
 
 ```bash
-git revert -n $bad_commit  # revert the commit, but do not save changes
-git reset HEAD .           # unstage the changes
-git add --patch .          # stage the desired changes
-git commit                 # create a commit from these changes
-git checkout -- .          # discard the remaining changes
+git revert --no-commit $bad_commit  # revert the commit, but do not save changes
+git reset HEAD .                    # unstage the changes
+git add --patch .                   # stage the changes that should be *reverted*
+git commit                          # create a commit to revert those changes
+git checkout -- .                   # discard changes that should not be reverted
 ```
 
 ::: {.fontsize-080}
@@ -137,10 +137,10 @@ git checkout feature        # switch to the feature branch
 [stackoverflow:1628563](https://stackoverflow.com/q/1628563/1606707)
 :::
 
-## How do I remove files from the staging area?
+## How do I unstage files from the staging area?
 
 ```bash
-git rm --cached <file>
+git restore --staged <file>
 ```
 
 ## How do I change the message of an already created commit?
