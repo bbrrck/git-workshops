@@ -1,0 +1,92 @@
+---
+title: "Git Advanced Workshop: Demo Sheet"
+# author: Tibor Stanko
+# date: today
+code-overflow: wrap
+colorlinks: true
+embed-resources: true
+highlight-style: github
+number-depth: 2
+number-sections: true
+output-dir: _output
+shift-heading-level-by: 1
+toc: false
+format:
+    pdf: default
+mainfont: Zurich Sans
+---
+
+\vspace{-2cm}
+
+## Demo: Git Internals
+
+```bash
+# Step 1
+cd ~
+git init test
+cd test
+
+# Step 2
+echo "version 1" | save test.txt
+git status
+
+# Step 3
+git add test.txt
+git status
+git ls-files --stage
+git cat-file -p <HASH>
+git cat-file -t <HASH>
+
+# Step 4
+git commit -m "First"
+git status
+
+# Step 5
+mkdir bak; mv test.txt bak
+echo "version 2" | test.txt
+git add .
+git status
+git ls-files --stage
+git commit -m "Second"
+
+# Step 6
+echo "new" | new.txt
+git add new.txt
+git commit -m "Third" 
+```
+
+## Demo: Merge
+
+```bash
+git clone https://github.com/bbrrck/hello.git hello-merge; cd hello-merge
+git merge origin/french
+# Auto-merging hello.py
+git merge origin/slovak
+# CONFLICT (content): Merge conflict in hello.py
+# ... resolve the conflict ...
+git add .
+git commit
+# [main cef4a72] Merge remote-tracking branch 'origin/slovak'
+```
+
+### Demo: Rebase
+
+```bash
+git clone https://github.com/bbrrck/hello.git hello-rebase; cd hello-rebase
+git checkout french
+git rebase main
+# Successfully rebased and updated refs/heads/french.
+git checkout main
+git merge French # Fast-forward
+
+git checkout slovak
+git rebase -i main
+# ... mark the middle commit as `fixup` ...
+# CONFLICT (content): Merge conflict in hello.py
+# ... resolve the conflict ...
+git add .
+git rebase --continue
+# Successfully rebased and updated refs/heads/slovak.
+git checkout main
+git merge slovak # Fast-forward
+```
