@@ -12,10 +12,10 @@
         } 
     } 
 }%%
-    gitGraph
-        checkout main
-        commit id:"version 1"
-        commit id:"version 2"
-        commit id:"version 3"
-        commit id:"version 4"
+gitGraph
+    checkout main
+    commit id:"version 1"
+    commit id:"version 2"
+    commit id:"version 3"
+    commit id:"version 4"
 ```
