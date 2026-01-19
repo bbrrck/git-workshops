@@ -1,3 +1,5 @@
+.DS_Store
+
 # Quarto artifacts
 **/*_files
 **/.ipynb
@@ -13,3 +15,7 @@ _output/
 
 .build
 .vscode
+**/*.quarto_ipynb
+
+*.html
+site_libs
