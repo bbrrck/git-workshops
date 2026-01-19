@@ -107,8 +107,6 @@ After deletion, the branch is removed from history and cannot be restored.
 
 ## Example `git log` history
 
-{{< include ./src/git-basics/diagrams/git-log-example.qmd >}}
-
 ```changelog
 *   3a5d22e (HEAD -> main) Merge branch 'french'
 |\

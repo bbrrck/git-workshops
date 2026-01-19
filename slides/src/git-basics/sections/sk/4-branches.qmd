@@ -110,8 +110,6 @@ Po vymazaní je vetva odstránená z histórie a nie je možné ju obnoviť.
 
 ## Príklad `git log` histórie
 
-{{< include ./src/git-basics/diagrams/git-log-example.qmd >}}
-
 ```changelog
 *   3a5d22e (HEAD -> main) Merge branch 'french'
 |\
