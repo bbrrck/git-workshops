@@ -14,21 +14,21 @@
         } 
     } 
 }%%
-    gitGraph
-        checkout main
-        commit
-        commit
-        branch bugfix
-        branch feature
-        checkout bugfix
-        commit
-        commit
-        checkout feature
-        commit
-        commit
-        commit
-        commit
-        checkout main
-        merge bugfix
-        merge feature
+gitGraph
+    checkout main
+    commit
+    commit
+    branch bugfix
+    branch feature
+    checkout bugfix
+    commit
+    commit
+    checkout feature
+    commit
+    commit
+    commit
+    commit
+    checkout main
+    merge bugfix
+    merge feature
 ```
