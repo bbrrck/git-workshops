@@ -1,5 +1,5 @@
 ---
-title: "{{< var workshop-basics.name >}} (SK)"
+title: "{{< var workshop-basics.name >}} <small>(SK)</small>"
 author: "{{< var me.name >}}"
 ---
 
