@@ -1,9 +1,9 @@
 me:
   name: Tibor Stanko
-  email: tibor.stanko@gmail.com
+  email: tibor.stanko@example.com
   website: https://tiborstanko.sk
-  age: 34
-  git-experience-years: 10 # start = 2015
+  age: 35
+  git-experience-years: 11 # start = 2015
 
 workshop-basics:
   name: "Git Basics Workshop"
