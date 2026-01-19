@@ -6,11 +6,11 @@
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-9e228d6d4d66c12a9d11739da31c2b1c.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.6.40">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-9e15f8fb9e1f2f288bfbe28f6ca11029.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.8.27">
 
   <meta name="author" content="Tibor Stanko">
-  <title>Git Workshops – Git Advanced Workshop</title>
+  <title>Git Workshops – Git Advanced Workshop (SK)</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -29,8 +29,9 @@
       vertical-align: middle;
     }
     /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
     pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
     pre > code.sourceCode > span:empty { height: 1.2em; }
     .sourceCode { overflow: visible; }
     code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -41,7 +42,7 @@
     }
     @media print {
     pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
     }
     pre.numberSource code
       { counter-reset: source-line 0; }
@@ -94,7 +95,7 @@
     code span.vs { color: #e6db74; } /* VerbatimString */
     code span.wa { color: #ff5555; } /* Warning */
   </style>
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-88b92e5c573a7045ff33c68a83aec5e7.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-53e46ab73479edacc934b0d2c80a5b5c.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -192,7 +193,7 @@
     <div class="slides">
 
 <section id="title-slide" data-background-image="static/img/hero.svg" data-background-position="bottom" data-background-size="50%" class="quarto-title-block center">
-  <h1 class="title">Git Advanced Workshop</h1>
+  <h1 class="title">Git Advanced Workshop (SK)</h1>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -213,11 +214,11 @@ Tibor Stanko
 <div class="columns">
 <div class="column" style="width:72%;">
 <ul>
-<li><a href="https://tiborstanko.sk">Tibor Stanko</a>, 34 rokov</li>
+<li><a href="https://tiborstanko.sk">Tibor Stanko</a>, 35 rokov</li>
 <li>od 2020 dátový inžinier v Zurich Insurance, Bratislava 🇸🇰</li>
 <li>predtým 6 rokov v akademickej sfére vo 🇫🇷 (PhD, postdoc)</li>
 <li>rád automatizujem nudné úlohy s pomocou Pythonu 🐍</li>
-<li>nie som Git guru, no Git používam denne už viac ako 10 rokov</li>
+<li>nie som Git guru, no Git používam denne už viac ako 11 rokov</li>
 <li>moje voľnočasové aktivity: 👨‍👩‍👧‍👦🚲⛰️🎸🎹🍺</li>
 </ul>
 </div><div class="column" style="width:28%;">
@@ -315,14 +316,14 @@ Tibor Stanko
 <ul>
 <li>vetva <em>nie je</em> sled commitov, ale len ukazovateľ (<em>pointer</em>) na určitý commit</li>
 </ul>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> .git/refs/heads/main</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> .git/refs/heads/main</span>
 <span id="cb1-2"><a aria-hidden="true" tabindex="-1"></a><span class="co"># 7c66409021358486e63d2d40c9b07e2c35e8124d</span></span>
 <span id="cb1-3"><a aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-4"><a aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> .git/refs/remotes/origin/dev</span>
 <span id="cb1-5"><a aria-hidden="true" tabindex="-1"></a><span class="co"># c29dc332ac3eebebffc5726e16d0e91df170103f</span></span>
 <span id="cb1-6"><a aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-7"><a aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> .git/refs/tags/v2.6.3</span>
-<span id="cb1-8"><a aria-hidden="true" tabindex="-1"></a><span class="co"># d49de0ec577052db3e47e2baf5aff0be738637ac</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-8"><a aria-hidden="true" tabindex="-1"></a><span class="co"># d49de0ec577052db3e47e2baf5aff0be738637ac</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="fontsize-080">
 <p><strong>Tip</strong>: v powershelli môžeš namiesto príkazu <code>cat</code> použiť <code>gc</code> (alias pre <code>Get-Content</code>)</p>
 </div>
@@ -358,11 +359,11 @@ Tibor Stanko
 <h2></h2>
 <div class="columns">
 <div class="column" style="width:50%;">
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ~</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ~</span>
 <span id="cb2-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> init test</span>
 <span id="cb2-3"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Initialized empty Git repository in </span></span>
 <span id="cb2-4"><a aria-hidden="true" tabindex="-1"></a><span class="co"># C:/Users/tibor.stanko/test/.git/</span></span>
-<span id="cb2-5"><a aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> test</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-5"><a aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> test</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column" style="width:50%;">
 <pre class="tree">.git
 ├── HEAD    <i>ref: refs/heads/main</i>
@@ -397,13 +398,13 @@ Tibor Stanko
 <h2></h2>
 <div class="columns">
 <div class="column" style="width:50%;">
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"version 1"</span> <span class="op">&gt;</span> test.txt</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"version 1"</span> <span class="op">&gt;</span> test.txt</span>
 <span id="cb3-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> status</span>
 <span id="cb3-3"><a aria-hidden="true" tabindex="-1"></a><span class="co"># On branch main</span></span>
 <span id="cb3-4"><a aria-hidden="true" tabindex="-1"></a><span class="co"># No commits yet</span></span>
 <span id="cb3-5"><a aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
 <span id="cb3-6"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Untracked files:</span></span>
-<span id="cb3-7"><a aria-hidden="true" tabindex="-1"></a><span class="co">#         test.txt</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-7"><a aria-hidden="true" tabindex="-1"></a><span class="co">#         test.txt</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column" style="width:50%;">
 <pre class="tree">.git
 ├── HEAD    <i>ref: refs/heads/main</i>
@@ -438,7 +439,7 @@ Tibor Stanko
 <h2></h2>
 <div class="columns">
 <div class="column" style="width:50%;">
-<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add test.txt</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add test.txt</span>
 <span id="cb4-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> status</span>
 <span id="cb4-3"><a aria-hidden="true" tabindex="-1"></a><span class="co"># On branch main</span></span>
 <span id="cb4-4"><a aria-hidden="true" tabindex="-1"></a><span class="co"># No commits yet</span></span>
@@ -447,7 +448,7 @@ Tibor Stanko
 <span id="cb4-7"><a aria-hidden="true" tabindex="-1"></a><span class="co">#         test.txt</span></span>
 <span id="cb4-8"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> ls-files <span class="at">--stage</span></span>
 <span id="cb4-9"><a aria-hidden="true" tabindex="-1"></a><span class="co"># 100644 594dc0e39bc4468ee19c</span></span>
-<span id="cb4-10"><a aria-hidden="true" tabindex="-1"></a><span class="co">#        67e65d37b97eb963b68b 0 test.txt</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-10"><a aria-hidden="true" tabindex="-1"></a><span class="co">#        67e65d37b97eb963b68b 0 test.txt</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column" style="width:50%;">
 <pre class="tree">.git
 ├── HEAD    <i>ref: refs/heads/main</i>
@@ -482,14 +483,14 @@ Tibor Stanko
 <h2></h2>
 <div class="columns">
 <div class="column" data-font-size="80%" style="width:50%;">
-<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"First"</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"First"</span></span>
 <span id="cb5-2"><a aria-hidden="true" tabindex="-1"></a><span class="co"># [main (root-commit) c771cdc] First</span></span>
 <span id="cb5-3"><a aria-hidden="true" tabindex="-1"></a><span class="co">#  1 file changed, 0 insertions(+),</span></span>
 <span id="cb5-4"><a aria-hidden="true" tabindex="-1"></a><span class="co">#   ... 0 deletions(-)</span></span>
 <span id="cb5-5"><a aria-hidden="true" tabindex="-1"></a><span class="co">#  create mode 100644 test.txt</span></span>
 <span id="cb5-6"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> status</span>
 <span id="cb5-7"><a aria-hidden="true" tabindex="-1"></a><span class="co"># On branch main</span></span>
-<span id="cb5-8"><a aria-hidden="true" tabindex="-1"></a><span class="co"># nothing to commit, working tree clean</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-8"><a aria-hidden="true" tabindex="-1"></a><span class="co"># nothing to commit, working tree clean</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column" style="width:50%;">
 <pre class="tree">.git
 ├── HEAD    <i>ref: refs/heads/main</i>
@@ -524,7 +525,7 @@ Tibor Stanko
 <h2></h2>
 <div class="columns">
 <div class="column" data-font-size="80%" style="width:50%;">
-<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> bak</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> bak</span>
 <span id="cb6-2"><a aria-hidden="true" tabindex="-1"></a><span class="ex">mi</span> test.txt bak</span>
 <span id="cb6-3"><a aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"version 2"</span> <span class="op">&gt;</span> test.txt</span>
 <span id="cb6-4"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add .</span>
@@ -532,7 +533,7 @@ Tibor Stanko
 <span id="cb6-6"><a aria-hidden="true" tabindex="-1"></a><span class="co"># [main 4ba094f] Second</span></span>
 <span id="cb6-7"><a aria-hidden="true" tabindex="-1"></a><span class="co">#  2 files changed, 0 insertions(+), </span></span>
 <span id="cb6-8"><a aria-hidden="true" tabindex="-1"></a><span class="co">#   ... 0 deletions(-)</span></span>
-<span id="cb6-9"><a aria-hidden="true" tabindex="-1"></a><span class="co">#  create mode 100644 bak/test.txt</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-9"><a aria-hidden="true" tabindex="-1"></a><span class="co">#  create mode 100644 bak/test.txt</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column" style="width:50%;">
 <pre class="tree">.git
 ├── HEAD    <i>ref: refs/heads/main</i>
@@ -567,13 +568,13 @@ Tibor Stanko
 <h2></h2>
 <div class="columns">
 <div class="column" data-font-size="80%" style="width:50%;">
-<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"new"</span> <span class="op">&gt;</span> new.txt</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"new"</span> <span class="op">&gt;</span> new.txt</span>
 <span id="cb7-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add new.txt</span>
 <span id="cb7-3"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"Third"</span></span>
 <span id="cb7-4"><a aria-hidden="true" tabindex="-1"></a><span class="co"># [main 62e37a9] Third</span></span>
 <span id="cb7-5"><a aria-hidden="true" tabindex="-1"></a><span class="co">#  1 file changed, 0 insertions(+), </span></span>
 <span id="cb7-6"><a aria-hidden="true" tabindex="-1"></a><span class="co">#   ... 0 deletions(-)</span></span>
-<span id="cb7-7"><a aria-hidden="true" tabindex="-1"></a><span class="co">#  create mode 100644 new.txt</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-7"><a aria-hidden="true" tabindex="-1"></a><span class="co">#  create mode 100644 new.txt</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column" style="width:50%;">
 <pre class="tree">.git
 ├── HEAD    <i>ref: refs/heads/main</i>
@@ -734,14 +735,14 @@ Tibor Stanko
 <li><code>HEAD</code> je ukazovateľ na aktuálnu vetvu alebo commit</li>
 <li><code>DETACHED HEAD</code> je situácia keď HEAD ukazuje na commit ktorý <strong>nie je</strong> hlavou vetvy</li>
 </ul>
-<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> .git/HEAD</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> .git/HEAD</span>
 <span id="cb8-2"><a aria-hidden="true" tabindex="-1"></a><span class="co"># ref: refs/heads/main</span></span>
 <span id="cb8-3"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout 7c66409</span>
 <span id="cb8-4"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> status</span>
 <span id="cb8-5"><a aria-hidden="true" tabindex="-1"></a><span class="co"># HEAD detached at 7c66409</span></span>
 <span id="cb8-6"><a aria-hidden="true" tabindex="-1"></a><span class="co"># nothing to commit, working tree clean</span></span>
 <span id="cb8-7"><a aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> .git/HEAD</span>
-<span id="cb8-8"><a aria-hidden="true" tabindex="-1"></a><span class="co"># 7c66409021358486e63d2d40c9b07e2c35e8124d</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb8-8"><a aria-hidden="true" tabindex="-1"></a><span class="co"># 7c66409021358486e63d2d40c9b07e2c35e8124d</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="exercise-1-internals" class="slide level2 exercise">
 <h2>Úlohy (1)</h2>
@@ -749,7 +750,7 @@ Tibor Stanko
 <ol type="1">
 <li>Naklonuj si testovací repozitár:</li>
 </ol>
-<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/bbrrck/hello.git </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/bbrrck/hello.git </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <ol start="2" type="1">
 <li>Z priečinku <code>.git</code> nájdi súbor s hashom na ktorý ukazuje vetva <code>slovak</code>.</li>
 <li>Porovnaj hash s výstupom z príkazu <code>git rev-parse slovak</code>.</li>
@@ -763,7 +764,7 @@ Tibor Stanko
 <section id="odbočka-ako-rozbaliť-git-objekty" class="slide level2">
 <h2>Odbočka: Ako rozbaliť git objekty?</h2>
 <p>Po naklonovaní repozitára sa v priečinku <code>.git/objects</code> nachádzajú všetky objekty, ktoré Git používa, niektoré z nich však môžu byť zabalené v priečinku <code>pack</code>.</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/bbrrck/hello.git</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/bbrrck/hello.git</span>
 <span id="cb10-2"><a aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> hello</span>
 <span id="cb10-3"><a aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> .git/objects</span>
 <span id="cb10-4"><a aria-hidden="true" tabindex="-1"></a><span class="co"># .git/objects/info</span></span>
@@ -771,17 +772,17 @@ Tibor Stanko
 <span id="cb10-6"><a aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> .git/objects/pack</span>
 <span id="cb10-7"><a aria-hidden="true" tabindex="-1"></a><span class="co"># .git/objects/pack/pack-48cae0e3bd98461308f23caeb2cfcc3df0b34da8.idx</span></span>
 <span id="cb10-8"><a aria-hidden="true" tabindex="-1"></a><span class="co"># .git/objects/pack/pack-48cae0e3bd98461308f23caeb2cfcc3df0b34da8.pack</span></span>
-<span id="cb10-9"><a aria-hidden="true" tabindex="-1"></a><span class="co"># .git/objects/pack/pack-48cae0e3bd98461308f23caeb2cfcc3df0b34da8.rev</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb10-9"><a aria-hidden="true" tabindex="-1"></a><span class="co"># .git/objects/pack/pack-48cae0e3bd98461308f23caeb2cfcc3df0b34da8.rev</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="odbočka-ako-rozbaliť-git-objekty-2" class="slide level2">
 <h2>Odbočka: Ako rozbaliť git objekty? (2)</h2>
 <p>Manuálne rozbalenie objektov je možné pomocou príkazu <a href="https://git-scm.com/docs/git-unpack-objects">git unpack-objects</a>. Ak však tento príkaz použijeme na súbory z predošlého príkladu, nič sa nestane. Je to preto, lebo Git nerozbalí objekty ktoré sa už nachádzajú v repozitári. Pred rozbalením objektov je preto potrebné ich najprv presunúť do inej časti repozitára.</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Presuň súbory so zabalenými objektami do dočasného priečinku</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Presuň súbory so zabalenými objektami do dočasného priečinku</span></span>
 <span id="cb11-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> temp<span class="kw">;</span> <span class="fu">mv</span> .git/objects/pack/<span class="pp">*</span> temp</span>
 <span id="cb11-3"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Rozbaľ objekty</span></span>
 <span id="cb11-4"><a aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> temp/<span class="pp">*</span>.pack <span class="kw">|</span> <span class="fu">git</span> unpack-objects</span>
 <span id="cb11-5"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Vymaž dočasný priečinok</span></span>
-<span id="cb11-6"><a aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> <span class="at">-rf</span> temp</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb11-6"><a aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> <span class="at">-rf</span> temp</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="warning">
 <p>Mimo experimentovania manuálne rozbaľovanie objektov nie je potrebné.</p>
 </div>
@@ -837,7 +838,7 @@ Tibor Stanko
 </section>
 <section id="demo-merge" class="slide level2">
 <h2>Demo: <code>merge</code></h2>
-<div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/bbrrck/hello.git hello-merge<span class="kw">;</span> <span class="bu">cd</span> hello-merge</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/bbrrck/hello.git hello-merge<span class="kw">;</span> <span class="bu">cd</span> hello-merge</span>
 <span id="cb12-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> merge origin/french</span>
 <span id="cb12-3"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Auto-merging hello.py</span></span>
 <span id="cb12-4"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> merge origin/slovak</span>
@@ -845,11 +846,11 @@ Tibor Stanko
 <span id="cb12-6"><a aria-hidden="true" tabindex="-1"></a><span class="co"># ... vyrieš konflikt ...</span></span>
 <span id="cb12-7"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add .</span>
 <span id="cb12-8"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit</span>
-<span id="cb12-9"><a aria-hidden="true" tabindex="-1"></a><span class="co"># [main cef4a72] Merge remote-tracking branch 'origin/slovak'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb12-9"><a aria-hidden="true" tabindex="-1"></a><span class="co"># [main cef4a72] Merge remote-tracking branch 'origin/slovak'</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="demo-rebase-french" class="slide level2">
 <h2>Demo: <code>rebase</code> (french)</h2>
-<div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/bbrrck/hello.git hello-rebase<span class="kw">;</span> <span class="bu">cd</span> hello-rebase</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/bbrrck/hello.git hello-rebase<span class="kw">;</span> <span class="bu">cd</span> hello-rebase</span>
 <span id="cb13-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout french</span>
 <span id="cb13-3"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> rebase main</span>
 <span id="cb13-4"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Successfully rebased and updated refs/heads/french.</span></span>
@@ -858,11 +859,11 @@ Tibor Stanko
 <span id="cb13-7"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Updating 0297280..5f6f019</span></span>
 <span id="cb13-8"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Fast-forward</span></span>
 <span id="cb13-9"><a aria-hidden="true" tabindex="-1"></a><span class="co">#  hello.py | 11 ++++++++++-</span></span>
-<span id="cb13-10"><a aria-hidden="true" tabindex="-1"></a><span class="co">#  1 file changed, 10 insertions(+), 1 deletion(-)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb13-10"><a aria-hidden="true" tabindex="-1"></a><span class="co">#  1 file changed, 10 insertions(+), 1 deletion(-)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="demo-rebase-slovak---konflikt" class="slide level2">
 <h2>Demo: <code>rebase</code> (slovak) - konflikt</h2>
-<div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout slovak</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout slovak</span>
 <span id="cb14-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> rebase <span class="at">-i</span> main</span>
 <span id="cb14-3"><a aria-hidden="true" tabindex="-1"></a><span class="co"># ... označ prostredný commit ako `fixup` ...</span></span>
 <span id="cb14-4"><a aria-hidden="true" tabindex="-1"></a><span class="co"># CONFLICT (content): Merge conflict in hello.py</span></span>
@@ -871,7 +872,7 @@ Tibor Stanko
 <span id="cb14-7"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> rebase <span class="at">--continue</span></span>
 <span id="cb14-8"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Successfully rebased and updated refs/heads/slovak.</span></span>
 <span id="cb14-9"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout main</span>
-<span id="cb14-10"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> merge slovak <span class="co"># Fast-forward</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb14-10"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> merge slovak <span class="co"># Fast-forward</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="git-log---oneline---graph---all" class="slide level2">
 <h2><code>git log --oneline --graph --all</code></h2>
@@ -946,8 +947,8 @@ Tibor Stanko
 <ol type="1">
 <li>Naklonuj si k sebe dve kópie <a href="https://github.com/bbrrck/zoo.git">testovacieho repozitára</a>:</li>
 </ol>
-<div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/bbrrck/zoo.git zoo-merge</span>
-<span id="cb15-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/bbrrck/zoo.git zoo-rebase</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/bbrrck/zoo.git zoo-merge</span>
+<span id="cb15-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/bbrrck/zoo.git zoo-rebase</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <ol start="2" type="1">
 <li>V repozitári <code>zoo-merge</code>:
 <ol type="a">
@@ -983,17 +984,17 @@ Tibor Stanko
 </section>
 <section id="git-revert" class="slide level2">
 <h2><code>git revert</code></h2>
-<div class="sourceCode" id="cb16"><pre class="sourceCode zsh code-with-copy"><code class="sourceCode zsh"><span id="cb16-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> revert HEAD   <span class="co"># odstráň zmeny vykonané v poslednom commite</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode zsh code-with-copy"><code class="sourceCode zsh"><span id="cb16-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> revert HEAD   <span class="co"># odstráň zmeny vykonané v poslednom commite</span></span>
 <span id="cb16-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> revert HEAD<span class="pp">~</span>1 <span class="co"># odstráň zmeny vykonané v predposlednom commite</span></span>
-<span id="cb16-3"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> revert d49de0 <span class="co"># odstráň zmeny vykonané v commite s hashom d49de0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb16-3"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> revert d49de0 <span class="co"># odstráň zmeny vykonané v commite s hashom d49de0</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="myinfo">
 <p>Príkaz <code>git revert</code> vytvorí novú verziu, a nemení históriu repozitára.</p>
 </div>
 </section>
 <section id="git-reset" class="slide level2">
 <h2><code>git reset</code></h2>
-<div class="sourceCode" id="cb17"><pre class="sourceCode zsh code-with-copy"><code class="sourceCode zsh"><span id="cb17-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># vráť repozitár do stavu *po* commite s hashom d49de0</span></span>
-<span id="cb17-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> reset <span class="at">--hard</span> d49de0</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode zsh code-with-copy"><code class="sourceCode zsh"><span id="cb17-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># vráť repozitár do stavu *po* commite s hashom d49de0</span></span>
+<span id="cb17-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> reset <span class="at">--hard</span> d49de0</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="warning">
 <p>Príkaz <code>git reset</code> mení históriu repozitára a môže spôsobiť stratu súborov.</p>
 </div>
@@ -1052,36 +1053,36 @@ Tibor Stanko
 </section>
 <section id="ako-vrátim-späť-lokálne-zmeny" class="slide level2">
 <h2>Ako vrátim späť lokálne zmeny?</h2>
-<div class="sourceCode" id="cb18"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"Something terribly misguided"</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"Something terribly misguided"</span></span>
 <span id="cb18-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> reset HEAD~1</span>
 <span id="cb18-3"><a aria-hidden="true" tabindex="-1"></a><span class="co"># ... uprav súbory podľa potreby ...</span></span>
 <span id="cb18-4"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add .</span>
 <span id="cb18-5"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-c</span> ORIG_HEAD <span class="co"># otvor predošlý popis v commit editore</span></span>
-<span id="cb18-6"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-C</span> ORIG_HEAD <span class="co"># použi predošlý popis bez otvorenia commit editoru</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb18-6"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-C</span> ORIG_HEAD <span class="co"># použi predošlý popis bez otvorenia commit editoru</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="footer">
 <p><a href="https://stackoverflow.com/a/927386/1606707">stackoverflow:927386</a></p>
 </div>
 </section>
 <section id="ako-vrátim-späť-zmeny-ktoré-už-boli-pushnuté" class="slide level2">
 <h2>Ako vrátim späť zmeny ktoré už boli pushnuté?</h2>
-<div class="sourceCode" id="cb19"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"Something terribly misguided"</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"Something terribly misguided"</span></span>
 <span id="cb19-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push origin main</span>
 <span id="cb19-3"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> reset HEAD~1</span>
 <span id="cb19-4"><a aria-hidden="true" tabindex="-1"></a><span class="co"># ... uprav súbory podľa potreby ...</span></span>
 <span id="cb19-5"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add .</span>
 <span id="cb19-6"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-C</span> ORIG_HEAD <span class="co"># použi predošlý popis bez otvorenia commit editoru</span></span>
-<span id="cb19-7"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push origin main <span class="at">--force-with-lease</span> <span class="co"># nepouživaj '--force'!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb19-7"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push origin main <span class="at">--force-with-lease</span> <span class="co"># nepouživaj '--force'!</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="footer">
 <p><a href="https://stackoverflow.com/q/22682870/1606707">stackoverflow:22682870</a></p>
 </div>
 </section>
 <section id="ako-vrátim-späť-časť-commitu" class="slide level2">
 <h2>Ako vrátim späť časť commitu?</h2>
-<div class="sourceCode" id="cb20"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> revert <span class="at">-n</span> <span class="va">$bad_commit</span>  <span class="co"># vráť commit späť, ale neukladaj zmeny</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> revert <span class="at">-n</span> <span class="va">$bad_commit</span>  <span class="co"># vráť commit späť, ale neukladaj zmeny</span></span>
 <span id="cb20-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> reset HEAD .           <span class="co"># zruš pridanie zmien</span></span>
 <span id="cb20-3"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add <span class="at">--patch</span> .          <span class="co"># pridaj požadované zmeny</span></span>
 <span id="cb20-4"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit                 <span class="co"># vytvor commit z týchto zmien</span></span>
-<span id="cb20-5"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout <span class="at">--</span> .          <span class="co"># odstráň ostatné zmeny</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb20-5"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout <span class="at">--</span> .          <span class="co"># odstráň ostatné zmeny</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="fontsize-080">
 <p><strong>Pozn.</strong>: Zmeny, ktoré pridávame pomocou príkazu <code>git add --patch</code>, sú zmeny, ktoré chceme vrátiť späť, nie zmeny, ktoré chceme ponechať.</p>
 </div>
@@ -1091,20 +1092,20 @@ Tibor Stanko
 </section>
 <section id="ako-premenujem-lokálnu-vetvu" class="slide level2">
 <h2>Ako premenujem lokálnu vetvu?</h2>
-<div class="sourceCode" id="cb21"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># premenuj aktuálnu vetvu na 'newname'</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># premenuj aktuálnu vetvu na 'newname'</span></span>
 <span id="cb21-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> branch <span class="at">-m</span> newname</span>
 <span id="cb21-3"><a aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb21-4"><a aria-hidden="true" tabindex="-1"></a><span class="co"># premenuj vetvu 'oldname' na 'newname'</span></span>
-<span id="cb21-5"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> branch <span class="at">-m</span> oldname newname</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb21-5"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> branch <span class="at">-m</span> oldname newname</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="footer">
 <p><a href="https://stackoverflow.com/q/6591213/1606707">stackoverflow:6591213</a></p>
 </div>
 </section>
 <section id="ako-vymažem-lokálnu-aj-vzdialenú-vetvu" class="slide level2">
 <h2>Ako vymažem lokálnu aj vzdialenú vetvu?</h2>
-<div class="sourceCode" id="cb22"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb22-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push <span class="at">-d</span> <span class="op">&lt;</span>remote_name<span class="op">&gt;</span> <span class="op">&lt;</span>branch_name<span class="op">&gt;</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb22-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push <span class="at">-d</span> <span class="op">&lt;</span>remote_name<span class="op">&gt;</span> <span class="op">&lt;</span>branch_name<span class="op">&gt;</span></span>
 <span id="cb22-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> branch <span class="at">-d</span> <span class="op">&lt;</span>branch_name<span class="op">&gt;</span></span>
-<span id="cb22-3"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> fetch <span class="at">--all</span> <span class="at">--prune</span> <span class="co"># vymaž referencie na vymazané vzdialené vetvy</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb22-3"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> fetch <span class="at">--all</span> <span class="at">--prune</span> <span class="co"># vymaž referencie na vymazané vzdialené vetvy</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="footer">
 <p><a href="https://stackoverflow.com/q/2003505/1606707">stackoverflow:2003505</a></p>
 </div>
@@ -1112,22 +1113,22 @@ Tibor Stanko
 <section id="ako-presuniem-posledných-n-commitov-na-novú-vetvu" class="slide level2">
 <h2>Ako presuniem posledných n commitov na novú vetvu?</h2>
 <p>Presunutie posledných 3 commitov z <code>main</code> na novú vetvu <code>feature</code>:</p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb23-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout main           <span class="co"># prepni sa na main</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb23"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb23-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout main           <span class="co"># prepni sa na main</span></span>
 <span id="cb23-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> branch feature          <span class="co"># vytvor novú vetvu feature ktorá ukazuje na rovnaký</span></span>
 <span id="cb23-3"><a aria-hidden="true" tabindex="-1"></a>                            <span class="co"># commit ako main, ale neprepinaj sa na ňu</span></span>
 <span id="cb23-4"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> reset <span class="at">--hard</span> HEAD~3     <span class="co"># vymaž posledné 3 commity</span></span>
-<span id="cb23-5"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout feature        <span class="co"># prepni sa na vetvu feature</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb23-5"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout feature        <span class="co"># prepni sa na vetvu feature</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="footer">
 <p><a href="https://stackoverflow.com/q/1628563/1606707">stackoverflow:1628563</a></p>
 </div>
 </section>
 <section id="ako-odstránim-súbory-z-prípravnej-zóny" class="slide level2">
 <h2>Ako odstránim súbory z prípravnej zóny?</h2>
-<div class="sourceCode" id="cb24"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb24-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> rm <span class="at">--cached</span> <span class="op">&lt;</span>file<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb24"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb24-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> rm <span class="at">--cached</span> <span class="op">&lt;</span>file<span class="op">&gt;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="ako-zmením-popis-v-už-vytvorenom-commite" class="slide level2">
 <h2>Ako zmením popis v už vytvorenom commite?</h2>
-<div class="sourceCode" id="cb25"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb25-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">--amend</span> <span class="at">-m</span> <span class="st">"New commit message"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb25"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb25-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">--amend</span> <span class="at">-m</span> <span class="st">"New commit message"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="fragment">
 <div class="warning">
 <p>Ak už bol starý commit pushnutý na remote, po použití <code>git commit --amend</code> je potrebné pushnúť cez <code>git push --force</code> alebo <code>--force-with-lease</code>.</p>
@@ -1139,8 +1140,8 @@ Tibor Stanko
 </section>
 <section id="ako-pridám-súbory-do-už-vytvoreného-commitu" class="slide level2">
 <h2>Ako pridám súbory do už vytvoreného <em>commitu</em>?</h2>
-<div class="sourceCode" id="cb26"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb26-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add zabudnuty_subor</span>
-<span id="cb26-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">--amend</span> <span class="at">--no-edit</span> <span class="co"># znovu použi predošlý commit message</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb26"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb26-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add zabudnuty_subor</span>
+<span id="cb26-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">--amend</span> <span class="at">--no-edit</span> <span class="co"># znovu použi predošlý commit message</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="warning">
 <p>Ak už bol starý commit pushnutý na remote, po použití <code>git commit --amend</code> je potrebné pushnúť cez <code>git push --force</code> alebo <code>--force-with-lease</code>.</p>
 </div>
@@ -1150,7 +1151,7 @@ Tibor Stanko
 </section>
 <section id="ako-môžem-resetovať-alebo-vrátiť-súbor-na-konkrétnu-verziu" class="slide level2">
 <h2>Ako môžem resetovať alebo vrátiť súbor na konkrétnu verziu?</h2>
-<div class="sourceCode" id="cb27"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb27-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout c5f567 <span class="at">--</span> file1/to/restore file2/to/restore</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb27"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb27-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout c5f567 <span class="at">--</span> file1/to/restore file2/to/restore</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section></section>
 <section>
 <section id="workflow" class="title-slide slide level1 center" data-number="5">
@@ -1371,17 +1372,17 @@ Tibor Stanko
 </section>
 <section id="vytvorenie-ssh-kľúča" class="slide level2">
 <h2>Vytvorenie SSH kľúča</h2>
-<div class="sourceCode" id="cb28"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb28-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">ssh-keygen</span> <span class="co"># use default settings</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb28"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb28-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">ssh-keygen</span> <span class="co"># use default settings</span></span>
 <span id="cb28-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">ssh-keygen</span> <span class="at">-t</span> rsa <span class="at">-C</span> <span class="st">"name@email.com"</span> <span class="co"># compatible with most git providers</span></span>
-<span id="cb28-3"><a aria-hidden="true" tabindex="-1"></a><span class="fu">ssh-keygen</span> <span class="at">-t</span> ed25519 <span class="at">-C</span> <span class="st">"name@email.com"</span> <span class="co"># compatible with GitHub</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb28-3"><a aria-hidden="true" tabindex="-1"></a><span class="fu">ssh-keygen</span> <span class="at">-t</span> ed25519 <span class="at">-C</span> <span class="st">"name@email.com"</span> <span class="co"># compatible with GitHub</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="skopírovanie-ssh-kľúča-do-schránky" class="slide level2">
 <h2>Skopírovanie SSH kľúča do schránky</h2>
 <h3 id="powershell">Powershell</h3>
-<div class="sourceCode" id="cb29"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb29-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">Get-Content</span> <span class="op">~</span>\<span class="op">.</span><span class="fu">ssh</span>\id_ed25519<span class="op">.</span><span class="fu">pub</span> <span class="op">|</span> <span class="fu">Set-Clipboard</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb29"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb29-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">Get-Content</span> <span class="op">~</span>\<span class="op">.</span><span class="fu">ssh</span>\id_ed25519<span class="op">.</span><span class="fu">pub</span> <span class="op">|</span> <span class="fu">Set-Clipboard</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>&nbsp;</p>
 <h3 id="command-prompt">Command Prompt</h3>
-<div class="sourceCode" id="cb30"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb30-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">clip</span> <span class="op">&lt;</span> ~\.ssh\id_ed25519.pub</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb30"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb30-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">clip</span> <span class="op">&lt;</span> ~\.ssh\id_ed25519.pub</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section></section>
 <section id="čo-sme-sa-nenaučili" class="title-slide slide level1 center" data-number="9">
 <h1><span class="header-section-number">9</span> Čo sme sa nenaučili</h1>
@@ -1523,7 +1524,7 @@ Tibor Stanko
 <h2>Git Cheatsheet</h2>
 <div class="columns">
 <div class="column git-cheatsheet" style="width:50%;">
-<div class="sourceCode" id="cb31"><pre class="sourceCode zsh code-with-copy"><code class="sourceCode zsh"><span id="cb31-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Setup</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb31"><pre class="sourceCode zsh code-with-copy"><code class="sourceCode zsh"><span id="cb31-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Setup</span></span>
 <span id="cb31-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> user.name <span class="st">"[first last]"</span></span>
 <span id="cb31-3"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> user.email <span class="st">"[valid-email]"</span></span>
 <span id="cb31-4"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> init</span>
@@ -1534,9 +1535,9 @@ Tibor Stanko
 <span id="cb31-9"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> reset <span class="pp">[</span><span class="st">file</span><span class="pp">]</span></span>
 <span id="cb31-10"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> diff</span>
 <span id="cb31-11"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> diff <span class="at">--staged</span></span>
-<span id="cb31-12"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"[descriptive message]"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb31-12"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"[descriptive message]"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column git-cheatsheet" style="width:50%;">
-<div class="sourceCode" id="cb32"><pre class="sourceCode zsh code-with-copy"><code class="sourceCode zsh"><span id="cb32-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Branch &amp; Merge</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb32"><pre class="sourceCode zsh code-with-copy"><code class="sourceCode zsh"><span id="cb32-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Branch &amp; Merge</span></span>
 <span id="cb32-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> branch</span>
 <span id="cb32-3"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> branch <span class="pp">[</span><span class="st">branch</span><span class="op">-</span><span class="st">name</span><span class="pp">]</span></span>
 <span id="cb32-4"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout</span>
@@ -1547,7 +1548,7 @@ Tibor Stanko
 <span id="cb32-9"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> fetch <span class="pp">[</span><span class="st">alias</span><span class="pp">]</span></span>
 <span id="cb32-10"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> merge <span class="pp">[</span><span class="st">alias</span><span class="pp">]</span>/<span class="pp">[</span><span class="st">branch</span><span class="pp">]</span></span>
 <span id="cb32-11"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push <span class="pp">[</span><span class="st">alias</span><span class="pp">]</span>/<span class="pp">[</span><span class="st">branch</span><span class="pp">]</span></span>
-<span id="cb32-12"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> pull</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb32-12"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> pull</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div></div>
 </section></section>
 <section id="ďakujem-za-pozornosť" class="title-slide slide level1 unnumbered unlisted center">
@@ -1744,7 +1745,7 @@ Tibor Stanko
         margin: 0.1,
 
         math: {
-          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js',
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
           config: 'TeX-AMS_HTML-full',
           tex2jax: {
             inlineMath: [['\\(','\\)']],
@@ -1771,190 +1772,173 @@ Tibor Stanko
       });
     </script>
     <script id="quarto-html-after-body" type="application/javascript">
-    window.document.addEventListener("DOMContentLoaded", function (event) {
-      const toggleBodyColorMode = (bsSheetEl) => {
-        const mode = bsSheetEl.getAttribute("data-mode");
-        const bodyEl = window.document.querySelector("body");
-        if (mode === "dark") {
-          bodyEl.classList.add("quarto-dark");
-          bodyEl.classList.remove("quarto-light");
-        } else {
-          bodyEl.classList.add("quarto-light");
-          bodyEl.classList.remove("quarto-dark");
-        }
-      }
-      const toggleBodyColorPrimary = () => {
-        const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
-        if (bsSheetEl) {
-          toggleBodyColorMode(bsSheetEl);
-        }
-      }
-      toggleBodyColorPrimary();  
-      const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
-      tabsets.forEach(function(tabset) {
-        const tabby = new Tabby('#' + tabset.id);
-      });
-      const isCodeAnnotation = (el) => {
-        for (const clz of el.classList) {
-          if (clz.startsWith('code-annotation-')) {                     
-            return true;
+      window.document.addEventListener("DOMContentLoaded", function (event) {
+        const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+        tabsets.forEach(function(tabset) {
+          const tabby = new Tabby('#' + tabset.id);
+        });
+        const isCodeAnnotation = (el) => {
+          for (const clz of el.classList) {
+            if (clz.startsWith('code-annotation-')) {                     
+              return true;
+            }
           }
+          return false;
         }
-        return false;
-      }
-      const onCopySuccess = function(e) {
-        // button target
-        const button = e.trigger;
-        // don't keep focus
-        button.blur();
-        // flash "checked"
-        button.classList.add('code-copy-button-checked');
-        var currentTitle = button.getAttribute("title");
-        button.setAttribute("title", "Copied!");
-        let tooltip;
-        if (window.bootstrap) {
-          button.setAttribute("data-bs-toggle", "tooltip");
-          button.setAttribute("data-bs-placement", "left");
-          button.setAttribute("data-bs-title", "Copied!");
-          tooltip = new bootstrap.Tooltip(button, 
-            { trigger: "manual", 
-              customClass: "code-copy-button-tooltip",
-              offset: [0, -8]});
-          tooltip.show();    
-        }
-        setTimeout(function() {
-          if (tooltip) {
-            tooltip.hide();
-            button.removeAttribute("data-bs-title");
-            button.removeAttribute("data-bs-toggle");
-            button.removeAttribute("data-bs-placement");
+        const onCopySuccess = function(e) {
+          // button target
+          const button = e.trigger;
+          // don't keep focus
+          button.blur();
+          // flash "checked"
+          button.classList.add('code-copy-button-checked');
+          var currentTitle = button.getAttribute("title");
+          button.setAttribute("title", "Copied!");
+          let tooltip;
+          if (window.bootstrap) {
+            button.setAttribute("data-bs-toggle", "tooltip");
+            button.setAttribute("data-bs-placement", "left");
+            button.setAttribute("data-bs-title", "Copied!");
+            tooltip = new bootstrap.Tooltip(button, 
+              { trigger: "manual", 
+                customClass: "code-copy-button-tooltip",
+                offset: [0, -8]});
+            tooltip.show();    
           }
-          button.setAttribute("title", currentTitle);
-          button.classList.remove('code-copy-button-checked');
-        }, 1000);
-        // clear code selection
-        e.clearSelection();
-      }
-      const getTextToCopy = function(trigger) {
-          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          setTimeout(function() {
+            if (tooltip) {
+              tooltip.hide();
+              button.removeAttribute("data-bs-title");
+              button.removeAttribute("data-bs-toggle");
+              button.removeAttribute("data-bs-placement");
+            }
+            button.setAttribute("title", currentTitle);
+            button.classList.remove('code-copy-button-checked');
+          }, 1000);
+          // clear code selection
+          e.clearSelection();
+        }
+        const getTextToCopy = function(trigger) {
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
           for (const childEl of codeEl.children) {
             if (isCodeAnnotation(childEl)) {
               childEl.remove();
             }
           }
           return codeEl.innerText;
-      }
-      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-        text: getTextToCopy
-      });
-      clipboard.on('success', onCopySuccess);
-      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-          text: getTextToCopy,
-          container: window.document.getElementById('quarto-embedded-source-code-modal')
-        });
-        clipboardModal.on('success', onCopySuccess);
-      }
-        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-        var mailtoRegex = new RegExp(/^mailto:/);
-          var filterRegex = new RegExp('/' + window.location.host + '/');
-        var isInternal = (href) => {
-            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
         }
-        // Inspect non-navigation links and adorn them if external
-     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
-        for (var i=0; i<links.length; i++) {
-          const link = links[i];
-          if (!isInternal(link.href)) {
-            // undo the damage that might have been done by quarto-nav.js in the case of
-            // links that we want to consider external
-            if (link.dataset.originalHref !== undefined) {
-              link.href = link.dataset.originalHref;
+        const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+          text: getTextToCopy
+        });
+        clipboard.on('success', onCopySuccess);
+        if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+          const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+            text: getTextToCopy,
+            container: window.document.getElementById('quarto-embedded-source-code-modal')
+          });
+          clipboardModal.on('success', onCopySuccess);
+        }
+          var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+          var mailtoRegex = new RegExp(/^mailto:/);
+            var filterRegex = new RegExp("https:\/\/bbrrck\.github\.io\/git-workshops\/");
+          var isInternal = (href) => {
+              return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+          }
+          // Inspect non-navigation links and adorn them if external
+         var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+          for (var i=0; i<links.length; i++) {
+            const link = links[i];
+            if (!isInternal(link.href)) {
+              // undo the damage that might have been done by quarto-nav.js in the case of
+              // links that we want to consider external
+              if (link.dataset.originalHref !== undefined) {
+                link.href = link.dataset.originalHref;
+              }
             }
           }
-        }
-      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
-        const config = {
-          allowHTML: true,
-          maxWidth: 500,
-          delay: 100,
-          arrow: false,
-          appendTo: function(el) {
-              return el.closest('section.slide') || el.parentElement;
-          },
-          interactive: true,
-          interactiveBorder: 10,
-          theme: 'light-border',
-          placement: 'bottom-start',
-        };
-        if (contentFn) {
-          config.content = contentFn;
-        }
-        if (onTriggerFn) {
-          config.onTrigger = onTriggerFn;
-        }
-        if (onUntriggerFn) {
-          config.onUntrigger = onUntriggerFn;
-        }
-          config['offset'] = [0,0];
-          config['maxWidth'] = 700;
-        window.tippy(el, config); 
-      }
-      const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
-      for (var i=0; i<noterefs.length; i++) {
-        const ref = noterefs[i];
-        tippyHover(ref, function() {
-          // use id or data attribute instead here
-          let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
-          try { href = new URL(href).hash; } catch {}
-          const id = href.replace(/^#\/?/, "");
-          const note = window.document.getElementById(id);
-          if (note) {
-            return note.innerHTML;
-          } else {
-            return "";
+        function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+          const config = {
+            allowHTML: true,
+            maxWidth: 500,
+            delay: 100,
+            arrow: false,
+            appendTo: function(el) {
+                return el.closest('section.slide') || el.parentElement;
+            },
+            interactive: true,
+            interactiveBorder: 10,
+            theme: 'light-border',
+            placement: 'bottom-start',
+          };
+          if (contentFn) {
+            config.content = contentFn;
           }
-        });
-      }
-      const findCites = (el) => {
-        const parentEl = el.parentElement;
-        if (parentEl) {
-          const cites = parentEl.dataset.cites;
-          if (cites) {
-            return {
-              el,
-              cites: cites.split(' ')
-            };
-          } else {
-            return findCites(el.parentElement)
+          if (onTriggerFn) {
+            config.onTrigger = onTriggerFn;
           }
-        } else {
-          return undefined;
+          if (onUntriggerFn) {
+            config.onUntrigger = onUntriggerFn;
+          }
+            config['offset'] = [0,0];
+            config['maxWidth'] = 700;
+          window.tippy(el, config); 
         }
-      };
-      var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
-      for (var i=0; i<bibliorefs.length; i++) {
-        const ref = bibliorefs[i];
-        const citeInfo = findCites(ref);
-        if (citeInfo) {
-          tippyHover(citeInfo.el, function() {
-            var popup = window.document.createElement('div');
-            citeInfo.cites.forEach(function(cite) {
-              var citeDiv = window.document.createElement('div');
-              citeDiv.classList.add('hanging-indent');
-              citeDiv.classList.add('csl-entry');
-              var biblioDiv = window.document.getElementById('ref-' + cite);
-              if (biblioDiv) {
-                citeDiv.innerHTML = biblioDiv.innerHTML;
-              }
-              popup.appendChild(citeDiv);
-            });
-            return popup.innerHTML;
+        const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+        for (var i=0; i<noterefs.length; i++) {
+          const ref = noterefs[i];
+          tippyHover(ref, function() {
+            // use id or data attribute instead here
+            let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+            try { href = new URL(href).hash; } catch {}
+            const id = href.replace(/^#\/?/, "");
+            const note = window.document.getElementById(id);
+            if (note) {
+              return note.innerHTML;
+            } else {
+              return "";
+            }
           });
         }
-      }
-    });
-    </script>
+        const findCites = (el) => {
+          const parentEl = el.parentElement;
+          if (parentEl) {
+            const cites = parentEl.dataset.cites;
+            if (cites) {
+              return {
+                el,
+                cites: cites.split(' ')
+              };
+            } else {
+              return findCites(el.parentElement)
+            }
+          } else {
+            return undefined;
+          }
+        };
+        var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+        for (var i=0; i<bibliorefs.length; i++) {
+          const ref = bibliorefs[i];
+          const citeInfo = findCites(ref);
+          if (citeInfo) {
+            tippyHover(citeInfo.el, function() {
+              var popup = window.document.createElement('div');
+              citeInfo.cites.forEach(function(cite) {
+                var citeDiv = window.document.createElement('div');
+                citeDiv.classList.add('hanging-indent');
+                citeDiv.classList.add('csl-entry');
+                var biblioDiv = window.document.getElementById('ref-' + cite);
+                if (biblioDiv) {
+                  citeDiv.innerHTML = biblioDiv.innerHTML;
+                }
+                popup.appendChild(citeDiv);
+              });
+              return popup.innerHTML;
+            });
+          }
+        }
+      });
+      </script>
     
 
 </body></html>
