@@ -1,7 +1,7 @@
 name: Quarto Render & Publish
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "main", "2026-01" ]
   pull_request:
     branches: [ "main" ]
   workflow_dispatch:
