@@ -6,8 +6,8 @@
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-9e15f8fb9e1f2f288bfbe28f6ca11029.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.8.27">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-4c7b890cc350be7067044af900615741.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.8.25">
 
   <meta name="author" content="Tibor Stanko">
   <title>Git Workshops – Git Advanced Workshop (EN)</title>
@@ -95,7 +95,7 @@
     code span.vs { color: #e6db74; } /* VerbatimString */
     code span.wa { color: #ff5555; } /* Warning */
   </style>
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-53e46ab73479edacc934b0d2c80a5b5c.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-549f80f00496eb41494f32d5707a9639.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -193,7 +193,7 @@
     <div class="slides">
 
 <section id="title-slide" data-background-image="static/img/hero.svg" data-background-position="bottom" data-background-size="50%" class="quarto-title-block center">
-  <h1 class="title">Git Advanced Workshop (EN)</h1>
+  <h1 class="title">Git Advanced Workshop <small>(EN)</small></h1>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -1903,7 +1903,7 @@ Squash Merge (5):
         }
           var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
           var mailtoRegex = new RegExp(/^mailto:/);
-            var filterRegex = new RegExp("https:\/\/bbrrck\.github\.io\/git-workshops\/");
+            var filterRegex = new RegExp('/' + window.location.host + '/');
           var isInternal = (href) => {
               return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
           }

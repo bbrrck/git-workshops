@@ -25,6 +25,11 @@ $code-block-font-size: 0.8em;
 
     #title-slide {
 
+        h1.title small {
+            font-size: 0.4em;
+            vertical-align: middle;
+        }
+
         .subtitle {
             font-style: italic;
         }

@@ -200,7 +200,7 @@
     "href": "slides/git-basics-sk.html#príklad-git-log-histórie",
     "title": "Git Basics Workshop (SK)",
     "section": "Príklad git log histórie",
-    "text": "Príklad git log histórie\n\nadd mermaid diagram for this git log output\n\n*   3a5d22e (HEAD -&gt; main) Merge branch 'french'\n|\\\n| * 21c7ab7 (french) Add french functionality\n* |   1364948 Merge branch 'slovak'\n|\\ \\\n| * | c3159a6 (slovak) Add slovak functionality\n| |/\n* / 67e86d0 Fix missing exclamation mark\n|/\n* de1543b Add hello.py"
+    "text": "Príklad git log histórie\n*   3a5d22e (HEAD -&gt; main) Merge branch 'french'\n|\\\n| * 21c7ab7 (french) Add french functionality\n* |   1364948 Merge branch 'slovak'\n|\\ \\\n| * | c3159a6 (slovak) Add slovak functionality\n| |/\n* / 67e86d0 Fix missing exclamation mark\n|/\n* de1543b Add hello.py"
   },
   {
     "objectID": "slides/git-basics-sk.html#exercise-2-branches",
@@ -1705,7 +1705,7 @@
     "href": "slides/git-basics-en.html#example-git-log-history",
     "title": "Git Basics Workshop (EN)",
     "section": "Example git log history",
-    "text": "Example git log history\n\nadd mermaid diagram for this git log output\n\n*   3a5d22e (HEAD -&gt; main) Merge branch 'french'\n|\\\n| * 21c7ab7 (french) Add french functionality\n* |   1364948 Merge branch 'slovak'\n|\\ \\\n| * | c3159a6 (slovak) Add slovak functionality\n| |/\n* / 67e86d0 Fix missing exclamation mark\n|/\n* de1543b Add hello.py"
+    "text": "Example git log history\n*   3a5d22e (HEAD -&gt; main) Merge branch 'french'\n|\\\n| * 21c7ab7 (french) Add french functionality\n* |   1364948 Merge branch 'slovak'\n|\\ \\\n| * | c3159a6 (slovak) Add slovak functionality\n| |/\n* / 67e86d0 Fix missing exclamation mark\n|/\n* de1543b Add hello.py"
   },
   {
     "objectID": "slides/git-basics-en.html#exercise-2-branches",
