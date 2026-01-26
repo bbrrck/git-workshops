@@ -2,9 +2,10 @@
 
 ::: {.exercise}
 
-1. Naklonuj si testovací repozitár:
+1. Naklonuj si testovací repozitár a prepni sa na vetvu `slovak`:
 ```bash
-git clone https://github.com/bbrrck/hello.git 
+git clone https://github.com/bbrrck/hello.git
+git checkout slovak
 ```
 2. Z priečinku `.git` nájdi súbor s hashom na ktorý ukazuje vetva `slovak`.
 3. Porovnaj hash s výstupom z príkazu `git rev-parse slovak`.

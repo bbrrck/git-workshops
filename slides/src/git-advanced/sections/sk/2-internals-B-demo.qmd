@@ -1,6 +1,6 @@
 # Demo {#demo-powershell .unnumbered .unlisted}
 
-- powershell
+- shell
 - `.git` tree
 
 ##

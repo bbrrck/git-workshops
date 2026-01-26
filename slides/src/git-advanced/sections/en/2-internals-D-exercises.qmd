@@ -2,9 +2,10 @@
 
 ::: {.exercise}
 
-1. Clone the test repository:
+1. Clone the test repository and switch to the `slovak` branch:
 ```bash
-git clone https://github.com/bbrrck/hello.git 
+git clone https://github.com/bbrrck/hello.git
+git checkout slovak
 ```
 2. From the `.git` directory, find the file with the hash that the `slovak` branch points to.
 3. Compare the hash with the output of the `git rev-parse slovak` command.
