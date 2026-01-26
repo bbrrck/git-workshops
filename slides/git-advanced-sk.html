@@ -95,7 +95,7 @@
     code span.vs { color: #e6db74; } /* VerbatimString */
     code span.wa { color: #ff5555; } /* Warning */
   </style>
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-549f80f00496eb41494f32d5707a9639.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-aa9a81b4258779733a648a63aa0cce16.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -351,7 +351,7 @@ Tibor Stanko
 <section id="demo-powershell" class="title-slide slide level1 unnumbered unlisted center">
 <h1>Demo</h1>
 <ul>
-<li>powershell</li>
+<li>shell</li>
 <li><code>.git</code> tree</li>
 </ul>
 </section>
@@ -748,9 +748,10 @@ Tibor Stanko
 <h2>Úlohy (1)</h2>
 <div class="exercise">
 <ol type="1">
-<li>Naklonuj si testovací repozitár:</li>
+<li>Naklonuj si testovací repozitár a prepni sa na vetvu <code>slovak</code>:</li>
 </ol>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/bbrrck/hello.git </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/bbrrck/hello.git</span>
+<span id="cb9-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout slovak</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <ol start="2" type="1">
 <li>Z priečinku <code>.git</code> nájdi súbor s hashom na ktorý ukazuje vetva <code>slovak</code>.</li>
 <li>Porovnaj hash s výstupom z príkazu <code>git rev-parse slovak</code>.</li>
@@ -974,6 +975,85 @@ Tibor Stanko
 <li>Čo by sa vo výsledku zmenilo, ak by si vynechal(a) krok 3b?</li>
 </ol>
 </div>
+</section>
+<section id="sidebar-squash-merge" class="slide level2">
+<h2>Sidebar: Squash Merge</h2>
+<p><code>git merge --squash</code> vytvorí jediný commit na cieľovej vetve.</p>
+<p>Použitie:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># 1. prepni sa na vetvu, do ktorej chceš zlúčiť</span></span>
+<span id="cb16-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout main</span>
+<span id="cb16-3"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-4"><a aria-hidden="true" tabindex="-1"></a><span class="co"># 2. vykonaj squash merge</span></span>
+<span id="cb16-5"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> merge <span class="at">--squash</span> slovak</span>
+<span id="cb16-6"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-7"><a aria-hidden="true" tabindex="-1"></a><span class="co"># 3. commitni zmeny</span></span>
+<span id="cb16-8"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"Squash slovak"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="sidebar-squash-merge-1" class="slide level2">
+<h2>Sidebar: Squash Merge</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+Merge:
+<pre class="tree">*   <span class="hash">cef4a72</span> <span class="branch">(main)</span> Merge branch 'slovak'
+|\
+| * <span class="hash">163a9c3</span> <span class="branch">(slovak)</span> Add docstring for slovak
+| * <span class="hash">bd67d8d</span> Fix slovak
+| * <span class="hash">75fcf88</span> Add slovak
+* |   <span class="hash">bc3f86b</span> Merge branch 'french'
+|\ \
+| * | <span class="hash">a31caf9</span> <span class="branch">(french)</span> Add docstring for french
+| * | <span class="hash">6d348f3</span> Add french
+| |/
+* / <span class="hash">0297280</span> Add docstring for default
+|/
+* <span class="hash">4b4a8ad</span> Add hello.py
+* <span class="hash">60d4d94</span> Initial commit
+</pre>
+</div><div class="column" style="width:50%;">
+Squash Merge:
+<pre class="tree">* <span class="hash">f3492de</span> <span class="branch">(main)</span> Squash french
+* <span class="hash">d23ef42</span> Squash slovak
+* <span class="hash">54b75b3</span> Add docstring for default
+| * <span class="hash">437cd19</span> <span class="branch">(slovak)</span> Add docstring for slovak
+| * <span class="hash">5a92065</span> Fix slovak
+| * <span class="hash">c1344d5</span> Add slovak
+|/
+| * <span class="hash">0962e07</span> <span class="branch">(french)</span> Add docstring for french
+| * <span class="hash">7571e67</span> Add french
+|/
+* <span class="hash">de2c4ac</span> Add hello.py
+* <span class="hash">944ce4e</span> Initial commit
+</pre>
+</div></div>
+</section>
+<section id="sidebar-squash-merge-2" class="slide level2">
+<h2>Sidebar: Squash Merge</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+Merge (10):
+<pre class="tree"><span class="hash">cef4a72</span> <span class="branch">(main)</span> Merge branch 'slovak'
+<span class="hash">bc3f86b</span> Merge branch 'french'
+<span class="hash">0297280</span> Add docstring for default
+<span class="hash">163a9c3</span> <span class="branch">(slovak)</span> Add docstring for slovak
+<span class="hash">bd67d8d</span> Fix slovak
+<span class="hash">75fcf88</span> Add slovak
+<span class="hash">a31caf9</span> <span class="branch">(french)</span> Add docstring for french
+<span class="hash">6d348f3</span> Add french
+<span class="hash">4b4a8ad</span> Add hello.py
+<span class="hash">60d4d94</span> Initial commit
+</pre>
+</div><div class="column" style="width:50%;">
+Squash Merge (5):
+<pre class="tree"><span class="hash">f3492de</span> <span class="branch">(main)</span> Squash french
+<span class="hash">d23ef42</span> Squash slovak
+<span class="hash">54b75b3</span> Add docstring for default
+<span class="hash">de2c4ac</span> Add hello.py
+<span class="hash">944ce4e</span> Initial commit
+</pre>
+</div></div>
+<div class="warning">
+<p>Po vykonaní squash merge by si mal(a) vždy zmazať feature vetvu.</p>
+</div>
 </section></section>
 <section>
 <section id="common-issues" class="title-slide slide level1 center" data-number="4">
@@ -984,17 +1064,17 @@ Tibor Stanko
 </section>
 <section id="git-revert" class="slide level2">
 <h2><code>git revert</code></h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode zsh code-with-copy"><code class="sourceCode zsh"><span id="cb16-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> revert HEAD   <span class="co"># odstráň zmeny vykonané v poslednom commite</span></span>
-<span id="cb16-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> revert HEAD<span class="pp">~</span>1 <span class="co"># odstráň zmeny vykonané v predposlednom commite</span></span>
-<span id="cb16-3"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> revert d49de0 <span class="co"># odstráň zmeny vykonané v commite s hashom d49de0</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode zsh code-with-copy"><code class="sourceCode zsh"><span id="cb17-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> revert HEAD   <span class="co"># odstráň zmeny vykonané v poslednom commite</span></span>
+<span id="cb17-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> revert HEAD<span class="pp">~</span>1 <span class="co"># odstráň zmeny vykonané v predposlednom commite</span></span>
+<span id="cb17-3"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> revert d49de0 <span class="co"># odstráň zmeny vykonané v commite s hashom d49de0</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="myinfo">
 <p>Príkaz <code>git revert</code> vytvorí novú verziu, a nemení históriu repozitára.</p>
 </div>
 </section>
 <section id="git-reset" class="slide level2">
 <h2><code>git reset</code></h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode zsh code-with-copy"><code class="sourceCode zsh"><span id="cb17-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># vráť repozitár do stavu *po* commite s hashom d49de0</span></span>
-<span id="cb17-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> reset <span class="at">--hard</span> d49de0</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode zsh code-with-copy"><code class="sourceCode zsh"><span id="cb18-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># vráť repozitár do stavu *po* commite s hashom d49de0</span></span>
+<span id="cb18-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> reset <span class="at">--hard</span> d49de0</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="warning">
 <p>Príkaz <code>git reset</code> mení históriu repozitára a môže spôsobiť stratu súborov.</p>
 </div>
@@ -1053,36 +1133,36 @@ Tibor Stanko
 </section>
 <section id="ako-vrátim-späť-lokálne-zmeny" class="slide level2">
 <h2>Ako vrátim späť lokálne zmeny?</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"Something terribly misguided"</span></span>
-<span id="cb18-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> reset HEAD~1</span>
-<span id="cb18-3"><a aria-hidden="true" tabindex="-1"></a><span class="co"># ... uprav súbory podľa potreby ...</span></span>
-<span id="cb18-4"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add .</span>
-<span id="cb18-5"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-c</span> ORIG_HEAD <span class="co"># otvor predošlý popis v commit editore</span></span>
-<span id="cb18-6"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-C</span> ORIG_HEAD <span class="co"># použi predošlý popis bez otvorenia commit editoru</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"Something terribly misguided"</span></span>
+<span id="cb19-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> reset HEAD~1</span>
+<span id="cb19-3"><a aria-hidden="true" tabindex="-1"></a><span class="co"># ... uprav súbory podľa potreby ...</span></span>
+<span id="cb19-4"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add .</span>
+<span id="cb19-5"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-c</span> ORIG_HEAD <span class="co"># otvor predošlý popis v commit editore</span></span>
+<span id="cb19-6"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-C</span> ORIG_HEAD <span class="co"># použi predošlý popis bez otvorenia commit editoru</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="footer">
 <p><a href="https://stackoverflow.com/a/927386/1606707">stackoverflow:927386</a></p>
 </div>
 </section>
 <section id="ako-vrátim-späť-zmeny-ktoré-už-boli-pushnuté" class="slide level2">
 <h2>Ako vrátim späť zmeny ktoré už boli pushnuté?</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"Something terribly misguided"</span></span>
-<span id="cb19-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push origin main</span>
-<span id="cb19-3"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> reset HEAD~1</span>
-<span id="cb19-4"><a aria-hidden="true" tabindex="-1"></a><span class="co"># ... uprav súbory podľa potreby ...</span></span>
-<span id="cb19-5"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add .</span>
-<span id="cb19-6"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-C</span> ORIG_HEAD <span class="co"># použi predošlý popis bez otvorenia commit editoru</span></span>
-<span id="cb19-7"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push origin main <span class="at">--force-with-lease</span> <span class="co"># nepouživaj '--force'!</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"Something terribly misguided"</span></span>
+<span id="cb20-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push origin main</span>
+<span id="cb20-3"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> reset HEAD~1</span>
+<span id="cb20-4"><a aria-hidden="true" tabindex="-1"></a><span class="co"># ... uprav súbory podľa potreby ...</span></span>
+<span id="cb20-5"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add .</span>
+<span id="cb20-6"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-C</span> ORIG_HEAD <span class="co"># použi predošlý popis bez otvorenia commit editoru</span></span>
+<span id="cb20-7"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push origin main <span class="at">--force-with-lease</span> <span class="co"># nepouživaj '--force'!</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="footer">
 <p><a href="https://stackoverflow.com/q/22682870/1606707">stackoverflow:22682870</a></p>
 </div>
 </section>
 <section id="ako-vrátim-späť-časť-commitu" class="slide level2">
 <h2>Ako vrátim späť časť commitu?</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> revert <span class="at">-n</span> <span class="va">$bad_commit</span>  <span class="co"># vráť commit späť, ale neukladaj zmeny</span></span>
-<span id="cb20-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> reset HEAD .           <span class="co"># zruš pridanie zmien</span></span>
-<span id="cb20-3"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add <span class="at">--patch</span> .          <span class="co"># pridaj požadované zmeny</span></span>
-<span id="cb20-4"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit                 <span class="co"># vytvor commit z týchto zmien</span></span>
-<span id="cb20-5"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout <span class="at">--</span> .          <span class="co"># odstráň ostatné zmeny</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> revert <span class="at">-n</span> <span class="va">$bad_commit</span>  <span class="co"># vráť commit späť, ale neukladaj zmeny</span></span>
+<span id="cb21-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> reset HEAD .           <span class="co"># zruš pridanie zmien</span></span>
+<span id="cb21-3"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add <span class="at">--patch</span> .          <span class="co"># pridaj požadované zmeny</span></span>
+<span id="cb21-4"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit                 <span class="co"># vytvor commit z týchto zmien</span></span>
+<span id="cb21-5"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout <span class="at">--</span> .          <span class="co"># odstráň ostatné zmeny</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="fontsize-080">
 <p><strong>Pozn.</strong>: Zmeny, ktoré pridávame pomocou príkazu <code>git add --patch</code>, sú zmeny, ktoré chceme vrátiť späť, nie zmeny, ktoré chceme ponechať.</p>
 </div>
@@ -1092,20 +1172,20 @@ Tibor Stanko
 </section>
 <section id="ako-premenujem-lokálnu-vetvu" class="slide level2">
 <h2>Ako premenujem lokálnu vetvu?</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># premenuj aktuálnu vetvu na 'newname'</span></span>
-<span id="cb21-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> branch <span class="at">-m</span> newname</span>
-<span id="cb21-3"><a aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-4"><a aria-hidden="true" tabindex="-1"></a><span class="co"># premenuj vetvu 'oldname' na 'newname'</span></span>
-<span id="cb21-5"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> branch <span class="at">-m</span> oldname newname</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb22-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># premenuj aktuálnu vetvu na 'newname'</span></span>
+<span id="cb22-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> branch <span class="at">-m</span> newname</span>
+<span id="cb22-3"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-4"><a aria-hidden="true" tabindex="-1"></a><span class="co"># premenuj vetvu 'oldname' na 'newname'</span></span>
+<span id="cb22-5"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> branch <span class="at">-m</span> oldname newname</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="footer">
 <p><a href="https://stackoverflow.com/q/6591213/1606707">stackoverflow:6591213</a></p>
 </div>
 </section>
 <section id="ako-vymažem-lokálnu-aj-vzdialenú-vetvu" class="slide level2">
 <h2>Ako vymažem lokálnu aj vzdialenú vetvu?</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb22-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push <span class="at">-d</span> <span class="op">&lt;</span>remote_name<span class="op">&gt;</span> <span class="op">&lt;</span>branch_name<span class="op">&gt;</span></span>
-<span id="cb22-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> branch <span class="at">-d</span> <span class="op">&lt;</span>branch_name<span class="op">&gt;</span></span>
-<span id="cb22-3"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> fetch <span class="at">--all</span> <span class="at">--prune</span> <span class="co"># vymaž referencie na vymazané vzdialené vetvy</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb23"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb23-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push <span class="at">-d</span> <span class="op">&lt;</span>remote_name<span class="op">&gt;</span> <span class="op">&lt;</span>branch_name<span class="op">&gt;</span></span>
+<span id="cb23-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> branch <span class="at">-d</span> <span class="op">&lt;</span>branch_name<span class="op">&gt;</span></span>
+<span id="cb23-3"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> fetch <span class="at">--all</span> <span class="at">--prune</span> <span class="co"># vymaž referencie na vymazané vzdialené vetvy</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="footer">
 <p><a href="https://stackoverflow.com/q/2003505/1606707">stackoverflow:2003505</a></p>
 </div>
@@ -1113,22 +1193,22 @@ Tibor Stanko
 <section id="ako-presuniem-posledných-n-commitov-na-novú-vetvu" class="slide level2">
 <h2>Ako presuniem posledných n commitov na novú vetvu?</h2>
 <p>Presunutie posledných 3 commitov z <code>main</code> na novú vetvu <code>feature</code>:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb23"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb23-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout main           <span class="co"># prepni sa na main</span></span>
-<span id="cb23-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> branch feature          <span class="co"># vytvor novú vetvu feature ktorá ukazuje na rovnaký</span></span>
-<span id="cb23-3"><a aria-hidden="true" tabindex="-1"></a>                            <span class="co"># commit ako main, ale neprepinaj sa na ňu</span></span>
-<span id="cb23-4"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> reset <span class="at">--hard</span> HEAD~3     <span class="co"># vymaž posledné 3 commity</span></span>
-<span id="cb23-5"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout feature        <span class="co"># prepni sa na vetvu feature</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb24"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb24-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout main           <span class="co"># prepni sa na main</span></span>
+<span id="cb24-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> branch feature          <span class="co"># vytvor novú vetvu feature ktorá ukazuje na rovnaký</span></span>
+<span id="cb24-3"><a aria-hidden="true" tabindex="-1"></a>                            <span class="co"># commit ako main, ale neprepinaj sa na ňu</span></span>
+<span id="cb24-4"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> reset <span class="at">--hard</span> HEAD~3     <span class="co"># vymaž posledné 3 commity</span></span>
+<span id="cb24-5"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout feature        <span class="co"># prepni sa na vetvu feature</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="footer">
 <p><a href="https://stackoverflow.com/q/1628563/1606707">stackoverflow:1628563</a></p>
 </div>
 </section>
 <section id="ako-odstránim-súbory-z-prípravnej-zóny" class="slide level2">
 <h2>Ako odstránim súbory z prípravnej zóny?</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb24"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb24-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> rm <span class="at">--cached</span> <span class="op">&lt;</span>file<span class="op">&gt;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb25"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb25-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> rm <span class="at">--cached</span> <span class="op">&lt;</span>file<span class="op">&gt;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="ako-zmením-popis-v-už-vytvorenom-commite" class="slide level2">
 <h2>Ako zmením popis v už vytvorenom commite?</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb25"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb25-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">--amend</span> <span class="at">-m</span> <span class="st">"New commit message"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb26"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb26-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">--amend</span> <span class="at">-m</span> <span class="st">"New commit message"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="fragment">
 <div class="warning">
 <p>Ak už bol starý commit pushnutý na remote, po použití <code>git commit --amend</code> je potrebné pushnúť cez <code>git push --force</code> alebo <code>--force-with-lease</code>.</p>
@@ -1140,8 +1220,8 @@ Tibor Stanko
 </section>
 <section id="ako-pridám-súbory-do-už-vytvoreného-commitu" class="slide level2">
 <h2>Ako pridám súbory do už vytvoreného <em>commitu</em>?</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb26"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb26-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add zabudnuty_subor</span>
-<span id="cb26-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">--amend</span> <span class="at">--no-edit</span> <span class="co"># znovu použi predošlý commit message</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb27"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb27-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add zabudnuty_subor</span>
+<span id="cb27-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">--amend</span> <span class="at">--no-edit</span> <span class="co"># znovu použi predošlý commit message</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="warning">
 <p>Ak už bol starý commit pushnutý na remote, po použití <code>git commit --amend</code> je potrebné pushnúť cez <code>git push --force</code> alebo <code>--force-with-lease</code>.</p>
 </div>
@@ -1151,7 +1231,7 @@ Tibor Stanko
 </section>
 <section id="ako-môžem-resetovať-alebo-vrátiť-súbor-na-konkrétnu-verziu" class="slide level2">
 <h2>Ako môžem resetovať alebo vrátiť súbor na konkrétnu verziu?</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb27"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb27-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout c5f567 <span class="at">--</span> file1/to/restore file2/to/restore</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb28"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb28-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout c5f567 <span class="at">--</span> file1/to/restore file2/to/restore</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section></section>
 <section>
 <section id="workflow" class="title-slide slide level1 center" data-number="5">
@@ -1372,17 +1452,17 @@ Tibor Stanko
 </section>
 <section id="vytvorenie-ssh-kľúča" class="slide level2">
 <h2>Vytvorenie SSH kľúča</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb28"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb28-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">ssh-keygen</span> <span class="co"># use default settings</span></span>
-<span id="cb28-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">ssh-keygen</span> <span class="at">-t</span> rsa <span class="at">-C</span> <span class="st">"name@email.com"</span> <span class="co"># compatible with most git providers</span></span>
-<span id="cb28-3"><a aria-hidden="true" tabindex="-1"></a><span class="fu">ssh-keygen</span> <span class="at">-t</span> ed25519 <span class="at">-C</span> <span class="st">"name@email.com"</span> <span class="co"># compatible with GitHub</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb29"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb29-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">ssh-keygen</span> <span class="co"># use default settings</span></span>
+<span id="cb29-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">ssh-keygen</span> <span class="at">-t</span> rsa <span class="at">-C</span> <span class="st">"name@email.com"</span> <span class="co"># compatible with most git providers</span></span>
+<span id="cb29-3"><a aria-hidden="true" tabindex="-1"></a><span class="fu">ssh-keygen</span> <span class="at">-t</span> ed25519 <span class="at">-C</span> <span class="st">"name@email.com"</span> <span class="co"># compatible with GitHub</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="skopírovanie-ssh-kľúča-do-schránky" class="slide level2">
 <h2>Skopírovanie SSH kľúča do schránky</h2>
 <h3 id="powershell">Powershell</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb29"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb29-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">Get-Content</span> <span class="op">~</span>\<span class="op">.</span><span class="fu">ssh</span>\id_ed25519<span class="op">.</span><span class="fu">pub</span> <span class="op">|</span> <span class="fu">Set-Clipboard</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb30"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb30-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">Get-Content</span> <span class="op">~</span>\<span class="op">.</span><span class="fu">ssh</span>\id_ed25519<span class="op">.</span><span class="fu">pub</span> <span class="op">|</span> <span class="fu">Set-Clipboard</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>&nbsp;</p>
 <h3 id="command-prompt">Command Prompt</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb30"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb30-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">clip</span> <span class="op">&lt;</span> ~\.ssh\id_ed25519.pub</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb31"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb31-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">clip</span> <span class="op">&lt;</span> ~\.ssh\id_ed25519.pub</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section></section>
 <section id="čo-sme-sa-nenaučili" class="title-slide slide level1 center" data-number="9">
 <h1><span class="header-section-number">9</span> Čo sme sa nenaučili</h1>
@@ -1524,31 +1604,31 @@ Tibor Stanko
 <h2>Git Cheatsheet</h2>
 <div class="columns">
 <div class="column git-cheatsheet" style="width:50%;">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb31"><pre class="sourceCode zsh code-with-copy"><code class="sourceCode zsh"><span id="cb31-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Setup</span></span>
-<span id="cb31-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> user.name <span class="st">"[first last]"</span></span>
-<span id="cb31-3"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> user.email <span class="st">"[valid-email]"</span></span>
-<span id="cb31-4"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> init</span>
-<span id="cb31-5"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone <span class="pp">[</span><span class="st">url</span><span class="pp">]</span></span>
-<span id="cb31-6"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Stage &amp; Snapshot</span></span>
-<span id="cb31-7"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> status</span>
-<span id="cb31-8"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add <span class="pp">[</span><span class="st">file</span><span class="pp">]</span></span>
-<span id="cb31-9"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> reset <span class="pp">[</span><span class="st">file</span><span class="pp">]</span></span>
-<span id="cb31-10"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> diff</span>
-<span id="cb31-11"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> diff <span class="at">--staged</span></span>
-<span id="cb31-12"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"[descriptive message]"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb32"><pre class="sourceCode zsh code-with-copy"><code class="sourceCode zsh"><span id="cb32-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Setup</span></span>
+<span id="cb32-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> user.name <span class="st">"[first last]"</span></span>
+<span id="cb32-3"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> user.email <span class="st">"[valid-email]"</span></span>
+<span id="cb32-4"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> init</span>
+<span id="cb32-5"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone <span class="pp">[</span><span class="st">url</span><span class="pp">]</span></span>
+<span id="cb32-6"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Stage &amp; Snapshot</span></span>
+<span id="cb32-7"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> status</span>
+<span id="cb32-8"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add <span class="pp">[</span><span class="st">file</span><span class="pp">]</span></span>
+<span id="cb32-9"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> reset <span class="pp">[</span><span class="st">file</span><span class="pp">]</span></span>
+<span id="cb32-10"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> diff</span>
+<span id="cb32-11"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> diff <span class="at">--staged</span></span>
+<span id="cb32-12"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"[descriptive message]"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column git-cheatsheet" style="width:50%;">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb32"><pre class="sourceCode zsh code-with-copy"><code class="sourceCode zsh"><span id="cb32-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Branch &amp; Merge</span></span>
-<span id="cb32-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> branch</span>
-<span id="cb32-3"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> branch <span class="pp">[</span><span class="st">branch</span><span class="op">-</span><span class="st">name</span><span class="pp">]</span></span>
-<span id="cb32-4"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout</span>
-<span id="cb32-5"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> merge <span class="pp">[</span><span class="st">branch</span><span class="pp">]</span></span>
-<span id="cb32-6"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> log</span>
-<span id="cb32-7"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Share &amp; Update</span></span>
-<span id="cb32-8"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> remote add <span class="pp">[</span><span class="st">alias</span><span class="pp">]</span> <span class="pp">[</span><span class="st">url</span><span class="pp">]</span></span>
-<span id="cb32-9"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> fetch <span class="pp">[</span><span class="st">alias</span><span class="pp">]</span></span>
-<span id="cb32-10"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> merge <span class="pp">[</span><span class="st">alias</span><span class="pp">]</span>/<span class="pp">[</span><span class="st">branch</span><span class="pp">]</span></span>
-<span id="cb32-11"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push <span class="pp">[</span><span class="st">alias</span><span class="pp">]</span>/<span class="pp">[</span><span class="st">branch</span><span class="pp">]</span></span>
-<span id="cb32-12"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> pull</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb33"><pre class="sourceCode zsh code-with-copy"><code class="sourceCode zsh"><span id="cb33-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Branch &amp; Merge</span></span>
+<span id="cb33-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> branch</span>
+<span id="cb33-3"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> branch <span class="pp">[</span><span class="st">branch</span><span class="op">-</span><span class="st">name</span><span class="pp">]</span></span>
+<span id="cb33-4"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout</span>
+<span id="cb33-5"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> merge <span class="pp">[</span><span class="st">branch</span><span class="pp">]</span></span>
+<span id="cb33-6"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> log</span>
+<span id="cb33-7"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Share &amp; Update</span></span>
+<span id="cb33-8"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> remote add <span class="pp">[</span><span class="st">alias</span><span class="pp">]</span> <span class="pp">[</span><span class="st">url</span><span class="pp">]</span></span>
+<span id="cb33-9"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> fetch <span class="pp">[</span><span class="st">alias</span><span class="pp">]</span></span>
+<span id="cb33-10"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> merge <span class="pp">[</span><span class="st">alias</span><span class="pp">]</span>/<span class="pp">[</span><span class="st">branch</span><span class="pp">]</span></span>
+<span id="cb33-11"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push <span class="pp">[</span><span class="st">alias</span><span class="pp">]</span>/<span class="pp">[</span><span class="st">branch</span><span class="pp">]</span></span>
+<span id="cb33-12"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> pull</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div></div>
 </section></section>
 <section id="ďakujem-za-pozornosť" class="title-slide slide level1 unnumbered unlisted center">
@@ -1939,6 +2019,8 @@ Tibor Stanko
         }
       });
       </script>
+    <link rel="stylesheet" href="../theme-switcher.css">
+    <script src="../theme-switcher.js"></script>
     
 
 </body></html>

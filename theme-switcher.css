@@ -1,0 +1,53 @@
+/* Theme Switcher Button Styles */
+
+.theme-toggle {
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  z-index: 9999;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid var(--theme-toggle-border, rgba(0, 0, 0, 0.1));
+  background-color: var(--theme-toggle-bg, rgba(255, 255, 255, 0.8));
+  color: var(--theme-toggle-color, rgba(0, 0, 0, 0.5));
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  opacity: 0.6;
+  padding: 0;
+}
+
+.theme-toggle:hover {
+  opacity: 1;
+  transform: scale(1.05);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+  background-color: var(--theme-toggle-bg-hover, rgba(255, 255, 255, 1));
+}
+
+.theme-toggle:active {
+  transform: scale(0.98);
+}
+
+.theme-toggle svg {
+  display: block;
+}
+
+/* Light theme colors */
+:root {
+  --theme-toggle-border: rgba(0, 0, 0, 0.08);
+  --theme-toggle-bg: rgba(255, 255, 255, 0.7);
+  --theme-toggle-bg-hover: rgba(255, 255, 255, 0.95);
+  --theme-toggle-color: rgba(0, 0, 0, 0.6);
+}
+
+/* Dark theme colors */
+[data-theme="dark"] {
+  --theme-toggle-border: rgba(255, 255, 255, 0.1);
+  --theme-toggle-bg: rgba(50, 50, 50, 0.7);
+  --theme-toggle-bg-hover: rgba(50, 50, 50, 0.95);
+  --theme-toggle-color: rgba(255, 255, 255, 0.7);
+}

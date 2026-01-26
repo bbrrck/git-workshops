@@ -606,7 +606,7 @@
     "href": "slides/git-advanced-sk.html#exercise-1-internals",
     "title": "Git Advanced Workshop (SK)",
     "section": "Úlohy (1)",
-    "text": "Úlohy (1)\n\n\nNaklonuj si testovací repozitár:\n\ngit clone https://github.com/bbrrck/hello.git \n\nZ priečinku .git nájdi súbor s hashom na ktorý ukazuje vetva slovak.\nPorovnaj hash s výstupom z príkazu git rev-parse slovak.\nViacnásobným použitím príkazu git cat-file -p zisti aký obsah sa nacháda v súbore hello.py na vetve slovak.\n\nHint: ako argument za -p použi hash z predošlého kroku."
+    "text": "Úlohy (1)\n\n\nNaklonuj si testovací repozitár a prepni sa na vetvu slovak:\n\ngit clone https://github.com/bbrrck/hello.git\ngit checkout slovak\n\nZ priečinku .git nájdi súbor s hashom na ktorý ukazuje vetva slovak.\nPorovnaj hash s výstupom z príkazu git rev-parse slovak.\nViacnásobným použitím príkazu git cat-file -p zisti aký obsah sa nacháda v súbore hello.py na vetve slovak.\n\nHint: ako argument za -p použi hash z predošlého kroku."
   },
   {
     "objectID": "slides/git-advanced-sk.html#odbočka-ako-rozbaliť-git-objekty",
@@ -726,6 +726,27 @@
     "title": "Git Advanced Workshop (SK)",
     "section": "Úlohy (2)",
     "text": "Úlohy (2)\n\n\nV repozitári zoo-rebase:\n\nPrepni sa na vetvu gorila a zlúč na ňu cez príkaz git rebase vetvu main. Vyrieš vzniknuté konflikty.\nPrepni sa na vetvu main a zlúč na ňu cez príkaz git merge vetvu gorila.\nPrepni sa na vetvu krokodil a zlúč na ňu cez príkaz git rebase -i vetvu main. Prostredný commit označ ako fixup. Vyrieš vzniknuté konflikty.\nPrepni sa na vetvu main a zlúč na ňu cez príkaz git merge vetvu krokodil.\n\nS pomocou príkazu git log porovnaj stav oboch repozitárov.\nČo by sa vo výsledku zmenilo, ak by si vynechal(a) krok 3b?"
+  },
+  {
+    "objectID": "slides/git-advanced-sk.html#sidebar-squash-merge",
+    "href": "slides/git-advanced-sk.html#sidebar-squash-merge",
+    "title": "Git Advanced Workshop (SK)",
+    "section": "Sidebar: Squash Merge",
+    "text": "Sidebar: Squash Merge\ngit merge --squash vytvorí jediný commit na cieľovej vetve.\nPoužitie:\n# 1. prepni sa na vetvu, do ktorej chceš zlúčiť\ngit checkout main\n\n# 2. vykonaj squash merge\ngit merge --squash slovak\n\n# 3. commitni zmeny\ngit commit -m \"Squash slovak\""
+  },
+  {
+    "objectID": "slides/git-advanced-sk.html#sidebar-squash-merge-1",
+    "href": "slides/git-advanced-sk.html#sidebar-squash-merge-1",
+    "title": "Git Advanced Workshop (SK)",
+    "section": "Sidebar: Squash Merge",
+    "text": "Sidebar: Squash Merge\n\n\nMerge:\n*   cef4a72 (main) Merge branch 'slovak'\n|\\\n| * 163a9c3 (slovak) Add docstring for slovak\n| * bd67d8d Fix slovak\n| * 75fcf88 Add slovak\n* |   bc3f86b Merge branch 'french'\n|\\ \\\n| * | a31caf9 (french) Add docstring for french\n| * | 6d348f3 Add french\n| |/\n* / 0297280 Add docstring for default\n|/\n* 4b4a8ad Add hello.py\n* 60d4d94 Initial commit\n\n\nSquash Merge:\n* f3492de (main) Squash french\n* d23ef42 Squash slovak\n* 54b75b3 Add docstring for default\n| * 437cd19 (slovak) Add docstring for slovak\n| * 5a92065 Fix slovak\n| * c1344d5 Add slovak\n|/\n| * 0962e07 (french) Add docstring for french\n| * 7571e67 Add french\n|/\n* de2c4ac Add hello.py\n* 944ce4e Initial commit"
+  },
+  {
+    "objectID": "slides/git-advanced-sk.html#sidebar-squash-merge-2",
+    "href": "slides/git-advanced-sk.html#sidebar-squash-merge-2",
+    "title": "Git Advanced Workshop (SK)",
+    "section": "Sidebar: Squash Merge",
+    "text": "Sidebar: Squash Merge\n\n\nMerge (10):\ncef4a72 (main) Merge branch 'slovak'\nbc3f86b Merge branch 'french'\n0297280 Add docstring for default\n163a9c3 (slovak) Add docstring for slovak\nbd67d8d Fix slovak\n75fcf88 Add slovak\na31caf9 (french) Add docstring for french\n6d348f3 Add french\n4b4a8ad Add hello.py\n60d4d94 Initial commit\n\n\nSquash Merge (5):\nf3492de (main) Squash french\nd23ef42 Squash slovak\n54b75b3 Add docstring for default\nde2c4ac Add hello.py\n944ce4e Initial commit\n\n\n\nPo vykonaní squash merge by si mal(a) vždy zmazať feature vetvu."
   },
   {
     "objectID": "slides/git-advanced-sk.html#git-revert",
@@ -991,7 +1012,7 @@
     "href": "slides/git-advanced-en.html#contents-of-this-workshop",
     "title": "Git Advanced Workshop (EN)",
     "section": "Contents of this workshop",
-    "text": "Contents of this workshop\n\n\n\nIntro\nGit internals\nMerge vs. Rebase\nCommon issues\nBranching strategies\nPull requests \nSSH authentication\n\n\n\n \n\n— Exercises (1)\n— Exercises (2)"
+    "text": "Contents of this workshop\n\n\n\nIntro\nGit internals\nMerge vs. Rebase\nCommon issues\nBranching strategies\nPull requests\nCI/CD using Git\nSSH authentication\n\n\n\n \n\n— Exercises (1)\n— Exercises (2)"
   },
   {
     "objectID": "slides/git-advanced-en.html#section",
@@ -1138,7 +1159,7 @@
     "href": "slides/git-advanced-en.html#exercise-1-internals",
     "title": "Git Advanced Workshop (EN)",
     "section": "Exercises (1)",
-    "text": "Exercises (1)\n\n\nClone the test repository:\n\ngit clone https://github.com/bbrrck/hello.git \n\nFrom the .git directory, find the file with the hash that the slovak branch points to.\nCompare the hash with the output of the git rev-parse slovak command.\nUsing the git cat-file -p command multiple times, find out what content is in the hello.py file on the slovak branch.\n\nHint: use the hash from the previous step as the argument for -p."
+    "text": "Exercises (1)\n\n\nClone the test repository and switch to the slovak branch:\n\ngit clone https://github.com/bbrrck/hello.git\ngit checkout slovak\n\nFrom the .git directory, find the file with the hash that the slovak branch points to.\nCompare the hash with the output of the git rev-parse slovak command.\nUsing the git cat-file -p command multiple times, find out what content is in the hello.py file on the slovak branch.\n\nHint: use the hash from the previous step as the argument for -p."
   },
   {
     "objectID": "slides/git-advanced-en.html#sidebar-how-to-unpack-git-objects",
@@ -1461,6 +1482,13 @@
     "title": "Git Advanced Workshop (EN)",
     "section": "What is a pull request?",
     "text": "What is a pull request?\n\nby creating it, we request the project maintainer to pull our changes and incorporate them into the project\nit can be created within workflows such as feature or forking, but not within the centralized workflow\nit allows developers to discuss the change and perform code reviews\n\nExamples:\n\nPybrickz #481\nQuartodoc #240\nQuartodoc #288\n\n\nMaking a Pull Request (Atlassian)"
+  },
+  {
+    "objectID": "slides/git-advanced-en.html#čo-je-to-cicd",
+    "href": "slides/git-advanced-en.html#čo-je-to-cicd",
+    "title": "Git Advanced Workshop (EN)",
+    "section": "Čo je to CI/CD?",
+    "text": "Čo je to CI/CD?\n\nCI = continuous integration\nCD = continuous delivery"
   },
   {
     "objectID": "slides/git-advanced-en.html#creating-an-ssh-key",
