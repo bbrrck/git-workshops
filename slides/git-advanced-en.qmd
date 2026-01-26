@@ -9,7 +9,7 @@ author: "{{< var me.name >}}"
 {{< include ./src/git-advanced/sections/en/4-common-issues.qmd >}}
 {{< include ./src/git-advanced/sections/en/5-branching.qmd >}}
 {{< include ./src/git-advanced/sections/en/6-pull-requests.qmd >}}
-<!-- {{< include ./src/git-advanced/sections/en/7-cicd.qmd >}} -->
+{{< include ./src/git-advanced/sections/en/7-cicd.qmd >}}
 {{< include ./src/git-advanced/sections/en/8-ssh.qmd >}}
 {{< include ./src/git-advanced/sections/en/next-steps.qmd >}}
 
