@@ -14,8 +14,10 @@ jobs:
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
+
       - name: Set up Quarto
         uses: quarto-dev/quarto-actions/setup@v2
+
       - name: Render and Publish
         timeout-minutes: 1
         uses: quarto-dev/quarto-actions/publish@v2

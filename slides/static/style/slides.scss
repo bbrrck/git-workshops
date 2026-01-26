@@ -11,7 +11,7 @@
 /* Font families */
 // 'simple' theme default fonts:
 //      content: Lato
-//      headings: News Cycle  
+//      headings: News Cycle
 // $font-family-sans-serif: "Source Sans Pro", sans-serif !default;
 // $presentation-heading-font: "News Cycle", sans-serif !default;
 
@@ -19,9 +19,70 @@
 $presentation-font-size-root: 50px; // default: 40px
 $code-block-font-size: 0.8em;
 
+/* Theme Colors - CSS Variables */
+:root {
+    --bg-color: #fff;
+    --text-color: #222;
+    --heading-color: #222;
+    --link-color: #2a76dd;
+    --code-bg: #f4e7c9;
+    --code-color: #282828;
+    --terminal-bg: #282828;
+    --terminal-color: #eee;
+    --info-bg: rgb(216, 236, 225);
+    --info-color: rgb(8, 68, 60);
+    --warning-bg: rgb(236, 207, 207);
+    --warning-color: #c00;
+    --screenshot-shadow: rgb(0 0 0 / 0.2);
+    --controls-color: #2a76dd;
+    --progress-color: #2a76dd;
+}
+
+[data-theme="dark"] {
+    --bg-color: #191919;
+    --text-color: #e0e0e0;
+    --heading-color: #ffffff;
+    --link-color: #42affa;
+    --code-bg: #3a3a3a;
+    --code-color: #f4e7c9;
+    --terminal-bg: #1a1a1a;
+    --terminal-color: #eee;
+    --info-bg: rgb(8, 68, 60);
+    --info-color: rgb(216, 236, 225);
+    --warning-bg: rgb(139, 46, 46);
+    --warning-color: rgb(255, 180, 180);
+    --screenshot-shadow: rgb(255 255 255 / 0.15);
+    --controls-color: #42affa;
+    --progress-color: #42affa;
+}
+
 /*-- scss:rules --*/
 
 .reveal {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        color: var(--heading-color);
+    }
+
+    a {
+        color: var(--link-color);
+    }
+
+    // Progress bar
+    .progress {
+        background: rgba(0, 0, 0, 0.2);
+
+        span {
+            background: var(--progress-color) !important;
+        }
+    }
 
     #title-slide {
 
@@ -74,7 +135,7 @@ $code-block-font-size: 0.8em;
             img {
                 max-height: 800px;
                 border-radius: 5px;
-                box-shadow: 0px 5px 10px 5px rgb(0 0 0 / 0.2);
+                box-shadow: 0px 5px 10px 5px var(--screenshot-shadow);
                 margin: 0 auto;
             }
         }
@@ -132,8 +193,8 @@ $code-block-font-size: 0.8em;
         }
 
         .myinfo {
-            color: rgb(8, 68, 60);
-            background-color: rgb(216, 236, 225);
+            color: var(--info-color);
+            background-color: var(--info-bg);
 
             &:before {
                 content: "🚀 ";
@@ -151,8 +212,8 @@ $code-block-font-size: 0.8em;
         }
 
         .warning {
-            color: #c00;
-            background-color: rgb(236, 207, 207);
+            color: var(--warning-color);
+            background-color: var(--warning-bg);
 
             &:before {
                 content: "⚠ ";
@@ -171,20 +232,20 @@ $code-block-font-size: 0.8em;
             display: inline-block;
             padding: 0 0.25em;
             margin: 0 0.25em;
-            background-color: #f4e7c9;
-            color: #282828;
+            background-color: var(--code-bg);
+            color: var(--code-color);
         }
 
         pre.markdown-source {
-            color: #f4e7c9;
+            color: var(--code-bg);
         }
 
         pre.tree,
         pre.markdown-source {
-            background-color: #282828;
+            background-color: var(--terminal-bg);
             padding: 0.5em;
             width: 90%;
-            font-size: 60%;
+            font-size: 50%;
             white-space: pre-wrap;
             white-space: -moz-pre-wrap;
             white-space: -pre-wrap;
@@ -197,7 +258,7 @@ $code-block-font-size: 0.8em;
         }
 
         pre.tree {
-            color: #eee;
+            color: var(--terminal-color);
 
             b {
                 color: #ffa770;
@@ -354,4 +415,9 @@ $code-block-font-size: 0.8em;
             width: 100%;
         }
     }
+}
+
+// Hamburger menu (slide menu button) - override background image in dark mode
+[data-theme="dark"] .reveal .slide-menu-button .fa-bars::before {
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="rgb(66, 175, 250)" class="bi bi-list" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/></svg>') !important;
 }

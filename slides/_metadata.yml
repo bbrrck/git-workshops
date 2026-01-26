@@ -22,6 +22,10 @@ format:
       data-background-size: 50%
       data-background-position: bottom
     toc: false
+    include-after-body:
+      - text: |
+          <link rel="stylesheet" href="../theme-switcher.css">
+          <script src="../theme-switcher.js"></script>
     # embed-resources: true
     # self-contained: false
     # standalone: true
