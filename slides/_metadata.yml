@@ -10,7 +10,6 @@ format:
     code-overflow: wrap
     # highlight-style: github-dark
     highlight-style: monokai
-    mermaid-format: svg
     number-depth: 1
     number-sections: true
     preview-links: auto

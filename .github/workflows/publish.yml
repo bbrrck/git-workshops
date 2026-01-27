@@ -8,18 +8,23 @@ on:
 jobs:
   build-deploy:
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 10
     permissions:
       contents: write
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
 
+      - name: Install Chromium for Mermaid
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y chromium-browser
+
       - name: Set up Quarto
         uses: quarto-dev/quarto-actions/setup@v2
 
       - name: Render and Publish
-        timeout-minutes: 1
+        timeout-minutes: 5
         uses: quarto-dev/quarto-actions/publish@v2
         with:
           target: gh-pages
