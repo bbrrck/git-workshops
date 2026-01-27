@@ -1,7 +1,33 @@
 # Git workflowy = modely vetvenia {#workflow}
 
-V Gite existuje mnoho rôznych workflowov, ktoré sa líšia v tom, ako používajú vetvenie (branching). V tejto kapitole si ukážeme niekoľko najpoužívanejších workflowov a ich výhody a nevýhody.
+V Gite existuje mnoho rôznych workflowov, ktoré sa líšia v tom, ako používajú vetvenie (*branching*). V tejto kapitole si ukážeme niekoľko najpoužívanejších workflowov a ich výhody a nevýhody.
 
+## Prečo potrebujeme vetvenie?
+
+- bez vetvenia vývojári upravujú živý kód → nedokončené zmeny rozbíjajú systém
+- vývojári potrebujú **izoláciu**, aby mohli pracovať bez vzájomného zasahovania
+- zároveň je potrebné hotové zmeny **integrovať** späť do hlavnej línie vývoja
+
+::: {.quote-container}
+> "Vetvenie je o riadení súhry izolácie a integrácie."
+>
+> — <cite><em>Martin Fowler</em></cite>
+:::
+
+:::footer
+[Patterns for Managing Source Code Branches](https://martinfowler.com/articles/branching-patterns.html) (Martin Fowler)
+:::
+
+## Prečo potrebujeme workflowy vetvenia?
+
+- vetvenie poskytuje ilúziu zastaveného času - bezpečnú izoláciu pre vývoj
+- ale: *vetvenie je jednoduché, zlučovanie je ťažšie* - v istom momente treba "splatiť dlh"
+- **kľúčová otázka:** ako a kedy by sme mali integrovať našu prácu?
+- neexistuje univerzálne riešenie: rôzne tímy, produkty a kontexty vyžadujú rôzne prístupy k vetveniu.
+
+:::footer
+[Patterns for Managing Source Code Branches](https://martinfowler.com/articles/branching-patterns.html) (Martin Fowler)
+:::
 
 ## Aké workflowy existujú?
 
@@ -53,6 +79,7 @@ Projekt *Git Workflows Warehouse* obsahuje [katalóg 50-tich workflowov](https:/
 
 - potenciálne veľa vetiev
 - pri dlhotrvajúcich vetvách môže byť zložité riešiť konflikty
+- môže odrádzať od refaktoringu kvôli zvýšeným merge konfliktom
 
 :::footer
 [Git feature branch workflow](https://www.atlassian.com/git/tutorials/comparing-workflows/feature-branch-workflow) (Atlassian)
@@ -61,6 +88,7 @@ Projekt *Git Workflows Warehouse* obsahuje [katalóg 50-tich workflowov](https:/
 ## Trunk-based development
 
 - podobný feature branching workflowu, ale `feature` vetvy sú krátke a často mergované do `main` vetvy (aj niekoľkokrát denne)
+- feature vetvy sa niekedy nepoužívajú vôbec - vývojári commitujú priamo do hlavnej vetvy
 - vhodný v kombinácii s automatickým testovaním a nasadzovaním (CI/CD)
 
 **Výhody:**
@@ -113,17 +141,21 @@ Pozri [trunkbaseddevelopment.com](https://trunkbaseddevelopment.com/) a tiež [W
 
 - všetky výhody feature branching workflowu
 - vhodný pre projekty s dlhším vývojom a pravidelnými releasmi
+- potenciálne dobrý fit pre projekty s viacerými produkčnými verziami
 
 **Nevýhody:**
 
 - veľké množstvo vetiev
 - merge hell
-  
-<div style="font-size:80%">
+
+**Poznámka:** Gitflow vyhovuje projektom s viacerými produkčnými verziami (napr. inštalácie u zákazníkov). Webové aplikácie s jednou verziou profitujú viac z trunk-based development.
+
+
+## Gitflow workflow
 
 > Gitflow is a **legacy** Git workflow that was originally a disruptive and novel strategy for managing Git branches. Gitflow has fallen in popularity in favor of [trunk-based workflows](https://www.atlassian.com/continuous-delivery/continuous-integration/trunk-based-development), which are now considered best practices for modern continuous software development and [DevOps](https://www.atlassian.com/devops/what-is-devops) practices. Gitflow also can be challenging to use with [CI/CD](https://www.atlassian.com/continuous-delivery).
 
-</div>
+
 
 ::: footer
 [Gitflow workflow](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow) (Atlassian)
@@ -155,3 +187,18 @@ The overall flow of Gitflow is:
 ::: {.center .width-050}
 ![](https://www.dalescott.net/wp-content/uploads/2012/09/centralized-github-4-1024x625.png)
 :::
+
+## {background-image="https://martinfowler.com/articles/branching-patterns/leroy-branch.jpg" background-size="100% 80%" background-position="center"}
+
+## Kľúčové poznatky
+
+1. **Vetvenie je jednoduché, zlučovanie je ťažšie** - vždy naplánujte integráciu pred vytvorením vetvy; vetvy sa v čase rozchádzajú
+
+2. **Frekvencia integrácie riadi kvalitu** - časté zlučovanie snižuje zložitosť, riziko a strach z integrácie; umožňuje refaktoring a zlepšuje zdravie kódu
+
+3. **Moderná osvedčená prax uprednostňuje trunk-based development** - elitné tímy integrujú často s CI/CD; voľba workflowu závisí od kontextu (trunk-based pre aplikácie s jednou verziou, Gitflow pre viacero produkčných verzií)
+
+:::footer
+Podľa [Patterns for Managing Source Code Branches](https://martinfowler.com/articles/branching-patterns.html) (Martin Fowler) a [State of DevOps Report](https://martinfowler.com/bliki/StateOfDevOpsReport.html)
+:::
+

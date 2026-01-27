@@ -36,6 +36,9 @@ $code-block-font-size: 0.8em;
     --screenshot-shadow: rgb(0 0 0 / 0.2);
     --controls-color: #2a76dd;
     --progress-color: #2a76dd;
+    --blockquote-bg: #f5f5f5;
+    --blockquote-border: #ccc;
+    --blockquote-color: #555;
 }
 
 [data-theme="dark"] {
@@ -54,6 +57,9 @@ $code-block-font-size: 0.8em;
     --screenshot-shadow: rgb(255 255 255 / 0.15);
     --controls-color: #42affa;
     --progress-color: #42affa;
+    --blockquote-bg: #2a2a2a;
+    --blockquote-border: #555;
+    --blockquote-color: #d0d0d0;
 }
 
 /*-- scss:rules --*/
@@ -73,6 +79,18 @@ $code-block-font-size: 0.8em;
 
     a {
         color: var(--link-color);
+    }
+
+    blockquote {
+        background-color: var(--blockquote-bg);
+        border-left: 5px solid var(--blockquote-border);
+        color: var(--blockquote-color);
+        padding: 0.5em 1em;
+        margin: 1em 0;
+
+        p {
+            margin: 0.5em 0;
+        }
     }
 
     // Progress bar

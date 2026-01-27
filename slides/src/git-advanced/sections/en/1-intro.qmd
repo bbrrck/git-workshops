@@ -10,7 +10,7 @@
 2. [Git internals](#git-internals)
 3. [Merge vs. Rebase](#merge-vs-rebase)
 4. [Common issues](#common-issues)
-5. [Branching strategies](#workflow)
+5. [Branching workflows](#workflow)
 6. [Pull requests](#pull-requests)
 7. [CI/CD using Git](#cicd)
 8. [SSH authentication](#ssh)

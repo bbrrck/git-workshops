@@ -1,11 +1,38 @@
-# Git Workflows = Branching Models {#workflow}
+# Branching Workflows {#workflow}
 
 In Git, there are many different workflows that differ in how they use branching. In this chapter, we will show some of the most commonly used workflows and their advantages and disadvantages.
+
+## Why do we need branching?
+
+- without branching, everyone edits live code → half-baked changes break the system
+- developers need **isolation** to work without stepping on each other
+- at the same time, changes need to be **integrated** back into the main codebase
+
+::: {.quote-container}
+> "Branching is about managing the interplay of isolation and integration."
+>
+> — <cite><em>Martin Fowler</em></cite>
+:::
+
+:::footer
+[Patterns for Managing Source Code Branches](https://martinfowler.com/articles/branching-patterns.html) (Martin Fowler)
+:::
+
+## Why do we need branching workflows?
+
+- branching provides the illusion of frozen time - safe isolation for development
+- but: *branching is easy, merging is harder* - eventually the price comes due
+- **key question:** how and when should we integrate our work?
+- there is no one-size-fits-all approach: different teams, products, and contexts require different branching approaches.
+
+:::footer
+[Patterns for Managing Source Code Branches](https://martinfowler.com/articles/branching-patterns.html) (Martin Fowler)
+:::
 
 ## What workflows exist?
 
 - Centralized
-- Feature branch (FB)
+- Feature branching (FB)
 - Trunk-based development (TBD)
 - Gitflow
 - Forking workflow
@@ -50,6 +77,7 @@ The *Git Workflows Warehouse* project contains a [catalog of 50 workflows](https
 
 - potentially many branches
 - resolving conflicts in long-lived branches can be complex
+- can discourage refactoring due to increased merge conflicts
 
 :::footer
 [Git feature branch workflow](https://www.atlassian.com/git/tutorials/comparing-workflows/feature-branch-workflow) (Atlassian)
@@ -58,6 +86,7 @@ The *Git Workflows Warehouse* project contains a [catalog of 50 workflows](https
 ## Trunk-based development
 
 - similar to the feature branching workflow, but `feature` branches are short-lived and frequently merged into the `main` branch (even several times a day)
+- feature branches are sometimes not used at all - developers commit directly to the main branch
 - suitable in combination with automated testing and deployment (CI/CD)
 
 **Advantages:**
@@ -109,17 +138,20 @@ See [trunkbaseddevelopment.com](https://trunkbaseddevelopment.com/) and also [Wh
 
 - all the advantages of the feature branching workflow
 - suitable for projects with longer development and regular releases
+- potentially good fit for projects with multiple production versions
 
 **Disadvantages:**
 
 - a large number of branches
 - merge hell
 
-<div style="font-size:80%">
+**Note:** Gitflow suits projects with multiple production versions (e.g., customer installations). Single-version web apps benefit more from trunk-based development.
+
+
+## Gitflow workflow
 
 > Gitflow is a **legacy** Git workflow that was originally a disruptive and novel strategy for managing Git branches. Gitflow has fallen in popularity in favor of [trunk-based workflows](https://www.atlassian.com/continuous-delivery/continuous-integration/trunk-based-development), which are now considered best practices for modern continuous software development and [DevOps](https://www.atlassian.com/devops/what-is-devops) practices. Gitflow also can be challenging to use with [CI/CD](https://www.atlassian.com/continuous-delivery).
 
-</div>
 
 ::: footer
 [Gitflow workflow](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow) (Atlassian)
@@ -150,4 +182,16 @@ The overall flow of Gitflow is:
 
 ::: {.center .width-050}
 ![](https://www.dalescott.net/wp-content/uploads/2012/09/centralized-github-4-1024x625.png)
+:::
+
+## {background-image="https://martinfowler.com/articles/branching-patterns/leroy-branch.jpg" background-size="100% 80%" background-position="center"}
+
+## Key Takeaways
+
+1. **Branching is easy, merging is harder** - always plan integration before branching; branches diverge over time
+2. **Integration frequency drives quality** - frequent merges reduce complexity, risk, and integration fear; enable refactoring and improve code health
+3. **Modern best practice favors trunk-based development** - elite teams integrate frequently with CI/CD; choose workflow based on context (trunk-based for single-version apps, Gitflow for multiple production versions)
+
+:::footer
+Based on [Patterns for Managing Source Code Branches](https://martinfowler.com/articles/branching-patterns.html) (Martin Fowler) and [State of DevOps Report](https://martinfowler.com/bliki/StateOfDevOpsReport.html)
 :::
