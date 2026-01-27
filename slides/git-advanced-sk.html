@@ -6,8 +6,8 @@
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-4c7b890cc350be7067044af900615741.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.8.25">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-9e15f8fb9e1f2f288bfbe28f6ca11029.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.8.27">
 
   <meta name="author" content="Tibor Stanko">
   <title>Git Workshops – Git Advanced Workshop (SK)</title>
@@ -236,7 +236,7 @@ Tibor Stanko
 <li><a href="#/common-issues">Časté otázky a problémy</a></li>
 <li><a href="#/workflow">Git workflowy</a> = modely vetvenia</li>
 <li><a href="#/pull-requests">Pull Requesty</a></li>
-<li><a href="#/cicd"><del>CI/CD s pomocou Gitu</del></a></li>
+<li><a href="#/cicd">CI/CD s pomocou Gitu</a></li>
 <li><a href="#/ssh">SSH autentifikácia</a></li>
 </ol>
 </div><div class="column nobullets" style="width:60%;">
@@ -1921,7 +1921,7 @@ Squash Merge (5):
         }
           var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
           var mailtoRegex = new RegExp(/^mailto:/);
-            var filterRegex = new RegExp('/' + window.location.host + '/');
+            var filterRegex = new RegExp("https:\/\/bbrrck\.github\.io\/git-workshops\/");
           var isInternal = (href) => {
               return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
           }

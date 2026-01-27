@@ -1,33 +1,33 @@
 /* quarto syntax highlight colors */
 :root {
   --quarto-hl-al-color: #ff5555;
-  --quarto-hl-an-color: #6a737d;
-  --quarto-hl-at-color: #f97583;
-  --quarto-hl-bn-color: #79b8ff;
-  --quarto-hl-bu-color: #f97583;
-  --quarto-hl-ch-color: #9ecbff;
-  --quarto-hl-co-color: #6a737d;
-  --quarto-hl-cv-color: #6a737d;
-  --quarto-hl-cn-color: #79b8ff;
-  --quarto-hl-cf-color: #f97583;
-  --quarto-hl-dt-color: #f97583;
-  --quarto-hl-dv-color: #79b8ff;
-  --quarto-hl-do-color: #6a737d;
+  --quarto-hl-an-color: #75715e;
+  --quarto-hl-at-color: #f92672;
+  --quarto-hl-bn-color: #ae81ff;
+  --quarto-hl-bu-color: #66D9EF;
+  --quarto-hl-ch-color: #e6db74;
+  --quarto-hl-co-color: #75715e;
+  --quarto-hl-cv-color: #75715e;
+  --quarto-hl-cn-color: #ae81ff;
+  --quarto-hl-cf-color: #f92672;
+  --quarto-hl-dt-color: #66d9ef;
+  --quarto-hl-dv-color: #ae81ff;
+  --quarto-hl-do-color: #75715e;
   --quarto-hl-er-color: #ff5555;
-  --quarto-hl-ex-color: #f97583;
-  --quarto-hl-fl-color: #79b8ff;
-  --quarto-hl-fu-color: #b392f0;
-  --quarto-hl-im-color: #9ecbff;
-  --quarto-hl-in-color: #6a737d;
-  --quarto-hl-kw-color: #f97583;
-  --quarto-hl-op-color: #e1e4e8;
-  --quarto-hl-pp-color: #f97583;
-  --quarto-hl-re-color: #6a737d;
-  --quarto-hl-sc-color: #79b8ff;
-  --quarto-hl-ss-color: #9ecbff;
-  --quarto-hl-st-color: #9ecbff;
-  --quarto-hl-va-color: #ffab70;
-  --quarto-hl-vs-color: #9ecbff;
+  --quarto-hl-ex-color: #a6e22e;
+  --quarto-hl-fl-color: #ae81ff;
+  --quarto-hl-fu-color: #a6e22e;
+  --quarto-hl-im-color: #f92672;
+  --quarto-hl-in-color: #f1fa8c;
+  --quarto-hl-kw-color: #f92672;
+  --quarto-hl-op-color: #f8f8f2;
+  --quarto-hl-pp-color: #f92672;
+  --quarto-hl-re-color: #75715e;
+  --quarto-hl-sc-color: #ae81ff;
+  --quarto-hl-ss-color: #e6db74;
+  --quarto-hl-st-color: #e6db74;
+  --quarto-hl-va-color: #f8f8f2;
+  --quarto-hl-vs-color: #e6db74;
   --quarto-hl-wa-color: #ff5555;
 }
 
@@ -38,21 +38,21 @@
 
 /* syntax highlight based on Pandoc's rules */
 pre > code.sourceCode > span {
-  color: #e1e4e8;
+  color: #f8f8f2;
 }
 
 code.sourceCode > span {
-  color: #e1e4e8;
+  color: #f8f8f2;
 }
 
 div.sourceCode,
 div.sourceCode pre.sourceCode {
-  color: #e1e4e8;
+  color: #f8f8f2;
 }
 
 /* Normal */
 code span {
-  color: #e1e4e8;
+  color: #f8f8f2;
 }
 
 /* Alert */
@@ -63,62 +63,63 @@ code span.al {
 
 /* Annotation */
 code span.an {
-  color: #6a737d;
+  color: #75715e;
 }
 
 /* Attribute */
 code span.at {
-  color: #f97583;
+  color: #f92672;
 }
 
 /* BaseN */
 code span.bn {
-  color: #79b8ff;
+  color: #ae81ff;
 }
 
 /* BuiltIn */
 code span.bu {
-  color: #f97583;
+  color: #66D9EF;
 }
 
 /* ControlFlow */
 code span.cf {
-  color: #f97583;
+  color: #f92672;
 }
 
 /* Char */
 code span.ch {
-  color: #9ecbff;
+  color: #e6db74;
 }
 
 /* Constant */
 code span.cn {
-  color: #79b8ff;
+  color: #ae81ff;
 }
 
 /* Comment */
 code span.co {
-  color: #6a737d;
+  color: #75715e;
 }
 
 /* CommentVar */
 code span.cv {
-  color: #6a737d;
+  color: #75715e;
 }
 
 /* Documentation */
 code span.do {
-  color: #6a737d;
+  color: #75715e;
 }
 
 /* DataType */
 code span.dt {
-  color: #f97583;
+  font-style: italic;
+  color: #66d9ef;
 }
 
 /* DecVal */
 code span.dv {
-  color: #79b8ff;
+  color: #ae81ff;
 }
 
 /* Error */
@@ -130,72 +131,72 @@ code span.er {
 /* Extension */
 code span.ex {
   font-weight: bold;
-  color: #f97583;
+  color: #a6e22e;
 }
 
 /* Float */
 code span.fl {
-  color: #79b8ff;
+  color: #ae81ff;
 }
 
 /* Function */
 code span.fu {
-  color: #b392f0;
+  color: #a6e22e;
 }
 
 /* Import */
 code span.im {
-  color: #9ecbff;
+  color: #f92672;
 }
 
 /* Information */
 code span.in {
-  color: #6a737d;
+  color: #f1fa8c;
 }
 
 /* Keyword */
 code span.kw {
-  color: #f97583;
+  color: #f92672;
 }
 
 /* Operator */
 code span.op {
-  color: #e1e4e8;
+  color: #f8f8f2;
 }
 
 /* Preprocessor */
 code span.pp {
-  color: #f97583;
+  color: #f92672;
 }
 
 /* RegionMarker */
 code span.re {
-  color: #6a737d;
+  color: #75715e;
 }
 
 /* SpecialChar */
 code span.sc {
-  color: #79b8ff;
+  color: #ae81ff;
 }
 
 /* SpecialString */
 code span.ss {
-  color: #9ecbff;
+  color: #e6db74;
 }
 
 /* String */
 code span.st {
-  color: #9ecbff;
+  color: #e6db74;
 }
 
 /* Variable */
 code span.va {
-  color: #ffab70;
+  color: #f8f8f2;
 }
 
 /* VerbatimString */
 code span.vs {
-  color: #9ecbff;
+  color: #e6db74;
 }
 
 /* Warning */
@@ -207,4 +208,4 @@ code span.wa {
   content: "</";
 }
 
-/*# sourceMappingURL=b98e16a10f074dfcb10fa0db2f9c9e30.css.map */
+/*# sourceMappingURL=ec96be89d875e9398b1e9514b92dbd92.css.map */
