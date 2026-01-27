@@ -12,7 +12,7 @@
 4. [Časté otázky a problémy](#common-issues)
 5. [Git workflowy](#workflow) = modely vetvenia
 6. [Pull Requesty](#pull-requests)
-7. [~~CI/CD s pomocou Gitu~~](#cicd)
+7. [CI/CD s pomocou Gitu](#cicd)
 8. [SSH autentifikácia](#ssh)
 :::
 ::: {.column width="60%" .nobullets}

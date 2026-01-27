@@ -12,7 +12,7 @@
 4. [Common issues](#common-issues)
 5. [Branching strategies](#workflow)
 6. [Pull requests](#pull-requests)
-7. [~~CI/CD using Git~~](#cicd)
+7. [CI/CD using Git](#cicd)
 8. [SSH authentication](#ssh)
 :::
 ::: {.column width="60%" .nobullets}

@@ -2,7 +2,6 @@
 %%| fig-width: 10
 %%{
     init: { 
-        'logLevel': 'debug', 
         'theme': 'base', 
         'gitGraph': {
             'showCommitLabel': true, 
