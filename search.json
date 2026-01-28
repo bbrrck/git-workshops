@@ -459,7 +459,7 @@
     "href": "slides/git-advanced-sk.html#obsah-tohto-workshopu",
     "title": "Git Advanced Workshop (SK)",
     "section": "Obsah tohto workshopu",
-    "text": "Obsah tohto workshopu\n\n\n\nÚvod\nVnútro Gitu\nMerge vs. Rebase\nČasté otázky a problémy\nGit workflowy = modely vetvenia\nPull Requesty\nCI/CD s pomocou Gitu\nSSH autentifikácia\n\n\n\n \n\n— Úlohy (1)\n— Úlohy (2)"
+    "text": "Obsah tohto workshopu\n\n\n\nÚvod\nVnútro Gitu\nMerge vs. Rebase\nČasté otázky a problémy\nBranching workflows = modely vetvenia\nPull Requesty\nCI/CD s pomocou Gitu\nSSH autentifikácia\n\n\n\n \n\n— Úlohy (1)\n— Úlohy (2)"
   },
   {
     "objectID": "slides/git-advanced-sk.html#section",
@@ -840,6 +840,20 @@
     "text": "Ako môžem resetovať alebo vrátiť súbor na konkrétnu verziu?\ngit checkout c5f567 -- file1/to/restore file2/to/restore"
   },
   {
+    "objectID": "slides/git-advanced-sk.html#prečo-potrebujeme-vetvenie",
+    "href": "slides/git-advanced-sk.html#prečo-potrebujeme-vetvenie",
+    "title": "Git Advanced Workshop (SK)",
+    "section": "Prečo potrebujeme vetvenie?",
+    "text": "Prečo potrebujeme vetvenie?\n\nbez vetvenia vývojári upravujú živý kód → nedokončené zmeny rozbíjajú systém\nvývojári potrebujú izoláciu, aby mohli pracovať bez vzájomného zasahovania\nzároveň je potrebné hotové zmeny integrovať späť do hlavnej línie vývoja\n\n\n\n“Vetvenie je o riadení súhry izolácie a integrácie.”\n— Martin Fowler\n\n\n\nPatterns for Managing Source Code Branches (Martin Fowler)"
+  },
+  {
+    "objectID": "slides/git-advanced-sk.html#prečo-potrebujeme-workflowy-vetvenia",
+    "href": "slides/git-advanced-sk.html#prečo-potrebujeme-workflowy-vetvenia",
+    "title": "Git Advanced Workshop (SK)",
+    "section": "Prečo potrebujeme workflowy vetvenia?",
+    "text": "Prečo potrebujeme workflowy vetvenia?\n\nvetvenie poskytuje ilúziu zastaveného času - bezpečnú izoláciu pre vývoj\nale: vetvenie je jednoduché, zlučovanie je ťažšie - v istom momente treba “splatiť dlh”\nkľúčová otázka: ako a kedy by sme mali integrovať našu prácu?\nneexistuje univerzálne riešenie: rôzne tímy, produkty a kontexty vyžadujú rôzne prístupy k vetveniu.\n\n\nPatterns for Managing Source Code Branches (Martin Fowler)"
+  },
+  {
     "objectID": "slides/git-advanced-sk.html#aké-workflowy-existujú",
     "href": "slides/git-advanced-sk.html#aké-workflowy-existujú",
     "title": "Git Advanced Workshop (SK)",
@@ -858,42 +872,42 @@
     "href": "slides/git-advanced-sk.html#feature-branching",
     "title": "Git Advanced Workshop (SK)",
     "section": "Feature branching",
-    "text": "Feature branching\n\nvývoj prebieha na samostatných feature vetvách, ktoré sa následne zlučujú do main vetvy\n\nVýhody:\n\nnové funkcie sú vyvíjané izolovane, stabilný main\numožňuje používanie pull requestov, code reviews, kolaboratívny vývoj\n\nNevýhody:\n\npotenciálne veľa vetiev\npri dlhotrvajúcich vetvách môže byť zložité riešiť konflikty\n\n\nGit feature branch workflow (Atlassian)"
+    "text": "Feature branching\n\nvývoj prebieha na samostatných feature vetvách, ktoré sa následne zlučujú do main vetvy\n\nVýhody:\n\nnové funkcie sú vyvíjané izolovane, stabilný main\numožňuje používanie pull requestov, code reviews, kolaboratívny vývoj\n\nNevýhody:\n\npotenciálne veľa vetiev\npri dlhotrvajúcich vetvách môže byť zložité riešiť konflikty\nmôže odrádzať od refaktoringu kvôli zvýšeným merge konfliktom\n\n\nGit feature branch workflow (Atlassian)"
   },
   {
     "objectID": "slides/git-advanced-sk.html#trunk-based-development",
     "href": "slides/git-advanced-sk.html#trunk-based-development",
     "title": "Git Advanced Workshop (SK)",
     "section": "Trunk-based development",
-    "text": "Trunk-based development\n\npodobný feature branching workflowu, ale feature vetvy sú krátke a často mergované do main vetvy (aj niekoľkokrát denne)\nvhodný v kombinácii s automatickým testovaním a nasadzovaním (CI/CD)\n\nVýhody:\n\nkód na hlavnej vetve je vždy release ready\n\nNevýhody:\n\nnutné automatizované testovanie a nasadzovanie\nvyžaduje zrelý vývojový tím\n\n\nPozri trunkbaseddevelopment.com a tiež Why Google Stores Billions of Lines of Code in a Single Repository"
+    "text": "Trunk-based development\n\npodobný feature branching workflowu, ale feature vetvy sú krátke a často mergované do main vetvy (aj niekoľkokrát denne)\nfeature vetvy sa niekedy nepoužívajú vôbec - vývojári commitujú priamo do mainu\nvhodný v kombinácii s automatickým testovaním a nasadzovaním (CI/CD)\n\nVýhody:\n\nkód na hlavnej vetve je vždy release ready\n\nNevýhody:\n\nnutné automatizované testovanie a nasadzovanie\nvyžaduje zrelý vývojový tím a dôveru\n\n\nPozri trunkbaseddevelopment.com a tiež Why Google Stores Billions of Lines of Code in a Single Repository"
   },
   {
     "objectID": "slides/git-advanced-sk.html#trunk-based-development-1",
     "href": "slides/git-advanced-sk.html#trunk-based-development-1",
     "title": "Git Advanced Workshop (SK)",
     "section": "Trunk-based development",
-    "text": "Trunk-based development\n\nFeature-based deployment can be beneficial for teams that value the isolation of features and are willing to manage the complexities of merging these features back into the mainline. On the other hand, trunk-based deployment is suited for organizations that prioritize rapid integration and releases and have the infrastructure to manage continuous integrations and feature flags.\n\n\nIn recent years, with the rise of DevOps and agile methodologies, there’s been a clear trend towards more frequent integrations and releases. This trend has made trunk-based development, with its emphasis on rapid integration and release, increasingly popular among many tech giants and startups alike. However, as with all methodologies, it’s essential to evaluate the specific needs and capabilities of an organization before adopting a deployment strategy.\n\n\nFeature-Based Deployment vs. Trunk-Based Deployment by John Nochowitz"
+    "text": "Trunk-based development\n\n\nFeature-based deployment can be beneficial for teams that value the isolation of features and are willing to manage the complexities of merging these features back into the mainline. On the other hand, trunk-based deployment is suited for organizations that prioritize rapid integration and releases and have the infrastructure to manage continuous integrations and feature flags.\n\n\nIn recent years, with the rise of DevOps and agile methodologies, there’s been a clear trend towards more frequent integrations and releases. This trend has made trunk-based development, with its emphasis on rapid integration and release, increasingly popular among many tech giants and startups alike. However, as with all methodologies, it’s essential to evaluate the specific needs and capabilities of an organization before adopting a deployment strategy.\n\n\n\nFeature-Based Deployment vs. Trunk-Based Deployment by John Nochowitz"
   },
   {
     "objectID": "slides/git-advanced-sk.html#zdieľané-vetvy-mimo-hlavnej-línie-spôsobujú-problémy-merge-hell",
     "href": "slides/git-advanced-sk.html#zdieľané-vetvy-mimo-hlavnej-línie-spôsobujú-problémy-merge-hell",
     "title": "Git Advanced Workshop (SK)",
     "section": "Zdieľané vetvy mimo hlavnej línie spôsobujú problémy (merge hell)",
-    "text": "Zdieľané vetvy mimo hlavnej línie spôsobujú problémy (merge hell)"
+    "text": "Zdieľané vetvy mimo hlavnej línie spôsobujú problémy (merge hell)\n\ntrunkbaseddevelopment.com"
   },
   {
     "objectID": "slides/git-advanced-sk.html#menšie-tímy",
     "href": "slides/git-advanced-sk.html#menšie-tímy",
     "title": "Git Advanced Workshop (SK)",
     "section": "Menšie tímy",
-    "text": "Menšie tímy"
+    "text": "Menšie tímy\n\ntrunkbaseddevelopment.com"
   },
   {
     "objectID": "slides/git-advanced-sk.html#väčšie-tímy",
     "href": "slides/git-advanced-sk.html#väčšie-tímy",
     "title": "Git Advanced Workshop (SK)",
     "section": "Väčšie tímy",
-    "text": "Väčšie tímy"
+    "text": "Väčšie tímy\n\ntrunkbaseddevelopment.com"
   },
   {
     "objectID": "slides/git-advanced-sk.html#gitflow-workflow",
@@ -907,11 +921,18 @@
     "href": "slides/git-advanced-sk.html#gitflow-workflow-1",
     "title": "Git Advanced Workshop (SK)",
     "section": "Gitflow workflow",
-    "text": "Gitflow workflow\nVýhody:\n\nvšetky výhody feature branching workflowu\nvhodný pre projekty s dlhším vývojom a pravidelnými releasmi\n\nNevýhody:\n\nveľké množstvo vetiev\nmerge hell\n\n\n\nGitflow is a legacy Git workflow that was originally a disruptive and novel strategy for managing Git branches. Gitflow has fallen in popularity in favor of trunk-based workflows, which are now considered best practices for modern continuous software development and DevOps practices. Gitflow also can be challenging to use with CI/CD.\n\n\n\nGitflow workflow (Atlassian)"
+    "text": "Gitflow workflow\nVýhody:\n\nvšetky výhody feature branching workflowu\nvhodný pre projekty s dlhším vývojom a pravidelnými releasmi\npotenciálne dobrý fit pre projekty s viacerými produkčnými verziami\n\nNevýhody:\n\nveľké množstvo vetiev\nmerge hell\n\nPoznámka: Gitflow vyhovuje projektom s viacerými produkčnými verziami (napr. inštalácie u zákazníkov). Webové aplikácie s jednou verziou profitujú viac z trunk-based development."
   },
   {
     "objectID": "slides/git-advanced-sk.html#gitflow-workflow-2",
     "href": "slides/git-advanced-sk.html#gitflow-workflow-2",
+    "title": "Git Advanced Workshop (SK)",
+    "section": "Gitflow workflow",
+    "text": "Gitflow workflow\n\nGitflow is a legacy Git workflow that was originally a disruptive and novel strategy for managing Git branches. Gitflow has fallen in popularity in favor of trunk-based workflows, which are now considered best practices for modern continuous software development and DevOps practices. Gitflow also can be challenging to use with CI/CD.\n\n\nGitflow workflow (Atlassian)"
+  },
+  {
+    "objectID": "slides/git-advanced-sk.html#gitflow-workflow-3",
+    "href": "slides/git-advanced-sk.html#gitflow-workflow-3",
     "title": "Git Advanced Workshop (SK)",
     "section": "Gitflow workflow",
     "text": "Gitflow workflow\nThe overall flow of Gitflow is:\n\nA develop branch is created from main\nA release branch is created from develop\nFeature branches are created from develop\nWhen a feature is complete it is merged into the develop branch\nWhen the release branch is done it is merged into develop and main\nIf an issue in main is detected a hotfix branch is created from main\nOnce the hotfix is complete it is merged to both develop and main"
@@ -922,6 +943,13 @@
     "title": "Git Advanced Workshop (SK)",
     "section": "Forking workflow",
     "text": "Forking workflow\n\nvývojári nemajú priamy prístup k hlavnému repozitáru, ale vytvárajú si fork (kópiu) repozitára, na ktorom pracujú\nbežne používaný v open-source projektoch"
+  },
+  {
+    "objectID": "slides/git-advanced-sk.html#kľúčové-poznatky",
+    "href": "slides/git-advanced-sk.html#kľúčové-poznatky",
+    "title": "Git Advanced Workshop (SK)",
+    "section": "Kľúčové poznatky",
+    "text": "Kľúčové poznatky\n\nVetvenie je jednoduché, zlučovanie je ťažšie - vždy naplánujte integráciu pred vytvorením vetvy; vetvy sa v čase rozchádzajú\nFrekvencia integrácie súvisí s kvalitou - časté zlučovanie snižuje zložitosť, riziko a strach z integrácie; umožňuje refaktoring a zlepšuje zdravie kódu\nModerná osvedčená prax uprednostňuje trunk-based development - elitné tímy integrujú často s CI/CD\nVoľba workflowu závisí od kontextu - rôzne tímy a projekty majú rôzne potreby; vyberte workflow, ktorý najlepšie vyhovuje vašej situácii\n\n\nPodľa Patterns for Managing Source Code Branches (Martin Fowler) a State of DevOps Report"
   },
   {
     "objectID": "slides/git-advanced-sk.html#čo-je-to-pull-request",
@@ -1012,7 +1040,7 @@
     "href": "slides/git-advanced-en.html#contents-of-this-workshop",
     "title": "Git Advanced Workshop (EN)",
     "section": "Contents of this workshop",
-    "text": "Contents of this workshop\n\n\n\nIntro\nGit internals\nMerge vs. Rebase\nCommon issues\nBranching strategies\nPull requests\nCI/CD using Git\nSSH authentication\n\n\n\n \n\n— Exercises (1)\n— Exercises (2)"
+    "text": "Contents of this workshop\n\n\n\nIntro\nGit internals\nMerge vs. Rebase\nCommon issues\nBranching workflows\nPull requests\nCI/CD using Git\nSSH authentication\n\n\n\n \n\n— Exercises (1)\n— Exercises (2)"
   },
   {
     "objectID": "slides/git-advanced-en.html#section",
@@ -1393,11 +1421,25 @@
     "text": "How can I reset or revert a file to a specific version?\ngit checkout c5f567 -- file1/to/restore file2/to/restore"
   },
   {
+    "objectID": "slides/git-advanced-en.html#why-do-we-need-branching",
+    "href": "slides/git-advanced-en.html#why-do-we-need-branching",
+    "title": "Git Advanced Workshop (EN)",
+    "section": "Why do we need branching?",
+    "text": "Why do we need branching?\n\nwithout branching, everyone edits live code → half-baked changes break the system\ndevelopers need isolation to work without stepping on each other\nat the same time, changes need to be integrated back into the main codebase\n\n\n\n“Branching is about managing the interplay of isolation and integration.”\n— Martin Fowler\n\n\n\nPatterns for Managing Source Code Branches (Martin Fowler)"
+  },
+  {
+    "objectID": "slides/git-advanced-en.html#why-do-we-need-branching-workflows",
+    "href": "slides/git-advanced-en.html#why-do-we-need-branching-workflows",
+    "title": "Git Advanced Workshop (EN)",
+    "section": "Why do we need branching workflows?",
+    "text": "Why do we need branching workflows?\n\nbranching provides the illusion of frozen time - safe isolation for development\nbut: branching is easy, merging is harder - eventually the price comes due\nkey question: how and when should we integrate our work?\nthere is no one-size-fits-all approach: different teams, products, and contexts require different branching approaches.\n\n\nPatterns for Managing Source Code Branches (Martin Fowler)"
+  },
+  {
     "objectID": "slides/git-advanced-en.html#what-workflows-exist",
     "href": "slides/git-advanced-en.html#what-workflows-exist",
     "title": "Git Advanced Workshop (EN)",
     "section": "What workflows exist?",
-    "text": "What workflows exist?\n\nCentralized\nFeature branch (FB)\nTrunk-based development (TBD)\nGitflow\nForking workflow\netc.\n\n\nThe Git Workflows Warehouse project contains a catalog of 50 workflows and also a useful list of resources."
+    "text": "What workflows exist?\n\nCentralized\nFeature branching (FB)\nTrunk-based development (TBD)\nGitflow\nForking workflow\netc.\n\n\nThe Git Workflows Warehouse project contains a catalog of 50 workflows and also a useful list of resources."
   },
   {
     "objectID": "slides/git-advanced-en.html#centralized-workflow",
@@ -1411,14 +1453,14 @@
     "href": "slides/git-advanced-en.html#feature-branching",
     "title": "Git Advanced Workshop (EN)",
     "section": "Feature branching",
-    "text": "Feature branching\n\ndevelopment takes place on separate feature branches, which are then merged into the main branch\n\nAdvantages:\n\nnew features are developed in isolation, stable main\nallows the use of pull requests, code reviews, collaborative development\n\nDisadvantages:\n\npotentially many branches\nresolving conflicts in long-lived branches can be complex\n\n\nGit feature branch workflow (Atlassian)"
+    "text": "Feature branching\n\ndevelopment takes place on separate feature branches, which are then merged into the main branch\n\nAdvantages:\n\nnew features are developed in isolation, stable main\nallows the use of pull requests, code reviews, collaborative development\n\nDisadvantages:\n\npotentially many branches\nresolving conflicts in long-lived branches can be complex\ncan discourage refactoring due to increased merge conflicts\n\n\nGit feature branch workflow (Atlassian)"
   },
   {
     "objectID": "slides/git-advanced-en.html#trunk-based-development",
     "href": "slides/git-advanced-en.html#trunk-based-development",
     "title": "Git Advanced Workshop (EN)",
     "section": "Trunk-based development",
-    "text": "Trunk-based development\n\nsimilar to the feature branching workflow, but feature branches are short-lived and frequently merged into the main branch (even several times a day)\nsuitable in combination with automated testing and deployment (CI/CD)\n\nAdvantages:\n\ncode on the main branch is always release ready\n\nDisadvantages:\n\nrequires automated testing and deployment\nrequires a mature development team\n\n\nSee trunkbaseddevelopment.com and also Why Google Stores Billions of Lines of Code in a Single Repository"
+    "text": "Trunk-based development\n\nsimilar to the feature branching workflow, but feature branches are short-lived and frequently merged into the main branch (even several times a day)\nfeature branches are sometimes not used at all - developers commit directly to the main branch\nsuitable in combination with automated testing and deployment (CI/CD)\n\nAdvantages:\n\ncode on the main branch is always release ready\n\nDisadvantages:\n\nrequires automated testing and deployment\nrequires a mature development team\n\n\nSee trunkbaseddevelopment.com and also Why Google Stores Billions of Lines of Code in a Single Repository"
   },
   {
     "objectID": "slides/git-advanced-en.html#trunk-based-development-1",
@@ -1460,11 +1502,18 @@
     "href": "slides/git-advanced-en.html#gitflow-workflow-1",
     "title": "Git Advanced Workshop (EN)",
     "section": "Gitflow workflow",
-    "text": "Gitflow workflow\nAdvantages:\n\nall the advantages of the feature branching workflow\nsuitable for projects with longer development and regular releases\n\nDisadvantages:\n\na large number of branches\nmerge hell\n\n\n\nGitflow is a legacy Git workflow that was originally a disruptive and novel strategy for managing Git branches. Gitflow has fallen in popularity in favor of trunk-based workflows, which are now considered best practices for modern continuous software development and DevOps practices. Gitflow also can be challenging to use with CI/CD.\n\n\n\nGitflow workflow (Atlassian)"
+    "text": "Gitflow workflow\nAdvantages:\n\nall the advantages of the feature branching workflow\nsuitable for projects with longer development and regular releases\npotentially good fit for projects with multiple production versions\n\nDisadvantages:\n\na large number of branches\nmerge hell\n\nNote: Gitflow suits projects with multiple production versions (e.g., customer installations). Single-version web apps benefit more from trunk-based development."
   },
   {
     "objectID": "slides/git-advanced-en.html#gitflow-workflow-2",
     "href": "slides/git-advanced-en.html#gitflow-workflow-2",
+    "title": "Git Advanced Workshop (EN)",
+    "section": "Gitflow workflow",
+    "text": "Gitflow workflow\n\nGitflow is a legacy Git workflow that was originally a disruptive and novel strategy for managing Git branches. Gitflow has fallen in popularity in favor of trunk-based workflows, which are now considered best practices for modern continuous software development and DevOps practices. Gitflow also can be challenging to use with CI/CD.\n\n\nGitflow workflow (Atlassian)"
+  },
+  {
+    "objectID": "slides/git-advanced-en.html#gitflow-workflow-3",
+    "href": "slides/git-advanced-en.html#gitflow-workflow-3",
     "title": "Git Advanced Workshop (EN)",
     "section": "Gitflow workflow",
     "text": "Gitflow workflow\nThe overall flow of Gitflow is:\n\nA develop branch is created from main\nA release branch is created from develop\nFeature branches are created from develop\nWhen a feature is complete it is merged into the develop branch\nWhen the release branch is done it is merged into develop and main\nIf an issue in main is detected a hotfix branch is created from main\nOnce the hotfix is complete it is merged to both develop and main"
@@ -1475,6 +1524,13 @@
     "title": "Git Advanced Workshop (EN)",
     "section": "Forking workflow",
     "text": "Forking workflow\n\ndevelopers do not have direct access to the main repository but create a fork (copy) of the repository they work on\ncommonly used in open-source projects"
+  },
+  {
+    "objectID": "slides/git-advanced-en.html#key-takeaways",
+    "href": "slides/git-advanced-en.html#key-takeaways",
+    "title": "Git Advanced Workshop (EN)",
+    "section": "Key Takeaways",
+    "text": "Key Takeaways\n\nBranching is easy, merging is harder - always plan integration before branching; branches diverge over time\nIntegration frequency drives quality - frequent merges reduce complexity, risk, and integration fear; enable refactoring and improve code health\nModern best practice favors trunk-based development - elite teams integrate frequently with CI/CD; choose workflow based on context (trunk-based for single-version apps, Gitflow for multiple production versions)\n\n\nBased on Patterns for Managing Source Code Branches (Martin Fowler) and State of DevOps Report"
   },
   {
     "objectID": "slides/git-advanced-en.html#what-is-a-pull-request",

@@ -95,7 +95,7 @@
     code span.vs { color: #e6db74; } /* VerbatimString */
     code span.wa { color: #ff5555; } /* Warning */
   </style>
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-aa9a81b4258779733a648a63aa0cce16.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-374a3bf673014f60c7c35d64edda47fc.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -234,7 +234,7 @@ Tibor Stanko
 <li><a href="#/git-internals">Vnútro Gitu</a></li>
 <li><a href="#/merge-vs-rebase">Merge vs.&nbsp;Rebase</a></li>
 <li><a href="#/common-issues">Časté otázky a problémy</a></li>
-<li><a href="#/workflow">Git workflowy</a> = modely vetvenia</li>
+<li><a href="#/workflow"><em>Branching workflows</em></a> = modely vetvenia</li>
 <li><a href="#/pull-requests">Pull Requesty</a></li>
 <li><a href="#/cicd">CI/CD s pomocou Gitu</a></li>
 <li><a href="#/ssh">SSH autentifikácia</a></li>
@@ -1236,7 +1236,36 @@ Squash Merge (5):
 <section>
 <section id="workflow" class="title-slide slide level1 center" data-number="5">
 <h1><span class="header-section-number">5</span> Git workflowy = modely vetvenia</h1>
-<p>V Gite existuje mnoho rôznych workflowov, ktoré sa líšia v tom, ako používajú vetvenie (branching). V tejto kapitole si ukážeme niekoľko najpoužívanejších workflowov a ich výhody a nevýhody.</p>
+<p>V Gite existuje mnoho rôznych workflowov, ktoré sa líšia v tom, ako používajú vetvenie (<em>branching</em>). V tejto kapitole si ukážeme niekoľko najpoužívanejších workflowov a ich výhody a nevýhody.</p>
+</section>
+<section id="prečo-potrebujeme-vetvenie" class="slide level2">
+<h2>Prečo potrebujeme vetvenie?</h2>
+<ul>
+<li>bez vetvenia vývojári upravujú živý kód → nedokončené zmeny rozbíjajú systém</li>
+<li>vývojári potrebujú <strong>izoláciu</strong>, aby mohli pracovať bez vzájomného zasahovania</li>
+<li>zároveň je potrebné hotové zmeny <strong>integrovať</strong> späť do hlavnej línie vývoja</li>
+</ul>
+<div class="quote-container">
+<blockquote>
+<p>“Vetvenie je o riadení súhry izolácie a integrácie.”</p>
+<p>— <cite><em>Martin Fowler</em></cite></p>
+</blockquote>
+</div>
+<div class="footer">
+<p><a href="https://martinfowler.com/articles/branching-patterns.html">Patterns for Managing Source Code Branches</a> (Martin Fowler)</p>
+</div>
+</section>
+<section id="prečo-potrebujeme-workflowy-vetvenia" class="slide level2">
+<h2>Prečo potrebujeme workflowy vetvenia?</h2>
+<ul>
+<li>vetvenie poskytuje ilúziu zastaveného času - bezpečnú izoláciu pre vývoj</li>
+<li>ale: <em>vetvenie je jednoduché, zlučovanie je ťažšie</em> - v istom momente treba “splatiť dlh”</li>
+<li><strong>kľúčová otázka:</strong> ako a kedy by sme mali integrovať našu prácu?</li>
+<li>neexistuje univerzálne riešenie: rôzne tímy, produkty a kontexty vyžadujú rôzne prístupy k vetveniu.</li>
+</ul>
+<div class="footer">
+<p><a href="https://martinfowler.com/articles/branching-patterns.html">Patterns for Managing Source Code Branches</a> (Martin Fowler)</p>
+</div>
 </section>
 <section id="aké-workflowy-existujú" class="slide level2">
 <h2>Aké workflowy existujú?</h2>
@@ -1291,15 +1320,20 @@ Squash Merge (5):
 <ul>
 <li>potenciálne veľa vetiev</li>
 <li>pri dlhotrvajúcich vetvách môže byť zložité riešiť konflikty</li>
+<li>môže odrádzať od refaktoringu kvôli zvýšeným merge konfliktom</li>
 </ul>
 <div class="footer">
 <p><a href="https://www.atlassian.com/git/tutorials/comparing-workflows/feature-branch-workflow">Git feature branch workflow</a> (Atlassian)</p>
 </div>
 </section>
+<section id="section-9" class="slide level2" data-background-image="https://www.tilburgsciencehub.com/static/img/feature-branching.webp" data-background-size="80%" data-background-position="center">
+<h2></h2>
+</section>
 <section id="trunk-based-development" class="slide level2">
 <h2>Trunk-based development</h2>
 <ul>
 <li>podobný feature branching workflowu, ale <code>feature</code> vetvy sú krátke a často mergované do <code>main</code> vetvy (aj niekoľkokrát denne)</li>
+<li>feature vetvy sa niekedy nepoužívajú vôbec - vývojári commitujú priamo do mainu</li>
 <li>vhodný v kombinácii s automatickým testovaním a nasadzovaním (CI/CD)</li>
 </ul>
 <p><strong>Výhody:</strong></p>
@@ -1309,7 +1343,7 @@ Squash Merge (5):
 <p><strong>Nevýhody:</strong></p>
 <ul>
 <li>nutné automatizované testovanie a nasadzovanie</li>
-<li>vyžaduje zrelý vývojový tím</li>
+<li>vyžaduje zrelý vývojový tím a dôveru</li>
 </ul>
 <div class="footer">
 <p>Pozri <a href="https://trunkbaseddevelopment.com/">trunkbaseddevelopment.com</a> a tiež <a href="https://research.google/pubs/why-google-stores-billions-of-lines-of-code-in-a-single-repository/">Why Google Stores Billions of Lines of Code in a Single Repository</a></p>
@@ -1317,24 +1351,35 @@ Squash Merge (5):
 </section>
 <section id="trunk-based-development-1" class="slide level2">
 <h2>Trunk-based development</h2>
+<div style="font-size: 90%">
 <blockquote>
 <p><strong>Feature-based deployment</strong> can be beneficial for teams that value the isolation of features and are willing to manage the complexities of merging these features back into the mainline. On the other hand, <strong>trunk-based deployment</strong> is suited for organizations that prioritize rapid integration and releases and have the infrastructure to manage continuous integrations and feature flags.</p>
 </blockquote>
 <blockquote>
 <p>In recent years, with the rise of DevOps and agile methodologies, there’s been a clear trend towards more frequent integrations and releases. This trend has made trunk-based development, with its emphasis on rapid integration and release, increasingly popular among many tech giants and startups alike. However, as with all methodologies, it’s essential to evaluate the specific needs and capabilities of an organization before adopting a deployment strategy.</p>
 </blockquote>
+</div>
 <div class="footer">
 <p><a href="https://www.linkedin.com/pulse/feature-based-deployment-vs-trunk-based-john-nochowitz/">Feature-Based Deployment vs.&nbsp;Trunk-Based Deployment</a> by John Nochowitz</p>
 </div>
 </section>
 <section id="zdieľané-vetvy-mimo-hlavnej-línie-spôsobujú-problémy-merge-hell" class="slide level2" data-background-image="https://trunkbaseddevelopment.com/trunk1a.png" data-background-size="70%" data-background-position="center">
 <h2>Zdieľané vetvy mimo hlavnej línie spôsobujú problémy <em>(merge hell)</em></h2>
+<div class="footer">
+<p><a href="https://trunkbaseddevelopment.com/">trunkbaseddevelopment.com</a></p>
+</div>
 </section>
-<section id="menšie-tímy" class="slide level2" data-background-image="https://trunkbaseddevelopment.com/trunk1b.png" data-background-size="70%" data-background-position="center">
+<section id="menšie-tímy" class="slide level2" data-background-image="https://trunkbaseddevelopment.com/trunk1b.png" data-background-size="60%" data-background-position="center">
 <h2>Menšie tímy</h2>
+<div class="footer">
+<p><a href="https://trunkbaseddevelopment.com/">trunkbaseddevelopment.com</a></p>
+</div>
 </section>
-<section id="väčšie-tímy" class="slide level2" data-background-image="https://trunkbaseddevelopment.com/trunk1c.png" data-background-size="70%" data-background-position="center">
+<section id="väčšie-tímy" class="slide level2" data-background-image="https://trunkbaseddevelopment.com/trunk1c.png" data-background-size="60%" data-background-position="center">
 <h2>Väčšie tímy</h2>
+<div class="footer">
+<p><a href="https://trunkbaseddevelopment.com/">trunkbaseddevelopment.com</a></p>
+</div>
 </section>
 <section id="gitflow-workflow" class="slide level2">
 <h2>Gitflow workflow</h2>
@@ -1359,31 +1404,34 @@ Squash Merge (5):
 <ul>
 <li>všetky výhody feature branching workflowu</li>
 <li>vhodný pre projekty s dlhším vývojom a pravidelnými releasmi</li>
+<li>potenciálne dobrý fit pre projekty s viacerými produkčnými verziami</li>
 </ul>
 <p><strong>Nevýhody:</strong></p>
 <ul>
 <li>veľké množstvo vetiev</li>
 <li>merge hell</li>
 </ul>
-<div style="font-size:80%">
+<p><strong>Poznámka:</strong> Gitflow vyhovuje projektom s viacerými produkčnými verziami (napr. inštalácie u zákazníkov). Webové aplikácie s jednou verziou profitujú viac z trunk-based development.</p>
+</section>
+<section id="gitflow-workflow-2" class="slide level2">
+<h2>Gitflow workflow</h2>
 <blockquote>
 <p>Gitflow is a <strong>legacy</strong> Git workflow that was originally a disruptive and novel strategy for managing Git branches. Gitflow has fallen in popularity in favor of <a href="https://www.atlassian.com/continuous-delivery/continuous-integration/trunk-based-development">trunk-based workflows</a>, which are now considered best practices for modern continuous software development and <a href="https://www.atlassian.com/devops/what-is-devops">DevOps</a> practices. Gitflow also can be challenging to use with <a href="https://www.atlassian.com/continuous-delivery">CI/CD</a>.</p>
 </blockquote>
-</div>
 <div class="footer">
 <p><a href="https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow">Gitflow workflow</a> (Atlassian)</p>
 </div>
 </section>
-<section id="section-9" class="slide level2" data-background-image="https://wac-cdn.atlassian.com/dam/jcr:34c86360-8dea-4be4-92f7-6597d4d5bfae/02%20Feature%20branches.svg?cdnVersion=1419" data-background-size="100% 80%" data-background-position="center">
+<section id="section-10" class="slide level2" data-background-image="https://wac-cdn.atlassian.com/dam/jcr:34c86360-8dea-4be4-92f7-6597d4d5bfae/02%20Feature%20branches.svg?cdnVersion=1419" data-background-size="100% 80%" data-background-position="center">
 <h2></h2>
 </section>
-<section id="section-10" class="slide level2" data-background-image="https://wac-cdn.atlassian.com/dam/jcr:8f00f1a4-ef2d-498a-a2c6-8020bb97902f/03%20Release%20branches.svg?cdnVersion=1419" data-background-size="100% 80%" data-background-position="center">
+<section id="section-11" class="slide level2" data-background-image="https://wac-cdn.atlassian.com/dam/jcr:8f00f1a4-ef2d-498a-a2c6-8020bb97902f/03%20Release%20branches.svg?cdnVersion=1419" data-background-size="100% 80%" data-background-position="center">
 <h2></h2>
 </section>
-<section id="section-11" class="slide level2" data-background-image="https://wac-cdn.atlassian.com/dam/jcr:cc0b526e-adb7-4d45-874e-9bcea9898b4a/04%20Hotfix%20branches.svg?cdnVersion=1419" data-background-size="100% 80%" data-background-position="center">
+<section id="section-12" class="slide level2" data-background-image="https://wac-cdn.atlassian.com/dam/jcr:cc0b526e-adb7-4d45-874e-9bcea9898b4a/04%20Hotfix%20branches.svg?cdnVersion=1419" data-background-size="100% 80%" data-background-position="center">
 <h2></h2>
 </section>
-<section id="gitflow-workflow-2" class="slide level2">
+<section id="gitflow-workflow-3" class="slide level2">
 <h2>Gitflow workflow</h2>
 <p>The overall flow of Gitflow is:</p>
 <ol type="1">
@@ -1405,6 +1453,36 @@ Squash Merge (5):
 <div class="center width-050">
 <p><img data-src="https://www.dalescott.net/wp-content/uploads/2012/09/centralized-github-4-1024x625.png"></p>
 </div>
+</section>
+<section id="section-13" class="slide level2" data-background-image="https://martinfowler.com/articles/branching-patterns/leroy-branch.jpg" data-background-size="100% 80%" data-background-position="center">
+<h2></h2>
+</section>
+<section id="kľúčové-poznatky" class="slide level2">
+<h2>Kľúčové poznatky</h2>
+<ol type="1">
+<li><p><strong>Vetvenie je jednoduché, zlučovanie je ťažšie</strong> - vždy naplánujte integráciu pred vytvorením vetvy; vetvy sa v čase rozchádzajú</p></li>
+<li><p><strong>Frekvencia integrácie súvisí s kvalitou</strong> - časté zlučovanie snižuje zložitosť, riziko a strach z integrácie; umožňuje refaktoring a zlepšuje zdravie kódu</p></li>
+<li><p><strong>Moderná osvedčená prax uprednostňuje trunk-based development</strong> - elitné tímy integrujú často s CI/CD</p></li>
+<li><p><strong>Voľba workflowu závisí od kontextu</strong> - rôzne tímy a projekty majú rôzne potreby; vyberte workflow, ktorý najlepšie vyhovuje vašej situácii</p></li>
+</ol>
+<div class="footer">
+<p>Podľa <a href="https://martinfowler.com/articles/branching-patterns.html">Patterns for Managing Source Code Branches</a> (Martin Fowler) a <a href="https://martinfowler.com/bliki/StateOfDevOpsReport.html">State of DevOps Report</a></p>
+</div>
+<!-- ## {background-image="./static/img/branching-feature.webp" background-size="auto 70%" background-position="center"}
+
+## {background-image="./static/img/branching-forking-workflow.webp" background-size="contain" background-position="center"}
+
+## {background-image="./static/img/branching-gitflow.webp" background-size="contain" background-position="center"}
+
+## {background-image="./static/img/branching-github-flow.webp" background-size="contain" background-position="center"}
+
+## {background-image="./static/img/branching-gitlab-flow.webp" background-size="contain" background-position="center"}
+
+## {background-image="./static/img/branching-release-workflow.webp" background-size="contain" background-position="center"}
+
+## {background-image="./static/img/branching-trunk-based-development.webp" background-size="contain" background-position="center"}
+
+## {background-image="./static/img/branching-env.webp" background-size="contain" background-position="center"} -->
 </section></section>
 <section>
 <section id="pull-requests" class="title-slide slide level1 center" data-number="6">

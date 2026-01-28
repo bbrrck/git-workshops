@@ -95,7 +95,7 @@
     code span.vs { color: #e6db74; } /* VerbatimString */
     code span.wa { color: #ff5555; } /* Warning */
   </style>
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-aa9a81b4258779733a648a63aa0cce16.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-374a3bf673014f60c7c35d64edda47fc.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -234,7 +234,7 @@ Tibor Stanko
 <li><a href="#/git-internals">Git internals</a></li>
 <li><a href="#/merge-vs-rebase">Merge vs.&nbsp;Rebase</a></li>
 <li><a href="#/common-issues">Common issues</a></li>
-<li><a href="#/workflow">Branching strategies</a></li>
+<li><a href="#/workflow">Branching workflows</a></li>
 <li><a href="#/pull-requests">Pull requests</a></li>
 <li><a href="#/cicd">CI/CD using Git</a></li>
 <li><a href="#/ssh">SSH authentication</a></li>
@@ -1235,14 +1235,43 @@ Squash Merge (5):
 </section></section>
 <section>
 <section id="workflow" class="title-slide slide level1 center" data-number="5">
-<h1><span class="header-section-number">5</span> Git Workflows = Branching Models</h1>
+<h1><span class="header-section-number">5</span> Branching Workflows</h1>
 <p>In Git, there are many different workflows that differ in how they use branching. In this chapter, we will show some of the most commonly used workflows and their advantages and disadvantages.</p>
+</section>
+<section id="why-do-we-need-branching" class="slide level2">
+<h2>Why do we need branching?</h2>
+<ul>
+<li>without branching, everyone edits live code → half-baked changes break the system</li>
+<li>developers need <strong>isolation</strong> to work without stepping on each other</li>
+<li>at the same time, changes need to be <strong>integrated</strong> back into the main codebase</li>
+</ul>
+<div class="quote-container">
+<blockquote>
+<p>“Branching is about managing the interplay of isolation and integration.”</p>
+<p>— <cite><em>Martin Fowler</em></cite></p>
+</blockquote>
+</div>
+<div class="footer">
+<p><a href="https://martinfowler.com/articles/branching-patterns.html">Patterns for Managing Source Code Branches</a> (Martin Fowler)</p>
+</div>
+</section>
+<section id="why-do-we-need-branching-workflows" class="slide level2">
+<h2>Why do we need branching workflows?</h2>
+<ul>
+<li>branching provides the illusion of frozen time - safe isolation for development</li>
+<li>but: <em>branching is easy, merging is harder</em> - eventually the price comes due</li>
+<li><strong>key question:</strong> how and when should we integrate our work?</li>
+<li>there is no one-size-fits-all approach: different teams, products, and contexts require different branching approaches.</li>
+</ul>
+<div class="footer">
+<p><a href="https://martinfowler.com/articles/branching-patterns.html">Patterns for Managing Source Code Branches</a> (Martin Fowler)</p>
+</div>
 </section>
 <section id="what-workflows-exist" class="slide level2">
 <h2>What workflows exist?</h2>
 <ul>
 <li>Centralized</li>
-<li>Feature branch (FB)</li>
+<li>Feature branching (FB)</li>
 <li>Trunk-based development (TBD)</li>
 <li>Gitflow</li>
 <li>Forking workflow</li>
@@ -1291,6 +1320,7 @@ Squash Merge (5):
 <ul>
 <li>potentially many branches</li>
 <li>resolving conflicts in long-lived branches can be complex</li>
+<li>can discourage refactoring due to increased merge conflicts</li>
 </ul>
 <div class="footer">
 <p><a href="https://www.atlassian.com/git/tutorials/comparing-workflows/feature-branch-workflow">Git feature branch workflow</a> (Atlassian)</p>
@@ -1300,6 +1330,7 @@ Squash Merge (5):
 <h2>Trunk-based development</h2>
 <ul>
 <li>similar to the feature branching workflow, but <code>feature</code> branches are short-lived and frequently merged into the <code>main</code> branch (even several times a day)</li>
+<li>feature branches are sometimes not used at all - developers commit directly to the main branch</li>
 <li>suitable in combination with automated testing and deployment (CI/CD)</li>
 </ul>
 <p><strong>Advantages:</strong></p>
@@ -1359,17 +1390,20 @@ Squash Merge (5):
 <ul>
 <li>all the advantages of the feature branching workflow</li>
 <li>suitable for projects with longer development and regular releases</li>
+<li>potentially good fit for projects with multiple production versions</li>
 </ul>
 <p><strong>Disadvantages:</strong></p>
 <ul>
 <li>a large number of branches</li>
 <li>merge hell</li>
 </ul>
-<div style="font-size:80%">
+<p><strong>Note:</strong> Gitflow suits projects with multiple production versions (e.g., customer installations). Single-version web apps benefit more from trunk-based development.</p>
+</section>
+<section id="gitflow-workflow-2" class="slide level2">
+<h2>Gitflow workflow</h2>
 <blockquote>
 <p>Gitflow is a <strong>legacy</strong> Git workflow that was originally a disruptive and novel strategy for managing Git branches. Gitflow has fallen in popularity in favor of <a href="https://www.atlassian.com/continuous-delivery/continuous-integration/trunk-based-development">trunk-based workflows</a>, which are now considered best practices for modern continuous software development and <a href="https://www.atlassian.com/devops/what-is-devops">DevOps</a> practices. Gitflow also can be challenging to use with <a href="https://www.atlassian.com/continuous-delivery">CI/CD</a>.</p>
 </blockquote>
-</div>
 <div class="footer">
 <p><a href="https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow">Gitflow workflow</a> (Atlassian)</p>
 </div>
@@ -1383,7 +1417,7 @@ Squash Merge (5):
 <section id="section-11" class="slide level2" data-background-image="https://wac-cdn.atlassian.com/dam/jcr:cc0b526e-adb7-4d45-874e-9bcea9898b4a/04%20Hotfix%20branches.svg?cdnVersion=1419" data-background-size="100% 80%" data-background-position="center">
 <h2></h2>
 </section>
-<section id="gitflow-workflow-2" class="slide level2">
+<section id="gitflow-workflow-3" class="slide level2">
 <h2>Gitflow workflow</h2>
 <p>The overall flow of Gitflow is:</p>
 <ol type="1">
@@ -1404,6 +1438,20 @@ Squash Merge (5):
 </ul>
 <div class="center width-050">
 <p><img data-src="https://www.dalescott.net/wp-content/uploads/2012/09/centralized-github-4-1024x625.png"></p>
+</div>
+</section>
+<section id="section-12" class="slide level2" data-background-image="https://martinfowler.com/articles/branching-patterns/leroy-branch.jpg" data-background-size="100% 80%" data-background-position="center">
+<h2></h2>
+</section>
+<section id="key-takeaways" class="slide level2">
+<h2>Key Takeaways</h2>
+<ol type="1">
+<li><strong>Branching is easy, merging is harder</strong> - always plan integration before branching; branches diverge over time</li>
+<li><strong>Integration frequency drives quality</strong> - frequent merges reduce complexity, risk, and integration fear; enable refactoring and improve code health</li>
+<li><strong>Modern best practice favors trunk-based development</strong> - elite teams integrate frequently with CI/CD; choose workflow based on context (trunk-based for single-version apps, Gitflow for multiple production versions)</li>
+</ol>
+<div class="footer">
+<p>Based on <a href="https://martinfowler.com/articles/branching-patterns.html">Patterns for Managing Source Code Branches</a> (Martin Fowler) and <a href="https://martinfowler.com/bliki/StateOfDevOpsReport.html">State of DevOps Report</a></p>
 </div>
 </section></section>
 <section>
