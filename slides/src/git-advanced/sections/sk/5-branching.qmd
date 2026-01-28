@@ -85,10 +85,12 @@ Projekt *Git Workflows Warehouse* obsahuje [katalóg 50-tich workflowov](https:/
 [Git feature branch workflow](https://www.atlassian.com/git/tutorials/comparing-workflows/feature-branch-workflow) (Atlassian)
 :::
 
+## {background-image="https://www.tilburgsciencehub.com/static/img/feature-branching.webp" background-size="80%" background-position="center"}
+
 ## Trunk-based development
 
 - podobný feature branching workflowu, ale `feature` vetvy sú krátke a často mergované do `main` vetvy (aj niekoľkokrát denne)
-- feature vetvy sa niekedy nepoužívajú vôbec - vývojári commitujú priamo do hlavnej vetvy
+- feature vetvy sa niekedy nepoužívajú vôbec - vývojári commitujú priamo do mainu
 - vhodný v kombinácii s automatickým testovaním a nasadzovaním (CI/CD)
 
 **Výhody:**
@@ -98,7 +100,7 @@ Projekt *Git Workflows Warehouse* obsahuje [katalóg 50-tich workflowov](https:/
 **Nevýhody:**
 
 - nutné automatizované testovanie a nasadzovanie
-- vyžaduje zrelý vývojový tím
+- vyžaduje zrelý vývojový tím a dôveru
 
 :::footer
 Pozri [trunkbaseddevelopment.com](https://trunkbaseddevelopment.com/) a tiež [Why Google Stores Billions of Lines of Code in a Single Repository](https://research.google/pubs/why-google-stores-billions-of-lines-of-code-in-a-single-repository/)
@@ -106,9 +108,13 @@ Pozri [trunkbaseddevelopment.com](https://trunkbaseddevelopment.com/) a tiež [W
 
 ## Trunk-based development
 
+<div style="font-size: 90%">
+
 > **Feature-based deployment** can be beneficial for teams that value the isolation of features and are willing to manage the complexities of merging these features back into the mainline. On the other hand, **trunk-based deployment** is suited for organizations that prioritize rapid integration and releases and have the infrastructure to manage continuous integrations and feature flags.
 
 > In recent years, with the rise of DevOps and agile methodologies, there's been a clear trend towards more frequent integrations and releases. This trend has made trunk-based development, with its emphasis on rapid integration and release, increasingly popular among many tech giants and startups alike. However, as with all methodologies, it's essential to evaluate the specific needs and capabilities of an organization before adopting a deployment strategy.
+
+</div>
 
 
 :::footer
@@ -117,9 +123,22 @@ Pozri [trunkbaseddevelopment.com](https://trunkbaseddevelopment.com/) a tiež [W
 
 ## Zdieľané vetvy mimo hlavnej línie spôsobujú problémy *(merge hell)*{background-image="https://trunkbaseddevelopment.com/trunk1a.png" background-size="70%" background-position="center"}
 
-## Menšie tímy {background-image="https://trunkbaseddevelopment.com/trunk1b.png" background-size="70%" background-position="center"}
+:::footer
+[trunkbaseddevelopment.com](https://trunkbaseddevelopment.com/)
+:::
 
-## Väčšie tímy {background-image="https://trunkbaseddevelopment.com/trunk1c.png" background-size="70%" background-position="center"}
+## Menšie tímy {background-image="https://trunkbaseddevelopment.com/trunk1b.png" background-size="60%" background-position="center"}
+
+:::footer
+[trunkbaseddevelopment.com](https://trunkbaseddevelopment.com/)
+:::
+
+
+## Väčšie tímy {background-image="https://trunkbaseddevelopment.com/trunk1c.png" background-size="60%" background-position="center"}
+
+:::footer
+[trunkbaseddevelopment.com](https://trunkbaseddevelopment.com/)
+:::
 
 ## Gitflow workflow
 
@@ -194,11 +213,28 @@ The overall flow of Gitflow is:
 
 1. **Vetvenie je jednoduché, zlučovanie je ťažšie** - vždy naplánujte integráciu pred vytvorením vetvy; vetvy sa v čase rozchádzajú
 
-2. **Frekvencia integrácie riadi kvalitu** - časté zlučovanie snižuje zložitosť, riziko a strach z integrácie; umožňuje refaktoring a zlepšuje zdravie kódu
+2. **Frekvencia integrácie súvisí s kvalitou** - časté zlučovanie snižuje zložitosť, riziko a strach z integrácie; umožňuje refaktoring a zlepšuje zdravie kódu
 
-3. **Moderná osvedčená prax uprednostňuje trunk-based development** - elitné tímy integrujú často s CI/CD; voľba workflowu závisí od kontextu (trunk-based pre aplikácie s jednou verziou, Gitflow pre viacero produkčných verzií)
+3. **Moderná osvedčená prax uprednostňuje trunk-based development** - elitné tímy integrujú často s CI/CD
+  
+4. **Voľba workflowu závisí od kontextu** - rôzne tímy a projekty majú rôzne potreby; vyberte workflow, ktorý najlepšie vyhovuje vašej situácii
 
 :::footer
 Podľa [Patterns for Managing Source Code Branches](https://martinfowler.com/articles/branching-patterns.html) (Martin Fowler) a [State of DevOps Report](https://martinfowler.com/bliki/StateOfDevOpsReport.html)
 :::
 
+<!-- ## {background-image="./static/img/branching-feature.webp" background-size="auto 70%" background-position="center"}
+
+## {background-image="./static/img/branching-forking-workflow.webp" background-size="contain" background-position="center"}
+
+## {background-image="./static/img/branching-gitflow.webp" background-size="contain" background-position="center"}
+
+## {background-image="./static/img/branching-github-flow.webp" background-size="contain" background-position="center"}
+
+## {background-image="./static/img/branching-gitlab-flow.webp" background-size="contain" background-position="center"}
+
+## {background-image="./static/img/branching-release-workflow.webp" background-size="contain" background-position="center"}
+
+## {background-image="./static/img/branching-trunk-based-development.webp" background-size="contain" background-position="center"}
+
+## {background-image="./static/img/branching-env.webp" background-size="contain" background-position="center"} -->
